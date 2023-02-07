@@ -37,25 +37,19 @@ class _BottomNavigationBarWidgetImplementation extends StatelessWidget {
                     icon: Icon(
                       Icons.ac_unit,
                     ),
-                    title: Text(
-                      'item_1',
-                    ),
+                    label: 'item_1',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
                       Icons.ac_unit,
                     ),
-                    title: Text(
-                      'item_2',
-                    ),
+                    label: 'item_2',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
                       Icons.ac_unit,
                     ),
-                    title: Text(
-                      'item_3',
-                    ),
+                    label: 'item_3',
                   ),
                 ],
               ),

@@ -80,7 +80,6 @@ flutter:
         - assets/markdowns/widget_catalog/material/
         - assets/markdowns/widget_catalog/painting_effects/
         - assets/markdowns/widget_catalog/scrolling/
-        - assets/markdowns/widget_catalog/styling/
         - assets/markdowns/widget_catalog/text/
 
         - assets/markdowns/native_device_features/
