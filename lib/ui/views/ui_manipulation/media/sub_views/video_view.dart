@@ -21,14 +21,14 @@ class VideoView extends StatelessWidget {
 }
 
 class _VideoImplementation extends StatefulWidget {
-  const _VideoImplementation({Key key}) : super(key: key);
+  const _VideoImplementation({Key? key}) : super(key: key);
 
   @override
   __VideoImplementationState createState() => __VideoImplementationState();
 }
 
 class __VideoImplementationState extends State<_VideoImplementation> {
-  VideoPlayerController _videoController;
+  late VideoPlayerController _videoController;
 
   @override
   void initState() {

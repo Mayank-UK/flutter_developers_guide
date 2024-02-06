@@ -21,7 +21,7 @@ class _HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<_HomeScreen>
     with SingleTickerProviderStateMixin {
-  TabController controller;
+  late TabController controller;
 
   @override
   void initState() {
@@ -83,14 +83,14 @@ class _HomeScreenState extends State<_HomeScreen>
 class _TaskListItem extends StatelessWidget {
   final Task task;
 
-  _TaskListItem({@required this.task});
+  _TaskListItem({required this.task});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       leading: Checkbox(
         value: task.completed,
-        onChanged: (bool checked) {
+        onChanged: (bool? checked) {
           Provider.of<TodosModel>(context, listen: false).toggleTodo(task);
         },
       ),
@@ -112,7 +112,7 @@ class _TaskListItem extends StatelessWidget {
 class _TaskList extends StatelessWidget {
   final List<Task> tasks;
 
-  _TaskList({@required this.tasks});
+  _TaskList({required this.tasks});
 
   @override
   Widget build(BuildContext context) {
@@ -227,7 +227,7 @@ class _AddTaskScreenState extends State<_AddTaskScreen> {
                   CheckboxListTile(
                     value: completedStatus,
                     onChanged: (checked) => setState(() {
-                      completedStatus = checked;
+                      completedStatus = checked!;
                     }),
                     title: const Text('Complete?'),
                   ),

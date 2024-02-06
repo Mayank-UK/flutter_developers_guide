@@ -5,13 +5,13 @@ class GridViewItem {
   final String title;
   final String route;
 
-  GridViewItem({@required this.title, @required this.route});
+  GridViewItem({required this.title, required this.route});
 }
 
 class CustomGridViewComponent extends StatelessWidget {
   final List<GridViewItem> gridList;
 
-  CustomGridViewComponent({@required this.gridList});
+  CustomGridViewComponent({required this.gridList});
 
   @override
   Widget build(BuildContext context) {

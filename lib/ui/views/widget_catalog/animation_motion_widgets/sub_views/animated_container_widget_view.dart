@@ -27,7 +27,6 @@ class _AnimatedContainerImplementation extends StatefulWidget {
 
 class __AnimatedContainerImplementationState
     extends State<_AnimatedContainerImplementation> {
-  @override
   bool _selected = false;
 
   void onPressed() {

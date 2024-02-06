@@ -28,10 +28,11 @@ class _PositionedTransitionImplementation extends StatefulWidget {
 class __PositionedTransitionImplementationState
     extends State<_PositionedTransitionImplementation>
     with TickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
+    super.initState();
     _controller = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,

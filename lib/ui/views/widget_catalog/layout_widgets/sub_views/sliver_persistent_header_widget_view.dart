@@ -90,7 +90,7 @@ class _SliverPersistentHeaderWidgetImplementation extends StatelessWidget {
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   final PreferredSize child;
 
-  _SliverAppBarDelegate({this.child});
+  _SliverAppBarDelegate({required this.child});
 
   @override
   Widget build(

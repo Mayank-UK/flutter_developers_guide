@@ -51,7 +51,6 @@ class __AnimatedSizeImplementationState
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AnimatedSize(
-                    vsync: this,
                     curve: Curves.easeIn,
                     duration: const Duration(
                       seconds: 1,

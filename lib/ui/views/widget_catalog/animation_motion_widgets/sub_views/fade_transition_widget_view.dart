@@ -27,10 +27,11 @@ class _FadeTransitionImplementation extends StatefulWidget {
 
 class __FadeTransitionImplementationState
     extends State<_FadeTransitionImplementation> with TickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
+    super.initState();
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(

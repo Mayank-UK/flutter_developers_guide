@@ -21,7 +21,7 @@ class SnackBarWidgetView extends StatelessWidget {
 
 class _SnackBarWidgetImplementation extends StatelessWidget {
   void _onPressed(BuildContext context) {
-    final Widget snackBar = SnackBar(
+    final SnackBar snackBar = SnackBar(
       content: const Text('Click/tap registered'),
     );
 

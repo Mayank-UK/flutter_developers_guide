@@ -21,8 +21,8 @@ class ExpansionPanelWidgetView extends StatelessWidget {
 
 class Item {
   Item({
-    this.expandedValue,
-    this.headerValue,
+    required this.expandedValue,
+    required this.headerValue,
     this.isExpanded = false,
   });
 

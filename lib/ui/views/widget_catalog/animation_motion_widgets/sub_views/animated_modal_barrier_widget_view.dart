@@ -30,8 +30,7 @@ class __AnimatedModalBarrierImplementationState
     with SingleTickerProviderStateMixin {
   bool _isToggled = false;
 
-  AnimationController _animationController;
-  Animation<Color> _colorTweenAnimation;
+  late AnimationController _animationController;
 
   @override
   void initState() {

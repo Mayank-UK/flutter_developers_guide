@@ -29,9 +29,9 @@ class Album {
   final String title;
 
   Album({
-    @required this.userId,
-    @required this.id,
-    @required this.title,
+    required this.userId,
+    required this.id,
+    required this.title,
   });
 
   factory Album.fromJson(Map<String, dynamic> json) {
@@ -49,7 +49,7 @@ class _RestApiImplementation extends StatefulWidget {
 }
 
 class __RestApiImplementationState extends State<_RestApiImplementation> {
-  Future<Album> _futureAlbum;
+  late Future<Album> _futureAlbum;
 
   void _fetchData() {
     Future<Album> _fetchAlbum() async {
@@ -99,7 +99,7 @@ class __RestApiImplementationState extends State<_RestApiImplementation> {
                       future: _futureAlbum,
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
-                          return Text(snapshot.data.title);
+                          return Text(snapshot.data!.title);
                         } else if (snapshot.hasError) {
                           return Text("${snapshot.error}");
                         }

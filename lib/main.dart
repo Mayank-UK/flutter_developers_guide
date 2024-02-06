@@ -22,7 +22,7 @@ class MyAPP extends StatelessWidget {
         theme: ThemeData(
           // brightness: Brightness.dark,
           primaryColor: DSColors.Primary,
-          accentColor: DSColors.Secondary,
+          hintColor: DSColors.Secondary,
           fontFamily: 'Montserrat',
         ),
         initialRoute: RoutePaths.home,

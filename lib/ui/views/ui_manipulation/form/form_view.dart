@@ -19,7 +19,7 @@ class FormView extends StatelessWidget {
 }
 
 class _FormImplementation extends StatefulWidget {
-  const _FormImplementation({Key key}) : super(key: key);
+  const _FormImplementation({Key? key}) : super(key: key);
 
   @override
   __FormImplementationState createState() => __FormImplementationState();
@@ -28,8 +28,8 @@ class _FormImplementation extends StatefulWidget {
 class __FormImplementationState extends State<_FormImplementation> {
   final _formKey = GlobalKey<FormState>();
 
-  TextEditingController _emailFieldController;
-  TextEditingController _passwordFieldController;
+  late TextEditingController _emailFieldController;
+  late TextEditingController _passwordFieldController;
 
   @override
   void initState() {
@@ -48,7 +48,7 @@ class __FormImplementationState extends State<_FormImplementation> {
   }
 
   void _onSubmit() {
-    if (_formKey.currentState.validate()) {
+    if (_formKey.currentState!.validate()) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(

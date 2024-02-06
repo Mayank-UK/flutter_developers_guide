@@ -28,10 +28,11 @@ class _RotationTransitionImplementation extends StatefulWidget {
 class __RotationTransitionImplementationState
     extends State<_RotationTransitionImplementation>
     with TickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
+    super.initState();
     _controller = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,

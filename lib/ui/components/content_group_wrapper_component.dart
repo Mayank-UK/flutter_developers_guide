@@ -7,8 +7,8 @@ class ContentGroupWrapperComponent extends StatelessWidget {
   final List<Widget> content;
 
   ContentGroupWrapperComponent({
-    @required this.title,
-    @required this.content,
+    required this.title,
+    required this.content,
   });
 
   @override

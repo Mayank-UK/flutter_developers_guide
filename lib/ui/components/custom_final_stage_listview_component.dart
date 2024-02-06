@@ -8,13 +8,13 @@ class ListViewItem {
   final String route;
 
   ListViewItem(
-      {@required this.title, @required this.description, @required this.route});
+      {required this.title, required this.description, required this.route});
 }
 
 class CustomFinalStageListViewComponent extends StatelessWidget {
   final List<ListViewItem> itemList;
 
-  CustomFinalStageListViewComponent({@required this.itemList});
+  CustomFinalStageListViewComponent({required this.itemList});
 
   @override
   Widget build(BuildContext context) {

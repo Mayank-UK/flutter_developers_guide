@@ -6,8 +6,8 @@ class SectionWrapperComponent extends StatelessWidget {
   final List<Widget> content;
 
   SectionWrapperComponent({
-    @required this.title,
-    @required this.content,
+    required this.title,
+    required this.content,
   });
 
   @override

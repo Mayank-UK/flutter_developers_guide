@@ -4,8 +4,6 @@ import '../../../../components/code_preview_component.dart';
 import '../../../../components/section_wrapper_component_component.dart';
 import '../../../../components/text_block_component.dart';
 
-import './../../../../design_system/design_system.dart';
-
 class AnimatedListStateWidgetView extends StatelessWidget {
   final String _appBarTitle = 'AnimatedListState';
   final String _codeTabMarkdownLocation =

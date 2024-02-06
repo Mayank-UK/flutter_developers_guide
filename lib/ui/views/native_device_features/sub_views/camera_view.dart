@@ -29,14 +29,14 @@ class _CameraImplementation extends StatefulWidget {
 }
 
 class __CameraImplementationState extends State<_CameraImplementation> {
-  CameraController _cameraController;
-  Future<void> _initializeControllerFuture;
-  List<CameraDescription> _cameras;
+  late CameraController _cameraController;
+  late Future<void> _initializeControllerFuture;
+  late List<CameraDescription> _cameras;
   int _cameraIndex = 0;
   bool _isFrontCameraOn = false;
   bool _isFlashOn = false;
-  VideoPlayerController _videoController;
-  XFile _videoPath;
+  late VideoPlayerController _videoController;
+  late XFile _videoPath;
 
   @override
   void initState() {

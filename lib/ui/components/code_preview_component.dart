@@ -11,9 +11,9 @@ class CodePreviewTabsComponent extends StatelessWidget {
   final String codeTabMarkdownLocation;
 
   CodePreviewTabsComponent(
-      {@required this.appBarTitle,
-      @required this.previewTab,
-      @required this.codeTabMarkdownLocation});
+      {required this.appBarTitle,
+      required this.previewTab,
+      required this.codeTabMarkdownLocation});
 
   Future<String> getFileData(String path) async {
     return await rootBundle.loadString(path);
@@ -52,7 +52,7 @@ class CodePreviewTabsComponent extends StatelessWidget {
                     style: DSTypography.body1Dark,
                   );
                 }
-                return Markdown(data: snapshot.data);
+                return Markdown(data: snapshot.data.toString());
               },
             ),
           ],

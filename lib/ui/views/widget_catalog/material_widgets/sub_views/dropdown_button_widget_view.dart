@@ -50,9 +50,9 @@ class __DropdownButtonWidgetImplementationState
                   height: 2,
                   color: Colors.deepPurpleAccent,
                 ),
-                onChanged: (String newValue) {
+                onChanged: (String? newValue) {
                   setState(() {
-                    dropdownValue = newValue;
+                    dropdownValue = newValue!;
                   });
                 },
                 items: <String>['One', 'Two', 'Free', 'Four']

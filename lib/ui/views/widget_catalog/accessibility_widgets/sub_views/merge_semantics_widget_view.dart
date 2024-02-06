@@ -35,7 +35,7 @@ class _MergeSemanticsWidgetImplementation extends StatelessWidget {
                   children: <Widget>[
                     Checkbox(
                       value: true,
-                      onChanged: (bool value) {},
+                      onChanged: (bool? value) {},
                     ),
                     const Text("Settings"),
                   ],

@@ -36,7 +36,7 @@ class _ScrollbarWidgetImplementation extends StatelessWidget {
             Container(
               height: 500,
               child: Scrollbar(
-                isAlwaysShown: true,
+                thumbVisibility: true,
                 child: ListView(
                   children: List.generate(
                     50,

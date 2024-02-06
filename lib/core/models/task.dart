@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-
 class Task {
   final String title;
   bool completed;
 
-  Task({@required this.title, this.completed = false});
+  Task({required this.title, this.completed = false});
 
   void toggleCompleted() {
     completed = !completed;

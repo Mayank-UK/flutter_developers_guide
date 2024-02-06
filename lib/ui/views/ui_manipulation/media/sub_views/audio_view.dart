@@ -21,15 +21,15 @@ class AudioView extends StatelessWidget {
 }
 
 class _AudioImplementation extends StatefulWidget {
-  const _AudioImplementation({Key key}) : super(key: key);
+  const _AudioImplementation({Key? key}) : super(key: key);
 
   @override
   __AudioImplementationState createState() => __AudioImplementationState();
 }
 
 class __AudioImplementationState extends State<_AudioImplementation> {
-  AudioPlayer _audioPlayer;
-  AudioCache _audioCache;
+  late AudioPlayer _audioPlayer;
+  late AudioCache _audioCache;
 
   @override
   void initState() {

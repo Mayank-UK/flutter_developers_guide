@@ -73,7 +73,7 @@ class MyCustomFormState extends State<MyCustomForm> {
           ),
           ElevatedButton(
             onPressed: () {
-              if (_formKey.currentState.validate()) {
+              if (_formKey.currentState!.validate()) {
                 ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: const Text('Processing Data')));
               }

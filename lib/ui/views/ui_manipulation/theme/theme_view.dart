@@ -62,7 +62,7 @@ class _ThemeImplementation extends StatelessWidget {
                     ),
                     Theme(
                       data: ThemeData(
-                        accentColor: Colors.yellow,
+                        hintColor: Colors.yellow,
                       ),
                       child: FloatingActionButton(
                         onPressed: () {},

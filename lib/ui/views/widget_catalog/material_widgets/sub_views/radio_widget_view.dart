@@ -49,9 +49,9 @@ class __RadioWidgetImplementationState
                     leading: Radio<SingingCharacter>(
                       value: SingingCharacter.lafayette,
                       groupValue: _character,
-                      onChanged: (SingingCharacter value) {
+                      onChanged: (SingingCharacter? value) {
                         setState(() {
-                          _character = value;
+                          _character = value!;
                         });
                       },
                     ),
@@ -61,9 +61,9 @@ class __RadioWidgetImplementationState
                     leading: Radio<SingingCharacter>(
                       value: SingingCharacter.jefferson,
                       groupValue: _character,
-                      onChanged: (SingingCharacter value) {
+                      onChanged: (SingingCharacter? value) {
                         setState(() {
-                          _character = value;
+                          _character = value!;
                         });
                       },
                     ),

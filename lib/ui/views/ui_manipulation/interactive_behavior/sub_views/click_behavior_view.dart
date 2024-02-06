@@ -20,7 +20,7 @@ class ClickBehaviorView extends StatelessWidget {
 
 class _ClickBehaviorImplementation extends StatelessWidget {
   void onTap(BuildContext context) {
-    final Widget snackBar =
+    final SnackBar snackBar =
         SnackBar(content: const Text('Click/tap registered'));
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }

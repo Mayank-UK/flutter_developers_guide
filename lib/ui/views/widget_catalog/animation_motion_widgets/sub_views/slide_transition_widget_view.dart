@@ -27,10 +27,11 @@ class _SizeTransitionImplementation extends StatefulWidget {
 
 class __SizeTransitionImplementationState
     extends State<_SizeTransitionImplementation> with TickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
+    super.initState();
     _controller = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,

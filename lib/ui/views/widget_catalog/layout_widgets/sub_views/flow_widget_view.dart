@@ -27,7 +27,7 @@ class _FlowWidgetImplementation extends StatefulWidget {
 
 class __FlowWidgetImplementationState extends State<_FlowWidgetImplementation>
     with SingleTickerProviderStateMixin {
-  AnimationController menuAnimation;
+  late AnimationController menuAnimation;
   IconData lastTapped = Icons.notifications;
   final List<IconData> menuItems = <IconData>[
     Icons.home,
@@ -109,7 +109,7 @@ class __FlowWidgetImplementationState extends State<_FlowWidgetImplementation>
 
 class FlowMenuDelegate extends FlowDelegate {
   FlowMenuDelegate({
-    @required this.menuAnimation,
+    required this.menuAnimation,
   }) : super(repaint: menuAnimation);
 
   final Animation<double> menuAnimation;
@@ -123,7 +123,7 @@ class FlowMenuDelegate extends FlowDelegate {
   void paintChildren(FlowPaintingContext context) {
     double dx = 0.0;
     for (int i = 0; i < context.childCount; ++i) {
-      dx = context.getChildSize(i).width * i;
+      dx = context.getChildSize(i)!.width * i;
       context.paintChild(
         i,
         transform: Matrix4.translationValues(

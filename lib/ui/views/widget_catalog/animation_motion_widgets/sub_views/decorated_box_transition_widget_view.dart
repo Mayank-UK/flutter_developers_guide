@@ -28,10 +28,11 @@ class _DecoratedBoxTransitionImplementation extends StatefulWidget {
 class __DecoratedBoxTransitionImplementationState
     extends State<_DecoratedBoxTransitionImplementation>
     with TickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
+    super.initState();
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(

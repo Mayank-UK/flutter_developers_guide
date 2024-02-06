@@ -7,7 +7,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 class MarkdownPreviewComponent extends StatelessWidget {
   String markdownLocation;
 
-  MarkdownPreviewComponent({@required this.markdownLocation});
+  MarkdownPreviewComponent({required this.markdownLocation});
 
   Future<String> getFileData(String path) async {
     return await rootBundle.loadString(path);
@@ -27,7 +27,7 @@ class MarkdownPreviewComponent extends StatelessWidget {
               style: DSTypography.body1Dark,
             );
           }
-          return Markdown(data: snapshot.data);
+          return Markdown(data: snapshot.data.toString());
         },
       ),
     );

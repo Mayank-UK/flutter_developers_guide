@@ -21,13 +21,12 @@ class RefreshIndicatorWidgetView extends StatelessWidget {
 
 class _RefreshIndicatorWidgetImplementation extends StatelessWidget {
   Future _onRefresh(context) async {
-    return Future<String>.delayed(
+    return Future<void>.delayed(
       const Duration(seconds: 1),
       () {
-        final Widget snackBar = SnackBar(content: const Text('Data refreshed'));
+        final SnackBar snackBar =
+            SnackBar(content: const Text('Data refreshed'));
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
-        return;
       },
     );
   }
