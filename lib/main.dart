@@ -1,3 +1,4 @@
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,7 +9,10 @@ import './core/router/router.dart';
 
 import './ui/design_system/design_system.dart';
 
-void main() {
+void main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+
   runApp(MyAPP());
 }
 

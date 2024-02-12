@@ -21,15 +21,22 @@ class HomeView extends StatelessWidget {
     GridViewItem(title: 'Testing', route: RoutePaths.testing),
     GridViewItem(title: 'Widget catalog', route: RoutePaths.widgetsCatalog),
     GridViewItem(
-        title: 'Supporting classes and enums',
-        route: RoutePaths.supportingClassesEnums),
+      title: 'Supporting classes and enums',
+      route: RoutePaths.supportingClassesEnums,
+    ),
     GridViewItem(
-        title: 'Native device features',
-        route: RoutePaths.nativeDeviceFeatures),
+      title: 'Native device features',
+      route: RoutePaths.nativeDeviceFeatures,
+    ),
     GridViewItem(title: 'Best practices', route: RoutePaths.bestPractices),
     GridViewItem(
-        title: 'Production build and deployment',
-        route: RoutePaths.productionBuildDeployment),
+      title: 'Production build and deployment',
+      route: RoutePaths.productionBuildDeployment,
+    ),
+    GridViewItem(
+      title: 'Third party services',
+      route: RoutePaths.thirdPartyServices,
+    ),
   ];
 
   @override

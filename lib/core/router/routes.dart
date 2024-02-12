@@ -19,6 +19,7 @@ class RoutePaths {
   static const String lifecycle = '/lifecycle';
   static const String productionBuildDeployment =
       '/production-build-deployment';
+  static const String thirdPartyServices = '/third-party-services';
 
   // dart fundamentals routes
   static const String importantConcepts = '/dart-fundaments/important-concepts';
@@ -483,6 +484,9 @@ class RoutePaths {
       '/ui-manipulation/responsive-adaptive-ui/responsive-ui';
   static const String adaptiveUi =
       '/ui-manipulation/responsive-adaptive-ui/adaptive-ui';
+
+  // third party services sub routes
+  static const String firebase = '/third-party-services/firebase';
 
   // state management paths
   static const String state_management_basics = '/state-management/basics';

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_developers_guide/ui/views/third_party_services/sub_views/firebase_view.dart';
+import 'package:flutter_developers_guide/ui/views/third_party_services/third_party_services_view.dart';
 
 // routes
 import './routes.dart';
@@ -430,6 +432,10 @@ class MyRouter {
       case RoutePaths.productionBuildDeployment:
         return MaterialPageRoute(
           builder: (_) => ProductionBuildDeploymentView(),
+        );
+      case RoutePaths.thirdPartyServices:
+        return MaterialPageRoute(
+          builder: (_) => ThirdPartyServicesView(),
         );
 
       // dart fundamentals
@@ -1560,6 +1566,12 @@ class MyRouter {
       case RoutePaths.adaptiveUi:
         return MaterialPageRoute(
           builder: (_) => AdaptiveLayoutView(),
+        );
+
+      // third party services
+      case RoutePaths.firebase:
+        return MaterialPageRoute(
+          builder: (_) => FirebaseView(),
         );
 
       // state management
