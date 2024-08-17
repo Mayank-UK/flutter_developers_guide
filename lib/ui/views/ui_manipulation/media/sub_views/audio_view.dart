@@ -36,8 +36,8 @@ class __AudioImplementationState extends State<_AudioImplementation> {
     super.initState();
 
     _audioPlayer = AudioPlayer();
-    _audioCache = AudioCache(fixedPlayer: _audioPlayer);
-    _audioPlayer.setReleaseMode(ReleaseMode.LOOP);
+    // _audioCache = AudioCache(fixedPlayer: _audioPlayer);
+    // _audioPlayer.setReleaseMode(ReleaseMode.LOOP);
     _audioPlayer.onPlayerStateChanged.listen((s) {
       setState(() {});
     });
@@ -54,7 +54,7 @@ class __AudioImplementationState extends State<_AudioImplementation> {
 
   _onTapPlay() {
     _audioPlayer.release();
-    _audioCache.play('audios/audio.mp3');
+    // _audioCache.play('audios/audio.mp3');
   }
 
   @override
