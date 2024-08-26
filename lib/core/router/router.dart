@@ -1,369 +1,366 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_developers_guide/ui/views/dependency_management/view.dart';
 import 'package:flutter_developers_guide/ui/views/third_party_services/sub_views/firebase_view.dart';
 import 'package:flutter_developers_guide/ui/views/third_party_services/third_party_services_view.dart';
+import 'package:flutter_developers_guide/ui/views/ui/sub_views/design_system/view.dart';
 
 // routes
 import './routes.dart';
 
 // home
-import '../../ui/views/page_not_found/page_not_found_view.dart';
-import '../../ui/views/home_view.dart';
-import '../../ui/views/dart_fundamentals/dart_fundamentals_view.dart';
-import '../../ui/views/flutter_fundamentals/flutter_fundamentals_view.dart';
-import '../../ui/views/ui_manipulation/ui_manipulation_view.dart';
-import '../../ui/views/widget_catalog/widget_catalog_view.dart';
-import '../../ui/views/navigation_routing/navigation_routing_view.dart';
-import '../../ui/views/state_management/state_management_view.dart';
-import '../../ui/views/native_device_features/native_device_features_view.dart';
-import '../../ui/views/architecture/architecture_view.dart';
-import '../../ui/views/best_practices/best_practices_view.dart';
-import '../../ui/views/supporting_classes_enums/supporting_classes_enums_view.dart';
-import '../../ui/views/interaction_external_resources/rest_api_view.dart';
-import '../../ui/views/debugging/debugging_view.dart';
-import '../../ui/views/testing/testing_view.dart';
-import '../../ui/views/lifecycle/lifecycle_view.dart';
-import '../../ui/views/production_build_deployment/production_build_deployment.dart';
+import '../../ui/views/page_not_found/view.dart';
+import '../../ui/views/view.dart';
+import '../../ui/views/dart_fundamentals/view.dart';
+import '../../ui/views/flutter_fundamentals/view.dart';
+import '../../ui/views/ui/view.dart';
+import '../../ui/views/widget_catalog/view.dart';
+import '../../ui/views/navigation_routing/view.dart';
+import '../../ui/views/state_management/view.dart';
+import '../../ui/views/native_device_features/view.dart';
+import '../../ui/views/architecture/view.dart';
+import '../../ui/views/best_practices/view.dart';
+import '../../ui/views/supporting_classes_enums/view.dart';
+import '../../ui/views/api_handling/view.dart';
+import '../../ui/views/debugging/view.dart';
+import '../../ui/views/testing/view.dart';
+import '../../ui/views/lifecycle/view.dart';
+import '../../ui/views/production_build_deployment/view.dart';
 
 // dart fundamentals sub_views
-import '../../ui/views/dart_fundamentals/sub_views/important_concepts_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/installation_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/keywords_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/variables_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/built_in_typesView.dart';
-import '../../ui/views/dart_fundamentals/sub_views/functions_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/operators_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/conditional_expression_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/cascade_notation_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/control_flow_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/exceptions_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/classes_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/generics_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/libraries_visibility_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/asynchrony_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/generators_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/callable_classes_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/isolates_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/typedefs_view.dart';
-import '../../ui/views/dart_fundamentals/sub_views/comments_view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/important_concepts/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/installation/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/keywords/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/variables/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/built_in_types/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/functions/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/operators/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/conditional_expression/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/cascade_notation/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/control_flow/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/exceptions/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/classes/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/generics/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/libraries_visibility/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/asynchronous/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/generators/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/callable_classes/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/isolates/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/typedefs/view.dart';
+import '../../ui/views/dart_fundamentals/sub_views/comments/view.dart';
 
 // flutter fundamentals sub_views
-import '../../ui/views/flutter_fundamentals/sub_views/about_wigets_view.dart';
-import '../../ui/views/flutter_fundamentals/sub_views/flutter_2_view.dart';
-import '../../ui/views/flutter_fundamentals/sub_views/important_concepts_flutter_view.dart';
-import '../../ui/views/flutter_fundamentals/sub_views/installation_setup_flutter_view.dart';
-import '../../ui/views/flutter_fundamentals/sub_views/using_flutter_view.dart';
+import '../../ui/views/flutter_fundamentals/sub_views/about_wigets/view.dart';
+import '../../ui/views/flutter_fundamentals/sub_views/flutter_2/view.dart';
+import '../../ui/views/flutter_fundamentals/sub_views/important_concepts_flutter/view.dart';
+import '../../ui/views/flutter_fundamentals/sub_views/installation_setup_flutter/view.dart';
+import '../../ui/views/flutter_fundamentals/sub_views/using_flutter/view.dart';
 
-// navigation and routing
-import '../../ui/views/navigation_routing/sub_views/imperative_routing_view.dart';
-import '../../ui/views/navigation_routing/sub_views/declarative_routing_view.dart';
+// ui
+import '../../ui/views/ui/sub_views/responsive_adaptive_ui/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/ui_manipulation_view.dart';
 
 // supporting classes sub_views
-import '../../ui/views/supporting_classes_enums/sub_views/supporting_classes_view.dart';
-import '../../ui/views/supporting_classes_enums/sub_views/supporting_enums_view.dart';
+import '../../ui/views/supporting_classes_enums/sub_views/supporting_classes/view.dart';
+import '../../ui/views/supporting_classes_enums/sub_views/supporting_enums/view.dart';
 
 // lifecycle sub_views
-import '../../ui/views/lifecycle/sub_views/application_lifecycle_view.dart';
-import '../../ui/views/lifecycle/sub_views/widget_lifecycle_view.dart';
+import '../../ui/views/lifecycle/sub_views/application_lifecycle/view.dart';
+import '../../ui/views/lifecycle/sub_views/widget_lifecycle/view.dart';
 
 // testing
-import '../../ui/views/testing/sub_views/unit_testing_view.dart';
-import '../../ui/views/testing/sub_views/integration_testing_view.dart';
+import '../../ui/views/testing/sub_views/unit_testing/view.dart';
+import '../../ui/views/testing/sub_views/integration_testing/view.dart';
 
 // production build and deployment
-import '../../ui/views/production_build_deployment/sub_views/production_build_view.dart';
-import '../../ui/views/production_build_deployment/sub_views/android_deployment_view.dart';
-import '../../ui/views/production_build_deployment/sub_views/ios_deployment_view.dart';
-import '../../ui/views/production_build_deployment/sub_views/web_deployment_view.dart';
+import '../../ui/views/production_build_deployment/sub_views/production_build/view.dart';
+import '../../ui/views/production_build_deployment/sub_views/android_deployment/view.dart';
+import '../../ui/views/production_build_deployment/sub_views/ios_deployment/view.dart';
+import '../../ui/views/production_build_deployment/sub_views/web_deployment/view.dart';
 
 // native device features
-import '../../ui/views/native_device_features/sub_views/filesystem_view.dart';
-import '../../ui/views/native_device_features/sub_views/camera_view.dart';
-import '../../ui/views/native_device_features/sub_views/location_view.dart';
-import '../../ui/views/native_device_features/sub_views/bluetooth_view.dart';
-import '../../ui/views/native_device_features/sub_views/share_view.dart';
+import '../../ui/views/native_device_features/sub_views/file_system/view.dart';
+import '../../ui/views/native_device_features/sub_views/camera/view.dart';
+import '../../ui/views/native_device_features/sub_views/location/view.dart';
+import '../../ui/views/native_device_features/sub_views/bluetooth/view.dart';
+import '../../ui/views/native_device_features/sub_views/share/view.dart';
 
 // widget catalog main category
-import '../../ui/views/widget_catalog/accessibility_widgets/accessibility_widgets_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/animation_widgets_view.dart';
-import '../../ui/views/widget_catalog/asset_widgets/asset_widgets_view.dart';
-import '../../ui/views/widget_catalog/async_widgets/async_widgets_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/cupertino_widgets_view.dart';
-import '../../ui/views/widget_catalog/input_widgets/input_widgets_view.dart';
-import '../../ui/views/widget_catalog/interactive_widgets/interactive_widgets_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/layout_widgets_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/material_widgets_view.dart';
-import '../../ui/views/widget_catalog/painting_effects/painting_effects_widgets_view.dart';
-import '../../ui/views/widget_catalog/scrolling_widgets/scrolling_widgets_view.dart';
-import '../../ui/views/widget_catalog/styling_widgets/styling_widgets_view.dart';
-import '../../ui/views/widget_catalog/text_widgets/text_widgets_view.dart';
+import '../../ui/views/widget_catalog/accessibility_widgets/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/view.dart';
+import '../../ui/views/widget_catalog/asset_widgets/view.dart';
+import '../../ui/views/widget_catalog/async_widgets/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/view.dart';
+import '../../ui/views/widget_catalog/input_widgets/view.dart';
+import '../../ui/views/widget_catalog/interactive_widgets/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/view.dart';
+import '../../ui/views/widget_catalog/painting_effects/view.dart';
+import '../../ui/views/widget_catalog/scrolling_widgets/view.dart';
+import '../../ui/views/widget_catalog/styling_widgets/view.dart';
+import '../../ui/views/widget_catalog/text_widgets/view.dart';
 
 // widget catalog accessibility
-import '../../ui/views/widget_catalog/accessibility_widgets/sub_views/exclude_semantics_widget_view.dart';
-import '../../ui/views/widget_catalog/accessibility_widgets/sub_views/merge_semantics_widget_view.dart';
-import '../../ui/views/widget_catalog/accessibility_widgets/sub_views/semantics_widget_view.dart';
+import '../../ui/views/widget_catalog/accessibility_widgets/sub_views/exclude_semantics_widget/view.dart';
+import '../../ui/views/widget_catalog/accessibility_widgets/sub_views/merge_semantics_widget/view.dart';
+import '../../ui/views/widget_catalog/accessibility_widgets/sub_views/semantics_widget/view.dart';
 
 // widget catalog animation and motion
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_align_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_builder_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_container_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_cross_fade_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_default_text_style_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_list_state_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_modal_barrier_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_opacity_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_physical_model_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_positioned_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_size_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_widget_base_state_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_widget_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/decorated_box_transition_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/fade_transition_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/hero_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/positioned_transition_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/rotation_transition_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/scale_transition_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/size_transition_widget_view.dart';
-import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/slide_transition_widget_view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_align_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_builder_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_container_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_cross_fade_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_default_text_style_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_list_state_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_modal_barrier_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_opacity_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_physical_model_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_positioned_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_size_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_widget_base_state_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/animated_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/decorated_box_transition_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/fade_transition_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/hero_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/positioned_transition_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/rotation_transition_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/scale_transition_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/size_transition_widget/view.dart';
+import '../../ui/views/widget_catalog/animation_motion_widgets/sub_views/slide_transition_widget/view.dart';
 
 // widget catalog assets
-import '../../ui/views/widget_catalog/asset_widgets/sub_views/asset_bundle_widget_view.dart';
-import '../../ui/views/widget_catalog/asset_widgets/sub_views/icon_widget_view.dart';
-import '../../ui/views/widget_catalog/asset_widgets/sub_views/image_widget_view.dart';
-import '../../ui/views/widget_catalog/asset_widgets/sub_views/raw_image_widget_view.dart';
+import '../../ui/views/widget_catalog/asset_widgets/sub_views/asset_bundle_widget/view.dart';
+import '../../ui/views/widget_catalog/asset_widgets/sub_views/icon_widget/view.dart';
+import '../../ui/views/widget_catalog/asset_widgets/sub_views/image_widget/view.dart';
+import '../../ui/views/widget_catalog/asset_widgets/sub_views/raw_image_widget/view.dart';
 
 // widget catalog async
-import '../../ui/views/widget_catalog/async_widgets/sub_views/future_builder_widget_view.dart';
-import '../../ui/views/widget_catalog/async_widgets/sub_views/stream_builder_widget_view.dart';
+import '../../ui/views/widget_catalog/async_widgets/sub_views/future_builder_widget/view.dart';
+import '../../ui/views/widget_catalog/async_widgets/sub_views/stream_builder_widget/view.dart';
 
 // widget catalog cupertino
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_action_sheet_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_activity_indicator_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_alert_dialog_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_button_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_context_menu_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_date_picker_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_dialog_action_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_dialog_full_screen_dialog_transition_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_dialog_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_navigation_bar_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_page_transition_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_picker_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_popup_surface_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_scaffold_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_scrollbar_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_search_field_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_segmented_control_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_slider_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_sliding_segmented_control_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_sliver_navigation_bar_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_switch_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_tab_bar_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_tab_scaffold_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_tab_view_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_text_field_widget_view.dart';
-import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_time_picker_widget_view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_action_sheet_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_activity_indicator_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_alert_dialog_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_button_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_context_menu_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_date_picker_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_dialog_action_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_dialog_full_screen_dialog_transition_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_dialog_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_navigation_bar_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_page_transition_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_picker_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_popup_surface_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_scaffold_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_scrollbar_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_search_field_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_segmented_control_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_slider_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_sliding_segmented_control_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_sliver_navigation_bar_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_switch_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_tab_bar_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_tab_scaffold_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_tab_view_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_text_field_widget/view.dart';
+import '../../ui/views/widget_catalog/cupertino_widgets/sub_views/cupertino_time_picker_widget/view.dart';
 
 // widget catalog input
-import '../../ui/views/widget_catalog/input_widgets/sub_views/auto_complete_widget_view.dart';
-import '../../ui/views/widget_catalog/input_widgets/sub_views/form_field_widget_view.dart';
-import '../../ui/views/widget_catalog/input_widgets/sub_views/raw_keyboard_listener_widget_view.dart';
+import '../../ui/views/widget_catalog/input_widgets/sub_views/auto_complete_widget/view.dart';
+import '../../ui/views/widget_catalog/input_widgets/sub_views/form_field_widget/view.dart';
+import '../../ui/views/widget_catalog/input_widgets/sub_views/raw_keyboard_listener_widget/view.dart';
 
 // widget catalog interactive
-import '../../ui/views/widget_catalog/interactive_widgets/sub_views/absorb_pointer_widget_view.dart';
-import '../../ui/views/widget_catalog/interactive_widgets/sub_views/dismissible_widget_view.dart';
-import '../../ui/views/widget_catalog/interactive_widgets/sub_views/drag_target_widget_view.dart';
-import '../../ui/views/widget_catalog/interactive_widgets/sub_views/draggable_scrollable_sheet_widget_view.dart';
-import '../../ui/views/widget_catalog/interactive_widgets/sub_views/draggable_widget_view.dart';
-import '../../ui/views/widget_catalog/interactive_widgets/sub_views/gesture_detector_widget_view.dart';
-import '../../ui/views/widget_catalog/interactive_widgets/sub_views/ignore_pointer_widget_view.dart';
-import '../../ui/views/widget_catalog/interactive_widgets/sub_views/interactive_viewer_widget_view.dart';
-import '../../ui/views/widget_catalog/interactive_widgets/sub_views/long_press_draggable_widget_view.dart';
-import '../../ui/views/widget_catalog/interactive_widgets/sub_views/scrollable_widget_view.dart';
+import '../../ui/views/widget_catalog/interactive_widgets/sub_views/absorb_pointer_widget/absorb_pointer_widget.dart';
+import '../../ui/views/widget_catalog/interactive_widgets/sub_views/dismissible_widget/view.dart';
+import '../../ui/views/widget_catalog/interactive_widgets/sub_views/drag_target_widget/view.dart';
+import '../../ui/views/widget_catalog/interactive_widgets/sub_views/draggable_scrollable_sheet_widget/view.dart';
+import '../../ui/views/widget_catalog/interactive_widgets/sub_views/draggable_widget/view.dart';
+import '../../ui/views/widget_catalog/interactive_widgets/sub_views/gesture_detector_widget/view.dart';
+import '../../ui/views/widget_catalog/interactive_widgets/sub_views/ignore_pointer_widget/view.dart';
+import '../../ui/views/widget_catalog/interactive_widgets/sub_views/interactive_viewer_widget/view.dart';
+import '../../ui/views/widget_catalog/interactive_widgets/sub_views/long_press_draggable_widget/view.dart';
+import '../../ui/views/widget_catalog/interactive_widgets/sub_views/scrollable_widget/view.dart';
 
 // widget catalog layout
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/align_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/aspect_ratio_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/baseline_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/center_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/column_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/constrained_box_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/container_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/custom_multi_child_layout_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/custom_scroll_view_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/custom_single_child_layout_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/expanded_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/fitted_box_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/flow_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/fractionally_sized_box_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/grid_view_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/indexed_stack_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/intrinsic_height_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/intrinsic_width_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/layout_builder_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/limited_box_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/list_body_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/list_view_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/off_stage_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/over_flow_box_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/padding_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/row_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/sized_box_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/sized_overflow_box_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_app_bar_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_child_builder_delegate_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_child_list_delegate_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_fixed_extent_list_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_grid_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_list_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_padding_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_persistent_header_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_to_box_adaptor_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/stack_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/table_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/transform_widget_view.dart';
-import '../../ui/views/widget_catalog/layout_widgets/sub_views/wrap_widget_view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/align_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/aspect_ratio_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/baseline_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/center_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/column_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/constrained_box_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/container_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/custom_multi_child_layout_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/custom_scroll_view_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/custom_single_child_layout_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/expanded_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/fitted_box_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/flow_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/fractionally_sized_box_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/grid_view_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/indexed_stack_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/intrinsic_height_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/intrinsic_width_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/layout_builder_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/limited_box_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/list_body_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/list_view_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/off_stage_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/over_flow_box_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/padding_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/row_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/sized_box_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/sized_overflow_box_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_app_bar_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_child_builder_delegate_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_child_list_delegate_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_fixed_extent_list_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_grid_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_list_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_padding_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_persistent_header_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/sliver_to_box_adaptor_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/stack_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/table_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/transform_widget/view.dart';
+import '../../ui/views/widget_catalog/layout_widgets/sub_views/wrap_widget/view.dart';
 
 // widget catalog material
-import '../../ui/views/widget_catalog/material_widgets/sub_views/alert_dialog_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/app_bar_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/bottom_navigation_bar_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/bottom_sheet_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/card_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/checkbox_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/chip_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/circular_progress_indicator_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/data_table_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/divider_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/drawer_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/dropdown_button_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/elevated_button_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/expansion_panel_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/floating_action_button_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/icon_button_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/linear_progress_indicator_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/list_tile_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/material_app_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/outlined_button_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/popup_menu_button_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/radio_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/scaffold_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/show_date_picker_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/simple_dialog_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/slider_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/snack_bar_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/stepper_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/switch_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/tab_bar_view_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/tab_bar_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/tab_page_selector_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/text_button_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/text_field_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/tool_tip_widget_view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/widget_app_widget_view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/alert_dialog_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/app_bar_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/bottom_navigation_bar_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/bottom_sheet_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/card_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/checkbox_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/chip_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/circular_progress_indicator_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/data_table_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/divider_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/drawer_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/dropdown_button_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/elevated_button_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/expansion_panel_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/floating_action_button_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/icon_button_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/linear_progress_indicator_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/list_tile_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/material_app_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/outlined_button_widget/outlined_button_widget_view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/popup_menu_button_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/radio_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/scaffold_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/show_date_picker_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/simple_dialog_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/slider_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/snack_bar_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/stepper_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/switch_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/tab_bar_view_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/tab_bar_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/tab_page_selector_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/text_button_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/text_field_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/tool_tip_widget/view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/widget_app_widget/view.dart';
 
 // widget catalog painting
-import '../../ui/views/widget_catalog/painting_effects/sub_views/backdrop_filter_widget_view.dart';
-import '../../ui/views/widget_catalog/painting_effects/sub_views/clip_oval_widget_view.dart';
-import '../../ui/views/widget_catalog/painting_effects/sub_views/clip_path_widget_view.dart';
-import '../../ui/views/widget_catalog/painting_effects/sub_views/clip_rect_widget_view.dart';
-import '../../ui/views/widget_catalog/painting_effects/sub_views/custom_paint_widget_view.dart';
-import '../../ui/views/widget_catalog/painting_effects/sub_views/decorated_box_widget_view.dart';
-import '../../ui/views/widget_catalog/painting_effects/sub_views/fractional_translation_widget_view.dart';
-import '../../ui/views/widget_catalog/painting_effects/sub_views/opacity_widget_view.dart';
-import '../../ui/views/widget_catalog/painting_effects/sub_views/rotated_box_widget_view.dart';
+import '../../ui/views/widget_catalog/painting_effects/sub_views/backdrop_filter_widget/view.dart';
+import '../../ui/views/widget_catalog/painting_effects/sub_views/clip_oval_widget/view.dart';
+import '../../ui/views/widget_catalog/painting_effects/sub_views/clip_path_widget/view.dart';
+import '../../ui/views/widget_catalog/painting_effects/sub_views/clip_rect_widget/view.dart';
+import '../../ui/views/widget_catalog/painting_effects/sub_views/custom_paint_widget/view.dart';
+import '../../ui/views/widget_catalog/painting_effects/sub_views/decorated_box_widget/view.dart';
+import '../../ui/views/widget_catalog/painting_effects/sub_views/fractional_translation_widget/view.dart';
+import '../../ui/views/widget_catalog/painting_effects/sub_views/opacity_widget/view.dart';
+import '../../ui/views/widget_catalog/painting_effects/sub_views/rotated_box_widget/view.dart';
 // import '../../ui/views/widget_catalog/painting_effects/sub_views/transform_painting_effects_widget_view.dart';
 
 // widget catalog scrolling
 
-import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/nested_scroll_view_widget_view.dart';
-import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/notification_listener_widget_view.dart';
-import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/page_view_widget_view.dart';
-import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/refresh_indicator_widget_view.dart';
-import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/reorderable_list_view_widget_view.dart';
-import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/scroll_configuration_widget_view.dart';
-import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/scrollbar_widget_view.dart';
-import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/single_child_scroll_view_widget_view.dart';
+import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/nested_scroll_view_widget/view.dart';
+import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/notification_listener_widget/view.dart';
+import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/page_view_widget/view.dart';
+import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/refresh_indicator_widget/view.dart';
+import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/reorderable_list_view_widget/view.dart';
+import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/scroll_configuration_widget/view.dart';
+import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/scrollbar_widget/view.dart';
+import '../../ui/views/widget_catalog/scrolling_widgets/sub_views/single_child_scroll_view_widget/view.dart';
 
 // widget catalog styling
 
 // widget catalog text
-import '../../ui/views/widget_catalog/text_widgets/sub_views/default_text_style_widget_view.dart';
-import '../../ui/views/widget_catalog/text_widgets/sub_views/rich_text_widget_view.dart';
-import '../../ui/views/widget_catalog/text_widgets/sub_views/text_widget_view.dart';
+import '../../ui/views/widget_catalog/text_widgets/sub_views/default_text_style_widget/view.dart';
+import '../../ui/views/widget_catalog/text_widgets/sub_views/rich_text_widget/view.dart';
+import '../../ui/views/widget_catalog/text_widgets/sub_views/text_widget/view.dart';
 
 // ui manipulation category
-import '../../ui/views/ui_manipulation/alignment/alignment_view.dart';
-import '../../ui/views/ui_manipulation/interactive_behavior/interactive_behavior_view.dart';
-import '../../ui/views/ui_manipulation/borders/borders_view.dart';
-import '../../ui/views/ui_manipulation/colors_backgrounds/colors_backgrounds_view.dart';
-import '../../ui/views/ui_manipulation/dimensions_constraints/dimensions_constraints_view.dart';
-import '../../ui/views/ui_manipulation/effects/effects_view.dart';
-import '../../ui/views/ui_manipulation/icons_images/icons_images_view.dart';
-import '../../ui/views/ui_manipulation/positioning/positioning_view.dart';
-import '../../ui/views/ui_manipulation/spacing/spacing_view.dart';
-import '../../ui/views/ui_manipulation/theme/theme_view.dart';
-import '../../ui/views/ui_manipulation/text/text_view.dart';
-import '../../ui/views/ui_manipulation/visibility/visibility_view.dart';
-import '../../ui/views/ui_manipulation/layout/layout_view.dart';
-import '../../ui/views/ui_manipulation/hyperlinks/hyperlinks_view.dart';
-import '../../ui/views/ui_manipulation/media/media_view.dart';
-import '../../ui/views/ui_manipulation/form/form_view.dart';
-import '../../ui/views/ui_manipulation/responsive_adaptive_ui/responsive_adaptive_layout_view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/alignment/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/interactive_behavior/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/borders/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/colors_and_backgrounds/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/dimensions_constraints/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/effects/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/icons_images/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/positioning/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/spacing/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/theme/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/text/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/visibility/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/layout/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/web_and_apps/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/media/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/form/view.dart';
 
 // ui manipulation alignment sub_views
 
 // ui manipulation interactive behavior sub_views
-import '../../ui/views/ui_manipulation/interactive_behavior/sub_views/click_behavior_view.dart';
-import '../../ui/views/ui_manipulation/interactive_behavior/sub_views/hover_behavior_view.dart';
-import '../../ui/views/ui_manipulation/interactive_behavior/sub_views/focus_behavior_view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/interactive_behavior/sub_views/click_behavior/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/interactive_behavior/sub_views/hover_behavior/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/interactive_behavior/sub_views/focus_behavior/view.dart';
 
 // ui manipulation colors and backgrounds sub_views
-import '../../ui/views/ui_manipulation/colors_backgrounds/sub_views/colors_view.dart';
-import '../../ui/views/ui_manipulation/colors_backgrounds/sub_views/backgrounds_view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/colors_and_backgrounds/sub_views/colors/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/colors_and_backgrounds/sub_views/backgrounds/view.dart';
 
 // ui manipulation dimensions and constraints sub_views
-import '../../ui/views/ui_manipulation/dimensions_constraints/sub_views/fixed_dimensions_view.dart';
-import '../../ui/views/ui_manipulation/dimensions_constraints/sub_views/percentage_dimensions_view.dart';
-import '../../ui/views/ui_manipulation/dimensions_constraints/sub_views/fractional_dimensions_view.dart';
-import '../../ui/views/ui_manipulation/dimensions_constraints/sub_views/constraints_view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/dimensions_constraints/sub_views/fixed_dimensions/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/dimensions_constraints/sub_views/percentage_dimensions/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/dimensions_constraints/sub_views/fractional_dimensions/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/dimensions_constraints/sub_views/constraints/view.dart';
 
 // ui manipulation effects sub_views
-import '../../ui/views/ui_manipulation/effects/sub_views/shadows_view.dart';
-import '../../ui/views/ui_manipulation/effects/sub_views/opacity_view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/effects/sub_views/shadow/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/effects/sub_views/opacity/view.dart';
 
 // ui manipulation form sub_views
 
 // ui manipulation icons and images sub_views
 
 // ui manipulation layout sub_views
-import '../../ui/views/ui_manipulation/layout/sub_views/page_layout_view.dart';
-import '../../ui/views/ui_manipulation/layout/sub_views/basic_layout_view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/layout/sub_views/page_layout/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/layout/sub_views/basic_layout/view.dart';
 
 // ui manipulation positioning sub_views
 
 // ui manipulation spacing sub_views
-import '../../ui/views/ui_manipulation/spacing/sub_views/padding_view.dart';
-import '../../ui/views/ui_manipulation/spacing/sub_views/margin_view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/spacing/sub_views/padding/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/spacing/sub_views/margin/view.dart';
 
 // ui manipulation theme sub_views
 
 // ui manipulation text sub_views
 
-// ui manipulation visibility sub_views
-import '../../ui/views/ui_manipulation/visibility/sub_views/in_flow_view.dart';
-import '../../ui/views/ui_manipulation/visibility/sub_views/out_flow_view.dart';
-
 // ui manipulation media sub_views
-import '../../ui/views/ui_manipulation/media/sub_views/video_view.dart';
-import '../../ui/views/ui_manipulation/media/sub_views/audio_view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/media/sub_views/video/view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/media/sub_views/audio/view.dart';
 
 // ui manipulation responsive and adaptive ui sub_views
-import '../../ui/views/ui_manipulation/responsive_adaptive_ui/sub_views/responsive_layout_view.dart';
-import '../../ui/views/ui_manipulation/responsive_adaptive_ui/sub_views/adaptive_layout_view.dart';
+import '../../ui/views/ui/sub_views/responsive_adaptive_ui/sub_views/responsive_layout/view.dart';
+import '../../ui/views/ui/sub_views/responsive_adaptive_ui/sub_views/adaptive_layout/view.dart';
 
 // state management sub_views
-import '../../ui/views/state_management/sub_views/state_management_basics_view.dart';
-import '../../ui/views/state_management/sub_views/provider_state_management_view.dart';
+import '../../ui/views/state_management/sub_views/state_management_basics/view.dart';
+import '../../ui/views/state_management/sub_views/provider_state_management/view.dart';
 import '../../ui/views/state_management/sub_views/todos_app_view.dart';
 
 // router
@@ -381,9 +378,9 @@ class MyRouter {
         return MaterialPageRoute(
           builder: (_) => FlutterFundamentalsView(),
         );
-      case RoutePaths.uiManipulation:
+      case RoutePaths.ui:
         return MaterialPageRoute(
-          builder: (_) => UiManipulationView(),
+          builder: (_) => UIView(),
         );
       case RoutePaths.lifecycle:
         return MaterialPageRoute(
@@ -405,9 +402,9 @@ class MyRouter {
         return MaterialPageRoute(
           builder: (_) => StateManagementView(),
         );
-      case RoutePaths.restAPI:
+      case RoutePaths.apiHandling:
         return MaterialPageRoute(
-          builder: (_) => RestApiView(),
+          builder: (_) => ApiHandlingView(),
         );
       case RoutePaths.debugging:
         return MaterialPageRoute(
@@ -432,6 +429,10 @@ class MyRouter {
       case RoutePaths.productionBuildDeployment:
         return MaterialPageRoute(
           builder: (_) => ProductionBuildDeploymentView(),
+        );
+      case RoutePaths.dependencyManagement:
+        return MaterialPageRoute(
+          builder: (_) => DependencyManagementView(),
         );
       case RoutePaths.thirdPartyServices:
         return MaterialPageRoute(
@@ -501,7 +502,7 @@ class MyRouter {
         );
       case RoutePaths.asynchrony:
         return MaterialPageRoute(
-          builder: (_) => AsynchronyView(),
+          builder: (_) => AsynchronousView(),
         );
       case RoutePaths.callableClasses:
         return MaterialPageRoute(
@@ -542,14 +543,18 @@ class MyRouter {
           builder: (_) => Flutter2View(),
         );
 
-      // navigation and routing
-      case RoutePaths.imperativeRouting:
+      // ui
+      case RoutePaths.uiManipulation:
         return MaterialPageRoute(
-          builder: (_) => ImperativeRoutingView(),
+          builder: (_) => UiManipulationView(),
         );
-      case RoutePaths.declarativeRouting:
+      case RoutePaths.designSystem:
         return MaterialPageRoute(
-          builder: (_) => DeclarativeRoutingView(),
+          builder: (_) => DesignSystemView(),
+        );
+      case RoutePaths.responsiveAdaptiveUi:
+        return MaterialPageRoute(
+          builder: (_) => ResponsiveAdaptiveLayoutView(),
         );
 
       // supporting classes and enums sub_views
@@ -1445,9 +1450,9 @@ class MyRouter {
         return MaterialPageRoute(
           builder: (_) => TextView(),
         );
-      case RoutePaths.hyperlinks:
+      case RoutePaths.webAndApps:
         return MaterialPageRoute(
-          builder: (_) => HyperlinksView(),
+          builder: (_) => WebAndAppsView(),
         );
       case RoutePaths.media:
         return MaterialPageRoute(
@@ -1539,14 +1544,6 @@ class MyRouter {
       // ui manipulation text
 
       // ui manipulation visibility
-      case RoutePaths.inFlow:
-        return MaterialPageRoute(
-          builder: (_) => InFlowView(),
-        );
-      case RoutePaths.outFlow:
-        return MaterialPageRoute(
-          builder: (_) => OutFlowView(),
-        );
 
       // ui manipulation media
       case RoutePaths.video:

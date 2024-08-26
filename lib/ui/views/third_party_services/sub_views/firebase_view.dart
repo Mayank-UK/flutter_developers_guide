@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../components/code_preview_component.dart';
-import '../../../components/section_wrapper_component_component.dart';
+import '../../../components/code_preview_tabs.dart';
+import '../../../components/section_wrapper.dart';
 
 class FirebaseView extends StatelessWidget {
   final String _appBarTitle = 'Firebase integration';
@@ -10,7 +10,7 @@ class FirebaseView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CodePreviewTabsComponent(
+    return CodePreviewTabs(
       appBarTitle: this._appBarTitle,
       previewTab: _IntegrationTestingImplementation(),
       codeTabMarkdownLocation: this._codeTabMarkdownLocation,
@@ -23,7 +23,7 @@ class _IntegrationTestingImplementation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Wrap(
       children: <Widget>[
-        SectionWrapperComponent(
+        SectionWrapper(
           title: 'Basics',
           content: [
             Container(
@@ -32,7 +32,7 @@ class _IntegrationTestingImplementation extends StatelessWidget {
             ),
           ],
         ),
-        SectionWrapperComponent(
+        SectionWrapper(
           title: 'Firebase',
           content: [
             Container(

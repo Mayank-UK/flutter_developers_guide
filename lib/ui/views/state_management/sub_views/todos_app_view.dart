@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import './../../../../core/models/task.dart';
 import './../../../../core/providers/todos_model.dart';
-import './../../../../ui/components/markdown_preview_component.dart';
+import '../../../components/markdown_preview.dart';
 
 // exposing provider
 class TodosAppView extends StatelessWidget {
@@ -174,7 +174,7 @@ class _TodosCode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MarkdownPreviewComponent(
+    return MarkdownPreview(
       markdownLocation: this._markdownLocation,
     );
   }

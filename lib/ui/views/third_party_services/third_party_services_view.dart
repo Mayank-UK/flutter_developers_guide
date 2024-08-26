@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_developers_guide/core/models/list_item.dart';
+import 'package:flutter_developers_guide/ui/components/list.dart';
 
-import '../../components/main_appbar_component.dart';
-import './../../components/custom_mid_stage_listview_component.dart';
+import '../../components/main_appbar.dart';
+
 import './../../../core/router/routes.dart';
 
 class ThirdPartyServicesView extends StatelessWidget {
@@ -18,8 +20,8 @@ class ThirdPartyServicesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MainAppBarComponent(appBarTitle: this._appBarTitle),
-      body: CustomMidStageListViewComponent(
+      appBar: MainAppBar(appBarTitle: this._appBarTitle),
+      body: Links(
         itemList: _itemList,
       ),
     );

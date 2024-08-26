@@ -13,7 +13,7 @@
                     SectionWrapperComponent(
                         title: 'Simple use',
                         content: [
-                            TextBlockComponent(
+                            TextBlock(
                                 '"Stepper" widget has named parameters like currentStep, onStepCancel, onStepContinue, etc, which specify the stepper\'s behavior and UI.',
                             ),
                             Container(

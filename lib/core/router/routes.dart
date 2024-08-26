@@ -4,7 +4,7 @@ class RoutePaths {
   static const String pageNotFound = '/page-not-found';
   static const String dartFundamentals = '/dart-fundamentals';
   static const String flutterFundamentals = '/flutter-fundamentals';
-  static const String uiManipulation = '/ui-manipulation';
+  static const String ui = '/ui';
   static const String widgetsCatalog = '/widgets-catalog';
   static const String navigationRouting = '/navigation-routing';
   static const String stateManagement =
@@ -13,10 +13,11 @@ class RoutePaths {
   static const String architecture = '/architecture';
   static const String bestPractices = '/best-practices';
   static const String supportingClassesEnums = '/supporting-classes-enums';
-  static const String restAPI = '/rest-api';
+  static const String apiHandling = '/api-handling';
   static const String debugging = '/debugging';
   static const String testing = '/testing';
   static const String lifecycle = '/lifecycle';
+  static const String dependencyManagement = '/dependency-management';
   static const String productionBuildDeployment =
       '/production-build-deployment';
   static const String thirdPartyServices = '/third-party-services';
@@ -54,6 +55,11 @@ class RoutePaths {
   static const String usingFlutter = '/flutter-fundamentals/using-flutter';
   static const String aboutWidgets = '/flutter-fundamentals/about-widgets';
   static const String flutter2 = '/flutter-fundamentals/flutter-2';
+
+  // ui routes
+  static const String uiManipulation = '/ui-manipulation';
+  static const String designSystem = '/design-system';
+  static const String responsiveAdaptiveUi = '/responsive-adaptive-ui';
 
   // supporting classes and enums routes
   static const String supportingClasses =
@@ -420,11 +426,9 @@ class RoutePaths {
   static const String themeManipulation = '/ui-manipulation/theme';
   static const String textManipulation = '/ui-manipulation/text';
   static const String visibility = '/ui-manipulation/visibility';
-  static const String hyperlinks = '/ui-manipulation/hyper-links';
+  static const String webAndApps = '/ui-manipulation/web-and-apps';
   static const String media = '/ui-manipulation/media';
   static const String form = '/ui-manipulation/form';
-  static const String responsiveAdaptiveUi =
-      '/ui-manipulation/responsive-adaptive-ui';
 
   // ui manipulation layout sub routes
   static const String pageLayout = '/ui-manipulation/layout/page-layout';
