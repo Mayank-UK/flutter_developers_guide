@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_developers_guide/ui/components/code_preview_tabs.dart';
 import 'package:flutter_developers_guide/ui/components/content_group_wrapper.dart';
+import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 import 'package:flutter_developers_guide/ui/components/section_wrapper.dart';
 import 'package:flutter_developers_guide/ui/components/text_block.dart';
 
@@ -11,10 +12,15 @@ class NavigationRoutingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CodePreviewTabs(
-      appBarTitle: this._appBarTitle,
-      previewTab: _ImperativeRoutingImplementation(),
-      codeTabMarkdownLocation: this._codeTabMarkdownLocation,
+    return PageScaffold(
+      title: _appBarTitle,
+      children: [
+        CodePreviewTabs(
+          appBarTitle: this._appBarTitle,
+          previewTab: _ImperativeRoutingImplementation(),
+          codeTabMarkdownLocation: this._codeTabMarkdownLocation,
+        ),
+      ],
     );
   }
 }

@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
-import '../../../../components/main_appbar.dart';
 import '../../../../components/section_wrapper.dart';
 import '../../../../components/text_block.dart';
 
 class ProductionBuildView extends StatelessWidget {
-  final String _appBarTitle = 'Production build';
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: MainAppBar(appBarTitle: this._appBarTitle),
-      body: SingleChildScrollView(
-        child: Wrap(
-          children: [
-            SectionWrapper(
-              title: 'Production build',
-              content: [
-                TextBlock('content will be available soon'),
-              ],
-            ),
+    return PageScaffold(
+      title: "Production build",
+      children: [
+        SectionWrapper(
+          title: 'Production build',
+          content: [
+            TextBlock('content will be available soon'),
           ],
         ),
-      ),
+      ],
     );
   }
 }

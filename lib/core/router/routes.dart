@@ -54,7 +54,6 @@ class RoutePaths {
       '/flutter-fundamentals/installation-setup';
   static const String usingFlutter = '/flutter-fundamentals/using-flutter';
   static const String aboutWidgets = '/flutter-fundamentals/about-widgets';
-  static const String flutter2 = '/flutter-fundamentals/flutter-2';
 
   // ui routes
   static const String uiManipulation = '/ui-manipulation';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 import 'package:video_player/video_player.dart';
 import 'dart:io';
 
@@ -15,10 +16,15 @@ class CameraView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CodePreviewTabs(
-      appBarTitle: this._appBarTitle,
-      previewTab: _CameraImplementation(),
-      codeTabMarkdownLocation: this._codeTabMarkdownLocation,
+    return PageScaffold(
+      title: _appBarTitle,
+      children: [
+        CodePreviewTabs(
+          appBarTitle: this._appBarTitle,
+          previewTab: _CameraImplementation(),
+          codeTabMarkdownLocation: this._codeTabMarkdownLocation,
+        ),
+      ],
     );
   }
 }

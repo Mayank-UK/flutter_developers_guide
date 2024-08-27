@@ -1,4 +1,5 @@
 ## using Visibility widget
+
     Visibility(
         visible: this.isSwitchedVisible,
         child: Container(
@@ -9,6 +10,7 @@
     ),
 
 ## using Opacity widget for occupying space
+
     Opacity(
         opacity: this.opacity,
         child: Container(

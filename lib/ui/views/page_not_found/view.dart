@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 class PageNotFoundView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('404 error'),
-        ),
-        body: const Text('Page not found screen'));
+    return PageScaffold(
+      title: "Page not found",
+      children: [
+        const Text('Page not found screen'),
+      ],
+    );
   }
 }

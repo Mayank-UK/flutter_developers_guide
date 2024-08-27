@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_developers_guide/ui/views/dependency_management/view.dart';
-import 'package:flutter_developers_guide/ui/views/third_party_services/sub_views/firebase_view.dart';
-import 'package:flutter_developers_guide/ui/views/third_party_services/third_party_services_view.dart';
+import 'package:flutter_developers_guide/ui/views/third_party_services/sub_views/firebase/view.dart';
+import 'package:flutter_developers_guide/ui/views/third_party_services/view.dart';
 import 'package:flutter_developers_guide/ui/views/ui/sub_views/design_system/view.dart';
 
 // routes
@@ -9,7 +9,7 @@ import './routes.dart';
 
 // home
 import '../../ui/views/page_not_found/view.dart';
-import '../../ui/views/view.dart';
+import '../../ui/views/home/view.dart';
 import '../../ui/views/dart_fundamentals/view.dart';
 import '../../ui/views/flutter_fundamentals/view.dart';
 import '../../ui/views/ui/view.dart';
@@ -50,14 +50,13 @@ import '../../ui/views/dart_fundamentals/sub_views/comments/view.dart';
 
 // flutter fundamentals sub_views
 import '../../ui/views/flutter_fundamentals/sub_views/about_wigets/view.dart';
-import '../../ui/views/flutter_fundamentals/sub_views/flutter_2/view.dart';
 import '../../ui/views/flutter_fundamentals/sub_views/important_concepts_flutter/view.dart';
 import '../../ui/views/flutter_fundamentals/sub_views/installation_setup_flutter/view.dart';
 import '../../ui/views/flutter_fundamentals/sub_views/using_flutter/view.dart';
 
 // ui
 import '../../ui/views/ui/sub_views/responsive_adaptive_ui/view.dart';
-import '../../ui/views/ui/sub_views/ui_manipulation/ui_manipulation_view.dart';
+import '../../ui/views/ui/sub_views/ui_manipulation/view.dart';
 
 // supporting classes sub_views
 import '../../ui/views/supporting_classes_enums/sub_views/supporting_classes/view.dart';
@@ -171,7 +170,7 @@ import '../../ui/views/widget_catalog/input_widgets/sub_views/form_field_widget/
 import '../../ui/views/widget_catalog/input_widgets/sub_views/raw_keyboard_listener_widget/view.dart';
 
 // widget catalog interactive
-import '../../ui/views/widget_catalog/interactive_widgets/sub_views/absorb_pointer_widget/absorb_pointer_widget.dart';
+import '../../ui/views/widget_catalog/interactive_widgets/sub_views/absorb_pointer_widget/view.dart';
 import '../../ui/views/widget_catalog/interactive_widgets/sub_views/dismissible_widget/view.dart';
 import '../../ui/views/widget_catalog/interactive_widgets/sub_views/drag_target_widget/view.dart';
 import '../../ui/views/widget_catalog/interactive_widgets/sub_views/draggable_scrollable_sheet_widget/view.dart';
@@ -245,7 +244,7 @@ import '../../ui/views/widget_catalog/material_widgets/sub_views/icon_button_wid
 import '../../ui/views/widget_catalog/material_widgets/sub_views/linear_progress_indicator_widget/view.dart';
 import '../../ui/views/widget_catalog/material_widgets/sub_views/list_tile_widget/view.dart';
 import '../../ui/views/widget_catalog/material_widgets/sub_views/material_app_widget/view.dart';
-import '../../ui/views/widget_catalog/material_widgets/sub_views/outlined_button_widget/outlined_button_widget_view.dart';
+import '../../ui/views/widget_catalog/material_widgets/sub_views/outlined_button_widget/view.dart';
 import '../../ui/views/widget_catalog/material_widgets/sub_views/popup_menu_button_widget/view.dart';
 import '../../ui/views/widget_catalog/material_widgets/sub_views/radio_widget/view.dart';
 import '../../ui/views/widget_catalog/material_widgets/sub_views/scaffold_widget/view.dart';
@@ -361,7 +360,7 @@ import '../../ui/views/ui/sub_views/responsive_adaptive_ui/sub_views/adaptive_la
 // state management sub_views
 import '../../ui/views/state_management/sub_views/state_management_basics/view.dart';
 import '../../ui/views/state_management/sub_views/provider_state_management/view.dart';
-import '../../ui/views/state_management/sub_views/todos_app_view.dart';
+import '../../ui/views/state_management/sub_views/todo_app/view.dart';
 
 // router
 class MyRouter {
@@ -537,10 +536,6 @@ class MyRouter {
       case RoutePaths.aboutWidgets:
         return MaterialPageRoute(
           builder: (_) => AboutWidgetsView(),
-        );
-      case RoutePaths.flutter2:
-        return MaterialPageRoute(
-          builder: (_) => Flutter2View(),
         );
 
       // ui

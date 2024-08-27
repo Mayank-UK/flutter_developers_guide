@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_developers_guide/core/models/list_item.dart';
-
-import '../../../components/main_appbar.dart';
+import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../core/router/routes.dart';
-import '../../../components/list.dart';
+import '../../../components/links.dart';
 
 class InputWidgetsView extends StatelessWidget {
-  final List<ListViewItem> _itemList = [
-    ListViewItem(
+  final List<LinkItem> _itemList = [
+    LinkItem(
       title: 'Autocomplete',
       description:
           'A widget for helping the user make a selection by entering some text and choosing from among a list of options.',
       route: RoutePaths.autocomplete,
     ),
-    ListViewItem(
+    LinkItem(
       title: 'Form',
       description:
           'An optional container for grouping together multiple form field widgets (e.g. TextField widgets).',
       route: RoutePaths.form,
     ),
-    ListViewItem(
+    LinkItem(
       title: 'TextFormField',
       description:
           'A single form field. This widget maintains the current state of the form field, so that updates and validation errors are visually reflected in the UI.',
       route: RoutePaths.formField,
     ),
-    ListViewItem(
+    LinkItem(
       title: 'RawKeyboardListener',
       description:
           'A widget that calls a callback whenever the user presses or releases a key on a keyboard.',
@@ -34,15 +33,15 @@ class InputWidgetsView extends StatelessWidget {
     ),
   ];
 
-  final String _appBarTitle = 'Input widgets';
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: MainAppBar(appBarTitle: this._appBarTitle),
-      body: Links(
-        itemList: _itemList,
-      ),
+    return PageScaffold(
+      title: "Input widgets",
+      children: [
+        Links(
+          itemList: _itemList,
+        ),
+      ],
     );
   }
 }

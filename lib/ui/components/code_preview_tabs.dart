@@ -24,10 +24,9 @@ class CodePreviewTabs extends StatelessWidget {
     return DefaultTabController(
       initialIndex: 0,
       length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(this.appBarTitle, style: DSTypography.h5Light),
-          bottom: TabBar(
+      child: Column(
+        children: [
+          TabBar(
             tabs: <Widget>[
               Tab(
                 child: const Text('Preview'),
@@ -37,26 +36,30 @@ class CodePreviewTabs extends StatelessWidget {
               ),
             ],
           ),
-        ),
-        body: TabBarView(
-          children: [
-            SingleChildScrollView(
-              child: this.previewTab,
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.84,
+            child: TabBarView(
+              physics: AlwaysScrollableScrollPhysics(),
+              children: [
+                SingleChildScrollView(
+                  child: this.previewTab,
+                ),
+                FutureBuilder(
+                  future: getFileData(this.codeTabMarkdownLocation),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Text(
+                        'Loading Markdown Info...',
+                        style: DSTypography.body1Dark,
+                      );
+                    }
+                    return Markdown(data: snapshot.data.toString());
+                  },
+                ),
+              ],
             ),
-            FutureBuilder(
-              future: getFileData(this.codeTabMarkdownLocation),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return const Text(
-                    'Loading Markdown Info...',
-                    style: DSTypography.body1Dark,
-                  );
-                }
-                return Markdown(data: snapshot.data.toString());
-              },
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

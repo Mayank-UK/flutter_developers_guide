@@ -1,8 +1,11 @@
-class ListViewItem {
+class LinkItem {
   final String title;
-  final String description;
+  final String? description;
   final String route;
 
-  ListViewItem(
-      {required this.title, required this.description, required this.route});
+  LinkItem({
+    required this.title,
+    this.description,
+    required this.route,
+  });
 }

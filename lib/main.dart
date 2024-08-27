@@ -10,7 +10,7 @@ import './core/router/router.dart';
 import './ui/design_system/design_system.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
 
   runApp(MyAPP());
