@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/models/list_item.dart';
+import 'package:flutter_developers_guide/domain/models/link.dart';
 import 'package:flutter_developers_guide/ui/design_system/shadows.dart';
 import 'package:flutter_developers_guide/ui/design_system/sizes.dart';
 
 class Links extends StatelessWidget {
-  final List<LinkItem> itemList;
+  final List<Link> itemList;
 
   Links({required this.itemList});
 

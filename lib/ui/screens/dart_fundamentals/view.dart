@@ -1,103 +1,103 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/models/list_item.dart';
+import 'package:flutter_developers_guide/domain/models/link.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../navigation/routes.dart';
 import '../../components/links.dart';
 
 class DartFundamentalsView extends StatelessWidget {
-  final List<LinkItem> _itemList = [
-    LinkItem(
+  final List<Link> _itemList = [
+    Link(
       title: 'Important concepts',
       description: 'Important facts and information about dart.',
       route: RoutePaths.importantConcepts,
     ),
-    LinkItem(
+    Link(
       title: 'Installation',
       description: 'Using dart on your system.',
       route: RoutePaths.installation,
     ),
-    LinkItem(
+    Link(
       title: 'Keywords',
       description: 'The words with special meanings.',
       route: RoutePaths.keywords,
     ),
-    LinkItem(
+    Link(
       title: 'Variables',
       description: 'Storing references.',
       route: RoutePaths.variables,
     ),
-    LinkItem(
+    Link(
       title: 'Build-in types',
       description: 'Support of common data types.',
       route: RoutePaths.buildInTypes,
     ),
-    LinkItem(
+    Link(
       title: 'Functions',
       description: 'Reusable block of code.',
       route: RoutePaths.functions,
     ),
-    LinkItem(
+    Link(
       title: 'Operators',
       description: 'Special symbols with predefined operations.',
       route: RoutePaths.operators,
     ),
-    LinkItem(
+    Link(
       title: 'Cascade notation',
       description: 'Cascade a sequence of operations on an object.',
       route: RoutePaths.cascadeNotation,
     ),
-    LinkItem(
+    Link(
       title: 'Control flow statements',
       description: 'For complex logic building.',
       route: RoutePaths.controlFlowStatements,
     ),
-    LinkItem(
+    Link(
       title: 'Exceptions',
       description: 'Catch and handle unexpected exceptions.',
       route: RoutePaths.exceptions,
     ),
-    LinkItem(
+    Link(
       title: 'Classes',
       description: 'Blueprint for an object.',
       route: RoutePaths.classes,
     ),
-    LinkItem(
+    Link(
       title: 'Generics',
       description: 'Writing type safe code.',
       route: RoutePaths.generics,
     ),
-    LinkItem(
+    Link(
       title: 'Libraries and visibility',
       description: 'Predefined code available for most common tasks.',
       route: RoutePaths.librariesVisibility,
     ),
-    LinkItem(
+    Link(
       title: 'Asynchrony support',
       description: 'Asynchronous code',
       route: RoutePaths.asynchrony,
     ),
-    LinkItem(
+    Link(
       title: 'Generators',
       description: 'Lazily produce a sequence of values',
       route: RoutePaths.generators,
     ),
-    LinkItem(
+    Link(
       title: 'Callable classes',
       description: 'Calling objects like a function.',
       route: RoutePaths.callableClasses,
     ),
-    LinkItem(
+    Link(
       title: 'Isolates',
       description: 'Taking advantage of multi-core CPU/\'s',
       route: RoutePaths.isolates,
     ),
-    LinkItem(
+    Link(
       title: 'Typedefs',
       description: 'Give function type a name.',
       route: RoutePaths.typedefs,
     ),
-    LinkItem(
+    Link(
       title: 'Comments',
       description: 'Provide additional information.',
       route: RoutePaths.comments,

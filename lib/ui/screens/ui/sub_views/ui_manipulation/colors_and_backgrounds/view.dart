@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/models/list_item.dart';
+import 'package:flutter_developers_guide/domain/models/link.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../../components/links.dart';
 import '../../../../../navigation/routes.dart';
 
 class ColorsBackgroundsView extends StatelessWidget {
-  final List<LinkItem> _itemList = [
-    LinkItem(
+  final List<Link> _itemList = [
+    Link(
       title: 'Text Color',
       description: 'Text color',
       route: RoutePaths.colors,
     ),
-    LinkItem(
+    Link(
       title: 'Background',
       description: 'Background color',
       route: RoutePaths.backgrounds,

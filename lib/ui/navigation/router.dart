@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_developers_guide/core/locator.dart';
+import 'package:flutter_developers_guide/data/repository_impl/post_repository_impl.dart';
+import 'package:flutter_developers_guide/domain/repository/post_repository.dart';
+import 'package:flutter_developers_guide/domain/usecases/get_posts_use_case.dart';
+import 'package:flutter_developers_guide/ui/blocs/posts/post_bloc.dart';
 import 'package:flutter_developers_guide/ui/screens/dependency_management/view.dart';
+import 'package:flutter_developers_guide/ui/screens/state_management/sub_views/bloc_state_management/sub_screens/posts_app/view.dart';
+import 'package:flutter_developers_guide/ui/screens/state_management/sub_views/bloc_state_management/view.dart';
 import 'package:flutter_developers_guide/ui/screens/third_party_services/sub_views/firebase/view.dart';
 import 'package:flutter_developers_guide/ui/screens/third_party_services/view.dart';
 import 'package:flutter_developers_guide/ui/screens/ui/sub_views/design_system/view.dart';
@@ -360,7 +368,7 @@ import '../screens/ui/sub_views/responsive_adaptive_ui/sub_views/adaptive_layout
 // state management sub_views
 import '../screens/state_management/sub_views/state_management_basics/view.dart';
 import '../screens/state_management/sub_views/provider_state_management/view.dart';
-import '../screens/state_management/sub_views/todo_app/view.dart';
+import '../screens/state_management/sub_views/provider_state_management/sub_screens/todo_app/view.dart';
 
 // router
 class MyRouter {
@@ -1578,6 +1586,26 @@ class MyRouter {
       case RoutePaths.state_management_todos_example:
         return MaterialPageRoute(
           builder: (_) => TodosAppView(),
+        );
+      case RoutePaths.blocStateManagement:
+        return MaterialPageRoute(
+          builder: (_) => BlocStateManagementView(),
+        );
+      case RoutePaths.state_management_posts_example:
+        final postRepository = locator<PostRepository>();
+        final getPostsUseCase = GetPostsUseCase(postRepository);
+
+        return MaterialPageRoute(
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider<PostsBloc>(
+                create: (BuildContext context) => PostsBloc(
+                  getPostsUseCase: getPostsUseCase,
+                ),
+              ),
+            ],
+            child: PostsAppView(),
+          ),
         );
 
       default:

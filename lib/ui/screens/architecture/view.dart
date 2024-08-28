@@ -7,8 +7,10 @@ import '../../components/content_group_wrapper.dart';
 import '../../components/markdown_preview.dart';
 
 class ArchitectureView extends StatelessWidget {
-  final String _markdownLocation =
-      'assets/markdowns/architecture/project_directory_structure_markdown.md';
+  final String _markdownLocation1 =
+      'assets/markdowns/architecture/project_directory_structure_markdown_1.md';
+  final String _markdownLocation2 =
+      'assets/markdowns/architecture/project_directory_structure_markdown_2.md';
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +37,20 @@ class ArchitectureView extends StatelessWidget {
                 ),
               ],
             ),
+            MarkdownPreview(markdownLocation: this._markdownLocation1),
           ],
         ),
         SectionWrapper(
-          title: 'Project directory structure',
-          content: [MarkdownPreview(markdownLocation: this._markdownLocation)],
+          title: 'Clean Bloc pattern',
+          content: [
+            TextBlock(
+              'This is similar to all other clean architectures with separation between data, domain, presentation layer.',
+            ),
+            TextBlock(
+              'One thing different is that there are no database entities used in flutter in a standard way. And if entities are used then they basically represent models in most of the cases.',
+            ),
+            MarkdownPreview(markdownLocation: this._markdownLocation2),
+          ],
         ),
       ],
     );

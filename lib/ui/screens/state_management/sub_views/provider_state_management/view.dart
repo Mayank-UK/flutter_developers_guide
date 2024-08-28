@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 import 'package:flutter_developers_guide/ui/components/text_block.dart';
+import 'package:flutter_developers_guide/ui/navigation/routes.dart';
 
 import '../../../../components/code_preview_tabs.dart';
 import '../../../../components/section_wrapper.dart';
@@ -42,10 +43,14 @@ class _ProviderStateManagementImplementation extends StatelessWidget {
           ],
         ),
         SectionWrapper(
-          title: 'More details will be updated soon.',
+          title: 'Todo examples',
           content: [
-            TextBlock(
-              '_',
+            ElevatedButton(
+              onPressed: () => {
+                Navigator.of(context)
+                    .pushNamed(RoutePaths.state_management_todos_example),
+              },
+              child: Text("Todo app"),
             ),
           ],
         ),

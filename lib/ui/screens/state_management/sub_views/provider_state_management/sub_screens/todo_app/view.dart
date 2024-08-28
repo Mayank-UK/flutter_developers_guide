@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../models/task.dart';
-import '../../../../../providers/todos_model.dart';
-import '../../../../components/markdown_preview.dart';
+import '../../../../../../../domain/models/task.dart';
+import 'todos_provider.dart';
+import '../../../../../../components/markdown_preview.dart';
 
 // exposing provider
 class TodosAppView extends StatelessWidget {
@@ -91,7 +91,7 @@ class _TaskListItem extends StatelessWidget {
       leading: Checkbox(
         value: task.completed,
         onChanged: (bool? checked) {
-          Provider.of<TodosModel>(context, listen: false).toggleTodo(task);
+          Provider.of<TodosProvider>(context, listen: false).toggleTodo(task);
         },
       ),
       title: Text(task.title),
@@ -101,7 +101,7 @@ class _TaskListItem extends StatelessWidget {
           color: Colors.red,
         ),
         onPressed: () {
-          Provider.of<TodosModel>(context, listen: false).deleteTodo(task);
+          Provider.of<TodosProvider>(context, listen: false).deleteTodo(task);
         },
       ),
     );
@@ -131,7 +131,7 @@ class _AllTasksTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Consumer<TodosModel>(
+      child: Consumer<TodosProvider>(
         builder: (context, todos, child) => _TaskList(
           tasks: todos.allTasks,
         ),
@@ -145,7 +145,7 @@ class _IncompleteTasksTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Consumer<TodosModel>(
+      child: Consumer<TodosProvider>(
         builder: (context, todos, child) => _TaskList(
           tasks: todos.incompleteTasks,
         ),
@@ -159,7 +159,7 @@ class _CompletedTasksTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Consumer<TodosModel>(
+      child: Consumer<TodosProvider>(
         builder: (context, todos, child) => _TaskList(
           tasks: todos.completedTasks,
         ),
@@ -204,7 +204,7 @@ class _AddTaskScreenState extends State<_AddTaskScreen> {
         title: textVal,
         completed: completed,
       );
-      Provider.of<TodosModel>(context, listen: false).addTodo(todo);
+      Provider.of<TodosProvider>(context, listen: false).addTodo(todo);
       Navigator.pop(context);
     }
   }

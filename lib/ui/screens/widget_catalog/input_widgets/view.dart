@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/models/list_item.dart';
+import 'package:flutter_developers_guide/domain/models/link.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../navigation/routes.dart';
 import '../../../components/links.dart';
 
 class InputWidgetsView extends StatelessWidget {
-  final List<LinkItem> _itemList = [
-    LinkItem(
+  final List<Link> _itemList = [
+    Link(
       title: 'Autocomplete',
       description:
           'A widget for helping the user make a selection by entering some text and choosing from among a list of options.',
       route: RoutePaths.autocomplete,
     ),
-    LinkItem(
+    Link(
       title: 'Form',
       description:
           'An optional container for grouping together multiple form field widgets (e.g. TextField widgets).',
       route: RoutePaths.form,
     ),
-    LinkItem(
+    Link(
       title: 'TextFormField',
       description:
           'A single form field. This widget maintains the current state of the form field, so that updates and validation errors are visually reflected in the UI.',
       route: RoutePaths.formField,
     ),
-    LinkItem(
+    Link(
       title: 'RawKeyboardListener',
       description:
           'A widget that calls a callback whenever the user presses or releases a key on a keyboard.',

@@ -496,4 +496,7 @@ class RoutePaths {
   static const String providerStateManagement = '/state-management/provider';
   static const String state_management_todos_example =
       '/state-management/todos-example';
+  static const String blocStateManagement = '/state-management/bloc';
+  static const String state_management_posts_example =
+      '/state-management/posts-example';
 }

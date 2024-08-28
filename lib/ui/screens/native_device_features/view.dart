@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/models/list_item.dart';
+import 'package:flutter_developers_guide/domain/models/link.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../navigation/routes.dart';
 import '../../components/links.dart';
 
 class NativeDeviceFeaturesView extends StatelessWidget {
-  final List<LinkItem> _itemList = [
-    LinkItem(
+  final List<Link> _itemList = [
+    Link(
       title: 'Bluetooth',
       description: 'Using the bluetooth of the device.',
       route: RoutePaths.bluetooth,
     ),
-    LinkItem(
+    Link(
       title: 'Camera',
       description: 'Using the camera of the device.',
       route: RoutePaths.camera,
     ),
-    LinkItem(
+    Link(
       title: 'Filesystem',
       description: 'Using the filesystem of the device.',
       route: RoutePaths.fileSystem,
     ),
-    LinkItem(
+    Link(
       title: 'Location',
       description: 'Using the location and gps of the device.',
       route: RoutePaths.location,
     ),
-    LinkItem(
+    Link(
       title: 'Share',
       description: 'Sharing data with other apps and websites.',
       route: RoutePaths.share,

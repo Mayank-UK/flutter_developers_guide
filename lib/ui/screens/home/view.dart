@@ -1,76 +1,76 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/models/list_item.dart';
+import 'package:flutter_developers_guide/domain/models/link.dart';
 import 'package:flutter_developers_guide/ui/navigation/routes.dart';
 import 'package:flutter_developers_guide/ui/components/links.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 class HomeView extends StatelessWidget {
-  final List<LinkItem> _itemList = [
-    LinkItem(
+  final List<Link> _itemList = [
+    Link(
       title: "Flutter fundamentals",
       route: RoutePaths.flutterFundamentals,
     ),
-    LinkItem(
+    Link(
       title: "Dart fundamentals",
       route: RoutePaths.dartFundamentals,
     ),
-    LinkItem(
+    Link(
       title: "UI",
       route: RoutePaths.ui,
     ),
-    LinkItem(
+    Link(
       title: "Widget catalog",
       route: RoutePaths.widgetsCatalog,
     ),
-    LinkItem(
+    Link(
       title: "Lifecycle",
       route: RoutePaths.lifecycle,
     ),
-    LinkItem(
+    Link(
       title: "Navigation and routing",
       route: RoutePaths.navigationRouting,
     ),
-    LinkItem(
+    Link(
       title: "State management",
       route: RoutePaths.stateManagement,
     ),
-    LinkItem(
+    Link(
       title: "API handling",
       route: RoutePaths.apiHandling,
     ),
-    LinkItem(
+    Link(
       title: "Architecture",
       route: RoutePaths.architecture,
     ),
-    LinkItem(
+    Link(
       title: "Debugging",
       route: RoutePaths.debugging,
     ),
-    LinkItem(
+    Link(
       title: "Testing",
       route: RoutePaths.testing,
     ),
-    LinkItem(
+    Link(
       title: "Supporting classes and enums",
       route: RoutePaths.supportingClassesEnums,
     ),
-    LinkItem(
+    Link(
       title: "Native device features",
       route: RoutePaths.nativeDeviceFeatures,
     ),
-    LinkItem(
+    Link(
       title: "Dependency management",
       route: RoutePaths.dependencyManagement,
     ),
-    LinkItem(
+    Link(
       title: "Production build and deployment",
       route: RoutePaths.productionBuildDeployment,
     ),
-    LinkItem(
+    Link(
       title: "Third party services",
       route: RoutePaths.thirdPartyServices,
     ),
-    LinkItem(
+    Link(
       title: "Best practices",
       route: RoutePaths.bestPractices,
     ),
