@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/ui/design_system/design_system.dart';
+import 'package:flutter_developers_guide/ui/design_system/sizes.dart';
 
 class SectionWrapper extends StatelessWidget {
   final String title;
@@ -13,22 +13,23 @@ class SectionWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: DSColors.BackgroundBodyDark,
-      margin: const EdgeInsets.only(bottom: DSSpacing.md),
-      padding: const EdgeInsets.all(DSSpacing.md),
+      color: Theme.of(context).colorScheme.surfaceTint,
+      margin: const EdgeInsets.only(bottom: DSSizes.md),
+      padding: const EdgeInsets.all(DSSizes.md),
       width: double.infinity,
       child: Wrap(
-        // direction: Axis.vertical,
         runSpacing: 16,
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(
-              bottom: DSSpacing.md,
+              bottom: DSSizes.md,
             ),
             width: double.infinity,
             child: Text(
               this.title,
-              style: DSTypography.h6Dark,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
             ),
           ),
           ...this.content,

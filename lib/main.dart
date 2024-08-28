@@ -1,13 +1,12 @@
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_developers_guide/ui/design_system/theme.dart';
 import 'package:provider/provider.dart';
 
-import './core/providers/provider_setup.dart';
+import 'providers/provider_setup.dart';
 
-import './core/router/routes.dart';
-import './core/router/router.dart';
-
-import './ui/design_system/design_system.dart';
+import 'ui/navigation/routes.dart';
+import 'ui/navigation/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,13 +21,10 @@ class MyAPP extends StatelessWidget {
     return MultiProvider(
       providers: providers,
       child: MaterialApp(
-        title: 'Flutter fundamentals',
-        theme: ThemeData(
-          // brightness: Brightness.dark,
-          primaryColor: DSColors.Primary,
-          hintColor: DSColors.Secondary,
-          fontFamily: 'Montserrat',
-        ),
+        title: 'Flutter Demo',
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        themeMode: ThemeMode.system,
         initialRoute: RoutePaths.home,
         onGenerateRoute: MyRouter.generateRoute,
       ),

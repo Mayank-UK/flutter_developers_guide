@@ -1,0 +1,185 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
+import 'package:flutter_developers_guide/ui/components/text_block.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+
+import '../../../../../components/code_preview_tabs.dart';
+import '../../../../../components/section_wrapper.dart';
+
+class WebAndAppsView extends StatelessWidget {
+  final String _appBarTitle = 'Web & apps';
+  final String _codeTabMarkdownLocation =
+      'assets/markdowns/ui/ui_manipulation/web_and_apps_markdown.md';
+
+  @override
+  Widget build(BuildContext context) {
+    return PageScaffold(
+      title: _appBarTitle,
+      children: [
+        CodePreviewTabs(
+          appBarTitle: this._appBarTitle,
+          previewTab: _WebAndAppsImplementation(),
+          codeTabMarkdownLocation: this._codeTabMarkdownLocation,
+        ),
+      ],
+    );
+  }
+}
+
+class _WebAndAppsImplementation extends StatelessWidget {
+  void _onTapWhatsapp() async {
+    String whatsappUrl = 'https://api.whatsapp.com/send?text=\'test string\'';
+
+    if (await canLaunchUrl(Uri.parse(whatsappUrl))) {
+      await launchUrl(Uri.parse(whatsappUrl));
+    } else {
+      throw 'Could not launch $whatsappUrl';
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      children: <Widget>[
+        SectionWrapper(
+          title: 'Hyperlinks',
+          content: [
+            TextBlock(
+              'Just import the package and use \'launchUrl(Uri.parse(\'String\'))\' function.',
+            ),
+            TextBlock(
+              'If the app exists in phone to open the url, it will launch the app or else it will launch default browser to open the url.',
+            ),
+            TextBlock(
+              ' On web it will open the url on browser tab.',
+            ),
+            Container(
+              child: ElevatedButton(
+                onPressed: _onTapWhatsapp,
+                child: Text('Share to whatsapp'),
+              ),
+            ),
+          ],
+        ),
+        SectionWrapper(
+          title: 'WebView',
+          content: [
+            TextBlock(
+              'WebView example is implemented below.',
+            ),
+            SizedBox(
+              height: 512,
+              child: WebViewExample(),
+            ),
+          ],
+        ),
+        SectionWrapper(
+          title: 'External apps',
+          content: [
+            TextBlock(
+              'Will be implemented.',
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class WebViewExample extends StatefulWidget {
+  @override
+  _WebViewExampleState createState() => _WebViewExampleState();
+}
+
+class _WebViewExampleState extends State<WebViewExample> {
+  late final WebViewController _controller;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _initWebView();
+  }
+
+  void _initWebView() {
+    _controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onPageStarted: (String url) {
+            setState(() {
+              _isLoading = true;
+            });
+          },
+          onPageFinished: (String url) {
+            setState(() {
+              _isLoading = false;
+            });
+          },
+          onWebResourceError: (WebResourceError error) {
+            print('WebView error: ${error.description}');
+          },
+        ),
+      )
+      ..loadRequest(Uri.parse('https://google.com'))
+      ..enableZoom(true);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("WebView Example"),
+        actions: <Widget>[
+          NavigationControls(_controller),
+        ],
+      ),
+      body: Stack(
+        children: [
+          WebViewWidget(controller: _controller),
+          if (_isLoading)
+            const Center(
+              child: CircularProgressIndicator(),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class NavigationControls extends StatelessWidget {
+  const NavigationControls(this.controller, {Key? key}) : super(key: key);
+
+  final WebViewController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () async {
+            if (await controller.canGoBack()) {
+              await controller.goBack();
+            }
+          },
+        ),
+        IconButton(
+          icon: const Icon(Icons.arrow_forward_ios),
+          onPressed: () async {
+            if (await controller.canGoForward()) {
+              await controller.goForward();
+            }
+          },
+        ),
+        IconButton(
+          icon: const Icon(Icons.replay),
+          onPressed: () {
+            controller.reload();
+          },
+        ),
+      ],
+    );
+  }
+}

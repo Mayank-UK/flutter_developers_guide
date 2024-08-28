@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/core/models/list_item.dart';
-
-import 'package:flutter_developers_guide/ui/design_system/design_system.dart';
+import 'package:flutter_developers_guide/models/list_item.dart';
+import 'package:flutter_developers_guide/ui/design_system/shadows.dart';
+import 'package:flutter_developers_guide/ui/design_system/sizes.dart';
 
 class Links extends StatelessWidget {
   final List<LinkItem> itemList;
@@ -11,7 +11,7 @@ class Links extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(bottom: DSSpacing.sm),
+      padding: const EdgeInsets.only(bottom: DSSizes.sm),
       child: ListView.builder(
         itemCount: itemList.length,
         physics: NeverScrollableScrollPhysics(),
@@ -26,13 +26,13 @@ class Links extends StatelessWidget {
             },
             child: Container(
               margin: EdgeInsets.only(
-                top: DSSpacing.sm,
-                right: DSSpacing.sm,
-                left: DSSpacing.sm,
+                top: DSSizes.sm,
+                right: DSSizes.sm,
+                left: DSSizes.sm,
               ),
               child: Ink(
                 decoration: BoxDecoration(
-                  gradient: DSColors.SecondaryGradient,
+                  color: Theme.of(context).colorScheme.primary,
                   borderRadius: BorderRadius.circular(8),
                   boxShadow: [
                     DSShadows.buttonCard,
@@ -45,14 +45,23 @@ class Links extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         itemList[index].title,
-                        style: DSTypography.h6Light,
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
                       ),
                       itemList[index].description != null
                           ? Container(
                               margin: EdgeInsets.only(top: 8),
                               child: Text(
                                 itemList[index].description!,
-                                style: DSTypography.body1Light,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge
+                                    ?.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onPrimary,
+                                    ),
                               ),
                             )
                           : SizedBox(

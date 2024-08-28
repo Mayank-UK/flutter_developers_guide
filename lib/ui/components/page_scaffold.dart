@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/ui/design_system/design_system.dart';
 
 class PageScaffold extends StatelessWidget {
   final List<Widget> children;
@@ -17,12 +16,15 @@ class PageScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
-        backgroundColor: DSColors.SecondaryDark,
-        foregroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
         title: Text(
           title,
-          style: DSTypography.h6Light,
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
         ),
       ),
       body: SingleChildScrollView(

@@ -63,6 +63,7 @@ flutter:
         - assets/markdowns/navigation_routing/
         - assets/markdowns/state_management/
 
+        - assets/markdowns/ui/design_system/
         - assets/markdowns/ui/ui_manipulation/
         - assets/markdowns/ui/ui_manipulation/colors_backgrounds/
         - assets/markdowns/ui/ui_manipulation/dimensions_constraints/

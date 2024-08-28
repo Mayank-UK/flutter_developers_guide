@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_markdown/flutter_markdown.dart';
 
-import './../design_system/design_system.dart';
-
 class CodePreviewTabs extends StatelessWidget {
   final String appBarTitle;
   final Widget previewTab;
@@ -48,9 +46,11 @@ class CodePreviewTabs extends StatelessWidget {
                   future: getFileData(this.codeTabMarkdownLocation),
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
-                      return const Text(
+                      return Text(
                         'Loading Markdown Info...',
-                        style: DSTypography.body1Dark,
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
                       );
                     }
                     return Markdown(data: snapshot.data.toString());

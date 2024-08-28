@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import './../design_system/design_system.dart';
-
 class ContentGroupWrapper extends StatelessWidget {
   final String title;
   final List<Widget> content;
@@ -21,7 +19,9 @@ class ContentGroupWrapper extends StatelessWidget {
             width: double.infinity,
             child: Text(
               this.title,
-              style: DSTypography.subtitle2Dark,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
             ),
           ),
           ...this.content,
