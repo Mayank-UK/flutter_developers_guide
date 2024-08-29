@@ -108,7 +108,7 @@ class DartFundamentalsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Dart fundamentals",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

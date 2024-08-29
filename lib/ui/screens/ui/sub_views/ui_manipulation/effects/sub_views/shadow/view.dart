@@ -13,7 +13,7 @@ class ShadowsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: _appBarTitle,
-      children: [
+      mobileUi: [
         CodePreviewTabs(
           appBarTitle: this._appBarTitle,
           previewTab: _ShadowImplementation(),

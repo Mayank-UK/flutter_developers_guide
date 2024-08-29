@@ -23,7 +23,7 @@ class ColorsBackgroundsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Colors and backgrounds",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

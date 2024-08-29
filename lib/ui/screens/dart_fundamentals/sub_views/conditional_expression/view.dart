@@ -9,7 +9,7 @@ class ConditionalExpressionView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Conditional expression",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Conditional expression',
           content: [

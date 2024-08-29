@@ -9,7 +9,7 @@ class CommentsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Comments",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Comments',
           content: [

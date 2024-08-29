@@ -22,7 +22,7 @@ class SpacingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Spacing",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

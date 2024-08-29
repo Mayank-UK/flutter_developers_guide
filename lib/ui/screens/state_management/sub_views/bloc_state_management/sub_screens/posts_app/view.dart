@@ -8,7 +8,7 @@ class PostsAppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Posts",
-      children: [
+      mobileUi: [
         SizedBox(
           height: MediaQuery.of(context).size.height,
           child: BlocBuilder<PostsBloc, PostsState>(

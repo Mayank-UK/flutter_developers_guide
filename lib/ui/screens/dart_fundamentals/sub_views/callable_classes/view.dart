@@ -9,7 +9,7 @@ class CallableClassesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Callable classes",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Callable classes',
           content: [

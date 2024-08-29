@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_developers_guide/ui/components/responsive_layout.dart';
 
 class PageScaffold extends StatelessWidget {
-  final List<Widget> children;
+  // final List<Widget> children;
+  List<Widget> mobileUi;
+  List<Widget>? tabletUi;
+  List<Widget>? desktopUi;
   final String title;
   final GlobalKey? scaffoldKey;
 
-  const PageScaffold({
+  PageScaffold({
     Key? key,
     required this.title,
-    required this.children,
+    // required this.children,
     this.scaffoldKey,
+    required this.mobileUi,
+    this.tabletUi,
+    this.desktopUi,
   }) : super(key: key);
 
   @override
@@ -28,12 +35,10 @@ class PageScaffold extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 16),
-            ...children,
-            SizedBox(height: 16),
-          ],
+        child: ResponsiveLayout(
+          mobileLayout: Column(children: mobileUi!),
+          tabletLayout: Column(children: (tabletUi ?? mobileUi)!),
+          desktopLayout: Column(children: (desktopUi ?? mobileUi)!),
         ),
       ),
     );

@@ -10,7 +10,7 @@ class InstallationSetupFlutterView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Installation and setup",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Installation',
           content: [

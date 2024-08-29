@@ -9,7 +9,7 @@ class FunctionsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Functions",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Functions',
           content: [

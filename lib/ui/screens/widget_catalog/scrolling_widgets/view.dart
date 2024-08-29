@@ -87,7 +87,7 @@ class ScrollingWidgetsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Scrolling widgets",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

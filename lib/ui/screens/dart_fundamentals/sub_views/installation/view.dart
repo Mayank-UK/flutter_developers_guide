@@ -9,7 +9,7 @@ class InstallationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Installation",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Installation',
           content: [

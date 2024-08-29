@@ -6,7 +6,7 @@ class PageNotFoundView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Page not found",
-      children: [
+      mobileUi: [
         const Text('Page not found screen'),
       ],
     );

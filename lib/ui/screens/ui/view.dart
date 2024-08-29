@@ -30,7 +30,7 @@ class UIView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "UI",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

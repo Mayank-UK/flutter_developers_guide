@@ -10,7 +10,7 @@ class AsynchronousView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Asynchronous support",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Basics',
           content: [

@@ -106,7 +106,7 @@ class HomeView extends StatelessWidget {
       },
       child: PageScaffold(
         title: "Flutter developer's guide",
-        children: [
+        mobileUi: [
           Links(
             itemList: _itemList,
           ),

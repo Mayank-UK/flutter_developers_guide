@@ -24,7 +24,7 @@ class ResponsiveAdaptiveLayoutView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Responsive and adaptive layout",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

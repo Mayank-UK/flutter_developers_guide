@@ -31,7 +31,7 @@ class DimenionsContraintsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Dimensions and constraints",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

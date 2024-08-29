@@ -34,7 +34,7 @@ class FlutterFundamentalsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Flutter fundamentals",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

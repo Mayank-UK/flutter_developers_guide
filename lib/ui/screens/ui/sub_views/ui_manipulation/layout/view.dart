@@ -24,7 +24,7 @@ class LayoutView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Layout",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

@@ -9,7 +9,7 @@ class OperatorsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Operators",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Operators',
           content: [

@@ -9,7 +9,7 @@ class TypedefsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Typedefs",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Typedefs',
           content: [

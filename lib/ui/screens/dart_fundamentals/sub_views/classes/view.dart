@@ -9,7 +9,7 @@ class ClassesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Classes",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Classes',
           content: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
+import 'package:flutter_developers_guide/ui/components/text_block.dart';
 
 import '../../../../../../components/code_preview_tabs.dart';
 import '../../../../../../components/section_wrapper.dart';
@@ -13,7 +14,7 @@ class AdaptiveLayoutView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: _appBarTitle,
-      children: [
+      mobileUi: [
         CodePreviewTabs(
           appBarTitle: this._appBarTitle,
           previewTab: _AdaptiveLayoutImplementation(),
@@ -30,12 +31,12 @@ class _AdaptiveLayoutImplementation extends StatelessWidget {
     return Wrap(
       children: <Widget>[
         SectionWrapper(
-          title: 'Responsive layout',
+          title: 'Adaptive layout',
           content: [
-            Container(
-              width: double.infinity,
-              child: const Text('content will be available soon'),
-            ),
+            TextBlock(
+                "This basically means developing UI based on platform. Like building UI for ios or android, they both have different styles of UI."),
+            TextBlock(
+                "Flutter have built-in widgets that help implement the ui styles like android or ios. Material widger is for android and Cupertino widget is for ios.")
           ],
         ),
       ],

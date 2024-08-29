@@ -9,7 +9,7 @@ class GenericsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Generics",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Generics',
           content: [

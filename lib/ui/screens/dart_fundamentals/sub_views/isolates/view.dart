@@ -9,7 +9,7 @@ class IsolatesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Isolates",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Isolates',
           content: [

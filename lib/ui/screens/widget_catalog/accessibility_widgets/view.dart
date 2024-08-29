@@ -30,7 +30,7 @@ class AccessibilityWidgetsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Accessibility widgets",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

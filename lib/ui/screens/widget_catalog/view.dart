@@ -72,7 +72,7 @@ class WidgetCatalogView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Widget catalog",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

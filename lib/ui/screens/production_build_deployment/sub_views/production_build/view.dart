@@ -9,7 +9,7 @@ class ProductionBuildView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Production build",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Production build',
           content: [

@@ -9,7 +9,7 @@ class ImportantConceptsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Important concepts",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Important concepts',
           content: [

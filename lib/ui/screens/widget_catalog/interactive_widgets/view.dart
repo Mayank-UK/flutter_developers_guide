@@ -77,7 +77,7 @@ class InteractiveWidgetsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Interactive widgets",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

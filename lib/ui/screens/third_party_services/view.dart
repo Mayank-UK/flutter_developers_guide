@@ -18,7 +18,7 @@ class ThirdPartyServicesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Firebase",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

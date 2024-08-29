@@ -26,7 +26,7 @@ class StateManagementView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "State management",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

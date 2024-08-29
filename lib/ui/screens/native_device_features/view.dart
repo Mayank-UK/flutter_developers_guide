@@ -38,7 +38,7 @@ class NativeDeviceFeaturesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Native device features",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

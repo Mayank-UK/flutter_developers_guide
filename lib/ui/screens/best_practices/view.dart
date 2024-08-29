@@ -10,7 +10,7 @@ class BestPracticesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Best practices",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Technical',
           content: [

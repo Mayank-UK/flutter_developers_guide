@@ -25,7 +25,7 @@ class SupportingClassesEnumsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Supporting classes and enums",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

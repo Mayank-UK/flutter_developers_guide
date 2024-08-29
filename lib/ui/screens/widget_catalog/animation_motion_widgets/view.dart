@@ -129,7 +129,7 @@ class AnimationWidgetsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Animation widgets",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

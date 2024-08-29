@@ -157,7 +157,7 @@ class CupertinoWidgetsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Cupertino widgets",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

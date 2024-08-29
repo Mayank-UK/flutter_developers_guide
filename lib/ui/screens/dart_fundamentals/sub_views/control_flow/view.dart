@@ -9,7 +9,7 @@ class ControlFlowStatementView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Control flow statements",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'if-else',
           content: [

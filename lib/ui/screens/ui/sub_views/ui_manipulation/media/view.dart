@@ -23,7 +23,7 @@ class MediaView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Media",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

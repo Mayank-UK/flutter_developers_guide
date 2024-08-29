@@ -77,7 +77,7 @@ class UiManipulationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "UI manipulation",
-      children: [
+      mobileUi: [
         Links(
           itemList: this._itemList,
         ),

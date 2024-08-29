@@ -10,7 +10,7 @@ class KeywordsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Keywords",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Keywords',
           content: [

@@ -9,7 +9,7 @@ class LibrariesVisibilityView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Libraries and visibility",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Libraries and visibility',
           content: [

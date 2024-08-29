@@ -67,7 +67,7 @@ class PaintingEffectsWidgetsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "PaintingEffects",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

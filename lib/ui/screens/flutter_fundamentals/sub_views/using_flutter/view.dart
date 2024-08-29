@@ -10,7 +10,7 @@ class UsingFlutterView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Using flutter",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Creating a new flutter project',
           content: [

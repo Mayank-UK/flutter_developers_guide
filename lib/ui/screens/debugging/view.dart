@@ -31,7 +31,7 @@ class DebuggingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Debugging",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

@@ -9,7 +9,7 @@ class AndroidDeploymentView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Android deployment",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Android deployment',
           content: [

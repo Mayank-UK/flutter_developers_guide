@@ -23,7 +23,7 @@ class LifecycleView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Lifecycle",
-      children: [
+      mobileUi: [
         Links(
           itemList: this._itemList,
         ),

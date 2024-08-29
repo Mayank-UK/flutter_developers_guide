@@ -30,7 +30,7 @@ class InteractiveBehaviorView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Interactive behaviors",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

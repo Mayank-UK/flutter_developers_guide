@@ -9,7 +9,7 @@ class IosDeploymentView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "IOS deployment",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'IOS deployment',
           content: [

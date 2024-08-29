@@ -35,7 +35,7 @@ class AssetWidgetsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Asset widgets",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

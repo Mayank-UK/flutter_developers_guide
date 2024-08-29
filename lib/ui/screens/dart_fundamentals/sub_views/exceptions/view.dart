@@ -9,7 +9,7 @@ class ExceptionsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Exceptions",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Exceptions',
           content: [

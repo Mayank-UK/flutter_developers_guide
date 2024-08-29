@@ -8,7 +8,7 @@ class DependencyManagementView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Dependency management",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'pubspec.yaml',
           content: [

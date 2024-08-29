@@ -14,7 +14,7 @@ class ExpandedWidgetView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "_",
-      children: [
+      mobileUi: [
         CodePreviewTabs(
           appBarTitle: this._appBarTitle,
           previewTab: _ExpandedWidgetImplementation(),

@@ -10,7 +10,7 @@ class AboutWidgetsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "About widgets",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Important concepts',
           content: [

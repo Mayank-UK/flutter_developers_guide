@@ -37,7 +37,7 @@ class InputWidgetsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Input widgets",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

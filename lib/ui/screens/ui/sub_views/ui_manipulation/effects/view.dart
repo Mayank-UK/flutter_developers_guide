@@ -22,7 +22,7 @@ class EffectsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Effects",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

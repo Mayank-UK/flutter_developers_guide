@@ -24,7 +24,7 @@ class TestingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Testing",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

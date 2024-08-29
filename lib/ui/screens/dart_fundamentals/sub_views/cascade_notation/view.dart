@@ -9,7 +9,7 @@ class CascadeNotationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Cascade notation",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Cascade notation',
           content: [

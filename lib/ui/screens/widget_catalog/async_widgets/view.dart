@@ -24,7 +24,7 @@ class AsyncWidgetsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Async",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

@@ -18,7 +18,7 @@ class StylingWidgetsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Styling widgets",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

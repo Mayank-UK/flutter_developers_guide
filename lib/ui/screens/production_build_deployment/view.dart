@@ -34,7 +34,7 @@ class ProductionBuildDeploymentView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Production build and deployment",
-      children: [
+      mobileUi: [
         Links(
           itemList: _itemList,
         ),

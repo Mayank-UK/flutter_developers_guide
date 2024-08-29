@@ -9,7 +9,7 @@ class VariablesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Variables",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Variables',
           content: [

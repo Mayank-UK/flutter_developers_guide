@@ -10,7 +10,7 @@ class GeneratorsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Generators",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Generators',
           content: [

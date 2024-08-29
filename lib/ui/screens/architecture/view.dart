@@ -16,7 +16,7 @@ class ArchitectureView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Architecture",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'MVVM architecture pattern',
           content: [

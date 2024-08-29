@@ -10,7 +10,7 @@ class BuiltInTypesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageScaffold(
       title: "Build in types",
-      children: [
+      mobileUi: [
         SectionWrapper(
           title: 'Build in types',
           content: [
