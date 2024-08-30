@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_developers_guide/ui/components/code_preview_tabs.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
@@ -5,6 +7,8 @@ import 'package:flutter_developers_guide/ui/components/section_wrapper.dart';
 import 'package:flutter_developers_guide/ui/components/text_block.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
 
 class NotificationView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -32,128 +36,101 @@ class _NotificationView extends StatefulWidget {
 }
 
 class __NotificationViewState extends State<_NotificationView> {
-  // late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-
-  //   const AndroidInitializationSettings initializationSettingsAndroid =
-  //       AndroidInitializationSettings('@mipmap/ic_launcher');
-
-  //   const InitializationSettings initializationSettings =
-  //       InitializationSettings(android: initializationSettingsAndroid);
-
-  //   flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-  //   flutterLocalNotificationsPlugin
-  //       .initialize(initializationSettings)
-  //       .then((_) {
-  //     print("Initialization successful");
-  //   }).catchError((error) {
-  //     print("Error during initialization: $error");
-  //   });
-  // }
-
-  // Future<void> _showNotification() async {
-  //   try {
-  //     const AndroidNotificationDetails androidPlatformChannelSpecifics =
-  //         AndroidNotificationDetails(
-  //       'your_channel_id',
-  //       'your_channel_name',
-  //       channelDescription: 'your_channel_description',
-  //       importance: Importance.max,
-  //       priority: Priority.high,
-  //     );
-
-  //     const NotificationDetails platformChannelSpecifics =
-  //         NotificationDetails(android: androidPlatformChannelSpecifics);
-
-  //     await flutterLocalNotificationsPlugin.show(
-  //       0,
-  //       'Test Notification',
-  //       'This is the notification content',
-  //       platformChannelSpecifics,
-  //       payload: 'item x',
-  //     );
-  //     print("Notification shown successfully");
-  //   } catch (e) {
-  //     print("Error showing notification: $e");
-  //   }
-  // }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Wrap(
-  //     children: [
-  //       SectionWrapper(
-  //         title: 'Basics',
-  //         content: [
-  //           TextBlock(
-  //             'Show notification in the app. It is implemented using 3rd party plugin.',
-  //           ),
-  //           TextBlock(
-  //             "At the time of testing there's no error in console, but notification did not work",
-  //           ),
-  //           Center(
-  //             child: ElevatedButton(
-  //               onPressed: _showNotification,
-  //               child: Text('Send Notification'),
-  //             ),
-  //           ),
-  //         ],
-  //       ),
-  //     ],
-  //   );
-  // }
-
   late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
   bool _hasNotificationPermission = false;
 
   @override
   void initState() {
     super.initState();
+    tz.initializeTimeZones();
+    _initializeNotifications();
     _checkNotificationPermission();
   }
 
-  Future<void> _checkNotificationPermission() async {
-    // Check the notification permission status
-    if (await Permission.notification.isGranted) {
-      setState(() {
-        _hasNotificationPermission = true;
-      });
-      _initializeNotifications();
-    } else {
-      _requestNotificationPermission();
-    }
-  }
-
-  Future<void> _requestNotificationPermission() async {
-    PermissionStatus status = await Permission.notification.request();
-
-    if (status.isGranted) {
-      setState(() {
-        _hasNotificationPermission = true;
-      });
-      _initializeNotifications();
-    } else {
-      setState(() {
-        _hasNotificationPermission = false;
-      });
-    }
-  }
-
   void _initializeNotifications() {
+    flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    const InitializationSettings initializationSettings =
-        InitializationSettings(android: initializationSettingsAndroid);
+    final DarwinInitializationSettings initializationSettingsIOS =
+        DarwinInitializationSettings(
+      requestAlertPermission: false,
+      requestBadgePermission: false,
+      requestSoundPermission: false,
+      onDidReceiveLocalNotification: onDidReceiveLocalNotification,
+    );
 
-    flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-    flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    final InitializationSettings initializationSettings =
+        InitializationSettings(
+      android: initializationSettingsAndroid,
+      iOS: initializationSettingsIOS,
+      // iOS: DarwinInitializationSettings(),
+    );
+
+    flutterLocalNotificationsPlugin.initialize(
+      initializationSettings,
+      onDidReceiveNotificationResponse: onDidReceiveNotificationResponse,
+    );
   }
 
-  Future<void> _showNotification() async {
+  Future<void> _checkNotificationPermission() async {
+    print("Checking notification permission");
+    if (Platform.isIOS) {
+      final settings = await flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+              IOSFlutterLocalNotificationsPlugin>()
+          ?.requestPermissions(
+            alert: true,
+            badge: true,
+            sound: true,
+          );
+
+      setState(() {
+        _hasNotificationPermission = settings ?? false;
+      });
+    } else {
+      final status = await Permission.notification.status;
+      setState(() {
+        _hasNotificationPermission = status.isGranted;
+      });
+    }
+    print("Initial permission status: $_hasNotificationPermission");
+  }
+
+  Future<void> _requestNotificationPermission() async {
+    print("Requesting notification permission");
+    if (Platform.isIOS) {
+      final bool? result = await flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+              IOSFlutterLocalNotificationsPlugin>()
+          ?.requestPermissions(
+            alert: true,
+            badge: true,
+            sound: true,
+          );
+      setState(() {
+        _hasNotificationPermission = result ?? false;
+      });
+    } else {
+      final status = await Permission.notification.request();
+      setState(() {
+        _hasNotificationPermission = status.isGranted;
+      });
+    }
+    print("Permission request result: $_hasNotificationPermission");
+  }
+
+  Future<void> onDidReceiveNotificationResponse(
+      NotificationResponse notificationResponse) async {
+    print("Notification received: ${notificationResponse.payload}");
+  }
+
+  Future<void> onDidReceiveLocalNotification(
+      int id, String? title, String? body, String? payload) async {
+    print("Local notification received: $title, $body, $payload");
+  }
+
+  Future<void> _scheduleNotification() async {
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
         AndroidNotificationDetails(
       'simple_channel_id',
@@ -162,15 +139,38 @@ class __NotificationViewState extends State<_NotificationView> {
       importance: Importance.max,
       priority: Priority.high,
     );
-    const NotificationDetails platformChannelSpecifics =
-        NotificationDetails(android: androidPlatformChannelSpecifics);
 
-    await flutterLocalNotificationsPlugin.show(
-      0,
-      'Simple Notification',
-      'This is a simple notification',
-      platformChannelSpecifics,
+    const DarwinNotificationDetails iOSPlatformChannelSpecifics =
+        DarwinNotificationDetails(
+      presentAlert: true,
+      presentBadge: true,
+      presentSound: true,
     );
+
+    const NotificationDetails platformChannelSpecifics = NotificationDetails(
+      android: androidPlatformChannelSpecifics,
+      iOS: iOSPlatformChannelSpecifics,
+    );
+
+    if (Theme.of(context).platform == TargetPlatform.android) {
+      await flutterLocalNotificationsPlugin.show(
+        0,
+        'Simple Notification',
+        'This is a simple notification',
+        platformChannelSpecifics,
+      );
+    } else {
+      await flutterLocalNotificationsPlugin.zonedSchedule(
+        0,
+        'Scheduled Notification',
+        'This is a scheduled notification',
+        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
+        platformChannelSpecifics,
+        androidAllowWhileIdle: true,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+      );
+    }
   }
 
   @override
@@ -184,12 +184,18 @@ class __NotificationViewState extends State<_NotificationView> {
               'Show notification in the app. It is implemented using 3rd party plugin.',
             ),
             TextBlock(
-              "At the time of testing there's no error in console, but notification did not work",
+              "For iOS, the notification is scheduled 5 seconds in the future.",
+            ),
+            TextBlock(
+              "Notification functionality needs to be registered in manifest and info.plist files before using them.",
+            ),
+            TextBlock(
+              "Note: for ios, by default it won't show the notification if the app is open, so for this example notification is scheduled 5 seconds after button is pressed. To test it close the app after button press.",
             ),
             Center(
               child: _hasNotificationPermission
                   ? ElevatedButton(
-                      onPressed: _showNotification,
+                      onPressed: _scheduleNotification,
                       child: Text('Send Notification'),
                     )
                   : ElevatedButton(

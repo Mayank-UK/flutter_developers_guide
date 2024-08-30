@@ -52,5 +52,27 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+
+	<!-- Notification Permissions -->
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>fetch</string>
+        <string>remote-notification</string>
+    </array>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Need access to location for notifications.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Need access to location for notifications.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Need access to camera for notifications.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Need access to microphone for notifications.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Need access to photo library for notifications.</string>
+    <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>Need access to Bluetooth for notifications.</string>
+    <key>NSAppleMusicUsageDescription</key>
+    <string>Need access to Apple Music for notifications.</string>
 </dict>
 </plist>
+
