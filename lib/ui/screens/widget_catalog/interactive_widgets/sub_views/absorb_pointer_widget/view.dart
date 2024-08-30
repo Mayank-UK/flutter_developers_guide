@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class AbsorbPointerWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'AbsorbPointer';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/interactive/absorb_pointer_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'AbsorbPointer',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _AbsorbPointerWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

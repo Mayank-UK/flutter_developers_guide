@@ -5,17 +5,15 @@ import '../../../../../../../components/code_preview_tabs.dart';
 import '../../../../../../../components/section_wrapper.dart';
 
 class BackgroundsView extends StatelessWidget {
-  final String _appBarTitle = 'Backgrounds';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/ui/ui_manipulation/colors_backgrounds/background_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Backgrounds',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _BackgroundImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

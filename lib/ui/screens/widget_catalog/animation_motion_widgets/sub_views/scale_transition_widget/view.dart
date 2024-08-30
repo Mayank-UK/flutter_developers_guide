@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class ScaleTransitionWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'ScaleTransition';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/animation_motion/scale_transition_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'ScaleTransition',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _ScaleTransitionImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

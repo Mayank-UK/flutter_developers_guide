@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class CupertinoActivityIndicatorWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'CupertinoAcivityIndicator';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/cupertino/cupertino_activity_indicator_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'CupertinoAcivityIndicator',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _CupertinoActivityIndicatorWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

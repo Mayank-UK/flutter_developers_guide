@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class AlertDialogWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'AlertDialog';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/material/alert_dialog_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'AlertDialog',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _AlertDialogWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

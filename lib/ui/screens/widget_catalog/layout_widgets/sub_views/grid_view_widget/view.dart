@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class GridViewWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'GridView';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/grid_view_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'GridView',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _GridViewWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

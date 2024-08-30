@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class DropdownButtonWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'DropdownButton';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/material/dropdown_button_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'DropdownButton',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _DropdownButtonWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class AnimatedContainerWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'AnimatedContainer';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/animation_motion/animated_container_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'AnimatedContainer',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _AnimatedContainerImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

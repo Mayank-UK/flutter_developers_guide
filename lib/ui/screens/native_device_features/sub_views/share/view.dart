@@ -9,17 +9,15 @@ import '../../../../components/section_wrapper.dart';
 import '../../../../components/text_block.dart';
 
 class ShareView extends StatelessWidget {
-  final String _appBarTitle = 'Share';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/native_device_features/share_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Share',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _ShareImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

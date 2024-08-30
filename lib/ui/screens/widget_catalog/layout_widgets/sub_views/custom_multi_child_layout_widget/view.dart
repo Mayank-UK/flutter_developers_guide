@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class CustomMultiChildLayoutWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'CustomMultiChildLayout';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/custom_multi_child_layout_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'CustomMultiChildLayout',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _CustomMultiChildLayoutWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

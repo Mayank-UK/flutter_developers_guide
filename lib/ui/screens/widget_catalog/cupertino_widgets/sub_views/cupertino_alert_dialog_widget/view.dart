@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class CupertinoAlertDialogWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'CupertinoAlertDialog';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/cupertino/cupertino_alert_dialog_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'CupertinoAlertDialog',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _CupertinoAlertDialogWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

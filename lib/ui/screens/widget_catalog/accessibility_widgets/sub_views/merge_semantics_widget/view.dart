@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class MergeSemanticsWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'MergeSemantics';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/accessibility/merge_semantics_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'MergeSemantics',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _MergeSemanticsWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

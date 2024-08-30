@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class AnimatedOpacityWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'AnimatedOpacity';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/animation_motion/animated_opacity_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'AnimatedOpacity',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _AnimatedOpacityImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

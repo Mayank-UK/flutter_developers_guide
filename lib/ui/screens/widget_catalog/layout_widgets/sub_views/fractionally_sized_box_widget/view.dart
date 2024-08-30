@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class FractionallySizedBoxWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'FractionallySizedBox';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/fractionally_sized_box_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'FractionallySizedBox',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _FractionallySizedBoxWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

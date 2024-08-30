@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class CustomSingleChildLayoutWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'CustomSingleChildLayout';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/custom_single_child_layout_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'CustomSingleChildLayout',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _CustomSingleChildLayoutWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

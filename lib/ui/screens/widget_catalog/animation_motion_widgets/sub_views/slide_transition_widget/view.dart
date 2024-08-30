@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class SlideTransitionWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'SlideTransition';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/animation_motion/slide_transition_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'SlideTransition',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _SizeTransitionImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class AnimatedDefaultTextStyleWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'AnimatedDefaultTextStyle';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/animation_motion/animated_default_text_style_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'AnimatedDefaultTextStyle',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _AnimatedDefaultTextStyleWidgetImplementatio(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

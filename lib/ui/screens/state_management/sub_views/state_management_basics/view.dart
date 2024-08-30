@@ -7,17 +7,15 @@ import '../../../../components/content_group_wrapper.dart';
 import '../../../../components/text_block.dart';
 
 class StateManagementBasicsView extends StatelessWidget {
-  final String _appBarTitle = 'State management basics';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/state_management/state_management_basics_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'State management basics',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _ColorsImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

@@ -7,16 +7,14 @@ import '../../../../components/section_wrapper.dart';
 import '../../../../components/text_block.dart';
 
 class LocationView extends StatelessWidget {
-  final String _appBarTitle = 'Location';
   final String _codeTabMarkdownLocation = 'assets/markdowns/test.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Location',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _LocationImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

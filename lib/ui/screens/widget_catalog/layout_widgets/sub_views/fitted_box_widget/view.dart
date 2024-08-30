@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class FittedBoxWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'FittedBox';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/fitted_box_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'FittedBox',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _FittedBoxWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

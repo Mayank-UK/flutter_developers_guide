@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class InteractiveViewerWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'InteractiveViewer';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/interactive/interactive_viewer_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'InteractiveViewer',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _InteractiveViewerWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

@@ -4,14 +4,13 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 class CodePreviewTabs extends StatelessWidget {
-  final String appBarTitle;
   final Widget previewTab;
   final String codeTabMarkdownLocation;
 
-  CodePreviewTabs(
-      {required this.appBarTitle,
-      required this.previewTab,
-      required this.codeTabMarkdownLocation});
+  CodePreviewTabs({
+    required this.previewTab,
+    required this.codeTabMarkdownLocation,
+  });
 
   Future<String> getFileData(String path) async {
     return await rootBundle.loadString(path);

@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class LayoutBuilderWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'LayoutBuilder';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/layout_builder_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'LayoutBuilder',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _LayoutBuilderWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

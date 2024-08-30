@@ -7,17 +7,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class BackdropFilterWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'BackdropFilter';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/painting_effects/backdrop_filter_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'BackdropFilter',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _BackdropFilterWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

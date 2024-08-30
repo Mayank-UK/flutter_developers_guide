@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class AnimatedCrossFadeWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'AnimatedCrossFade';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/animation_motion/animated_cross_fade_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'AnimatedCrossFade',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _AnimatedCrossFadeImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

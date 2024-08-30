@@ -5,17 +5,15 @@ import '../../../../../../../components/code_preview_tabs.dart';
 import '../../../../../../../components/section_wrapper.dart';
 
 class ClickBehaviorView extends StatelessWidget {
-  final String _appBarTitle = 'Click/tap behavior';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/ui/ui_manipulation/interactive_behaviours/click_behavior_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Click/tap behavior',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _ClickBehaviorImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

@@ -5,17 +5,15 @@ import '../../../../../../../components/code_preview_tabs.dart';
 import '../../../../../../../components/section_wrapper.dart';
 
 class MarginSpacingView extends StatelessWidget {
-  final String _appBarTitle = 'Margin';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/ui/ui_manipulation/spacing/margin_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Margin',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _MarginImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

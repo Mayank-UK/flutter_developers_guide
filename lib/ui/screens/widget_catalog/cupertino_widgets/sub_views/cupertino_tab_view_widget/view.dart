@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class CupertinoTabViewWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'CupertinoTabView';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/cupertino/cupertino_tab_view_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'CupertinoTabView',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _CupertinoTabViewWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

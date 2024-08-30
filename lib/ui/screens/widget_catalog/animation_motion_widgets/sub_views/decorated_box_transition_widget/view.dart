@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class DecoratedBoxTransitionWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'DecoratedBoxTransition';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/animation_motion/decorated_box_transition_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'DecoratedBoxTransition',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _DecoratedBoxTransitionImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

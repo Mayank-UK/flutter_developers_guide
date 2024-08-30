@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class SingleChildScrollViewWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'SingleChildScrollView';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/scrolling/single_child_scroll_view_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'SingleChildScrollView',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _SingleChildScrollViewWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

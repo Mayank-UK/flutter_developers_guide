@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class CupertinoButtonWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'CupertinoButton';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/cupertino/cupertino_button_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'CupertinoButton',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _CupertinoButtonWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

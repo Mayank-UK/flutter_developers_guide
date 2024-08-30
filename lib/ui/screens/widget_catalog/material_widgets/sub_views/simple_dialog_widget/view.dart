@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class SimpleDialogWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'SimpleDialog';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/material/simple_dialog_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'SimpleDialog',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _SimpleDialogWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

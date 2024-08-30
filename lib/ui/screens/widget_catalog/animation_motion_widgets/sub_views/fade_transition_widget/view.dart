@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class FadeTransitionWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'FadeTransition';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/animation_motion/fade_transition_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'FadeTransition',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _FadeTransitionImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

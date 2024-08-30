@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class AnimatedPhysicalModelWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'AnimatedPhysicalModel';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/animation_motion/animated_physical_model_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'AnimatedPhysicalModel',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _AnimatedPhysicalModelImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

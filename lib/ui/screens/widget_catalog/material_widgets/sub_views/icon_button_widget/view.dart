@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class IconButtonWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'IconButton';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/material/icon_button_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'IconButton',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _IconButtonWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

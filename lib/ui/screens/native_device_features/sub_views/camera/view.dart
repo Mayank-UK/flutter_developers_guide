@@ -10,17 +10,15 @@ import '../../../../components/section_wrapper.dart';
 import '../../../../components/text_block.dart';
 
 class CameraView extends StatelessWidget {
-  final String _appBarTitle = 'Camera';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/native_device_features/camera_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Camera',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _CameraImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

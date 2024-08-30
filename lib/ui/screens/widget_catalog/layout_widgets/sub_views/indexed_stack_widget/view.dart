@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class IndexedStackWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'IndexedStack';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/indexed_stack_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'IndexedStack',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _IndexedStackWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

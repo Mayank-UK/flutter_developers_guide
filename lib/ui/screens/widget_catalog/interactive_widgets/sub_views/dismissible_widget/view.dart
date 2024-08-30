@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class DismissibleWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'Dismissible';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/interactive/dismissible_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Dismissible',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _DismissibleWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class ElevatedButtonWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'ElevatedButton';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/material/elevated_button_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'ElevatedButton',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _ElevatedButtonWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

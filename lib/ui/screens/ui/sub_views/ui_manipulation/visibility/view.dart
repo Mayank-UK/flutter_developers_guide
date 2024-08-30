@@ -5,17 +5,15 @@ import '../../../../../components/code_preview_tabs.dart';
 import '../../../../../components/section_wrapper.dart';
 
 class VisibilityView extends StatelessWidget {
-  final String _appBarTitle = 'Visibility';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/ui/ui_manipulation/visibility_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Visibility',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _VisibilityImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class ScaffoldWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'Scaffold';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/material/scaffold_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Scaffold',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _ScaffoldWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

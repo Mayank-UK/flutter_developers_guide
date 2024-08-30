@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class AspectRatioWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'AspectRatio';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/aspect_ratio_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'AspectRatio',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _AspectRatioWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

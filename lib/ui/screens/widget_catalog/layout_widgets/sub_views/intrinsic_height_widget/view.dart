@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class IntrinsicHeightWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'IntrinsicHeight';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/intrinsic_height_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'IntrinsicHeight',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _IntrinsicHeightWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

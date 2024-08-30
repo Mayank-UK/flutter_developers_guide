@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class CupertinoDialogActionWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'CupertinoDialogAction';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/cupertino/cupertino_dialog_action_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'CupertinoDialogAction',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _CupertinoDialogActionWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

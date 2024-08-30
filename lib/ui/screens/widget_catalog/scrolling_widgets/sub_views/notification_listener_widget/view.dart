@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class NotificationListenerWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'NotificationListener';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/scrolling/notification_listener_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'NotificationListener',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _NotificationListenerWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

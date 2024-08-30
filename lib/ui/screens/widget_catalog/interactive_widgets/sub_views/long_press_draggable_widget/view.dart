@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class LongPressDraggableWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'LongPressDraggable';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/interactive/long_press_draggable_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'LongPressDraggable',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _LongPressDraggableWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

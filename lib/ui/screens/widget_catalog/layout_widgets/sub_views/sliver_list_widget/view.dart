@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class SliverListWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'SliverList';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/sliver_list_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'SliverList',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _SliverListWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

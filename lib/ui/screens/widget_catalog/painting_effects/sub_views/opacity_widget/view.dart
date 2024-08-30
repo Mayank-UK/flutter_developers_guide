@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class OpacityWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'Opacity';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/painting_effects/opacity_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Opacity',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _OpacityWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

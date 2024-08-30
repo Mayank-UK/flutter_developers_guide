@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class TabPageSelectorWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'TabPageSelector';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/material/tab_page_selector_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'TabPageSelector',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _TabPageSelectorWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

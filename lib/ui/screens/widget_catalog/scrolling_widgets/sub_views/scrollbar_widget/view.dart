@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class ScrollbarWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'Scrollbar';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/scrolling/scrollbar_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Scrollbar',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _ScrollbarWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class DraggableScrollableSheetWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'DraggableScrollableSheet';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/interactive/draggable_scrollable_sheet_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'DraggableScrollableSheet',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _DraggableScrollableSheetWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class FractionalTranslationWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'FractionalTranslation';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/painting_effects/fractional_translation_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'FractionalTranslation',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _FractionalTranslationWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

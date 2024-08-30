@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class BottomSheetWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'BottomSheet';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/material/bottom_sheet_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'BottomSheet',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _BottomSheetWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

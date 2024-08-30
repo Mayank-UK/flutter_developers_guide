@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class SliverChildBuilderDelegateWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'SliverChildBuilderDelegate';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/sliver_child_builder_delegate_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'SliverChildBuilderDelegate',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _SliverChildBuilderDelegateWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

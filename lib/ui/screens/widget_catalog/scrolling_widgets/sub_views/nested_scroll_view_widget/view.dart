@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class NestedScrollViewWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'NestedScrollView';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/scrolling/nested_scroll_view_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'NestedScrollView',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _NestedScrollViewWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

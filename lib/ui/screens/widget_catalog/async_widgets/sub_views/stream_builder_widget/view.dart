@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class StreamBuilderWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'StreamBuilder';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/async/stream_builder_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'StreamBuilder',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _StreamBuilderWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

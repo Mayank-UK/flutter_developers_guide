@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class FloatingActionButtonWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'FloatingActionButton';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/material/floating_action_button_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'FloatingActionButton',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _FloatingActionButtonWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

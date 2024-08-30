@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class CircularProgressIndicatorWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'CircularProgressIndicator';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/material/circular_progress_indicator_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'CircularProgressIndicator',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _CircularProgressIndicatorWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

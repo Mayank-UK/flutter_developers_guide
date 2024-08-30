@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class PopupMenuButtonWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'PopupMenuButton';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/material/popup_menu_button_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'PopupMenuButton',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _PopupMenuButtonWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

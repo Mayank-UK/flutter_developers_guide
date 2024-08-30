@@ -6,17 +6,15 @@ import 'package:flutter_developers_guide/ui/components/section_wrapper.dart';
 import 'package:flutter_developers_guide/ui/components/text_block.dart';
 
 class NavigationRoutingView extends StatelessWidget {
-  final String _appBarTitle = 'Imperative routing';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/navigation_routing/imperative_approach_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Imperative routing',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _ImperativeRoutingImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

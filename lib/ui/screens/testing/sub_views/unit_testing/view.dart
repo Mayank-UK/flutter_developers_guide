@@ -5,16 +5,14 @@ import '../../../../components/code_preview_tabs.dart';
 import '../../../../components/section_wrapper.dart';
 
 class UnitTestingView extends StatelessWidget {
-  final String _appBarTitle = 'Unit testing';
   final String _codeTabMarkdownLocation = 'assets/markdowns/test.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Unit testing',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _UnitTestingImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

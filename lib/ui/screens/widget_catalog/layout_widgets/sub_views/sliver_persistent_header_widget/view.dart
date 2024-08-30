@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class SliverPersistentHeaderWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'SliverPersistentHeader';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/sliver_persistent_header_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'SliverPersistentHeader',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _SliverPersistentHeaderWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

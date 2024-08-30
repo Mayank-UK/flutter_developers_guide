@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class IconWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'IconWidget';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/assets_icons_images/icon_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'IconWidget',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _IconWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

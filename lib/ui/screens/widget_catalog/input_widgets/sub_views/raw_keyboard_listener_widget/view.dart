@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class RawKeyboardListenerWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'RawKeyboardListener';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/input/raw_keyboard_listener_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'RawKeyboardListener',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _RawKeyboardListenerWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

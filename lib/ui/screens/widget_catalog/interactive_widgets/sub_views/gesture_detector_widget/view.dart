@@ -5,17 +5,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class GestureDetectorWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'GestureDetector';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/interactive/gesture_detector_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'GestureDetector',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _GestureDetectorWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

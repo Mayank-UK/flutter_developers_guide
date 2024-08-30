@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class BottomNavigationBarWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'BottomNavigationBar';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/material/bottom_navigation_bar_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'BottomNavigationBar',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _BottomNavigationBarWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

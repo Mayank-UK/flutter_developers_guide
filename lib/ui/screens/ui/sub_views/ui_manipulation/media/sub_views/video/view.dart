@@ -7,17 +7,15 @@ import '../../../../../../../components/section_wrapper.dart';
 import '../../../../../../../components/text_block.dart';
 
 class VideoView extends StatelessWidget {
-  final String _appBarTitle = 'Video';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/ui/ui_manipulation/media/video_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Video',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _VideoImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

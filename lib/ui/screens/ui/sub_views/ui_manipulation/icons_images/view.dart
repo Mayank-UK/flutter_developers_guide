@@ -5,17 +5,15 @@ import '../../../../../components/code_preview_tabs.dart';
 import '../../../../../components/section_wrapper.dart';
 
 class IconsImagesView extends StatelessWidget {
-  final String _appBarTitle = 'Icons and images';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/ui/ui_manipulation/icons_images_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Icons and images',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _IconsImagesImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

@@ -7,17 +7,15 @@ import '../../../../../../../components/section_wrapper.dart';
 import '../../../../../../../components/text_block.dart';
 
 class AudioView extends StatelessWidget {
-  final String _appBarTitle = 'Audio';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/ui/ui_manipulation/media/audio_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Audio',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _AudioImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

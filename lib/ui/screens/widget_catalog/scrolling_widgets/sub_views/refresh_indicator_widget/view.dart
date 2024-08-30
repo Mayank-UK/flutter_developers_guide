@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class RefreshIndicatorWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'RefreshIndicator';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/scrolling/refresh_indicator_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'RefreshIndicator',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _RefreshIndicatorWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

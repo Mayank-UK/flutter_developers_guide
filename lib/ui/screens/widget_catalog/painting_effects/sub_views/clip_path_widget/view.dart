@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class ClipPathWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'ClipPath';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/painting_effects/clip_path_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'ClipPath',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _ClipPathWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

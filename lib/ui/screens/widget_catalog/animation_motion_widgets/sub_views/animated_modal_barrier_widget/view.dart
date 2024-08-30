@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class AnimatedModalBarrierWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'AnimatedModalBarrier';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/animation_motion/animated_modal_barrier_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'AnimatedModalBarrier',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _AnimatedModalBarrierImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class AssetBundleWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'AssetBundle';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/assets_icons_images/asset_bundle_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'AssetBundle',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _AssetBundleWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

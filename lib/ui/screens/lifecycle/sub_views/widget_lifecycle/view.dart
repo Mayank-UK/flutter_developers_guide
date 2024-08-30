@@ -6,17 +6,15 @@ import '../../../../components/code_preview_tabs.dart';
 import '../../../../components/section_wrapper.dart';
 
 class WidgetLifecycleView extends StatelessWidget {
-  final String _appBarTitle = 'Widget lifecycle';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/lifecycle/widget_lifecycle_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Widget lifecycle',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _WidgetLifecycleImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

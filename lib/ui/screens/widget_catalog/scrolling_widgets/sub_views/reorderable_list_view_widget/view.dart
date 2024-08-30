@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class ReorderableListViewWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'ReorderableListView';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/scrolling/reorderable_list_view_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'ReorderableListView',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _ReorderableListViewWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

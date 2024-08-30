@@ -7,16 +7,14 @@ import '../../../../components/section_wrapper.dart';
 import '../../../../components/text_block.dart';
 
 class FileSystemView extends StatelessWidget {
-  final String _appBarTitle = 'Filesystem';
   final String _codeTabMarkdownLocation = 'assets/markdowns/test.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Filesystem',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _FileSystemImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class ShowDatePickerWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'ShowDatePicker';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/material/show_date_picker_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'ShowDatePicker',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _ShowDatePickerWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

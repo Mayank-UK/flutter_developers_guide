@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class DecoratedBoxWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'DecoratedBox';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/painting_effects/decorated_box_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'DecoratedBox',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _DecoratedBoxWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

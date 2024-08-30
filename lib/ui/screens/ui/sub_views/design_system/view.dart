@@ -5,17 +5,15 @@ import 'package:flutter_developers_guide/ui/components/section_wrapper.dart';
 import 'package:flutter_developers_guide/ui/components/text_block.dart';
 
 class DesignSystemView extends StatelessWidget {
-  final String _appBarTitle = 'Design system';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/ui/design_system/design_system_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Design system',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _AlignmentImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

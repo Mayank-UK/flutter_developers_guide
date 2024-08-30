@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class CustomScrollViewWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'CustomScrollView';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/custom_scroll_view_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'CustomScrollView',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _CustomScrollViewWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

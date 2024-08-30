@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class DragTargetWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'DragTarget';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/interactive/drag_target_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'DragTarget',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _DragTargetWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

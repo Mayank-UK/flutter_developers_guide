@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class SliverToBoxAdaptorWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'SliverToBoxAdaptor';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/sliver_to_box_adaptor_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'SliverToBoxAdaptor',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _SliverToBoxAdaptorWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

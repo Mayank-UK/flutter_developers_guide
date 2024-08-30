@@ -5,17 +5,15 @@ import '../../../../../components/code_preview_tabs.dart';
 import '../../../../../components/section_wrapper.dart';
 
 class BordersView extends StatelessWidget {
-  final String _appBarTitle = 'Borders';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/ui/ui_manipulation/borders_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Borders',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _BordersImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

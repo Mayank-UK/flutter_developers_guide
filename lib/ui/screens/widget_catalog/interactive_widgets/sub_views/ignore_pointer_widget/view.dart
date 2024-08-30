@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class IgnorePointerWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'IgnorePointer';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/interactive/ignore_pointer_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'IgnorePointer',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _IgnorePointerWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class OverFlowBoxWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'OverFlowBox';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/overflow_box_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'OverFlowBox',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _OverFlowBoxWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

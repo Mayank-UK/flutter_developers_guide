@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class FutureBuilderWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'FutureBuilder';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/async/future_builder_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'FutureBuilder',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _FutureBuilderWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

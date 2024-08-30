@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class OutlinedButtonWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'OutlinedButton';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/material/outlined_button_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'OutlinedButton',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _OutlinedButtonWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

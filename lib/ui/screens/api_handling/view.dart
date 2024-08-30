@@ -9,14 +9,12 @@ import '../../components/section_wrapper.dart';
 import '../../components/text_block.dart';
 
 class ApiHandlingView extends StatelessWidget {
-  final String _appBarTitle = 'API handling';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/rest_api/rest_api_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return CodePreviewTabs(
-      appBarTitle: this._appBarTitle,
       previewTab: _RestApiImplementation(),
       codeTabMarkdownLocation: this._codeTabMarkdownLocation,
     );

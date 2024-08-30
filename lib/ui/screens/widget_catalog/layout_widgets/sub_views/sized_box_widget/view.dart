@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class SizedBoxWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'SizedBox';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/sized_box_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'SizedBox',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _SizedBoxWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

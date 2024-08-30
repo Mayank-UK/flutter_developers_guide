@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class RawImageWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'RawImage';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/assets_icons_images/raw_image_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'RawImage',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _RawImageWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

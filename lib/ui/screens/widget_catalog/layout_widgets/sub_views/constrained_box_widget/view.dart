@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class ConstrainedBoxWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'ConstrainedBox';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/constrained_box_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'ConstrainedBox',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _ConstrainedBoxWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class ExpandedWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'Expanded';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/expanded_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: "_",
+      title: 'Expanded',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _ExpandedWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

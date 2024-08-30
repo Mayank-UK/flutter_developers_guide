@@ -6,17 +6,15 @@ import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class SizedOverflowBoxWidgetView extends StatelessWidget {
-  final String _appBarTitle = 'SizedOverflowBox';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/widget_catalog/layout/sized_overflow_box_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'SizedOverflowBox',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _SizedOverflowBoxWidgetImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

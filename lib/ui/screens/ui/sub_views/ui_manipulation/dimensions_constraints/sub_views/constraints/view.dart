@@ -5,17 +5,15 @@ import '../../../../../../../components/code_preview_tabs.dart';
 import '../../../../../../../components/section_wrapper.dart';
 
 class ConstraintsView extends StatelessWidget {
-  final String _appBarTitle = 'Constraints';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/ui/ui_manipulation/dimensions_constraints/constraints_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Constraints',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _ConstraintsImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),

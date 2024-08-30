@@ -7,17 +7,15 @@ import '../../../../components/code_preview_tabs.dart';
 import '../../../../components/section_wrapper.dart';
 
 class BlocStateManagementView extends StatelessWidget {
-  final String _appBarTitle = 'Bloc state management';
   final String _codeTabMarkdownLocation =
       'assets/markdowns/state_management/bloc_markdown.md';
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: _appBarTitle,
+      title: 'Bloc state management',
       mobileUi: [
         CodePreviewTabs(
-          appBarTitle: this._appBarTitle,
           previewTab: _BlocStateManagementImplementation(),
           codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),
