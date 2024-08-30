@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_developers_guide/core/locator.dart';
-import 'package:flutter_developers_guide/data/repository_impl/post_repository_impl.dart';
 import 'package:flutter_developers_guide/domain/repository/post_repository.dart';
 import 'package:flutter_developers_guide/domain/usecases/get_posts_use_case.dart';
 import 'package:flutter_developers_guide/ui/blocs/posts/post_bloc.dart';
 import 'package:flutter_developers_guide/ui/screens/dependency_management/view.dart';
+import 'package:flutter_developers_guide/ui/screens/notification/view.dart';
 import 'package:flutter_developers_guide/ui/screens/state_management/sub_views/bloc_state_management/sub_screens/posts_app/view.dart';
 import 'package:flutter_developers_guide/ui/screens/state_management/sub_views/bloc_state_management/view.dart';
 import 'package:flutter_developers_guide/ui/screens/third_party_services/sub_views/firebase/view.dart';
@@ -424,6 +424,10 @@ class MyRouter {
       case RoutePaths.nativeDeviceFeatures:
         return MaterialPageRoute(
           builder: (_) => NativeDeviceFeaturesView(),
+        );
+      case RoutePaths.notification:
+        return MaterialPageRoute(
+          builder: (_) => NotificationView(),
         );
       case RoutePaths.architecture:
         return MaterialPageRoute(

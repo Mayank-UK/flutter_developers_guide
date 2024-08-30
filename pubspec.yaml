@@ -40,6 +40,8 @@ dependencies:
     sqflite: ^2.0.0+3
     path: ^1.8.0
     get_it: any
+    flutter_local_notifications: ^17.2.2
+    permission_handler: ^10.2.0
 
 dev_dependencies:
     flutter_test:
@@ -93,6 +95,7 @@ flutter:
         - assets/markdowns/widget_catalog/text/
 
         - assets/markdowns/native_device_features/
+        - assets/markdowns/notification/
 
         - assets/markdowns/rest_api/
 

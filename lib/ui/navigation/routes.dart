@@ -10,6 +10,7 @@ class RoutePaths {
   static const String stateManagement =
       '/state-manaNative device featuresgement';
   static const String nativeDeviceFeatures = '/native-device-features';
+  static const String notification = '/notification';
   static const String architecture = '/architecture';
   static const String bestPractices = '/best-practices';
   static const String supportingClassesEnums = '/supporting-classes-enums';

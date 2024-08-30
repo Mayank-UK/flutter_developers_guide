@@ -59,6 +59,10 @@ class HomeView extends StatelessWidget {
       route: RoutePaths.nativeDeviceFeatures,
     ),
     Link(
+      title: "Notifications",
+      route: RoutePaths.notification,
+    ),
+    Link(
       title: "Dependency management",
       route: RoutePaths.dependencyManagement,
     ),
