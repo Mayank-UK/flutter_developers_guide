@@ -1,3 +1,4 @@
+import 'package:flutter_developers_guide/core/exceptions.dart';
 import 'package:flutter_developers_guide/data/local/app_database.dart';
 import 'package:flutter_developers_guide/data/remote/api_service.dart';
 import 'package:flutter_developers_guide/domain/models/post.dart';
@@ -29,11 +30,4 @@ class PostRepositoryImpl implements PostRepository {
       }
     }
   }
-}
-
-class RepositoryException implements Exception {
-  final String message;
-  RepositoryException(this.message);
-  @override
-  String toString() => 'RepositoryException: $message';
 }

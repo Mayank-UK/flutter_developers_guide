@@ -4,13 +4,18 @@ import 'package:flutter_developers_guide/core/locator.dart';
 import 'package:flutter_developers_guide/domain/repository/post_repository.dart';
 import 'package:flutter_developers_guide/domain/usecases/get_posts_use_case.dart';
 import 'package:flutter_developers_guide/ui/blocs/posts/post_bloc.dart';
+import 'package:flutter_developers_guide/ui/screens/database_handling/view.dart';
 import 'package:flutter_developers_guide/ui/screens/dependency_management/view.dart';
 import 'package:flutter_developers_guide/ui/screens/notification/view.dart';
+import 'package:flutter_developers_guide/ui/screens/other_basics/sub_screens/background_tasks/view.dart';
+import 'package:flutter_developers_guide/ui/screens/other_basics/sub_screens/native_bridging/view.dart';
+import 'package:flutter_developers_guide/ui/screens/other_basics/view.dart';
 import 'package:flutter_developers_guide/ui/screens/state_management/sub_views/bloc_state_management/sub_screens/posts_app/view.dart';
 import 'package:flutter_developers_guide/ui/screens/state_management/sub_views/bloc_state_management/view.dart';
 import 'package:flutter_developers_guide/ui/screens/third_party_services/sub_views/firebase/view.dart';
 import 'package:flutter_developers_guide/ui/screens/third_party_services/view.dart';
 import 'package:flutter_developers_guide/ui/screens/ui/sub_views/design_system/view.dart';
+import 'package:flutter_developers_guide/ui/screens/widget/view.dart';
 
 // routes
 import 'routes.dart';
@@ -413,6 +418,10 @@ class MyRouter {
         return MaterialPageRoute(
           builder: (_) => ApiHandlingView(),
         );
+      case RoutePaths.databaseHandling:
+        return MaterialPageRoute(
+          builder: (_) => DatabaseHandlingView(),
+        );
       case RoutePaths.debugging:
         return MaterialPageRoute(
           builder: (_) => DebuggingView(),
@@ -428,6 +437,14 @@ class MyRouter {
       case RoutePaths.notification:
         return MaterialPageRoute(
           builder: (_) => NotificationView(),
+        );
+      case RoutePaths.widget:
+        return MaterialPageRoute(
+          builder: (_) => WidgetView(),
+        );
+      case RoutePaths.otherBasics:
+        return MaterialPageRoute(
+          builder: (_) => OtherBasicsView(),
         );
       case RoutePaths.architecture:
         return MaterialPageRoute(
@@ -1612,8 +1629,20 @@ class MyRouter {
           ),
         );
 
+      // other basics
+      case RoutePaths.nativeBridging:
+        return MaterialPageRoute(
+          builder: (_) => NativeBridgingView(),
+        );
+      case RoutePaths.backgroundTask:
+        return MaterialPageRoute(
+          builder: (_) => BackgroundTaskView(),
+        );
+
       default:
-        return MaterialPageRoute(builder: (_) => PageNotFoundView());
+        return MaterialPageRoute(
+          builder: (_) => PageNotFoundView(),
+        );
     }
   }
 }

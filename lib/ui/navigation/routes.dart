@@ -11,10 +11,13 @@ class RoutePaths {
       '/state-manaNative device featuresgement';
   static const String nativeDeviceFeatures = '/native-device-features';
   static const String notification = '/notification';
+  static const String widget = '/widget';
+  static const String otherBasics = '/other-basics';
   static const String architecture = '/architecture';
   static const String bestPractices = '/best-practices';
   static const String supportingClassesEnums = '/supporting-classes-enums';
   static const String apiHandling = '/api-handling';
+  static const String databaseHandling = '/database-handling';
   static const String debugging = '/debugging';
   static const String testing = '/testing';
   static const String lifecycle = '/lifecycle';
@@ -492,7 +495,7 @@ class RoutePaths {
   // third party services sub routes
   static const String firebase = '/third-party-services/firebase';
 
-  // state management paths
+  // state management routes
   static const String state_management_basics = '/state-management/basics';
   static const String providerStateManagement = '/state-management/provider';
   static const String state_management_todos_example =
@@ -500,4 +503,8 @@ class RoutePaths {
   static const String blocStateManagement = '/state-management/bloc';
   static const String state_management_posts_example =
       '/state-management/posts-example';
+
+  // other basics routes
+  static const String nativeBridging = '/native-bridging';
+  static const String backgroundTask = '/background-task';
 }

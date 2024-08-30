@@ -1,125 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-
-import 'dart:async';
-import 'dart:convert';
-
-import '../../components/code_preview_tabs.dart';
-import '../../components/section_wrapper.dart';
-import '../../components/text_block.dart';
+import 'package:flutter_developers_guide/ui/components/code_preview_tabs.dart';
+import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
+import 'package:flutter_developers_guide/ui/components/section_wrapper.dart';
+import 'package:flutter_developers_guide/ui/components/text_block.dart';
 
 class ApiHandlingView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
-      'assets/markdowns/rest_api/rest_api_markdown.md';
+      'assets/markdowns/api_handling/api_handling_markdown.md';
 
   @override
   Widget build(BuildContext context) {
-    return CodePreviewTabs(
-      previewTab: _RestApiImplementation(),
-      codeTabMarkdownLocation: this._codeTabMarkdownLocation,
-    );
-  }
-}
-
-class Album {
-  final int userId;
-  final int id;
-  final String title;
-
-  Album({
-    required this.userId,
-    required this.id,
-    required this.title,
-  });
-
-  factory Album.fromJson(Map<String, dynamic> json) {
-    return Album(
-      userId: json['userId'],
-      id: json['id'],
-      title: json['title'],
-    );
-  }
-}
-
-class _RestApiImplementation extends StatefulWidget {
-  @override
-  __RestApiImplementationState createState() => __RestApiImplementationState();
-}
-
-class __RestApiImplementationState extends State<_RestApiImplementation> {
-  late Future<Album> _futureAlbum;
-
-  void _fetchData() {
-    Future<Album> _fetchAlbum() async {
-      final response = await http.get(
-        Uri.https(
-          'jsonplaceholder.typicode.com',
-          'albums/1',
+    return PageScaffold(
+      title: 'API handling',
+      mobileUi: [
+        CodePreviewTabs(
+          previewTab: _ApiHandlingImplementation(),
+          codeTabMarkdownLocation: this._codeTabMarkdownLocation,
         ),
-      );
-
-      if (response.statusCode == 200) {
-        return Album.fromJson(
-          jsonDecode(response.body),
-        );
-      } else {
-        throw Exception('Failed to load album');
-      }
-    }
-
-    setState(() {
-      _futureAlbum = _fetchAlbum();
-    });
+      ],
+    );
   }
+}
 
+class _ApiHandlingImplementation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
       children: <Widget>[
         SectionWrapper(
-          title: 'Rest API interaction',
+          title: 'Basics',
           content: [
-            TextBlock(
-              'Rest API interactions are done in flutter using "http" package, "async" and "convert" library.',
-            ),
-            TextBlock(
-              'Request is made to the server using a Future and response is parsed and inserted into the view.',
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    color: Colors.amber,
-                    padding: const EdgeInsets.all(8),
-                    child: FutureBuilder<Album>(
-                      future: _futureAlbum,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return Text(snapshot.data!.title);
-                        } else if (snapshot.hasError) {
-                          return Text("${snapshot.error}");
-                        }
-
-                        return Container(
-                          constraints: BoxConstraints(minHeight: 24),
-                        );
-                      },
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(
-                      top: 16,
-                    ),
-                    child: ElevatedButton(
-                      onPressed: _fetchData,
-                      child: const Text('Fetch data'),
-                    ),
-                  ),
-                ],
-              ),
-            )
+            TextBlock("Handle API calls properly."),
           ],
         ),
       ],

@@ -23,14 +23,6 @@ class PostDTO {
     };
   }
 
-  // PostEntity toEntity() {
-  //   return PostEntity(id: id, title: title, body: body);
-  // }
-
-  // static PostDTO fromEntity(PostEntity entity) {
-  //   return PostDTO(id: entity.id, title: entity.title, body: entity.body);
-  // }
-
   Post toPost() {
     return Post(id: id, title: title, body: body);
   }

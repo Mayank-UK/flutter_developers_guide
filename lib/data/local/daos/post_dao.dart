@@ -1,12 +1,6 @@
+import 'package:flutter_developers_guide/core/exceptions.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/post_dto.dart';
 import 'package:sqflite/sqflite.dart';
-
-class DatabaseException implements Exception {
-  final String message;
-  DatabaseException(this.message);
-  @override
-  String toString() => 'DatabaseException: $message';
-}
 
 class PostDAO {
   final Database _database;
@@ -23,7 +17,7 @@ class PostDAO {
     } catch (e, stackTrace) {
       print('Error inserting post: $e');
       print(stackTrace);
-      throw DatabaseException('Failed to insert post: $e');
+      throw AppDatabaseException('Failed to insert post: $e');
     }
   }
 
@@ -36,7 +30,7 @@ class PostDAO {
     } catch (e, stackTrace) {
       print('Error getting posts: $e');
       print(stackTrace);
-      throw DatabaseException('Failed to get posts: $e');
+      throw AppDatabaseException('Failed to get posts: $e');
     }
   }
 
@@ -55,7 +49,7 @@ class PostDAO {
     } catch (e, stackTrace) {
       print('Error getting post: $e');
       print(stackTrace);
-      throw DatabaseException('Failed to get post: $e');
+      throw AppDatabaseException('Failed to get post: $e');
     }
   }
 }

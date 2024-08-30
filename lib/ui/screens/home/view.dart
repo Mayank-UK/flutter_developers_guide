@@ -39,6 +39,10 @@ class HomeView extends StatelessWidget {
       route: RoutePaths.apiHandling,
     ),
     Link(
+      title: "Database handling",
+      route: RoutePaths.databaseHandling,
+    ),
+    Link(
       title: "Architecture",
       route: RoutePaths.architecture,
     ),
@@ -61,6 +65,14 @@ class HomeView extends StatelessWidget {
     Link(
       title: "Notifications",
       route: RoutePaths.notification,
+    ),
+    Link(
+      title: "Widgets",
+      route: RoutePaths.widget,
+    ),
+    Link(
+      title: "Other basics",
+      route: RoutePaths.otherBasics,
     ),
     Link(
       title: "Dependency management",
