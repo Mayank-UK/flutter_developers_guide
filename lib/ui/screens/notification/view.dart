@@ -175,16 +175,31 @@ class __NotificationViewState extends State<_NotificationView> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: _hasNotificationPermission
-          ? ElevatedButton(
-              onPressed: _showNotification,
-              child: Text('Send Notification'),
-            )
-          : ElevatedButton(
-              onPressed: _requestNotificationPermission,
-              child: Text('Request Notification Permission'),
+    return Wrap(
+      children: [
+        SectionWrapper(
+          title: 'Basics',
+          content: [
+            TextBlock(
+              'Show notification in the app. It is implemented using 3rd party plugin.',
             ),
+            TextBlock(
+              "At the time of testing there's no error in console, but notification did not work",
+            ),
+            Center(
+              child: _hasNotificationPermission
+                  ? ElevatedButton(
+                      onPressed: _showNotification,
+                      child: Text('Send Notification'),
+                    )
+                  : ElevatedButton(
+                      onPressed: _requestNotificationPermission,
+                      child: Text('Request Notification Permission'),
+                    ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
