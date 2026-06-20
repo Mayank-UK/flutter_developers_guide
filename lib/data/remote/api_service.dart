@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:io';
+import 'package:flutter_developers_guide/core/exceptions.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/post_dto.dart';
 import 'package:http/http.dart' as http;
 
@@ -14,13 +16,24 @@ class ApiServiceImpl implements ApiService {
 
   @override
   Future<List<PostDTO>> getPosts() async {
-    final response = await client.get(Uri.parse('$baseUrl/posts'));
+    try {
+      final response = await client.get(
+        Uri.parse('$baseUrl/posts'),
+      );
 
-    if (response.statusCode == 200) {
+      // to handle server responses other than status 200
+      if (response.statusCode != 200) {
+        throw ServerException(
+          'Server returned ${response.statusCode}',
+        );
+      }
+
       final List<dynamic> jsonList = json.decode(response.body);
+
       return jsonList.map((json) => PostDTO.fromJson(json)).toList();
-    } else {
-      throw Exception('Failed to load posts');
+    } on SocketException {
+      // this is thrown so that repository can catch it and show cached data from the database
+      throw NetworkException();
     }
   }
 }

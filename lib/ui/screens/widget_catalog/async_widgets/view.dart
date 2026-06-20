@@ -10,12 +10,12 @@ class AsyncWidgetsView extends StatelessWidget {
     Link(
         title: 'FutureBuilder',
         description:
-            'Widget that builds itself based on the latest snapshot of interaction with a Future.',
+            'Widget that builds itself based on the latest snapshot of interaction with a Future.\n\nFutureBuilder → listens to one future result',
         route: RoutePaths.futureBuilder),
     Link(
       title: 'StreamBuilder',
       description:
-          'Widget that builds itself based on the latest snapshot of interaction with a Stream.',
+          'Widget that builds itself based on the latest snapshot of interaction with a Stream.\n\nStreamBuilder → listens to multiple values over time',
       route: RoutePaths.streamBuilder,
     ),
   ];

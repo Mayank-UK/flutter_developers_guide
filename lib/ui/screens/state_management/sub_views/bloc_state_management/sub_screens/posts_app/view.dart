@@ -14,7 +14,6 @@ class PostsAppView extends StatelessWidget {
           child: BlocBuilder<PostsBloc, PostsState>(
             builder: (context, state) {
               if (state is PostsInitial) {
-                BlocProvider.of<PostsBloc>(context).add(FetchPosts());
                 return Center(child: CircularProgressIndicator());
               } else if (state is PostsLoading) {
                 return Center(child: CircularProgressIndicator());

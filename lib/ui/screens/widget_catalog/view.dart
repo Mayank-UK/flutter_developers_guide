@@ -9,7 +9,8 @@ class WidgetCatalogView extends StatelessWidget {
   final List<Link> _itemList = [
     Link(
         title: 'Accessibility',
-        description: 'Make your app accessible.',
+        description:
+            'Make your app accessible. Think of Semantics as Metadata for accessibility.',
         route: RoutePaths.accessibilityWidgets),
     Link(
         title: 'Animations and motion',

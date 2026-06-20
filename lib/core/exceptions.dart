@@ -1,20 +1,16 @@
-class AppDatabaseException implements Exception {
+sealed class AppException implements Exception {
   final String message;
-  AppDatabaseException(this.message);
-  @override
-  String toString() => 'DatabaseException: $message';
+  const AppException(this.message);
 }
 
-class RepositoryException implements Exception {
-  final String message;
-  RepositoryException(this.message);
-  @override
-  String toString() => 'RepositoryException: $message';
+final class NetworkException extends AppException {
+  const NetworkException([super.message = 'No internet connection']);
 }
 
-class UseCaseException implements Exception {
-  final String message;
-  UseCaseException(this.message);
-  @override
-  String toString() => 'UseCaseException: $message';
+final class ServerException extends AppException {
+  const ServerException([super.message = 'Server error']);
+}
+
+final class AppDatabaseException extends AppException {
+  const AppDatabaseException([super.message = 'Database error']);
 }

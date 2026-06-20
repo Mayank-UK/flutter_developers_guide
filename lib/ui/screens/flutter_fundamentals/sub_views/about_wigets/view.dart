@@ -62,6 +62,8 @@ class AboutWidgetsView extends StatelessWidget {
               'Make class properties final and it\'s constructor const wherever possible. This will help in instantiating a class with const.',
             ),
             TextBlock(
+                'When a widget is declared as const, Flutter can create the widget at compile time, reuse the same widget instance instead of creating a new one during rebuilds and skip some widget comparisons because it knows the widget cannot change.'),
+            TextBlock(
               'Use const whenever possible when instantiating a class object. This prevents unnecessary rebuilding of that class again and again whenever build is called, which results in good performance gains.',
             ),
           ],

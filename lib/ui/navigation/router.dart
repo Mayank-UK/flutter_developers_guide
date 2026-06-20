@@ -1613,16 +1613,14 @@ class MyRouter {
           builder: (_) => BlocStateManagementView(),
         );
       case RoutePaths.state_management_posts_example:
-        final postRepository = locator<PostRepository>();
-        final getPostsUseCase = GetPostsUseCase(postRepository);
-
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
             providers: [
               BlocProvider<PostsBloc>(
-                create: (BuildContext context) => PostsBloc(
-                  getPostsUseCase: getPostsUseCase,
-                ),
+                create: (_) => locator<PostsBloc>()
+                  ..add(
+                    FetchPosts(),
+                  ),
               ),
             ],
             child: PostsAppView(),
