@@ -43,6 +43,10 @@ class HomeView extends StatelessWidget {
       route: RoutePaths.databaseHandling,
     ),
     Link(
+      title: "Exception handling",
+      route: RoutePaths.exceptionHandling,
+    ),
+    Link(
       title: "Architecture",
       route: RoutePaths.architecture,
     ),

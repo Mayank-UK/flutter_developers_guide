@@ -6,6 +6,7 @@ import 'package:flutter_developers_guide/domain/usecases/get_posts_use_case.dart
 import 'package:flutter_developers_guide/ui/blocs/posts/post_bloc.dart';
 import 'package:flutter_developers_guide/ui/screens/database_handling/view.dart';
 import 'package:flutter_developers_guide/ui/screens/dependency_management/view.dart';
+import 'package:flutter_developers_guide/ui/screens/exception_handling/view.dart';
 import 'package:flutter_developers_guide/ui/screens/notification/view.dart';
 import 'package:flutter_developers_guide/ui/screens/other_basics/sub_screens/background_tasks/view.dart';
 import 'package:flutter_developers_guide/ui/screens/other_basics/sub_screens/native_bridging/view.dart';
@@ -421,6 +422,10 @@ class MyRouter {
       case RoutePaths.databaseHandling:
         return MaterialPageRoute(
           builder: (_) => DatabaseHandlingView(),
+        );
+      case RoutePaths.exceptionHandling:
+        return MaterialPageRoute(
+          builder: (_) => ExceptionHandlingView(),
         );
       case RoutePaths.debugging:
         return MaterialPageRoute(
