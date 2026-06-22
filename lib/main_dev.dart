@@ -1,0 +1,13 @@
+import 'package:flutter_developers_guide/app.dart';
+import 'package:flutter_developers_guide/core/config/app_config.dart';
+
+void main() {
+  bootstrapApp(
+    config: const AppConfig(
+      environment: Environment.dev,
+      baseUrl: 'https://jsonplaceholder.typicode.com',
+      useFakeData: true,
+      enableLogs: true,
+    ),
+  );
+}

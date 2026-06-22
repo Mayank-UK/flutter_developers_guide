@@ -1,4 +1,4 @@
-import 'package:flutter_developers_guide/core/exceptions.dart';
+import 'package:flutter_developers_guide/core/error_handling/exceptions.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/post_dto.dart';
 import 'package:sqflite/sqflite.dart';
 

@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_developers_guide/core/error_handling/failures.dart';
 import 'package:flutter_developers_guide/core/result.dart';
 import 'package:flutter_developers_guide/domain/models/post.dart';
 import 'package:flutter_developers_guide/domain/usecases/get_posts_use_case.dart';
@@ -45,12 +46,11 @@ class PostsLoaded extends PostsState {
 }
 
 class PostsError extends PostsState {
-  final String message;
-
-  PostsError(this.message);
+  final Failure failure;
+  const PostsError(this.failure);
 
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [failure];
 }
 
 // BLoC
@@ -72,7 +72,7 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
         case Success(value: final posts):
           emit(PostsLoaded(posts));
         case Failed(failure: final failure):
-          emit(PostsError(failure.message));
+          emit(PostsError(failure));
       }
     });
   }

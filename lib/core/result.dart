@@ -1,4 +1,4 @@
-import 'package:flutter_developers_guide/core/failures.dart';
+import 'package:flutter_developers_guide/core/error_handling/failures.dart';
 
 sealed class Result<T> {
   const Result();
