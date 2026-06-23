@@ -47,6 +47,8 @@ dependencies:
 dev_dependencies:
     flutter_test:
         sdk: flutter
+    bloc_test: ^9.1.0
+    mocktail: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -69,6 +71,7 @@ flutter:
         - assets/markdowns/lifecycle/
         - assets/markdowns/navigation_routing/
         - assets/markdowns/state_management/
+        - assets/markdowns/testing/
 
         - assets/markdowns/ui/design_system/
         - assets/markdowns/ui/ui_manipulation/
