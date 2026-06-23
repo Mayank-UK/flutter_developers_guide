@@ -31,3 +31,10 @@ final class AppDatabaseException extends AppException {
     Object? cause,
   ]) : super(message, cause: cause);
 }
+
+final class AuthException extends AppException {
+  const AuthException([
+    String message = 'Authentication error',
+    Object? cause,
+  ]) : super(message, cause: cause);
+}

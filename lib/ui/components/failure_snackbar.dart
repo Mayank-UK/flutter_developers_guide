@@ -35,5 +35,6 @@ class FailureSnackbar {
         ServerFailure() => Icons.cloud_off,
         CacheFailure() => Icons.storage_outlined,
         UnknownFailure() => Icons.error_outline,
+        AuthFailure() => Icons.storage_outlined,
       };
 }

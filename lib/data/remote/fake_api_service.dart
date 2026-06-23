@@ -1,6 +1,7 @@
 // lib/core/testing/fake_api_service.dart
 import 'package:flutter_developers_guide/core/error_handling/exceptions.dart';
 import 'package:flutter_developers_guide/data/remote/api_service.dart';
+import 'package:flutter_developers_guide/data/remote/dtos/auth_user_dto.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/post_dto.dart';
 
 enum ApiScenario { success, networkError, timeout, serverError, invalidJson }
@@ -40,13 +41,57 @@ class FakeApiService implements ApiService {
   }
 
   @override
+  Future<AuthUserDto> signIn({
+    required String email,
+    required String password,
+  }) {
+    return _simulate(
+      () => AuthUserDto(
+        email: 'test@gmail.com',
+        uid: '14345634',
+        displayName: 'test',
+      ),
+    );
+  }
+
+  @override
+  Future<AuthUserDto> register({
+    required String email,
+    required String password,
+  }) {
+    return _simulate(
+      () => AuthUserDto(
+        email: 'test@gmail.com',
+        uid: '14345634',
+        displayName: 'test',
+      ),
+    );
+  }
+
+  @override
+  Stream<AuthUserDto?> authStateChanges() {
+    return Stream.value(
+      AuthUserDto(
+        email: 'test@gmail.com',
+        uid: '14345634',
+        displayName: 'test',
+      ),
+    );
+  }
+
+  @override
+  Future<void> signOut() async {}
+
+  @override
   Future<List<PostDTO>> getPosts() {
-    return _simulate(() => [
-          PostDTO(
-            id: 1,
-            title: 'Fake post',
-            body: 'From fake API',
-          ),
-        ]);
+    return _simulate(
+      () => [
+        PostDTO(
+          id: 1,
+          title: 'Fake post',
+          body: 'From fake API',
+        ),
+      ],
+    );
   }
 }

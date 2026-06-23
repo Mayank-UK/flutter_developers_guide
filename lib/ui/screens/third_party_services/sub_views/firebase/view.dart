@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
+import 'package:flutter_developers_guide/ui/navigation/routes.dart';
 
 import '../../../../components/code_preview_tabs.dart';
 import '../../../../components/section_wrapper.dart';
 
 class FirebaseView extends StatelessWidget {
-  final String _codeTabMarkdownLocation =
-      'assets/markdowns/third_party_services/firebase.md';
+  final String _codeTabMarkdownLocation = 'assets/markdowns/third_party_services/firebase.md';
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +37,16 @@ class _IntegrationTestingImplementation extends StatelessWidget {
           ],
         ),
         SectionWrapper(
-          title: 'Firebase',
+          title: 'Authentication',
           content: [
             Container(
-              width: double.infinity,
-              child: const Text('content will be available soon.'),
-            ),
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () => {
+                    Navigator.of(context).pushNamed(RoutePaths.firebaseAuth),
+                  },
+                  child: const Text('Firebase auth'),
+                )),
           ],
         ),
       ],

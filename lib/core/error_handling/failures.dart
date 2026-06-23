@@ -63,3 +63,12 @@ final class UnknownFailure extends Failure {
           cause: cause,
         );
 }
+
+final class AuthFailure extends Failure {
+  const AuthFailure([String message = 'Authentication failed', Failure? cause])
+      : super(
+          message,
+          FailureSeverity.warning, // user-recoverable: wrong password, etc.
+          cause: cause,
+        );
+}

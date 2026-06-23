@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_developers_guide/core/locator.dart';
-import 'package:flutter_developers_guide/domain/repository/post_repository.dart';
-import 'package:flutter_developers_guide/domain/usecases/get_posts_use_case.dart';
+import 'package:flutter_developers_guide/ui/blocs/auth/auth_bloc.dart';
 import 'package:flutter_developers_guide/ui/blocs/posts/post_bloc.dart';
 import 'package:flutter_developers_guide/ui/screens/database_handling/view.dart';
 import 'package:flutter_developers_guide/ui/screens/dependency_management/view.dart';
@@ -13,6 +12,7 @@ import 'package:flutter_developers_guide/ui/screens/other_basics/sub_screens/nat
 import 'package:flutter_developers_guide/ui/screens/other_basics/view.dart';
 import 'package:flutter_developers_guide/ui/screens/state_management/sub_views/bloc_state_management/sub_screens/posts_app/view.dart';
 import 'package:flutter_developers_guide/ui/screens/state_management/sub_views/bloc_state_management/view.dart';
+import 'package:flutter_developers_guide/ui/screens/third_party_services/sub_views/firebase/sub_views/firebase_auth/view.dart';
 import 'package:flutter_developers_guide/ui/screens/third_party_services/sub_views/firebase/view.dart';
 import 'package:flutter_developers_guide/ui/screens/third_party_services/view.dart';
 import 'package:flutter_developers_guide/ui/screens/ui/sub_views/design_system/view.dart';
@@ -1598,6 +1598,17 @@ class MyRouter {
       case RoutePaths.firebase:
         return MaterialPageRoute(
           builder: (_) => FirebaseView(),
+        );
+      case RoutePaths.firebaseAuth:
+        return MaterialPageRoute(
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider<AuthBloc>(
+                create: (_) => locator<AuthBloc>(),
+              ),
+            ],
+            child: FirebaseAuthView(),
+          ),
         );
 
       // state management

@@ -370,6 +370,7 @@ class RoutePaths {
 
   // third party services sub routes
   static const String firebase = '/third-party-services/firebase';
+  static const String firebaseAuth = '/third-party-services/firebase_auth';
 
   // state management routes
   static const String state_management_basics = '/state-management/basics';

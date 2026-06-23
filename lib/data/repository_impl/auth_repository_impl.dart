@@ -1,0 +1,62 @@
+import 'package:flutter_developers_guide/core/error_handling/guards.dart';
+import 'package:flutter_developers_guide/core/result.dart';
+import 'package:flutter_developers_guide/data/remote/api_service.dart';
+import 'package:flutter_developers_guide/domain/models/auth_user.dart';
+import 'package:flutter_developers_guide/domain/repository/auth_repository.dart';
+import 'package:logging/logging.dart';
+
+class AuthRepositoryImpl implements AuthRepository {
+  final ApiService remoteDataSource;
+  final Logger logger;
+
+  AuthRepositoryImpl({
+    required this.remoteDataSource,
+    required this.logger,
+  });
+
+  @override
+  Future<Result<AuthUser>> signIn({
+    required String email,
+    required String password,
+  }) =>
+      safeRepositoryCall(
+        logger: logger,
+        call: () async {
+          final dto = await remoteDataSource.signIn(
+            email: email,
+            password: password,
+          );
+          return dto.toAuthUser();
+        },
+        // Auth has no cache fallback — no onNetworkError / onServerError handlers.
+        // safeRepositoryCall will map exceptions to failures automatically.
+      );
+
+  @override
+  Future<Result<AuthUser>> register({
+    required String email,
+    required String password,
+  }) =>
+      safeRepositoryCall(
+        logger: logger,
+        call: () async {
+          final dto = await remoteDataSource.register(
+            email: email,
+            password: password,
+          );
+          return dto.toAuthUser();
+        },
+      );
+
+  @override
+  Stream<AuthUser?> authStateChanges() {
+    return remoteDataSource.authStateChanges().map(
+          (dto) => dto?.toAuthUser(),
+        );
+  }
+
+  @override
+  Future<void> signOut() {
+    return remoteDataSource.signOut();
+  }
+}

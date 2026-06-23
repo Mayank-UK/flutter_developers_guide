@@ -2,23 +2,27 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_developers_guide/core/config/app_config.dart';
 import 'package:flutter_developers_guide/core/error_handling/exceptions.dart';
 import 'package:flutter_developers_guide/data/remote/api_service.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart' as http;
 import 'package:logging/logging.dart';
 import 'package:mocktail/mocktail.dart';
 
 // --- Mocks ---
-class MockHttpClient extends Mock implements http.Client {}
+class MockDio extends Mock implements Dio {}
 
 class MockAppConfig extends Mock implements AppConfig {}
 
+class MockFirebaseAuth extends Mock implements FirebaseAuth {}
+
 void main() {
-  late MockHttpClient mockClient;
+  late MockDio mockDio;
   late MockAppConfig mockConfig;
   late ApiServiceImpl apiService;
+  late MockFirebaseAuth mockFirebaseAuth;
 
   // A valid JSON list that maps to PostDTO
   final tPostsJson = jsonEncode([
@@ -26,25 +30,33 @@ void main() {
   ]);
 
   setUp(() {
-    mockClient = MockHttpClient();
+    mockDio = MockDio();
     mockConfig = MockAppConfig();
+    mockFirebaseAuth = MockFirebaseAuth();
 
     when(() => mockConfig.baseUrl).thenReturn('https://fake.api');
 
     apiService = ApiServiceImpl(
-      client: mockClient,
+      dio: mockDio,
       config: mockConfig,
       logger: Logger('test'),
+      firebaseAuth: mockFirebaseAuth,
     );
 
     // Required by mocktail: register fallback for Uri
-    registerFallbackValue(Uri.parse(''));
+    registerFallbackValue(
+      RequestOptions(path: ''),
+    );
   });
 
   group('ApiServiceImpl.getPosts', () {
     test('returns list of PostDTO on 200 response', () async {
-      when(() => mockClient.get(any())).thenAnswer(
-        (_) async => http.Response(tPostsJson, 200),
+      when(() => mockDio.get(any())).thenAnswer(
+        (_) async => Response(
+          requestOptions: RequestOptions(path: '/posts'),
+          statusCode: 200,
+          data: jsonDecode(tPostsJson),
+        ),
       );
 
       final result = await apiService.getPosts();
@@ -55,32 +67,47 @@ void main() {
     });
 
     test('throws ServerException on non-200 status code', () async {
-      when(() => mockClient.get(any())).thenAnswer(
-        (_) async => http.Response('Internal Server Error', 500),
+      when(() => mockDio.get(any())).thenAnswer(
+        (_) async => Response(
+          requestOptions: RequestOptions(path: '/posts'),
+          statusCode: 500,
+          data: 'Internal Server Error',
+        ),
       );
 
       expect(() => apiService.getPosts(), throwsA(isA<ServerException>()));
     });
 
     test('throws NetworkException on SocketException', () async {
-      when(() => mockClient.get(any())).thenThrow(
-        const SocketException('No network'),
+      when(() => mockDio.get(any())).thenThrow(
+        DioException(
+          requestOptions: RequestOptions(path: '/posts'),
+          type: DioExceptionType.connectionError,
+          error: const SocketException('No network'),
+        ),
       );
 
       expect(() => apiService.getPosts(), throwsA(isA<NetworkException>()));
     });
 
     test('throws NetworkException on TimeoutException', () async {
-      when(() => mockClient.get(any())).thenThrow(
-        TimeoutException('Timed out'),
+      when(() => mockDio.get(any())).thenThrow(
+        DioException(
+          requestOptions: RequestOptions(path: '/posts'),
+          type: DioExceptionType.connectionTimeout,
+        ),
       );
 
       expect(() => apiService.getPosts(), throwsA(isA<NetworkException>()));
     });
 
     test('throws ServerException on FormatException (invalid JSON)', () async {
-      when(() => mockClient.get(any())).thenAnswer(
-        (_) async => http.Response('not valid json', 200),
+      when(() => mockDio.get(any())).thenAnswer(
+        (_) async => Response(
+          requestOptions: RequestOptions(path: '/posts'),
+          statusCode: 200,
+          data: 'not valid json',
+        ),
       );
 
       expect(() => apiService.getPosts(), throwsA(isA<ServerException>()));

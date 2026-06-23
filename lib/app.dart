@@ -1,9 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_developers_guide/core/config/app_config.dart';
 import 'package:flutter_developers_guide/core/config/logger_config.dart';
 import 'package:flutter_developers_guide/core/locator.dart';
 import 'package:flutter_developers_guide/core/provider_setup.dart';
 import 'package:flutter_developers_guide/data/local/app_database.dart';
+import 'package:flutter_developers_guide/firebase_options.dart';
 import 'package:flutter_developers_guide/ui/design_system/theme.dart';
 import 'package:flutter_developers_guide/ui/navigation/router.dart';
 import 'package:flutter_developers_guide/ui/navigation/routes.dart';
@@ -32,6 +34,10 @@ Future<void> bootstrapApp({
   required AppConfig config,
 }) async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   tz.initializeTimeZones();
 
