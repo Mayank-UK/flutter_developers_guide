@@ -50,5 +50,6 @@ class ShowError extends StatelessWidget {
         CacheFailure() => Icons.storage_outlined,
         UnknownFailure() => Icons.error_outline,
         AuthFailure() => Icons.storage_outlined,
+        FirestoreFailure() => Icons.storage,
       };
 }

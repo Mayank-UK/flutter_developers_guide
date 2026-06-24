@@ -1,12 +1,13 @@
-import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_developers_guide/core/config/app_config.dart';
 import 'package:flutter_developers_guide/core/error_handling/exceptions.dart';
-import 'package:flutter_developers_guide/data/remote/api_service.dart';
+import 'package:flutter_developers_guide/data/remote/api_service_impl.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:logging/logging.dart';
 import 'package:mocktail/mocktail.dart';
@@ -18,11 +19,17 @@ class MockAppConfig extends Mock implements AppConfig {}
 
 class MockFirebaseAuth extends Mock implements FirebaseAuth {}
 
+class MockFirebaseFirestore extends Mock implements FirebaseFirestore {}
+
+class MockFirebaseStorage extends Mock implements FirebaseStorage {}
+
 void main() {
   late MockDio mockDio;
   late MockAppConfig mockConfig;
   late ApiServiceImpl apiService;
   late MockFirebaseAuth mockFirebaseAuth;
+  late MockFirebaseFirestore mockFirebaseFirestore;
+  late MockFirebaseStorage mockFirebaseStorage;
 
   // A valid JSON list that maps to PostDTO
   final tPostsJson = jsonEncode([
@@ -33,6 +40,8 @@ void main() {
     mockDio = MockDio();
     mockConfig = MockAppConfig();
     mockFirebaseAuth = MockFirebaseAuth();
+    mockFirebaseFirestore = MockFirebaseFirestore();
+    mockFirebaseStorage = MockFirebaseStorage();
 
     when(() => mockConfig.baseUrl).thenReturn('https://fake.api');
 
@@ -41,6 +50,8 @@ void main() {
       config: mockConfig,
       logger: Logger('test'),
       firebaseAuth: mockFirebaseAuth,
+      firebaseFirestore: mockFirebaseFirestore,
+      firebaseStorage: mockFirebaseStorage,
     );
 
     // Required by mocktail: register fallback for Uri

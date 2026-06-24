@@ -38,3 +38,10 @@ final class AuthException extends AppException {
     Object? cause,
   ]) : super(message, cause: cause);
 }
+
+final class FirebaseFirestoreException extends AppDatabaseException {
+  const FirebaseFirestoreException([
+    String message = 'Firestore error',
+    Object? cause,
+  ]) : super(message, cause);
+}

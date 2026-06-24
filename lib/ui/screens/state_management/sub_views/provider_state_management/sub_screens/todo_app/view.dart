@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../../domain/models/task.dart';
@@ -19,8 +20,7 @@ class _HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<_HomeScreen>
-    with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<_HomeScreen> with SingleTickerProviderStateMixin {
   late TabController controller;
 
   @override
@@ -40,7 +40,7 @@ class _HomeScreenState extends State<_HomeScreen>
         leading: new IconButton(
           icon: new Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context);
+            context.pop();
           },
         ),
         actions: <Widget>[
@@ -169,8 +169,7 @@ class _CompletedTasksTab extends StatelessWidget {
 }
 
 class _TodosCode extends StatelessWidget {
-  String _markdownLocation =
-      'assets/markdowns/state_management/todos_markdown.md';
+  String _markdownLocation = 'assets/markdowns/state_management/todos_markdown.md';
 
   @override
   Widget build(BuildContext context) {
@@ -205,7 +204,7 @@ class _AddTaskScreenState extends State<_AddTaskScreen> {
         completed: completed,
       );
       Provider.of<TodosProvider>(context, listen: false).addTodo(todo);
-      Navigator.pop(context);
+      context.pop();
     }
   }
 

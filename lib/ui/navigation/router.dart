@@ -1,8 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_developers_guide/core/locator.dart';
+import 'package:flutter_developers_guide/core/locator/locator.dart';
 import 'package:flutter_developers_guide/ui/blocs/auth/auth_bloc.dart';
+import 'package:flutter_developers_guide/ui/blocs/images/images_bloc.dart';
 import 'package:flutter_developers_guide/ui/blocs/posts/post_bloc.dart';
+import 'package:flutter_developers_guide/ui/blocs/todos/todos_bloc.dart';
 import 'package:flutter_developers_guide/ui/screens/database_handling/view.dart';
 import 'package:flutter_developers_guide/ui/screens/dependency_management/view.dart';
 import 'package:flutter_developers_guide/ui/screens/exception_handling/view.dart';
@@ -12,16 +15,18 @@ import 'package:flutter_developers_guide/ui/screens/other_basics/sub_screens/nat
 import 'package:flutter_developers_guide/ui/screens/other_basics/view.dart';
 import 'package:flutter_developers_guide/ui/screens/state_management/sub_views/bloc_state_management/sub_screens/posts_app/view.dart';
 import 'package:flutter_developers_guide/ui/screens/state_management/sub_views/bloc_state_management/view.dart';
+import 'package:flutter_developers_guide/ui/screens/third_party_services/sub_views/firebase/sub_views/firebase_analytics/firebase_analytics.dart';
 import 'package:flutter_developers_guide/ui/screens/third_party_services/sub_views/firebase/sub_views/firebase_auth/view.dart';
+import 'package:flutter_developers_guide/ui/screens/third_party_services/sub_views/firebase/sub_views/firebase_firestore/view.dart';
+import 'package:flutter_developers_guide/ui/screens/third_party_services/sub_views/firebase/sub_views/firebase_storage/firebase_storage.dart';
 import 'package:flutter_developers_guide/ui/screens/third_party_services/sub_views/firebase/view.dart';
 import 'package:flutter_developers_guide/ui/screens/third_party_services/view.dart';
 import 'package:flutter_developers_guide/ui/screens/ui/sub_views/design_system/view.dart';
 import 'package:flutter_developers_guide/ui/screens/widget/view.dart';
+import 'package:go_router/go_router.dart';
 
-// routes
 import 'routes.dart';
 
-// home
 import '../screens/page_not_found/view.dart';
 import '../screens/home/view.dart';
 import '../screens/dart_fundamentals/view.dart';
@@ -40,7 +45,6 @@ import '../screens/testing/view.dart';
 import '../screens/lifecycle/view.dart';
 import '../screens/production_build_deployment/view.dart';
 
-// dart fundamentals sub_views
 import '../screens/dart_fundamentals/sub_views/important_concepts/view.dart';
 import '../screens/dart_fundamentals/sub_views/installation/view.dart';
 import '../screens/dart_fundamentals/sub_views/keywords/view.dart';
@@ -62,42 +66,34 @@ import '../screens/dart_fundamentals/sub_views/isolates/view.dart';
 import '../screens/dart_fundamentals/sub_views/typedefs/view.dart';
 import '../screens/dart_fundamentals/sub_views/comments/view.dart';
 
-// flutter fundamentals sub_views
 import '../screens/flutter_fundamentals/sub_views/about_wigets/view.dart';
 import '../screens/flutter_fundamentals/sub_views/important_concepts_flutter/view.dart';
 import '../screens/flutter_fundamentals/sub_views/installation_setup_flutter/view.dart';
 import '../screens/flutter_fundamentals/sub_views/using_flutter/view.dart';
 
-// ui
 import '../screens/ui/sub_views/responsive_adaptive_ui/view.dart';
 import '../screens/ui/sub_views/ui_manipulation/view.dart';
 
-// supporting classes sub_views
 import '../screens/supporting_classes_enums/sub_views/supporting_classes/view.dart';
 import '../screens/supporting_classes_enums/sub_views/supporting_enums/view.dart';
 
-// lifecycle sub_views
 import '../screens/lifecycle/sub_views/application_lifecycle/view.dart';
 import '../screens/lifecycle/sub_views/widget_lifecycle/view.dart';
 
-// testing
 import '../screens/testing/sub_views/unit_testing/view.dart';
 import '../screens/testing/sub_views/integration_testing/view.dart';
 
-// production build and deployment
 import '../screens/production_build_deployment/sub_views/production_build/view.dart';
 import '../screens/production_build_deployment/sub_views/android_deployment/view.dart';
 import '../screens/production_build_deployment/sub_views/ios_deployment/view.dart';
 import '../screens/production_build_deployment/sub_views/web_deployment/view.dart';
 
-// native device features
 import '../screens/native_device_features/sub_views/file_system/view.dart';
 import '../screens/native_device_features/sub_views/camera/view.dart';
 import '../screens/native_device_features/sub_views/location/view.dart';
 import '../screens/native_device_features/sub_views/bluetooth/view.dart';
 import '../screens/native_device_features/sub_views/share/view.dart';
 
-// widget catalog main category
 import '../screens/widget_catalog/accessibility_widgets/view.dart';
 import '../screens/widget_catalog/animation_motion_widgets/view.dart';
 import '../screens/widget_catalog/asset_widgets/view.dart';
@@ -112,12 +108,10 @@ import '../screens/widget_catalog/scrolling_widgets/view.dart';
 import '../screens/widget_catalog/styling_widgets/view.dart';
 import '../screens/widget_catalog/text_widgets/view.dart';
 
-// widget catalog accessibility
 import '../screens/widget_catalog/accessibility_widgets/sub_views/exclude_semantics_widget/view.dart';
 import '../screens/widget_catalog/accessibility_widgets/sub_views/merge_semantics_widget/view.dart';
 import '../screens/widget_catalog/accessibility_widgets/sub_views/semantics_widget/view.dart';
 
-// widget catalog animation and motion
 import '../screens/widget_catalog/animation_motion_widgets/sub_views/animated_align_widget/view.dart';
 import '../screens/widget_catalog/animation_motion_widgets/sub_views/animated_builder_widget/view.dart';
 import '../screens/widget_catalog/animation_motion_widgets/sub_views/animated_container_widget/view.dart';
@@ -140,17 +134,14 @@ import '../screens/widget_catalog/animation_motion_widgets/sub_views/scale_trans
 import '../screens/widget_catalog/animation_motion_widgets/sub_views/size_transition_widget/view.dart';
 import '../screens/widget_catalog/animation_motion_widgets/sub_views/slide_transition_widget/view.dart';
 
-// widget catalog assets
 import '../screens/widget_catalog/asset_widgets/sub_views/asset_bundle_widget/view.dart';
 import '../screens/widget_catalog/asset_widgets/sub_views/icon_widget/view.dart';
 import '../screens/widget_catalog/asset_widgets/sub_views/image_widget/view.dart';
 import '../screens/widget_catalog/asset_widgets/sub_views/raw_image_widget/view.dart';
 
-// widget catalog async
 import '../screens/widget_catalog/async_widgets/sub_views/future_builder_widget/view.dart';
 import '../screens/widget_catalog/async_widgets/sub_views/stream_builder_widget/view.dart';
 
-// widget catalog cupertino
 import '../screens/widget_catalog/cupertino_widgets/sub_views/cupertino_action_sheet_widget/view.dart';
 import '../screens/widget_catalog/cupertino_widgets/sub_views/cupertino_activity_indicator_widget/view.dart';
 import '../screens/widget_catalog/cupertino_widgets/sub_views/cupertino_alert_dialog_widget/view.dart';
@@ -178,12 +169,10 @@ import '../screens/widget_catalog/cupertino_widgets/sub_views/cupertino_tab_view
 import '../screens/widget_catalog/cupertino_widgets/sub_views/cupertino_text_field_widget/view.dart';
 import '../screens/widget_catalog/cupertino_widgets/sub_views/cupertino_time_picker_widget/view.dart';
 
-// widget catalog input
 import '../screens/widget_catalog/input_widgets/sub_views/auto_complete_widget/view.dart';
 import '../screens/widget_catalog/input_widgets/sub_views/form_field_widget/view.dart';
 import '../screens/widget_catalog/input_widgets/sub_views/raw_keyboard_listener_widget/view.dart';
 
-// widget catalog interactive
 import '../screens/widget_catalog/interactive_widgets/sub_views/absorb_pointer_widget/view.dart';
 import '../screens/widget_catalog/interactive_widgets/sub_views/dismissible_widget/view.dart';
 import '../screens/widget_catalog/interactive_widgets/sub_views/drag_target_widget/view.dart';
@@ -195,7 +184,6 @@ import '../screens/widget_catalog/interactive_widgets/sub_views/interactive_view
 import '../screens/widget_catalog/interactive_widgets/sub_views/long_press_draggable_widget/view.dart';
 import '../screens/widget_catalog/interactive_widgets/sub_views/scrollable_widget/view.dart';
 
-// widget catalog layout
 import '../screens/widget_catalog/layout_widgets/sub_views/align_widget/view.dart';
 import '../screens/widget_catalog/layout_widgets/sub_views/aspect_ratio_widget/view.dart';
 import '../screens/widget_catalog/layout_widgets/sub_views/baseline_widget/view.dart';
@@ -238,7 +226,6 @@ import '../screens/widget_catalog/layout_widgets/sub_views/table_widget/view.dar
 import '../screens/widget_catalog/layout_widgets/sub_views/transform_widget/view.dart';
 import '../screens/widget_catalog/layout_widgets/sub_views/wrap_widget/view.dart';
 
-// widget catalog material
 import '../screens/widget_catalog/material_widgets/sub_views/alert_dialog_widget/view.dart';
 import '../screens/widget_catalog/material_widgets/sub_views/app_bar_widget/view.dart';
 import '../screens/widget_catalog/material_widgets/sub_views/bottom_navigation_bar_widget/view.dart';
@@ -276,7 +263,6 @@ import '../screens/widget_catalog/material_widgets/sub_views/text_field_widget/v
 import '../screens/widget_catalog/material_widgets/sub_views/tool_tip_widget/view.dart';
 import '../screens/widget_catalog/material_widgets/sub_views/widget_app_widget/view.dart';
 
-// widget catalog painting
 import '../screens/widget_catalog/painting_effects/sub_views/backdrop_filter_widget/view.dart';
 import '../screens/widget_catalog/painting_effects/sub_views/clip_oval_widget/view.dart';
 import '../screens/widget_catalog/painting_effects/sub_views/clip_path_widget/view.dart';
@@ -286,9 +272,6 @@ import '../screens/widget_catalog/painting_effects/sub_views/decorated_box_widge
 import '../screens/widget_catalog/painting_effects/sub_views/fractional_translation_widget/view.dart';
 import '../screens/widget_catalog/painting_effects/sub_views/opacity_widget/view.dart';
 import '../screens/widget_catalog/painting_effects/sub_views/rotated_box_widget/view.dart';
-// import '../../ui/views/widget_catalog/painting_effects/sub_views/transform_painting_effects_widget_view.dart';
-
-// widget catalog scrolling
 
 import '../screens/widget_catalog/scrolling_widgets/sub_views/nested_scroll_view_widget/view.dart';
 import '../screens/widget_catalog/scrolling_widgets/sub_views/notification_listener_widget/view.dart';
@@ -299,14 +282,10 @@ import '../screens/widget_catalog/scrolling_widgets/sub_views/scroll_configurati
 import '../screens/widget_catalog/scrolling_widgets/sub_views/scrollbar_widget/view.dart';
 import '../screens/widget_catalog/scrolling_widgets/sub_views/single_child_scroll_view_widget/view.dart';
 
-// widget catalog styling
-
-// widget catalog text
 import '../screens/widget_catalog/text_widgets/sub_views/default_text_style_widget/view.dart';
 import '../screens/widget_catalog/text_widgets/sub_views/rich_text_widget/view.dart';
 import '../screens/widget_catalog/text_widgets/sub_views/text_widget/view.dart';
 
-// ui manipulation category
 import '../screens/ui/sub_views/ui_manipulation/alignment/view.dart';
 import '../screens/ui/sub_views/ui_manipulation/interactive_behavior/view.dart';
 import '../screens/ui/sub_views/ui_manipulation/borders/view.dart';
@@ -324,1339 +303,411 @@ import '../screens/ui/sub_views/ui_manipulation/web_and_apps/view.dart';
 import '../screens/ui/sub_views/ui_manipulation/media/view.dart';
 import '../screens/ui/sub_views/ui_manipulation/form/view.dart';
 
-// ui manipulation alignment sub_views
-
-// ui manipulation interactive behavior sub_views
 import '../screens/ui/sub_views/ui_manipulation/interactive_behavior/sub_views/click_behavior/view.dart';
 import '../screens/ui/sub_views/ui_manipulation/interactive_behavior/sub_views/hover_behavior/view.dart';
 import '../screens/ui/sub_views/ui_manipulation/interactive_behavior/sub_views/focus_behavior/view.dart';
 
-// ui manipulation colors and backgrounds sub_views
 import '../screens/ui/sub_views/ui_manipulation/colors_and_backgrounds/sub_views/colors/view.dart';
 import '../screens/ui/sub_views/ui_manipulation/colors_and_backgrounds/sub_views/backgrounds/view.dart';
 
-// ui manipulation dimensions and constraints sub_views
 import '../screens/ui/sub_views/ui_manipulation/dimensions_constraints/sub_views/fixed_dimensions/view.dart';
 import '../screens/ui/sub_views/ui_manipulation/dimensions_constraints/sub_views/percentage_dimensions/view.dart';
 import '../screens/ui/sub_views/ui_manipulation/dimensions_constraints/sub_views/fractional_dimensions/view.dart';
 import '../screens/ui/sub_views/ui_manipulation/dimensions_constraints/sub_views/constraints/view.dart';
 
-// ui manipulation effects sub_views
 import '../screens/ui/sub_views/ui_manipulation/effects/sub_views/shadow/view.dart';
 import '../screens/ui/sub_views/ui_manipulation/effects/sub_views/opacity/view.dart';
 
-// ui manipulation form sub_views
-
-// ui manipulation icons and images sub_views
-
-// ui manipulation layout sub_views
 import '../screens/ui/sub_views/ui_manipulation/layout/sub_views/page_layout/view.dart';
 import '../screens/ui/sub_views/ui_manipulation/layout/sub_views/basic_layout/view.dart';
 
-// ui manipulation positioning sub_views
-
-// ui manipulation spacing sub_views
 import '../screens/ui/sub_views/ui_manipulation/spacing/sub_views/padding/view.dart';
 import '../screens/ui/sub_views/ui_manipulation/spacing/sub_views/margin/view.dart';
 
-// ui manipulation theme sub_views
-
-// ui manipulation text sub_views
-
-// ui manipulation media sub_views
 import '../screens/ui/sub_views/ui_manipulation/media/sub_views/video/view.dart';
 import '../screens/ui/sub_views/ui_manipulation/media/sub_views/audio/view.dart';
 
-// ui manipulation responsive and adaptive ui sub_views
 import '../screens/ui/sub_views/responsive_adaptive_ui/sub_views/responsive_layout/view.dart';
 import '../screens/ui/sub_views/responsive_adaptive_ui/sub_views/adaptive_layout/view.dart';
 
-// state management sub_views
 import '../screens/state_management/sub_views/state_management_basics/view.dart';
 import '../screens/state_management/sub_views/provider_state_management/view.dart';
 import '../screens/state_management/sub_views/provider_state_management/sub_screens/todo_app/view.dart';
 
-// router
-class MyRouter {
-  static Route<dynamic> generateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      // home
-      case RoutePaths.home:
-        return MaterialPageRoute(builder: (_) => HomeView());
-      case RoutePaths.dartFundamentals:
-        return MaterialPageRoute(
-          builder: (_) => DartFundamentalsView(),
-        );
-      case RoutePaths.flutterFundamentals:
-        return MaterialPageRoute(
-          builder: (_) => FlutterFundamentalsView(),
-        );
-      case RoutePaths.ui:
-        return MaterialPageRoute(
-          builder: (_) => UIView(),
-        );
-      case RoutePaths.lifecycle:
-        return MaterialPageRoute(
-          builder: (_) => LifecycleView(),
-        );
-      case RoutePaths.widgetsCatalog:
-        return MaterialPageRoute(
-          builder: (_) => WidgetCatalogView(),
-        );
-      case RoutePaths.supportingClassesEnums:
-        return MaterialPageRoute(
-          builder: (_) => SupportingClassesEnumsView(),
-        );
-      case RoutePaths.navigationRouting:
-        return MaterialPageRoute(
-          builder: (_) => NavigationRoutingView(),
-        );
-      case RoutePaths.stateManagement:
-        return MaterialPageRoute(
-          builder: (_) => StateManagementView(),
-        );
-      case RoutePaths.apiHandling:
-        return MaterialPageRoute(
-          builder: (_) => ApiHandlingView(),
-        );
-      case RoutePaths.databaseHandling:
-        return MaterialPageRoute(
-          builder: (_) => DatabaseHandlingView(),
-        );
-      case RoutePaths.exceptionHandling:
-        return MaterialPageRoute(
-          builder: (_) => ExceptionHandlingView(),
-        );
-      case RoutePaths.debugging:
-        return MaterialPageRoute(
-          builder: (_) => DebuggingView(),
-        );
-      case RoutePaths.testing:
-        return MaterialPageRoute(
-          builder: (_) => TestingView(),
-        );
-      case RoutePaths.nativeDeviceFeatures:
-        return MaterialPageRoute(
-          builder: (_) => NativeDeviceFeaturesView(),
-        );
-      case RoutePaths.notification:
-        return MaterialPageRoute(
-          builder: (_) => NotificationView(),
-        );
-      case RoutePaths.widget:
-        return MaterialPageRoute(
-          builder: (_) => WidgetView(),
-        );
-      case RoutePaths.otherBasics:
-        return MaterialPageRoute(
-          builder: (_) => OtherBasicsView(),
-        );
-      case RoutePaths.architecture:
-        return MaterialPageRoute(
-          builder: (_) => ArchitectureView(),
-        );
-      case RoutePaths.bestPractices:
-        return MaterialPageRoute(
-          builder: (_) => BestPracticesView(),
-        );
-      case RoutePaths.productionBuildDeployment:
-        return MaterialPageRoute(
-          builder: (_) => ProductionBuildDeploymentView(),
-        );
-      case RoutePaths.dependencyManagement:
-        return MaterialPageRoute(
-          builder: (_) => DependencyManagementView(),
-        );
-      case RoutePaths.thirdPartyServices:
-        return MaterialPageRoute(
-          builder: (_) => ThirdPartyServicesView(),
-        );
+final GoRouter appRouter = GoRouter(
+  initialLocation: RoutePaths.home,
+  observers: [
+    locator<FirebaseAnalyticsObserver>(),
+  ],
+  errorBuilder: (context, state) => PageNotFoundView(),
+  routes: [
+    // ─── Home ───────────────────────────────────────────────────────────────
+    GoRoute(path: RoutePaths.home, builder: (context, state) => HomeView()),
 
-      // dart fundamentals
-      case RoutePaths.importantConcepts:
-        return MaterialPageRoute(
-          builder: (_) => ImportantConceptsView(),
-        );
-      case RoutePaths.installation:
-        return MaterialPageRoute(
-          builder: (_) => InstallationView(),
-        );
-      case RoutePaths.keywords:
-        return MaterialPageRoute(
-          builder: (_) => KeywordsView(),
-        );
-      case RoutePaths.variables:
-        return MaterialPageRoute(
-          builder: (_) => VariablesView(),
-        );
-      case RoutePaths.buildInTypes:
-        return MaterialPageRoute(
-          builder: (_) => BuiltInTypesView(),
-        );
-      case RoutePaths.functions:
-        return MaterialPageRoute(
-          builder: (_) => FunctionsView(),
-        );
-      case RoutePaths.operators:
-        return MaterialPageRoute(
-          builder: (_) => OperatorsView(),
-        );
-      case RoutePaths.conditionalExpression:
-        return MaterialPageRoute(
-          builder: (_) => ConditionalExpressionView(),
-        );
-      case RoutePaths.cascadeNotation:
-        return MaterialPageRoute(
-          builder: (_) => CascadeNotationView(),
-        );
-      case RoutePaths.controlFlowStatements:
-        return MaterialPageRoute(
-          builder: (_) => ControlFlowStatementView(),
-        );
-      case RoutePaths.exceptions:
-        return MaterialPageRoute(
-          builder: (_) => ExceptionsView(),
-        );
-      case RoutePaths.classes:
-        return MaterialPageRoute(
-          builder: (_) => ClassesView(),
-        );
-      case RoutePaths.generics:
-        return MaterialPageRoute(
-          builder: (_) => GenericsView(),
-        );
-      case RoutePaths.generators:
-        return MaterialPageRoute(
-          builder: (_) => GeneratorsView(),
-        );
-      case RoutePaths.librariesVisibility:
-        return MaterialPageRoute(
-          builder: (_) => LibrariesVisibilityView(),
-        );
-      case RoutePaths.asynchrony:
-        return MaterialPageRoute(
-          builder: (_) => AsynchronousView(),
-        );
-      case RoutePaths.callableClasses:
-        return MaterialPageRoute(
-          builder: (_) => CallableClassesView(),
-        );
-      case RoutePaths.isolates:
-        return MaterialPageRoute(
-          builder: (_) => IsolatesView(),
-        );
-      case RoutePaths.typedefs:
-        return MaterialPageRoute(
-          builder: (_) => TypedefsView(),
-        );
-      case RoutePaths.comments:
-        return MaterialPageRoute(
-          builder: (_) => CommentsView(),
-        );
+    // ─── Top-level sections ──────────────────────────────────────────────────
+    GoRoute(path: RoutePaths.dartFundamentals, builder: (context, state) => DartFundamentalsView()),
+    GoRoute(path: RoutePaths.flutterFundamentals, builder: (context, state) => FlutterFundamentalsView()),
+    GoRoute(path: RoutePaths.ui, builder: (context, state) => UIView()),
+    GoRoute(path: RoutePaths.lifecycle, builder: (context, state) => LifecycleView()),
+    GoRoute(path: RoutePaths.widgetsCatalog, builder: (context, state) => WidgetCatalogView()),
+    GoRoute(path: RoutePaths.supportingClassesEnums, builder: (context, state) => SupportingClassesEnumsView()),
+    GoRoute(path: RoutePaths.navigationRouting, builder: (context, state) => NavigationRoutingView()),
+    GoRoute(path: RoutePaths.stateManagement, builder: (context, state) => StateManagementView()),
+    GoRoute(path: RoutePaths.apiHandling, builder: (context, state) => ApiHandlingView()),
+    GoRoute(path: RoutePaths.databaseHandling, builder: (context, state) => DatabaseHandlingView()),
+    GoRoute(path: RoutePaths.exceptionHandling, builder: (context, state) => ExceptionHandlingView()),
+    GoRoute(path: RoutePaths.debugging, builder: (context, state) => DebuggingView()),
+    GoRoute(path: RoutePaths.testing, builder: (context, state) => TestingView()),
+    GoRoute(path: RoutePaths.nativeDeviceFeatures, builder: (context, state) => NativeDeviceFeaturesView()),
+    GoRoute(path: RoutePaths.notification, builder: (context, state) => NotificationView()),
+    GoRoute(path: RoutePaths.widget, builder: (context, state) => WidgetView()),
+    GoRoute(path: RoutePaths.otherBasics, builder: (context, state) => OtherBasicsView()),
+    GoRoute(path: RoutePaths.architecture, builder: (context, state) => ArchitectureView()),
+    GoRoute(path: RoutePaths.bestPractices, builder: (context, state) => BestPracticesView()),
+    GoRoute(path: RoutePaths.productionBuildDeployment, builder: (context, state) => ProductionBuildDeploymentView()),
+    GoRoute(path: RoutePaths.dependencyManagement, builder: (context, state) => DependencyManagementView()),
+    GoRoute(path: RoutePaths.thirdPartyServices, builder: (context, state) => ThirdPartyServicesView()),
 
-      // flutter fundamentals
-      case RoutePaths.importantConceptsFlutter:
-        return MaterialPageRoute(
-          builder: (_) => ImportantConceptsFlutterView(),
-        );
-      case RoutePaths.installationSetup:
-        return MaterialPageRoute(
-          builder: (_) => InstallationSetupFlutterView(),
-        );
-      case RoutePaths.usingFlutter:
-        return MaterialPageRoute(
-          builder: (_) => UsingFlutterView(),
-        );
-      case RoutePaths.aboutWidgets:
-        return MaterialPageRoute(
-          builder: (_) => AboutWidgetsView(),
-        );
+    // ─── Dart Fundamentals ───────────────────────────────────────────────────
+    GoRoute(path: RoutePaths.importantConcepts, builder: (context, state) => ImportantConceptsView()),
+    GoRoute(path: RoutePaths.installation, builder: (context, state) => InstallationView()),
+    GoRoute(path: RoutePaths.keywords, builder: (context, state) => KeywordsView()),
+    GoRoute(path: RoutePaths.variables, builder: (context, state) => VariablesView()),
+    GoRoute(path: RoutePaths.buildInTypes, builder: (context, state) => BuiltInTypesView()),
+    GoRoute(path: RoutePaths.functions, builder: (context, state) => FunctionsView()),
+    GoRoute(path: RoutePaths.operators, builder: (context, state) => OperatorsView()),
+    GoRoute(path: RoutePaths.conditionalExpression, builder: (context, state) => ConditionalExpressionView()),
+    GoRoute(path: RoutePaths.cascadeNotation, builder: (context, state) => CascadeNotationView()),
+    GoRoute(path: RoutePaths.controlFlowStatements, builder: (context, state) => ControlFlowStatementView()),
+    GoRoute(path: RoutePaths.exceptions, builder: (context, state) => ExceptionsView()),
+    GoRoute(path: RoutePaths.classes, builder: (context, state) => ClassesView()),
+    GoRoute(path: RoutePaths.generics, builder: (context, state) => GenericsView()),
+    GoRoute(path: RoutePaths.generators, builder: (context, state) => GeneratorsView()),
+    GoRoute(path: RoutePaths.librariesVisibility, builder: (context, state) => LibrariesVisibilityView()),
+    GoRoute(path: RoutePaths.asynchrony, builder: (context, state) => AsynchronousView()),
+    GoRoute(path: RoutePaths.callableClasses, builder: (context, state) => CallableClassesView()),
+    GoRoute(path: RoutePaths.isolates, builder: (context, state) => IsolatesView()),
+    GoRoute(path: RoutePaths.typedefs, builder: (context, state) => TypedefsView()),
+    GoRoute(path: RoutePaths.comments, builder: (context, state) => CommentsView()),
 
-      // ui
-      case RoutePaths.uiManipulation:
-        return MaterialPageRoute(
-          builder: (_) => UiManipulationView(),
-        );
-      case RoutePaths.designSystem:
-        return MaterialPageRoute(
-          builder: (_) => DesignSystemView(),
-        );
-      case RoutePaths.responsiveAdaptiveUi:
-        return MaterialPageRoute(
-          builder: (_) => ResponsiveAdaptiveLayoutView(),
-        );
+    // ─── Flutter Fundamentals ────────────────────────────────────────────────
+    GoRoute(path: RoutePaths.importantConceptsFlutter, builder: (context, state) => ImportantConceptsFlutterView()),
+    GoRoute(path: RoutePaths.installationSetup, builder: (context, state) => InstallationSetupFlutterView()),
+    GoRoute(path: RoutePaths.usingFlutter, builder: (context, state) => UsingFlutterView()),
+    GoRoute(path: RoutePaths.aboutWidgets, builder: (context, state) => AboutWidgetsView()),
 
-      // supporting classes and enums sub_views
-      case RoutePaths.supportingClasses:
-        return MaterialPageRoute(
-          builder: (_) => SupportingClassesView(),
-        );
-      case RoutePaths.supportingEnums:
-        return MaterialPageRoute(
-          builder: (_) => SupportingEnumsView(),
-        );
+    // ─── UI ──────────────────────────────────────────────────────────────────
+    GoRoute(path: RoutePaths.uiManipulation, builder: (context, state) => UiManipulationView()),
+    GoRoute(path: RoutePaths.designSystem, builder: (context, state) => DesignSystemView()),
+    GoRoute(path: RoutePaths.responsiveAdaptiveUi, builder: (context, state) => ResponsiveAdaptiveLayoutView()),
 
-      // lifecycle sub_views
-      case RoutePaths.applicationLifecycle:
-        return MaterialPageRoute(
-          builder: (_) => ApplicationLifecycleView(),
-        );
-      case RoutePaths.widgetLifecycle:
-        return MaterialPageRoute(
-          builder: (_) => WidgetLifecycleView(),
-        );
+    // ─── Supporting Classes & Enums ──────────────────────────────────────────
+    GoRoute(path: RoutePaths.supportingClasses, builder: (context, state) => SupportingClassesView()),
+    GoRoute(path: RoutePaths.supportingEnums, builder: (context, state) => SupportingEnumsView()),
 
-      // interaction with external resources sub_views
+    // ─── Lifecycle ───────────────────────────────────────────────────────────
+    GoRoute(path: RoutePaths.applicationLifecycle, builder: (context, state) => ApplicationLifecycleView()),
+    GoRoute(path: RoutePaths.widgetLifecycle, builder: (context, state) => WidgetLifecycleView()),
 
-      // testing
-      case RoutePaths.unitTesting:
-        return MaterialPageRoute(
-          builder: (_) => UnitTestingView(),
-        );
-      case RoutePaths.integrationTesting:
-        return MaterialPageRoute(
-          builder: (_) => IntegrationTestingView(),
-        );
+    // ─── Testing ─────────────────────────────────────────────────────────────
+    GoRoute(path: RoutePaths.unitTesting, builder: (context, state) => UnitTestingView()),
+    GoRoute(path: RoutePaths.integrationTesting, builder: (context, state) => IntegrationTestingView()),
 
-      // production build and deployment
-      case RoutePaths.productionBuild:
-        return MaterialPageRoute(
-          builder: (_) => ProductionBuildView(),
-        );
-      case RoutePaths.androidDeployment:
-        return MaterialPageRoute(
-          builder: (_) => AndroidDeploymentView(),
-        );
-      case RoutePaths.iosDeployment:
-        return MaterialPageRoute(
-          builder: (_) => IosDeploymentView(),
-        );
-      case RoutePaths.webDeployment:
-        return MaterialPageRoute(
-          builder: (_) => WebDeploymentView(),
-        );
+    // ─── Production Build & Deployment ───────────────────────────────────────
+    GoRoute(path: RoutePaths.productionBuild, builder: (context, state) => ProductionBuildView()),
+    GoRoute(path: RoutePaths.androidDeployment, builder: (context, state) => AndroidDeploymentView()),
+    GoRoute(path: RoutePaths.iosDeployment, builder: (context, state) => IosDeploymentView()),
+    GoRoute(path: RoutePaths.webDeployment, builder: (context, state) => WebDeploymentView()),
 
-      // native device features
-      case RoutePaths.fileSystem:
-        return MaterialPageRoute(
-          builder: (_) => FileSystemView(),
-        );
-      case RoutePaths.camera:
-        return MaterialPageRoute(
-          builder: (_) => CameraView(),
-        );
-      case RoutePaths.location:
-        return MaterialPageRoute(
-          builder: (_) => LocationView(),
-        );
-      case RoutePaths.bluetooth:
-        return MaterialPageRoute(
-          builder: (_) => BluetoothView(),
-        );
-      case RoutePaths.share:
-        return MaterialPageRoute(
-          builder: (_) => ShareView(),
-        );
+    // ─── Native Device Features ──────────────────────────────────────────────
+    GoRoute(path: RoutePaths.fileSystem, builder: (context, state) => FileSystemView()),
+    GoRoute(path: RoutePaths.camera, builder: (context, state) => CameraView()),
+    GoRoute(path: RoutePaths.location, builder: (context, state) => LocationView()),
+    GoRoute(path: RoutePaths.bluetooth, builder: (context, state) => BluetoothView()),
+    GoRoute(path: RoutePaths.share, builder: (context, state) => ShareView()),
 
-      // widget catalog category widgets
-      case RoutePaths.accessibilityWidgets:
-        return MaterialPageRoute(
-          builder: (_) => AccessibilityWidgetsView(),
-        );
-      case RoutePaths.animationMotionWidgets:
-        return MaterialPageRoute(
-          builder: (_) => AnimationWidgetsView(),
-        );
-      case RoutePaths.assetWidgets:
-        return MaterialPageRoute(
-          builder: (_) => AssetWidgetsView(),
-        );
-      case RoutePaths.asyncWidgets:
-        return MaterialPageRoute(
-          builder: (_) => AsyncWidgetsView(),
-        );
-      case RoutePaths.cupertinoWidgets:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoWidgetsView(),
-        );
-      case RoutePaths.inputWidgets:
-        return MaterialPageRoute(
-          builder: (_) => InputWidgetsView(),
-        );
-      case RoutePaths.interactiveWidgets:
-        return MaterialPageRoute(
-          builder: (_) => InteractiveWidgetsView(),
-        );
-      case RoutePaths.layoutWidgets:
-        return MaterialPageRoute(
-          builder: (_) => LayoutWidgetsView(),
-        );
-      case RoutePaths.materialWidgets:
-        return MaterialPageRoute(
-          builder: (_) => MaterialWidgetsView(),
-        );
-      case RoutePaths.paintingEffectWidgets:
-        return MaterialPageRoute(
-          builder: (_) => PaintingEffectsWidgetsView(),
-        );
-      case RoutePaths.scrollingWidgets:
-        return MaterialPageRoute(
-          builder: (_) => ScrollingWidgetsView(),
-        );
-      case RoutePaths.stylingWidgets:
-        return MaterialPageRoute(
-          builder: (_) => StylingWidgetsView(),
-        );
-      case RoutePaths.textWidgets:
-        return MaterialPageRoute(
-          builder: (_) => TextWidgetsView(),
-        );
+    // ─── Other Basics ────────────────────────────────────────────────────────
+    GoRoute(path: RoutePaths.nativeBridging, builder: (context, state) => NativeBridgingView()),
+    GoRoute(path: RoutePaths.backgroundTask, builder: (context, state) => BackgroundTaskView()),
 
-      // widget catalog accessibility widgets
-      case RoutePaths.excludeSemanticsWidget:
-        return MaterialPageRoute(
-          builder: (_) => ExcludeSemanticsWidgetView(),
-        );
-      case RoutePaths.mergeSemanticsWidget:
-        return MaterialPageRoute(
-          builder: (_) => MergeSemanticsWidgetView(),
-        );
-      case RoutePaths.semanticsWidget:
-        return MaterialPageRoute(
-          builder: (_) => SemanticsWidgetView(),
-        );
+    // ─── Third Party Services ────────────────────────────────────────────────
+    GoRoute(path: RoutePaths.firebase, builder: (context, state) => FirebaseView()),
+    GoRoute(
+      path: RoutePaths.firebaseAuth,
+      builder: (context, state) => BlocProvider<AuthBloc>(
+        create: (_) => locator<AuthBloc>(),
+        child: FirebaseAuthView(),
+      ),
+    ),
+    GoRoute(
+      path: RoutePaths.firebaseFirestore,
+      builder: (context, state) => BlocProvider<TodosBloc>(
+        create: (_) => locator<TodosBloc>()..add(WatchTodos()),
+        child: FirebaseFirestoreView(),
+      ),
+    ),
+    GoRoute(
+      path: RoutePaths.firebaseStorage,
+      builder: (context, state) => BlocProvider<ImagesBloc>(
+        create: (_) => locator<ImagesBloc>()..add(WatchImages()),
+        child: FirebaseStorageView(),
+      ),
+    ),
+    GoRoute(path: RoutePaths.firebaseAnalytics, builder: (context, state) => FirebaseAnalyticsView()),
 
-      // widget catalog animations and motion widgets
-      case RoutePaths.animatedAlign:
-        return MaterialPageRoute(
-          builder: (_) => AnimatedAlignWidgetView(),
-        );
-      case RoutePaths.animatedBuilder:
-        return MaterialPageRoute(
-          builder: (_) => AnimatedBuilderWidgetView(),
-        );
-      case RoutePaths.animatedContainer:
-        return MaterialPageRoute(
-          builder: (_) => AnimatedContainerWidgetView(),
-        );
-      case RoutePaths.animatedCrossFade:
-        return MaterialPageRoute(
-          builder: (_) => AnimatedCrossFadeWidgetView(),
-        );
-      case RoutePaths.animatedDefaultTextStyle:
-        return MaterialPageRoute(
-          builder: (_) => AnimatedDefaultTextStyleWidgetView(),
-        );
-      case RoutePaths.animatedListState:
-        return MaterialPageRoute(
-          builder: (_) => AnimatedListStateWidgetView(),
-        );
-      case RoutePaths.animatedModalBarrier:
-        return MaterialPageRoute(
-          builder: (_) => AnimatedModalBarrierWidgetView(),
-        );
-      case RoutePaths.animatedOpacity:
-        return MaterialPageRoute(
-          builder: (_) => AnimatedOpacityWidgetView(),
-        );
-      case RoutePaths.animatedPhysicalModel:
-        return MaterialPageRoute(
-          builder: (_) => AnimatedPhysicalModelWidgetView(),
-        );
-      case RoutePaths.animatedPositioned:
-        return MaterialPageRoute(
-          builder: (_) => AnimatedPositionedWidgetView(),
-        );
-      case RoutePaths.animatedSize:
-        return MaterialPageRoute(
-          builder: (_) => AnimatedSizeWidgetView(),
-        );
-      case RoutePaths.animatedWidget:
-        return MaterialPageRoute(
-          builder: (_) => AnimatedWidgetWidgetView(),
-        );
-      case RoutePaths.animatedWidgetBaseState:
-        return MaterialPageRoute(
-          builder: (_) => AnimatedWidgetBaseStateWidgetView(),
-        );
-      case RoutePaths.decoratedBoxTransition:
-        return MaterialPageRoute(
-          builder: (_) => DecoratedBoxTransitionWidgetView(),
-        );
-      case RoutePaths.fadeTransition:
-        return MaterialPageRoute(
-          builder: (_) => FadeTransitionWidgetView(),
-        );
-      case RoutePaths.hero:
-        return MaterialPageRoute(
-          builder: (_) => HeroWidgetView(),
-        );
-      case RoutePaths.positionedTransition:
-        return MaterialPageRoute(
-          builder: (_) => PositionedTransitionWidgetView(),
-        );
-      case RoutePaths.rotationTransition:
-        return MaterialPageRoute(
-          builder: (_) => RotationTransitionWidgetView(),
-        );
-      case RoutePaths.scaleTransition:
-        return MaterialPageRoute(
-          builder: (_) => ScaleTransitionWidgetView(),
-        );
-      case RoutePaths.sizeTransition:
-        return MaterialPageRoute(
-          builder: (_) => SizeTransitionWidgetView(),
-        );
-      case RoutePaths.slideTransition:
-        return MaterialPageRoute(
-          builder: (_) => SlideTransitionWidgetView(),
-        );
+    // ─── State Management ────────────────────────────────────────────────────
+    GoRoute(path: RoutePaths.state_management_basics, builder: (context, state) => StateManagementBasicsView()),
+    GoRoute(path: RoutePaths.providerStateManagement, builder: (context, state) => ProviderStateManagementView()),
+    GoRoute(path: RoutePaths.state_management_todos_example, builder: (context, state) => TodosAppView()),
+    GoRoute(path: RoutePaths.blocStateManagement, builder: (context, state) => BlocStateManagementView()),
+    GoRoute(
+      path: RoutePaths.state_management_posts_example,
+      builder: (context, state) => BlocProvider<PostsBloc>(
+        create: (_) => locator<PostsBloc>()..add(FetchPosts()),
+        child: PostsAppView(),
+      ),
+    ),
 
-      // widget catalog assets, icons and images widgets
-      case RoutePaths.assetBundle:
-        return MaterialPageRoute(
-          builder: (_) => AssetBundleWidgetView(),
-        );
-      case RoutePaths.icon:
-        return MaterialPageRoute(
-          builder: (_) => IconWidgetView(),
-        );
-      case RoutePaths.image:
-        return MaterialPageRoute(
-          builder: (_) => ImageWidgetView(),
-        );
-      case RoutePaths.rawImage:
-        return MaterialPageRoute(
-          builder: (_) => RawImageWidgetView(),
-        );
+    // ─── Widget Catalog — Categories ─────────────────────────────────────────
+    GoRoute(path: RoutePaths.accessibilityWidgets, builder: (context, state) => AccessibilityWidgetsView()),
+    GoRoute(path: RoutePaths.animationMotionWidgets, builder: (context, state) => AnimationWidgetsView()),
+    GoRoute(path: RoutePaths.assetWidgets, builder: (context, state) => AssetWidgetsView()),
+    GoRoute(path: RoutePaths.asyncWidgets, builder: (context, state) => AsyncWidgetsView()),
+    GoRoute(path: RoutePaths.cupertinoWidgets, builder: (context, state) => CupertinoWidgetsView()),
+    GoRoute(path: RoutePaths.inputWidgets, builder: (context, state) => InputWidgetsView()),
+    GoRoute(path: RoutePaths.interactiveWidgets, builder: (context, state) => InteractiveWidgetsView()),
+    GoRoute(path: RoutePaths.layoutWidgets, builder: (context, state) => LayoutWidgetsView()),
+    GoRoute(path: RoutePaths.materialWidgets, builder: (context, state) => MaterialWidgetsView()),
+    GoRoute(path: RoutePaths.paintingEffectWidgets, builder: (context, state) => PaintingEffectsWidgetsView()),
+    GoRoute(path: RoutePaths.scrollingWidgets, builder: (context, state) => ScrollingWidgetsView()),
+    GoRoute(path: RoutePaths.stylingWidgets, builder: (context, state) => StylingWidgetsView()),
+    GoRoute(path: RoutePaths.textWidgets, builder: (context, state) => TextWidgetsView()),
 
-      // widget catalog async widgets
-      case RoutePaths.futureBuilder:
-        return MaterialPageRoute(
-          builder: (_) => FutureBuilderWidgetView(),
-        );
-      case RoutePaths.streamBuilder:
-        return MaterialPageRoute(
-          builder: (_) => StreamBuilderWidgetView(),
-        );
+    // ─── Widget Catalog — Accessibility ──────────────────────────────────────
+    GoRoute(path: RoutePaths.excludeSemanticsWidget, builder: (context, state) => ExcludeSemanticsWidgetView()),
+    GoRoute(path: RoutePaths.mergeSemanticsWidget, builder: (context, state) => MergeSemanticsWidgetView()),
+    GoRoute(path: RoutePaths.semanticsWidget, builder: (context, state) => SemanticsWidgetView()),
 
-      // widget catalog cupertino widgets
-      case RoutePaths.cupertinoActionSheet:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoActionSheetWidgetView(),
-        );
-      case RoutePaths.cupertinoActivityIndicator:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoActivityIndicatorWidgetView(),
-        );
-      case RoutePaths.cupertinoAlertDialog:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoAlertDialogWidgetView(),
-        );
-      case RoutePaths.cupertinoButton:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoButtonWidgetView(),
-        );
-      case RoutePaths.cupertinoContextMenu:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoContextMenuWidgetView(),
-        );
-      case RoutePaths.cupertinoDatePicker:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoDatePickerWidgetView(),
-        );
-      case RoutePaths.cupertinoDialog:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoDialogWidgetView(),
-        );
-      case RoutePaths.cupertinoDialogAction:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoDialogActionWidgetView(),
-        );
-      case RoutePaths.cupertinoFullScreenDialogTransition:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoFullScreenDialogTransitionWidgetView(),
-        );
-      case RoutePaths.cupertinoNavigationBar:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoNavigationBarWidgetView(),
-        );
-      case RoutePaths.cupertinoScaffold:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoScaffoldWidgetView(),
-        );
-      case RoutePaths.cupertinoPageTransition:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoPageTransitionWidgetView(),
-        );
-      case RoutePaths.cupertinoPicker:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoPickerWidgetView(),
-        );
-      case RoutePaths.cupertinoPopupSurface:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoPopupSurfaceWidgetView(),
-        );
-      case RoutePaths.cupertinoScrollbar:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoScrollbarWidgetView(),
-        );
-      case RoutePaths.cupertinoSearchField:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoSearchFieldWidgetView(),
-        );
-      case RoutePaths.cupertinoSegmentedControl:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoSegmentedControlWidgetView(),
-        );
-      case RoutePaths.cupertinoSlider:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoSliderWidgetView(),
-        );
-      case RoutePaths.cupertinoSlidingSegmentedControl:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoSlidingSegmentedControlWidgetView(),
-        );
-      case RoutePaths.cupertinoSliverNavigationBar:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoSliverNavigationBarWidgetView(),
-        );
-      case RoutePaths.cupertinoNavigationBar:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoNavigationBarWidgetView(),
-        );
-      case RoutePaths.cupertinoSwitch:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoSwitchWidgetView(),
-        );
-      case RoutePaths.cupertinoTabBar:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoTabBarWidgetView(),
-        );
-      case RoutePaths.cupertinoTabScaffold:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoTabScaffoldWidgetView(),
-        );
-      case RoutePaths.cupertinoTabView:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoTabViewWidgetView(),
-        );
-      case RoutePaths.cupertinoTextField:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoTextFieldWidgetView(),
-        );
-      case RoutePaths.cupertinoTimePicker:
-        return MaterialPageRoute(
-          builder: (_) => CupertinoTimePickerWidgetView(),
-        );
+    // ─── Widget Catalog — Animation & Motion ─────────────────────────────────
+    GoRoute(path: RoutePaths.animatedAlign, builder: (context, state) => AnimatedAlignWidgetView()),
+    GoRoute(path: RoutePaths.animatedBuilder, builder: (context, state) => AnimatedBuilderWidgetView()),
+    GoRoute(path: RoutePaths.animatedContainer, builder: (context, state) => AnimatedContainerWidgetView()),
+    GoRoute(path: RoutePaths.animatedCrossFade, builder: (context, state) => AnimatedCrossFadeWidgetView()),
+    GoRoute(path: RoutePaths.animatedDefaultTextStyle, builder: (context, state) => AnimatedDefaultTextStyleWidgetView()),
+    GoRoute(path: RoutePaths.animatedListState, builder: (context, state) => AnimatedListStateWidgetView()),
+    GoRoute(path: RoutePaths.animatedModalBarrier, builder: (context, state) => AnimatedModalBarrierWidgetView()),
+    GoRoute(path: RoutePaths.animatedOpacity, builder: (context, state) => AnimatedOpacityWidgetView()),
+    GoRoute(path: RoutePaths.animatedPhysicalModel, builder: (context, state) => AnimatedPhysicalModelWidgetView()),
+    GoRoute(path: RoutePaths.animatedPositioned, builder: (context, state) => AnimatedPositionedWidgetView()),
+    GoRoute(path: RoutePaths.animatedSize, builder: (context, state) => AnimatedSizeWidgetView()),
+    GoRoute(path: RoutePaths.animatedWidget, builder: (context, state) => AnimatedWidgetWidgetView()),
+    GoRoute(path: RoutePaths.animatedWidgetBaseState, builder: (context, state) => AnimatedWidgetBaseStateWidgetView()),
+    GoRoute(path: RoutePaths.decoratedBoxTransition, builder: (context, state) => DecoratedBoxTransitionWidgetView()),
+    GoRoute(path: RoutePaths.fadeTransition, builder: (context, state) => FadeTransitionWidgetView()),
+    GoRoute(path: RoutePaths.hero, builder: (context, state) => HeroWidgetView()),
+    GoRoute(path: RoutePaths.positionedTransition, builder: (context, state) => PositionedTransitionWidgetView()),
+    GoRoute(path: RoutePaths.rotationTransition, builder: (context, state) => RotationTransitionWidgetView()),
+    GoRoute(path: RoutePaths.scaleTransition, builder: (context, state) => ScaleTransitionWidgetView()),
+    GoRoute(path: RoutePaths.sizeTransition, builder: (context, state) => SizeTransitionWidgetView()),
+    GoRoute(path: RoutePaths.slideTransition, builder: (context, state) => SlideTransitionWidgetView()),
 
-      // widget catalog input widgets
-      case RoutePaths.autocomplete:
-        return MaterialPageRoute(
-          builder: (_) => AutoCompleteWidgetView(),
-        );
-      case RoutePaths.form:
-        return MaterialPageRoute(
-          builder: (_) => FormView(),
-        );
-      case RoutePaths.formField:
-        return MaterialPageRoute(
-          builder: (_) => FormFieldWidgetView(),
-        );
-      case RoutePaths.rawKeyboardListener:
-        return MaterialPageRoute(
-          builder: (_) => RawKeyboardListenerWidgetView(),
-        );
+    // ─── Widget Catalog — Assets ──────────────────────────────────────────────
+    GoRoute(path: RoutePaths.assetBundle, builder: (context, state) => AssetBundleWidgetView()),
+    GoRoute(path: RoutePaths.icon, builder: (context, state) => IconWidgetView()),
+    GoRoute(path: RoutePaths.image, builder: (context, state) => ImageWidgetView()),
+    GoRoute(path: RoutePaths.rawImage, builder: (context, state) => RawImageWidgetView()),
 
-      // widget catalog interactive widgets
-      case RoutePaths.absorbPointer:
-        return MaterialPageRoute(
-          builder: (_) => AbsorbPointerWidgetView(),
-        );
-      case RoutePaths.dismissible:
-        return MaterialPageRoute(
-          builder: (_) => DismissibleWidgetView(),
-        );
-      case RoutePaths.dragTarget:
-        return MaterialPageRoute(
-          builder: (_) => DragTargetWidgetView(),
-        );
-      case RoutePaths.draggable:
-        return MaterialPageRoute(
-          builder: (_) => DraggableWidgetView(),
-        );
-      case RoutePaths.draggableScrollableSheet:
-        return MaterialPageRoute(
-          builder: (_) => DraggableScrollableSheetWidgetView(),
-        );
-      case RoutePaths.gestureDetector:
-        return MaterialPageRoute(
-          builder: (_) => GestureDetectorWidgetView(),
-        );
-      case RoutePaths.ignorePointer:
-        return MaterialPageRoute(
-          builder: (_) => IgnorePointerWidgetView(),
-        );
-      case RoutePaths.interactiveViewer:
-        return MaterialPageRoute(
-          builder: (_) => InteractiveViewerWidgetView(),
-        );
-      case RoutePaths.longPressDraggable:
-        return MaterialPageRoute(
-          builder: (_) => LongPressDraggableWidgetView(),
-        );
-      case RoutePaths.scrollable:
-        return MaterialPageRoute(
-          builder: (_) => ScrollableWidgetView(),
-        );
+    // ─── Widget Catalog — Async ───────────────────────────────────────────────
+    GoRoute(path: RoutePaths.futureBuilder, builder: (context, state) => FutureBuilderWidgetView()),
+    GoRoute(path: RoutePaths.streamBuilder, builder: (context, state) => StreamBuilderWidgetView()),
 
-      // widget catalog layout widgets
-      case RoutePaths.align:
-        return MaterialPageRoute(
-          builder: (_) => AlignWidgetView(),
-        );
-      case RoutePaths.aspectRatio:
-        return MaterialPageRoute(
-          builder: (_) => AspectRatioWidgetView(),
-        );
-      case RoutePaths.baseline:
-        return MaterialPageRoute(
-          builder: (_) => BaselineWidgetView(),
-        );
-      case RoutePaths.center:
-        return MaterialPageRoute(
-          builder: (_) => CenterWidgetView(),
-        );
-      case RoutePaths.constrainedBox:
-        return MaterialPageRoute(
-          builder: (_) => ConstrainedBoxWidgetView(),
-        );
-      case RoutePaths.container:
-        return MaterialPageRoute(
-          builder: (_) => ContainerWidgetView(),
-        );
-      case RoutePaths.customSingleChildLayout:
-        return MaterialPageRoute(
-          builder: (_) => CustomSingleChildLayoutWidgetView(),
-        );
-      case RoutePaths.expanded:
-        return MaterialPageRoute(
-          builder: (_) => ExpandedWidgetView(),
-        );
-      case RoutePaths.fittedBox:
-        return MaterialPageRoute(
-          builder: (_) => FittedBoxWidgetView(),
-        );
-      case RoutePaths.fractionallySizedBox:
-        return MaterialPageRoute(
-          builder: (_) => FractionallySizedBoxWidgetView(),
-        );
-      case RoutePaths.intrinsicHeight:
-        return MaterialPageRoute(
-          builder: (_) => IntrinsicHeightWidgetView(),
-        );
-      case RoutePaths.intrinsicWidth:
-        return MaterialPageRoute(
-          builder: (_) => IntrinsicWidthWidgetView(),
-        );
-      case RoutePaths.limitedBox:
-        return MaterialPageRoute(
-          builder: (_) => LimitedBoxWidgetView(),
-        );
-      case RoutePaths.offStage:
-        return MaterialPageRoute(
-          builder: (_) => OffStageWidgetView(),
-        );
-      case RoutePaths.overflowBox:
-        return MaterialPageRoute(
-          builder: (_) => OverFlowBoxWidgetView(),
-        );
-      case RoutePaths.padding:
-        return MaterialPageRoute(
-          builder: (_) => PaddingWidgetView(),
-        );
-      case RoutePaths.sizedBox:
-        return MaterialPageRoute(
-          builder: (_) => SizedBoxWidgetView(),
-        );
-      case RoutePaths.sizedOverflowBox:
-        return MaterialPageRoute(
-          builder: (_) => SizedOverflowBoxWidgetView(),
-        );
-      case RoutePaths.transform:
-        return MaterialPageRoute(
-          builder: (_) => TransformWidgetView(),
-        );
-      case RoutePaths.column:
-        return MaterialPageRoute(
-          builder: (_) => ColumnWidgetView(),
-        );
-      case RoutePaths.customMultiChildLayout:
-        return MaterialPageRoute(
-          builder: (_) => CustomMultiChildLayoutWidgetView(),
-        );
-      case RoutePaths.flow:
-        return MaterialPageRoute(
-          builder: (_) => FlowWidgetView(),
-        );
-      case RoutePaths.gridView:
-        return MaterialPageRoute(
-          builder: (_) => GridViewWidgetView(),
-        );
-      case RoutePaths.indexedStack:
-        return MaterialPageRoute(
-          builder: (_) => IndexedStackWidgetView(),
-        );
-      case RoutePaths.layoutBuilder:
-        return MaterialPageRoute(
-          builder: (_) => LayoutBuilderWidgetView(),
-        );
-      case RoutePaths.listBody:
-        return MaterialPageRoute(
-          builder: (_) => ListBodyWidgetView(),
-        );
-      case RoutePaths.listView:
-        return MaterialPageRoute(
-          builder: (_) => ListViewWidgetView(),
-        );
-      case RoutePaths.row:
-        return MaterialPageRoute(
-          builder: (_) => RowWidgetView(),
-        );
-      case RoutePaths.stack:
-        return MaterialPageRoute(
-          builder: (_) => StackWidgetView(),
-        );
-      case RoutePaths.table:
-        return MaterialPageRoute(
-          builder: (_) => TableWidgetView(),
-        );
-      case RoutePaths.wrap:
-        return MaterialPageRoute(
-          builder: (_) => WrapWidgetView(),
-        );
-      case RoutePaths.customScrollView:
-        return MaterialPageRoute(
-          builder: (_) => CustomScrollViewWidgetView(),
-        );
-      case RoutePaths.sliverAppBar:
-        return MaterialPageRoute(
-          builder: (_) => SliverAppBarWidgetView(),
-        );
-      case RoutePaths.sliverChildBuilderDelegate:
-        return MaterialPageRoute(
-          builder: (_) => SliverChildBuilderDelegateWidgetView(),
-        );
-      case RoutePaths.sliverChildListDelegate:
-        return MaterialPageRoute(
-          builder: (_) => SliverChildListDelegateWidgetView(),
-        );
-      case RoutePaths.sliverFixedExtentList:
-        return MaterialPageRoute(
-          builder: (_) => SliverFixedExtentListWidgetView(),
-        );
-      case RoutePaths.sliverGrid:
-        return MaterialPageRoute(
-          builder: (_) => SliverGridWidgetView(),
-        );
-      case RoutePaths.sliverList:
-        return MaterialPageRoute(
-          builder: (_) => SliverListWidgetView(),
-        );
-      case RoutePaths.sliverPadding:
-        return MaterialPageRoute(
-          builder: (_) => SliverPaddingWidgetView(),
-        );
-      case RoutePaths.sliverPersistentHeader:
-        return MaterialPageRoute(
-          builder: (_) => SliverPersistentHeaderWidgetView(),
-        );
-      case RoutePaths.sliverToBoxAdaptor:
-        return MaterialPageRoute(
-          builder: (_) => SliverToBoxAdaptorWidgetView(),
-        );
+    // ─── Widget Catalog — Cupertino ───────────────────────────────────────────
+    GoRoute(path: RoutePaths.cupertinoActionSheet, builder: (context, state) => CupertinoActionSheetWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoActivityIndicator, builder: (context, state) => CupertinoActivityIndicatorWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoAlertDialog, builder: (context, state) => CupertinoAlertDialogWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoButton, builder: (context, state) => CupertinoButtonWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoContextMenu, builder: (context, state) => CupertinoContextMenuWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoDatePicker, builder: (context, state) => CupertinoDatePickerWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoDialog, builder: (context, state) => CupertinoDialogWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoDialogAction, builder: (context, state) => CupertinoDialogActionWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoFullScreenDialogTransition, builder: (context, state) => CupertinoFullScreenDialogTransitionWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoNavigationBar, builder: (context, state) => CupertinoNavigationBarWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoScaffold, builder: (context, state) => CupertinoScaffoldWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoPageTransition, builder: (context, state) => CupertinoPageTransitionWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoPicker, builder: (context, state) => CupertinoPickerWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoPopupSurface, builder: (context, state) => CupertinoPopupSurfaceWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoScrollbar, builder: (context, state) => CupertinoScrollbarWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoSearchField, builder: (context, state) => CupertinoSearchFieldWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoSegmentedControl, builder: (context, state) => CupertinoSegmentedControlWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoSlider, builder: (context, state) => CupertinoSliderWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoSlidingSegmentedControl, builder: (context, state) => CupertinoSlidingSegmentedControlWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoSliverNavigationBar, builder: (context, state) => CupertinoSliverNavigationBarWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoSwitch, builder: (context, state) => CupertinoSwitchWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoTabBar, builder: (context, state) => CupertinoTabBarWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoTabScaffold, builder: (context, state) => CupertinoTabScaffoldWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoTabView, builder: (context, state) => CupertinoTabViewWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoTextField, builder: (context, state) => CupertinoTextFieldWidgetView()),
+    GoRoute(path: RoutePaths.cupertinoTimePicker, builder: (context, state) => CupertinoTimePickerWidgetView()),
 
-      // widget catalog material widgets
-      case RoutePaths.appBar:
-        return MaterialPageRoute(
-          builder: (_) => AppBarWidgetView(),
-        );
-      case RoutePaths.bottomNavigationBar:
-        return MaterialPageRoute(
-          builder: (_) => BottomNavigationBarWidgetView(),
-        );
-      case RoutePaths.drawer:
-        return MaterialPageRoute(
-          builder: (_) => DrawerWidgetView(),
-        );
-      case RoutePaths.materialApp:
-        return MaterialPageRoute(
-          builder: (_) => MaterialAppWidgetView(),
-        );
-      case RoutePaths.scaffold:
-        return MaterialPageRoute(
-          builder: (_) => ScaffoldWidgetView(),
-        );
-      case RoutePaths.tabBar:
-        return MaterialPageRoute(
-          builder: (_) => TabBarWidgetView(),
-        );
-      case RoutePaths.tabBarView:
-        return MaterialPageRoute(
-          builder: (_) => TabBarViewWidgetView(),
-        );
-      case RoutePaths.tabPageSelector:
-        return MaterialPageRoute(
-          builder: (_) => TabPageSelectorWidgetView(),
-        );
-      case RoutePaths.widgetsApp:
-        return MaterialPageRoute(
-          builder: (_) => WidgetsAppWidgetView(),
-        );
-      case RoutePaths.dropdownButton:
-        return MaterialPageRoute(
-          builder: (_) => DropdownButtonWidgetView(),
-        );
-      case RoutePaths.elevatedButton:
-        return MaterialPageRoute(
-          builder: (_) => ElevatedButtonWidgetView(),
-        );
-      case RoutePaths.floatingActionButton:
-        return MaterialPageRoute(
-          builder: (_) => FloatingActionButtonWidgetView(),
-        );
-      case RoutePaths.iconButton:
-        return MaterialPageRoute(
-          builder: (_) => IconButtonWidgetView(),
-        );
-      case RoutePaths.outlineButton:
-        return MaterialPageRoute(
-          builder: (_) => OutlinedButtonWidgetView(),
-        );
-      case RoutePaths.popupMenuButton:
-        return MaterialPageRoute(
-          builder: (_) => PopupMenuButtonWidgetView(),
-        );
-      case RoutePaths.textButton:
-        return MaterialPageRoute(
-          builder: (_) => TextButtonWidgetView(),
-        );
-      case RoutePaths.checkBox:
-        return MaterialPageRoute(
-          builder: (_) => CheckboxWidgetView(),
-        );
-      case RoutePaths.showDatePicker:
-        return MaterialPageRoute(
-          builder: (_) => ShowDatePickerWidgetView(),
-        );
-      case RoutePaths.radio:
-        return MaterialPageRoute(
-          builder: (_) => RadioWidgetView(),
-        );
-      case RoutePaths.slider:
-        return MaterialPageRoute(
-          builder: (_) => SliderWidgetView(),
-        );
-      case RoutePaths.switchMaterial:
-        return MaterialPageRoute(
-          builder: (_) => SwitchWidgetView(),
-        );
-      case RoutePaths.textField:
-        return MaterialPageRoute(
-          builder: (_) => TextFieldWidgetView(),
-        );
-      case RoutePaths.alertDialog:
-        return MaterialPageRoute(
-          builder: (_) => AlertDialogWidgetView(),
-        );
-      case RoutePaths.bottomSheet:
-        return MaterialPageRoute(
-          builder: (_) => BottomSheetWidgetView(),
-        );
-      case RoutePaths.expansionPanel:
-        return MaterialPageRoute(
-          builder: (_) => ExpansionPanelWidgetView(),
-        );
-      case RoutePaths.simpleDialog:
-        return MaterialPageRoute(
-          builder: (_) => SimpleDialogWidgetView(),
-        );
-      case RoutePaths.snackBar:
-        return MaterialPageRoute(
-          builder: (_) => SnackBarWidgetView(),
-        );
-      case RoutePaths.card:
-        return MaterialPageRoute(
-          builder: (_) => CardWidgetView(),
-        );
-      case RoutePaths.chip:
-        return MaterialPageRoute(
-          builder: (_) => ChipWidgetView(),
-        );
-      case RoutePaths.circularProgressIndicator:
-        return MaterialPageRoute(
-          builder: (_) => CircularProgressIndicatorWidgetView(),
-        );
-      case RoutePaths.dataTable:
-        return MaterialPageRoute(
-          builder: (_) => DataTableWidgetView(),
-        );
-      case RoutePaths.gridViewMaterial:
-        return MaterialPageRoute(
-          builder: (_) => GridViewWidgetView(),
-        );
-      case RoutePaths.icon:
-        return MaterialPageRoute(
-          builder: (_) => IconWidgetView(),
-        );
-      case RoutePaths.linearProgressIndicator:
-        return MaterialPageRoute(
-          builder: (_) => LinearProgressIndicatorWidgetView(),
-        );
-      case RoutePaths.tooltip:
-        return MaterialPageRoute(
-          builder: (_) => TooltipWidgetView(),
-        );
-      case RoutePaths.divider:
-        return MaterialPageRoute(
-          builder: (_) => DividerWidgetView(),
-        );
-      case RoutePaths.listTile:
-        return MaterialPageRoute(
-          builder: (_) => ListTileWidgetView(),
-        );
-      case RoutePaths.stepper:
-        return MaterialPageRoute(
-          builder: (_) => StepperWidgetView(),
-        );
+    // ─── Widget Catalog — Input ───────────────────────────────────────────────
+    GoRoute(path: RoutePaths.autocomplete, builder: (context, state) => AutoCompleteWidgetView()),
+    GoRoute(path: RoutePaths.formField, builder: (context, state) => FormFieldWidgetView()),
+    GoRoute(path: RoutePaths.rawKeyboardListener, builder: (context, state) => RawKeyboardListenerWidgetView()),
 
-      // widget catalog painting and effects widgets
-      case RoutePaths.backDropFilter:
-        return MaterialPageRoute(
-          builder: (_) => BackdropFilterWidgetView(),
-        );
-      case RoutePaths.clipOval:
-        return MaterialPageRoute(
-          builder: (_) => ClipOvalWidgetView(),
-        );
-      case RoutePaths.clipPath:
-        return MaterialPageRoute(
-          builder: (_) => ClipPathWidgetView(),
-        );
-      case RoutePaths.clipRRect:
-        return MaterialPageRoute(
-          builder: (_) => ClipRectWidgetView(),
-        );
-      case RoutePaths.customPaint:
-        return MaterialPageRoute(
-          builder: (_) => CustomPaintWidgetView(),
-        );
-      case RoutePaths.decoratedBox:
-        return MaterialPageRoute(
-          builder: (_) => DecoratedBoxWidgetView(),
-        );
-      case RoutePaths.fractionalTranslation:
-        return MaterialPageRoute(
-          builder: (_) => FractionalTranslationWidgetView(),
-        );
-      case RoutePaths.opacity:
-        return MaterialPageRoute(
-          builder: (_) => OpacityWidgetView(),
-        );
-      case RoutePaths.rotatedBox:
-        return MaterialPageRoute(
-          builder: (_) => RotatedBoxWidgetView(),
-        );
-      case RoutePaths.transform:
-        return MaterialPageRoute(
-          builder: (_) => TransformWidgetView(),
-        );
+    // ─── Widget Catalog — Interactive ─────────────────────────────────────────
+    GoRoute(path: RoutePaths.absorbPointer, builder: (context, state) => AbsorbPointerWidgetView()),
+    GoRoute(path: RoutePaths.dismissible, builder: (context, state) => DismissibleWidgetView()),
+    GoRoute(path: RoutePaths.dragTarget, builder: (context, state) => DragTargetWidgetView()),
+    GoRoute(path: RoutePaths.draggable, builder: (context, state) => DraggableWidgetView()),
+    GoRoute(path: RoutePaths.draggableScrollableSheet, builder: (context, state) => DraggableScrollableSheetWidgetView()),
+    GoRoute(path: RoutePaths.gestureDetector, builder: (context, state) => GestureDetectorWidgetView()),
+    GoRoute(path: RoutePaths.ignorePointer, builder: (context, state) => IgnorePointerWidgetView()),
+    GoRoute(path: RoutePaths.interactiveViewer, builder: (context, state) => InteractiveViewerWidgetView()),
+    GoRoute(path: RoutePaths.longPressDraggable, builder: (context, state) => LongPressDraggableWidgetView()),
+    GoRoute(path: RoutePaths.scrollable, builder: (context, state) => ScrollableWidgetView()),
 
-      // widget catalog scrolling widgets
-      case RoutePaths.nestedScrollView:
-        return MaterialPageRoute(
-          builder: (_) => NestedScrollViewWidgetView(),
-        );
-      case RoutePaths.notificationListener:
-        return MaterialPageRoute(
-          builder: (_) => NotificationListenerWidgetView(),
-        );
-      case RoutePaths.pageView:
-        return MaterialPageRoute(
-          builder: (_) => PageViewWidgetView(),
-        );
-      case RoutePaths.refreshIndicator:
-        return MaterialPageRoute(
-          builder: (_) => RefreshIndicatorWidgetView(),
-        );
-      case RoutePaths.reorderableListView:
-        return MaterialPageRoute(
-          builder: (_) => ReorderableListViewWidgetView(),
-        );
-      case RoutePaths.scrollConfiguration:
-        return MaterialPageRoute(
-          builder: (_) => ScrollConfigurationWidgetView(),
-        );
-      case RoutePaths.scrollable:
-        return MaterialPageRoute(
-          builder: (_) => ScrollableWidgetView(),
-        );
-      case RoutePaths.scrollbar:
-        return MaterialPageRoute(
-          builder: (_) => ScrollbarWidgetView(),
-        );
-      case RoutePaths.singleChildScrollView:
-        return MaterialPageRoute(
-          builder: (_) => SingleChildScrollViewWidgetView(),
-        );
+    // ─── Widget Catalog — Layout ──────────────────────────────────────────────
+    GoRoute(path: RoutePaths.align, builder: (context, state) => AlignWidgetView()),
+    GoRoute(path: RoutePaths.aspectRatio, builder: (context, state) => AspectRatioWidgetView()),
+    GoRoute(path: RoutePaths.baseline, builder: (context, state) => BaselineWidgetView()),
+    GoRoute(path: RoutePaths.center, builder: (context, state) => CenterWidgetView()),
+    GoRoute(path: RoutePaths.constrainedBox, builder: (context, state) => ConstrainedBoxWidgetView()),
+    GoRoute(path: RoutePaths.container, builder: (context, state) => ContainerWidgetView()),
+    GoRoute(path: RoutePaths.customSingleChildLayout, builder: (context, state) => CustomSingleChildLayoutWidgetView()),
+    GoRoute(path: RoutePaths.expanded, builder: (context, state) => ExpandedWidgetView()),
+    GoRoute(path: RoutePaths.fittedBox, builder: (context, state) => FittedBoxWidgetView()),
+    GoRoute(path: RoutePaths.fractionallySizedBox, builder: (context, state) => FractionallySizedBoxWidgetView()),
+    GoRoute(path: RoutePaths.intrinsicHeight, builder: (context, state) => IntrinsicHeightWidgetView()),
+    GoRoute(path: RoutePaths.intrinsicWidth, builder: (context, state) => IntrinsicWidthWidgetView()),
+    GoRoute(path: RoutePaths.limitedBox, builder: (context, state) => LimitedBoxWidgetView()),
+    GoRoute(path: RoutePaths.offStage, builder: (context, state) => OffStageWidgetView()),
+    GoRoute(path: RoutePaths.overflowBox, builder: (context, state) => OverFlowBoxWidgetView()),
+    GoRoute(path: RoutePaths.padding, builder: (context, state) => PaddingWidgetView()),
+    GoRoute(path: RoutePaths.sizedBox, builder: (context, state) => SizedBoxWidgetView()),
+    GoRoute(path: RoutePaths.sizedOverflowBox, builder: (context, state) => SizedOverflowBoxWidgetView()),
+    GoRoute(path: RoutePaths.transform, builder: (context, state) => TransformWidgetView()),
+    GoRoute(path: RoutePaths.column, builder: (context, state) => ColumnWidgetView()),
+    GoRoute(path: RoutePaths.customMultiChildLayout, builder: (context, state) => CustomMultiChildLayoutWidgetView()),
+    GoRoute(path: RoutePaths.flow, builder: (context, state) => FlowWidgetView()),
+    GoRoute(path: RoutePaths.gridView, builder: (context, state) => GridViewWidgetView()),
+    GoRoute(path: RoutePaths.indexedStack, builder: (context, state) => IndexedStackWidgetView()),
+    GoRoute(path: RoutePaths.layoutBuilder, builder: (context, state) => LayoutBuilderWidgetView()),
+    GoRoute(path: RoutePaths.listBody, builder: (context, state) => ListBodyWidgetView()),
+    GoRoute(path: RoutePaths.listView, builder: (context, state) => ListViewWidgetView()),
+    GoRoute(path: RoutePaths.row, builder: (context, state) => RowWidgetView()),
+    GoRoute(path: RoutePaths.stack, builder: (context, state) => StackWidgetView()),
+    GoRoute(path: RoutePaths.table, builder: (context, state) => TableWidgetView()),
+    GoRoute(path: RoutePaths.wrap, builder: (context, state) => WrapWidgetView()),
+    GoRoute(path: RoutePaths.customScrollView, builder: (context, state) => CustomScrollViewWidgetView()),
+    GoRoute(path: RoutePaths.sliverAppBar, builder: (context, state) => SliverAppBarWidgetView()),
+    GoRoute(path: RoutePaths.sliverChildBuilderDelegate, builder: (context, state) => SliverChildBuilderDelegateWidgetView()),
+    GoRoute(path: RoutePaths.sliverChildListDelegate, builder: (context, state) => SliverChildListDelegateWidgetView()),
+    GoRoute(path: RoutePaths.sliverFixedExtentList, builder: (context, state) => SliverFixedExtentListWidgetView()),
+    GoRoute(path: RoutePaths.sliverGrid, builder: (context, state) => SliverGridWidgetView()),
+    GoRoute(path: RoutePaths.sliverList, builder: (context, state) => SliverListWidgetView()),
+    GoRoute(path: RoutePaths.sliverPadding, builder: (context, state) => SliverPaddingWidgetView()),
+    GoRoute(path: RoutePaths.sliverPersistentHeader, builder: (context, state) => SliverPersistentHeaderWidgetView()),
+    GoRoute(path: RoutePaths.sliverToBoxAdaptor, builder: (context, state) => SliverToBoxAdaptorWidgetView()),
 
-      // widget catalog styling widgets
+    // ─── Widget Catalog — Material ────────────────────────────────────────────
+    GoRoute(path: RoutePaths.appBar, builder: (context, state) => AppBarWidgetView()),
+    GoRoute(path: RoutePaths.bottomNavigationBar, builder: (context, state) => BottomNavigationBarWidgetView()),
+    GoRoute(path: RoutePaths.drawer, builder: (context, state) => DrawerWidgetView()),
+    GoRoute(path: RoutePaths.materialApp, builder: (context, state) => MaterialAppWidgetView()),
+    GoRoute(path: RoutePaths.scaffold, builder: (context, state) => ScaffoldWidgetView()),
+    GoRoute(path: RoutePaths.tabBar, builder: (context, state) => TabBarWidgetView()),
+    GoRoute(path: RoutePaths.tabBarView, builder: (context, state) => TabBarViewWidgetView()),
+    GoRoute(path: RoutePaths.tabPageSelector, builder: (context, state) => TabPageSelectorWidgetView()),
+    GoRoute(path: RoutePaths.widgetsApp, builder: (context, state) => WidgetsAppWidgetView()),
+    GoRoute(path: RoutePaths.dropdownButton, builder: (context, state) => DropdownButtonWidgetView()),
+    GoRoute(path: RoutePaths.elevatedButton, builder: (context, state) => ElevatedButtonWidgetView()),
+    GoRoute(path: RoutePaths.floatingActionButton, builder: (context, state) => FloatingActionButtonWidgetView()),
+    GoRoute(path: RoutePaths.iconButton, builder: (context, state) => IconButtonWidgetView()),
+    GoRoute(path: RoutePaths.outlineButton, builder: (context, state) => OutlinedButtonWidgetView()),
+    GoRoute(path: RoutePaths.popupMenuButton, builder: (context, state) => PopupMenuButtonWidgetView()),
+    GoRoute(path: RoutePaths.textButton, builder: (context, state) => TextButtonWidgetView()),
+    GoRoute(path: RoutePaths.checkBox, builder: (context, state) => CheckboxWidgetView()),
+    GoRoute(path: RoutePaths.showDatePicker, builder: (context, state) => ShowDatePickerWidgetView()),
+    GoRoute(path: RoutePaths.radio, builder: (context, state) => RadioWidgetView()),
+    GoRoute(path: RoutePaths.slider, builder: (context, state) => SliderWidgetView()),
+    GoRoute(path: RoutePaths.switchMaterial, builder: (context, state) => SwitchWidgetView()),
+    GoRoute(path: RoutePaths.textField, builder: (context, state) => TextFieldWidgetView()),
+    GoRoute(path: RoutePaths.alertDialog, builder: (context, state) => AlertDialogWidgetView()),
+    GoRoute(path: RoutePaths.bottomSheet, builder: (context, state) => BottomSheetWidgetView()),
+    GoRoute(path: RoutePaths.expansionPanel, builder: (context, state) => ExpansionPanelWidgetView()),
+    GoRoute(path: RoutePaths.simpleDialog, builder: (context, state) => SimpleDialogWidgetView()),
+    GoRoute(path: RoutePaths.snackBar, builder: (context, state) => SnackBarWidgetView()),
+    GoRoute(path: RoutePaths.card, builder: (context, state) => CardWidgetView()),
+    GoRoute(path: RoutePaths.chip, builder: (context, state) => ChipWidgetView()),
+    GoRoute(path: RoutePaths.circularProgressIndicator, builder: (context, state) => CircularProgressIndicatorWidgetView()),
+    GoRoute(path: RoutePaths.dataTable, builder: (context, state) => DataTableWidgetView()),
+    GoRoute(path: RoutePaths.gridViewMaterial, builder: (context, state) => GridViewWidgetView()),
+    GoRoute(path: RoutePaths.linearProgressIndicator, builder: (context, state) => LinearProgressIndicatorWidgetView()),
+    GoRoute(path: RoutePaths.tooltip, builder: (context, state) => TooltipWidgetView()),
+    GoRoute(path: RoutePaths.divider, builder: (context, state) => DividerWidgetView()),
+    GoRoute(path: RoutePaths.listTile, builder: (context, state) => ListTileWidgetView()),
+    GoRoute(path: RoutePaths.stepper, builder: (context, state) => StepperWidgetView()),
 
-      // widget catalog text widgets
-      case RoutePaths.defaultTextStyle:
-        return MaterialPageRoute(
-          builder: (_) => DefaultTextStyleWidgetView(),
-        );
-      case RoutePaths.richText:
-        return MaterialPageRoute(
-          builder: (_) => RichTextWidgetView(),
-        );
-      case RoutePaths.text:
-        return MaterialPageRoute(
-          builder: (_) => TextWidgetView(),
-        );
+    // ─── Widget Catalog — Painting & Effects ──────────────────────────────────
+    GoRoute(path: RoutePaths.backDropFilter, builder: (context, state) => BackdropFilterWidgetView()),
+    GoRoute(path: RoutePaths.clipOval, builder: (context, state) => ClipOvalWidgetView()),
+    GoRoute(path: RoutePaths.clipPath, builder: (context, state) => ClipPathWidgetView()),
+    GoRoute(path: RoutePaths.clipRRect, builder: (context, state) => ClipRectWidgetView()),
+    GoRoute(path: RoutePaths.customPaint, builder: (context, state) => CustomPaintWidgetView()),
+    GoRoute(path: RoutePaths.decoratedBox, builder: (context, state) => DecoratedBoxWidgetView()),
+    GoRoute(path: RoutePaths.fractionalTranslation, builder: (context, state) => FractionalTranslationWidgetView()),
+    GoRoute(path: RoutePaths.opacity, builder: (context, state) => OpacityWidgetView()),
+    GoRoute(path: RoutePaths.rotatedBox, builder: (context, state) => RotatedBoxWidgetView()),
 
-      // ui manipulation category
-      case RoutePaths.layout:
-        return MaterialPageRoute(
-          builder: (_) => LayoutView(),
-        );
-      case RoutePaths.alignment:
-        return MaterialPageRoute(
-          builder: (_) => AlignmentView(),
-        );
-      case RoutePaths.interactiveBehavior:
-        return MaterialPageRoute(
-          builder: (_) => InteractiveBehaviorView(),
-        );
-      case RoutePaths.borders:
-        return MaterialPageRoute(
-          builder: (_) => BordersView(),
-        );
-      case RoutePaths.colorsBackgrounds:
-        return MaterialPageRoute(
-          builder: (_) => ColorsBackgroundsView(),
-        );
-      case RoutePaths.dimensionsConstraints:
-        return MaterialPageRoute(
-          builder: (_) => DimenionsContraintsView(),
-        );
-      case RoutePaths.effects:
-        return MaterialPageRoute(
-          builder: (_) => EffectsView(),
-        );
-      case RoutePaths.iconsImages:
-        return MaterialPageRoute(
-          builder: (_) => IconsImagesView(),
-        );
-      case RoutePaths.positioning:
-        return MaterialPageRoute(
-          builder: (_) => PositioningView(),
-        );
-      case RoutePaths.spacing:
-        return MaterialPageRoute(
-          builder: (_) => SpacingView(),
-        );
-      case RoutePaths.themeManipulation:
-        return MaterialPageRoute(
-          builder: (_) => ThemeView(),
-        );
-      case RoutePaths.visibility:
-        return MaterialPageRoute(
-          builder: (_) => VisibilityView(),
-        );
-      case RoutePaths.textManipulation:
-        return MaterialPageRoute(
-          builder: (_) => TextView(),
-        );
-      case RoutePaths.webAndApps:
-        return MaterialPageRoute(
-          builder: (_) => WebAndAppsView(),
-        );
-      case RoutePaths.media:
-        return MaterialPageRoute(
-          builder: (_) => MediaView(),
-        );
-      case RoutePaths.responsiveAdaptiveUi:
-        return MaterialPageRoute(
-          builder: (_) => ResponsiveAdaptiveLayoutView(),
-        );
+    // ─── Widget Catalog — Scrolling ───────────────────────────────────────────
+    GoRoute(path: RoutePaths.nestedScrollView, builder: (context, state) => NestedScrollViewWidgetView()),
+    GoRoute(path: RoutePaths.notificationListener, builder: (context, state) => NotificationListenerWidgetView()),
+    GoRoute(path: RoutePaths.pageView, builder: (context, state) => PageViewWidgetView()),
+    GoRoute(path: RoutePaths.refreshIndicator, builder: (context, state) => RefreshIndicatorWidgetView()),
+    GoRoute(path: RoutePaths.reorderableListView, builder: (context, state) => ReorderableListViewWidgetView()),
+    GoRoute(path: RoutePaths.scrollConfiguration, builder: (context, state) => ScrollConfigurationWidgetView()),
+    GoRoute(path: RoutePaths.scrollbar, builder: (context, state) => ScrollbarWidgetView()),
+    GoRoute(path: RoutePaths.singleChildScrollView, builder: (context, state) => SingleChildScrollViewWidgetView()),
 
-      // ui manipulation layout
-      case RoutePaths.pageLayout:
-        return MaterialPageRoute(
-          builder: (_) => PageLayoutView(),
-        );
-      case RoutePaths.basicLayout:
-        return MaterialPageRoute(
-          builder: (_) => BasicLayoutView(),
-        );
+    // ─── Widget Catalog — Text ────────────────────────────────────────────────
+    GoRoute(path: RoutePaths.defaultTextStyle, builder: (context, state) => DefaultTextStyleWidgetView()),
+    GoRoute(path: RoutePaths.richText, builder: (context, state) => RichTextWidgetView()),
+    GoRoute(path: RoutePaths.text, builder: (context, state) => TextWidgetView()),
 
-      // ui manipulation alignment
-
-      // ui manipulation interactive behavior
-      case RoutePaths.clickBehavior:
-        return MaterialPageRoute(
-          builder: (_) => ClickBehaviorView(),
-        );
-      case RoutePaths.hoverBehavior:
-        return MaterialPageRoute(
-          builder: (_) => HoverBehaviorView(),
-        );
-      case RoutePaths.focusBehavior:
-        return MaterialPageRoute(
-          builder: (_) => FocusBehaviorView(),
-        );
-
-      // ui manipulation colors and backgrounds
-      case RoutePaths.colors:
-        return MaterialPageRoute(
-          builder: (_) => ColorsView(),
-        );
-      case RoutePaths.backgrounds:
-        return MaterialPageRoute(
-          builder: (_) => BackgroundsView(),
-        );
-
-      // ui manipulation height and constraints
-      case RoutePaths.fixedDimensions:
-        return MaterialPageRoute(
-          builder: (_) => FixedDimensionsView(),
-        );
-      case RoutePaths.percentageDimensions:
-        return MaterialPageRoute(
-          builder: (_) => PercentageDimensionsView(),
-        );
-      case RoutePaths.fractionalDimensions:
-        return MaterialPageRoute(
-          builder: (_) => FractionalDimensionsView(),
-        );
-      case RoutePaths.constraints:
-        return MaterialPageRoute(
-          builder: (_) => ConstraintsView(),
-        );
-
-      // ui manipulation effects
-      case RoutePaths.shadows:
-        return MaterialPageRoute(
-          builder: (_) => ShadowsView(),
-        );
-      case RoutePaths.opacityEffect:
-        return MaterialPageRoute(
-          builder: (_) => OpacityView(),
-        );
-
-      // ui manipulation positioning
-
-      // ui manipulation spacing
-      case RoutePaths.paddingSpacing:
-        return MaterialPageRoute(
-          builder: (_) => PaddingSpacingView(),
-        );
-      case RoutePaths.marginSpacing:
-        return MaterialPageRoute(
-          builder: (_) => MarginSpacingView(),
-        );
-
-      // ui manipulation theme
-
-      // ui manipulation text
-
-      // ui manipulation visibility
-
-      // ui manipulation media
-      case RoutePaths.video:
-        return MaterialPageRoute(
-          builder: (_) => VideoView(),
-        );
-      case RoutePaths.audio:
-        return MaterialPageRoute(
-          builder: (_) => AudioView(),
-        );
-
-      // ui manipulation responsive adaptive ui
-      case RoutePaths.responsiveUi:
-        return MaterialPageRoute(
-          builder: (_) => ResponsiveLayoutView(),
-        );
-      case RoutePaths.adaptiveUi:
-        return MaterialPageRoute(
-          builder: (_) => AdaptiveLayoutView(),
-        );
-
-      // third party services
-      case RoutePaths.firebase:
-        return MaterialPageRoute(
-          builder: (_) => FirebaseView(),
-        );
-      case RoutePaths.firebaseAuth:
-        return MaterialPageRoute(
-          builder: (context) => MultiBlocProvider(
-            providers: [
-              BlocProvider<AuthBloc>(
-                create: (_) => locator<AuthBloc>(),
-              ),
-            ],
-            child: FirebaseAuthView(),
-          ),
-        );
-
-      // state management
-      case RoutePaths.state_management_basics:
-        return MaterialPageRoute(
-          builder: (_) => StateManagementBasicsView(),
-        );
-      case RoutePaths.providerStateManagement:
-        return MaterialPageRoute(
-          builder: (_) => ProviderStateManagementView(),
-        );
-      case RoutePaths.state_management_todos_example:
-        return MaterialPageRoute(
-          builder: (_) => TodosAppView(),
-        );
-      case RoutePaths.blocStateManagement:
-        return MaterialPageRoute(
-          builder: (_) => BlocStateManagementView(),
-        );
-      case RoutePaths.state_management_posts_example:
-        return MaterialPageRoute(
-          builder: (context) => MultiBlocProvider(
-            providers: [
-              BlocProvider<PostsBloc>(
-                create: (_) => locator<PostsBloc>()
-                  ..add(
-                    FetchPosts(),
-                  ),
-              ),
-            ],
-            child: PostsAppView(),
-          ),
-        );
-
-      // other basics
-      case RoutePaths.nativeBridging:
-        return MaterialPageRoute(
-          builder: (_) => NativeBridgingView(),
-        );
-      case RoutePaths.backgroundTask:
-        return MaterialPageRoute(
-          builder: (_) => BackgroundTaskView(),
-        );
-
-      default:
-        return MaterialPageRoute(
-          builder: (_) => PageNotFoundView(),
-        );
-    }
-  }
-}
+    // ─── UI Manipulation ─────────────────────────────────────────────────────
+    GoRoute(path: RoutePaths.layout, builder: (context, state) => LayoutView()),
+    GoRoute(path: RoutePaths.alignment, builder: (context, state) => AlignmentView()),
+    GoRoute(path: RoutePaths.interactiveBehavior, builder: (context, state) => InteractiveBehaviorView()),
+    GoRoute(path: RoutePaths.borders, builder: (context, state) => BordersView()),
+    GoRoute(path: RoutePaths.colorsBackgrounds, builder: (context, state) => ColorsBackgroundsView()),
+    GoRoute(path: RoutePaths.dimensionsConstraints, builder: (context, state) => DimenionsContraintsView()),
+    GoRoute(path: RoutePaths.effects, builder: (context, state) => EffectsView()),
+    GoRoute(path: RoutePaths.iconsImages, builder: (context, state) => IconsImagesView()),
+    GoRoute(path: RoutePaths.positioning, builder: (context, state) => PositioningView()),
+    GoRoute(path: RoutePaths.spacing, builder: (context, state) => SpacingView()),
+    GoRoute(path: RoutePaths.themeManipulation, builder: (context, state) => ThemeView()),
+    GoRoute(path: RoutePaths.textManipulation, builder: (context, state) => TextView()),
+    GoRoute(path: RoutePaths.visibility, builder: (context, state) => VisibilityView()),
+    GoRoute(path: RoutePaths.webAndApps, builder: (context, state) => WebAndAppsView()),
+    GoRoute(path: RoutePaths.media, builder: (context, state) => MediaView()),
+    GoRoute(path: RoutePaths.pageLayout, builder: (context, state) => PageLayoutView()),
+    GoRoute(path: RoutePaths.basicLayout, builder: (context, state) => BasicLayoutView()),
+    GoRoute(path: RoutePaths.clickBehavior, builder: (context, state) => ClickBehaviorView()),
+    GoRoute(path: RoutePaths.hoverBehavior, builder: (context, state) => HoverBehaviorView()),
+    GoRoute(path: RoutePaths.focusBehavior, builder: (context, state) => FocusBehaviorView()),
+    GoRoute(path: RoutePaths.colors, builder: (context, state) => ColorsView()),
+    GoRoute(path: RoutePaths.backgrounds, builder: (context, state) => BackgroundsView()),
+    GoRoute(path: RoutePaths.fixedDimensions, builder: (context, state) => FixedDimensionsView()),
+    GoRoute(path: RoutePaths.percentageDimensions, builder: (context, state) => PercentageDimensionsView()),
+    GoRoute(path: RoutePaths.fractionalDimensions, builder: (context, state) => FractionalDimensionsView()),
+    GoRoute(path: RoutePaths.constraints, builder: (context, state) => ConstraintsView()),
+    GoRoute(path: RoutePaths.shadows, builder: (context, state) => ShadowsView()),
+    GoRoute(path: RoutePaths.opacityEffect, builder: (context, state) => OpacityView()),
+    GoRoute(path: RoutePaths.paddingSpacing, builder: (context, state) => PaddingSpacingView()),
+    GoRoute(path: RoutePaths.marginSpacing, builder: (context, state) => MarginSpacingView()),
+    GoRoute(path: RoutePaths.video, builder: (context, state) => VideoView()),
+    GoRoute(path: RoutePaths.audio, builder: (context, state) => AudioView()),
+    GoRoute(path: RoutePaths.responsiveUi, builder: (context, state) => ResponsiveLayoutView()),
+    GoRoute(path: RoutePaths.adaptiveUi, builder: (context, state) => AdaptiveLayoutView()),
+  ],
+);

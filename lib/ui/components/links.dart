@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_developers_guide/domain/models/link.dart';
 import 'package:flutter_developers_guide/ui/design_system/shadows.dart';
 import 'package:flutter_developers_guide/ui/design_system/sizes.dart';
+import 'package:go_router/go_router.dart';
 
 class Links extends StatelessWidget {
   final List<Link> itemList;
@@ -19,9 +20,11 @@ class Links extends StatelessWidget {
         itemBuilder: (BuildContext ctxt, int index) {
           return InkWell(
             onTap: () {
-              Navigator.of(context).pushNamed(
+              context.push(
                 itemList[index].route,
-                arguments: {'appBarTitle': '${itemList[index].title}'},
+                extra: {
+                  'appBarTitle': itemList[index].title,
+                },
               );
             },
             child: Container(
@@ -54,13 +57,8 @@ class Links extends StatelessWidget {
                               margin: EdgeInsets.only(top: 8),
                               child: Text(
                                 itemList[index].description!,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge
-                                    ?.copyWith(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onPrimary,
+                                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                      color: Theme.of(context).colorScheme.onPrimary,
                                     ),
                               ),
                             )

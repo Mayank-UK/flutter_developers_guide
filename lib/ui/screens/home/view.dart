@@ -3,6 +3,7 @@ import 'package:flutter_developers_guide/domain/models/link.dart';
 import 'package:flutter_developers_guide/ui/navigation/routes.dart';
 import 'package:flutter_developers_guide/ui/components/links.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeView extends StatelessWidget {
   final List<Link> _itemList = [
@@ -109,13 +110,13 @@ class HomeView extends StatelessWidget {
                   ElevatedButton(
                     child: const Text('No'),
                     onPressed: () {
-                      Navigator.of(context).pop(false);
+                      context.pop(false);
                     },
                   ),
                   ElevatedButton(
                     child: const Text('Yes, exit'),
                     onPressed: () {
-                      Navigator.of(context).pop(true);
+                      context.pop(true);
                     },
                   ),
                 ],

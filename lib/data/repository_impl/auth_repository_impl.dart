@@ -1,3 +1,4 @@
+import 'package:flutter_developers_guide/core/analytics/analytics_service.dart';
 import 'package:flutter_developers_guide/core/error_handling/guards.dart';
 import 'package:flutter_developers_guide/core/result.dart';
 import 'package:flutter_developers_guide/data/remote/api_service.dart';
@@ -8,10 +9,12 @@ import 'package:logging/logging.dart';
 class AuthRepositoryImpl implements AuthRepository {
   final ApiService remoteDataSource;
   final Logger logger;
+  final AnalyticsService analytics;
 
   AuthRepositoryImpl({
     required this.remoteDataSource,
     required this.logger,
+    required this.analytics,
   });
 
   @override
@@ -26,6 +29,13 @@ class AuthRepositoryImpl implements AuthRepository {
             email: email,
             password: password,
           );
+
+          await analytics.setUserId(
+            dto.uid,
+          );
+
+          await analytics.logLogin();
+
           return dto.toAuthUser();
         },
         // Auth has no cache fallback — no onNetworkError / onServerError handlers.
@@ -44,6 +54,13 @@ class AuthRepositoryImpl implements AuthRepository {
             email: email,
             password: password,
           );
+
+          await analytics.setUserId(
+            dto.uid,
+          );
+
+          await analytics.logRegister();
+
           return dto.toAuthUser();
         },
       );
@@ -56,7 +73,13 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<void> signOut() {
+  Future<void> signOut() async {
+    await analytics.logLogout();
+
+    await analytics.setUserId(
+      null,
+    );
+
     return remoteDataSource.signOut();
   }
 }
