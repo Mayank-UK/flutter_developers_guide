@@ -2,10 +2,10 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_developers_guide/core/locator/locator.dart';
-import 'package:flutter_developers_guide/ui/blocs/auth/auth_bloc.dart';
-import 'package:flutter_developers_guide/ui/blocs/images/images_bloc.dart';
-import 'package:flutter_developers_guide/ui/blocs/posts/post_bloc.dart';
-import 'package:flutter_developers_guide/ui/blocs/todos/todos_bloc.dart';
+import 'package:flutter_developers_guide/ui/state_management/blocs/auth/auth_bloc.dart';
+import 'package:flutter_developers_guide/ui/state_management/blocs/images/images_bloc.dart';
+import 'package:flutter_developers_guide/ui/state_management/blocs/posts/post_bloc.dart';
+import 'package:flutter_developers_guide/ui/state_management/blocs/todos/todos_bloc.dart';
 import 'package:flutter_developers_guide/ui/screens/database_handling/view.dart';
 import 'package:flutter_developers_guide/ui/screens/dependency_management/view.dart';
 import 'package:flutter_developers_guide/ui/screens/exception_handling/view.dart';
@@ -15,6 +15,8 @@ import 'package:flutter_developers_guide/ui/screens/other_basics/sub_screens/nat
 import 'package:flutter_developers_guide/ui/screens/other_basics/view.dart';
 import 'package:flutter_developers_guide/ui/screens/state_management/sub_views/bloc_state_management/sub_screens/posts_app/view.dart';
 import 'package:flutter_developers_guide/ui/screens/state_management/sub_views/bloc_state_management/view.dart';
+import 'package:flutter_developers_guide/ui/screens/state_management/sub_views/riverpod_state_management/sub_views/todo_app/view.dart';
+import 'package:flutter_developers_guide/ui/screens/state_management/sub_views/riverpod_state_management/view.dart';
 import 'package:flutter_developers_guide/ui/screens/third_party_services/sub_views/firebase/sub_views/firebase_analytics/firebase_analytics.dart';
 import 'package:flutter_developers_guide/ui/screens/third_party_services/sub_views/firebase/sub_views/firebase_auth/view.dart';
 import 'package:flutter_developers_guide/ui/screens/third_party_services/sub_views/firebase/sub_views/firebase_firestore/view.dart';
@@ -459,6 +461,8 @@ final GoRouter appRouter = GoRouter(
     GoRoute(path: RoutePaths.state_management_basics, builder: (context, state) => StateManagementBasicsView()),
     GoRoute(path: RoutePaths.providerStateManagement, builder: (context, state) => ProviderStateManagementView()),
     GoRoute(path: RoutePaths.state_management_todos_example, builder: (context, state) => TodosAppView()),
+    GoRoute(path: RoutePaths.riverpodStateManagement, builder: (context, state) => RiverpodStateManagementView()),
+    GoRoute(path: RoutePaths.riverpod_state_management_todos_example, builder: (context, state) => RiverpodTodosScreen()),
     GoRoute(path: RoutePaths.blocStateManagement, builder: (context, state) => BlocStateManagementView()),
     GoRoute(
       path: RoutePaths.state_management_posts_example,

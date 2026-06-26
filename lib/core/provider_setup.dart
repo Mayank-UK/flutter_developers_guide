@@ -1,6 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-import '../ui/screens/state_management/sub_views/provider_state_management/sub_screens/todo_app/todos_provider.dart';
+import '../ui/state_management/providers/todo_provider.dart';
 
 // provider is only used to add provider state management example
 

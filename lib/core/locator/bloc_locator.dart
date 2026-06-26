@@ -11,10 +11,10 @@ import 'package:flutter_developers_guide/domain/usecases/todos/add_todo_use_case
 import 'package:flutter_developers_guide/domain/usecases/todos/delete_todo_use_case.dart';
 import 'package:flutter_developers_guide/domain/usecases/todos/toggle_todo_use_case.dart';
 import 'package:flutter_developers_guide/domain/usecases/todos/watch_todos_use_case.dart';
-import 'package:flutter_developers_guide/ui/blocs/auth/auth_bloc.dart';
-import 'package:flutter_developers_guide/ui/blocs/images/images_bloc.dart';
-import 'package:flutter_developers_guide/ui/blocs/posts/post_bloc.dart';
-import 'package:flutter_developers_guide/ui/blocs/todos/todos_bloc.dart';
+import 'package:flutter_developers_guide/ui/state_management/blocs/auth/auth_bloc.dart';
+import 'package:flutter_developers_guide/ui/state_management/blocs/images/images_bloc.dart';
+import 'package:flutter_developers_guide/ui/state_management/blocs/posts/post_bloc.dart';
+import 'package:flutter_developers_guide/ui/state_management/blocs/todos/todos_bloc.dart';
 
 void registerBlocs() {
   locator.registerFactory<PostsBloc>(

@@ -13,9 +13,12 @@ class StateManagementView extends StatelessWidget {
         route: RoutePaths.state_management_basics),
     Link(
         title: '"Provider" package for state management',
-        description:
-            'Basics of state management using provider (officially supported).',
+        description: 'Basics of state management using provider (officially supported).',
         route: RoutePaths.providerStateManagement),
+    Link(
+        title: '"Riverpod" package for state management',
+        description: 'Basics of state management using riverpod (enhanced version of provider).',
+        route: RoutePaths.riverpodStateManagement),
     Link(
         title: '"Bloc" package for state management',
         description: 'Basics of state management using bloc (widely used)',

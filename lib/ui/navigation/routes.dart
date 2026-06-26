@@ -7,7 +7,7 @@ class RoutePaths {
   static const String ui = '/ui';
   static const String widgetsCatalog = '/widgets-catalog';
   static const String navigationRouting = '/navigation-routing';
-  static const String stateManagement = '/state-manaNative device featuresgement';
+  static const String stateManagement = '/state-management';
   static const String nativeDeviceFeatures = '/native-device-features';
   static const String notification = '/notification';
   static const String widget = '/widget';
@@ -379,6 +379,8 @@ class RoutePaths {
   static const String state_management_basics = '/state-management/basics';
   static const String providerStateManagement = '/state-management/provider';
   static const String state_management_todos_example = '/state-management/todos-example';
+  static const String riverpodStateManagement = '/state-management/riverpod';
+  static const String riverpod_state_management_todos_example = '/state-management/riverpod-todos-example';
   static const String blocStateManagement = '/state-management/bloc';
   static const String state_management_posts_example = '/state-management/posts-example';
 

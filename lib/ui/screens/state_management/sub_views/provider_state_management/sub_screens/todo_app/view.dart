@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../../domain/models/task.dart';
-import 'todos_provider.dart';
+import '../../../../../../state_management/providers/todo_provider.dart';
 import '../../../../../../components/markdown_preview.dart';
 
 // exposing provider

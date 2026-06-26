@@ -8,6 +8,7 @@ import 'package:flutter_developers_guide/data/local/app_database.dart';
 import 'package:flutter_developers_guide/firebase_options.dart';
 import 'package:flutter_developers_guide/ui/design_system/theme.dart';
 import 'package:flutter_developers_guide/ui/navigation/router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 import 'package:timezone/data/latest.dart' as tz;
@@ -15,6 +16,7 @@ import 'package:timezone/data/latest.dart' as tz;
 class MyAPP extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // MultiProvider for all the providers
     return MultiProvider(
       providers: providers,
       child: MaterialApp.router(
@@ -62,5 +64,10 @@ Future<void> bootstrapApp({
     config: config,
   );
 
-  runApp(MyAPP());
+  runApp(
+    // ProviderScope for riverpod
+    ProviderScope(
+      child: MyAPP(),
+    ),
+  );
 }
