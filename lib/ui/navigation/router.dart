@@ -1,7 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_developers_guide/core/locator/locator.dart';
+import 'package:flutter_developers_guide/core/di/injection.dart';
 import 'package:flutter_developers_guide/ui/state_management/blocs/auth/auth_bloc.dart';
 import 'package:flutter_developers_guide/ui/state_management/blocs/images/images_bloc.dart';
 import 'package:flutter_developers_guide/ui/state_management/blocs/posts/post_bloc.dart';
@@ -339,7 +339,7 @@ import '../screens/state_management/sub_views/provider_state_management/sub_scre
 final GoRouter appRouter = GoRouter(
   initialLocation: RoutePaths.home,
   observers: [
-    locator<FirebaseAnalyticsObserver>(),
+    getIt<FirebaseAnalyticsObserver>(),
   ],
   errorBuilder: (context, state) => PageNotFoundView(),
   routes: [
@@ -437,21 +437,21 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: RoutePaths.firebaseAuth,
       builder: (context, state) => BlocProvider<AuthBloc>(
-        create: (_) => locator<AuthBloc>(),
+        create: (_) => getIt<AuthBloc>(),
         child: FirebaseAuthView(),
       ),
     ),
     GoRoute(
       path: RoutePaths.firebaseFirestore,
       builder: (context, state) => BlocProvider<TodosBloc>(
-        create: (_) => locator<TodosBloc>()..add(WatchTodos()),
+        create: (_) => getIt<TodosBloc>()..add(WatchTodos()),
         child: FirebaseFirestoreView(),
       ),
     ),
     GoRoute(
       path: RoutePaths.firebaseStorage,
       builder: (context, state) => BlocProvider<ImagesBloc>(
-        create: (_) => locator<ImagesBloc>()..add(WatchImages()),
+        create: (_) => getIt<ImagesBloc>()..add(WatchImages()),
         child: FirebaseStorageView(),
       ),
     ),
@@ -467,7 +467,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: RoutePaths.state_management_posts_example,
       builder: (context, state) => BlocProvider<PostsBloc>(
-        create: (_) => locator<PostsBloc>()..add(FetchPosts()),
+        create: (_) => getIt<PostsBloc>()..add(FetchPosts()),
         child: PostsAppView(),
       ),
     ),

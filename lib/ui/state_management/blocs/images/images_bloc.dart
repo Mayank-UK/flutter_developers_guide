@@ -8,6 +8,7 @@ import 'package:flutter_developers_guide/domain/models/image_item.dart';
 import 'package:flutter_developers_guide/domain/usecases/images/delete_image_use_case.dart';
 import 'package:flutter_developers_guide/domain/usecases/images/upload_image_use_case.dart';
 import 'package:flutter_developers_guide/domain/usecases/images/watch_images_use_case.dart';
+import 'package:injectable/injectable.dart';
 
 // Events
 sealed class ImagesEvent {}
@@ -57,6 +58,7 @@ class ImagesError extends ImagesState {
 }
 
 // BLoC
+@injectable
 class ImagesBloc extends Bloc<ImagesEvent, ImagesState> {
   final WatchImagesUseCase watchImagesUseCase;
   final UploadImageUseCase uploadImageUseCase;

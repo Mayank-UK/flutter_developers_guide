@@ -9,6 +9,7 @@ import 'package:flutter_developers_guide/domain/usecases/auth/auth_state_changes
 import 'package:flutter_developers_guide/domain/usecases/auth/register_use_case.dart';
 import 'package:flutter_developers_guide/domain/usecases/auth/sign_in_use_case.dart';
 import 'package:flutter_developers_guide/domain/usecases/auth/signout_use_case.dart';
+import 'package:injectable/injectable.dart';
 
 // ─────────────────────────────────────────────
 // Events
@@ -83,6 +84,7 @@ class AuthError extends AuthState {
 // BLoC
 // ─────────────────────────────────────────────
 
+@injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SignInUseCase signInUseCase;
   final RegisterUseCase registerUseCase;

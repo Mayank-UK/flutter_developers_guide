@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_developers_guide/core/config/app_config.dart';
 import 'package:flutter_developers_guide/core/config/logger_config.dart';
-import 'package:flutter_developers_guide/core/locator/locator.dart';
+import 'package:flutter_developers_guide/core/di/injection.dart';
 import 'package:flutter_developers_guide/core/provider_setup.dart';
 import 'package:flutter_developers_guide/data/local/app_database.dart';
 import 'package:flutter_developers_guide/firebase_options.dart';
@@ -59,7 +59,7 @@ Future<void> bootstrapApp({
 
   final db = await DatabaseProvider.database;
 
-  await setupLocator(
+  await initializeDependencies(
     database: db,
     config: config,
   );

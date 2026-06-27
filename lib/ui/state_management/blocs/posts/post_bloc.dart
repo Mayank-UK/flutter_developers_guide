@@ -4,6 +4,7 @@ import 'package:flutter_developers_guide/core/error_handling/failures.dart';
 import 'package:flutter_developers_guide/core/result.dart';
 import 'package:flutter_developers_guide/domain/models/post.dart';
 import 'package:flutter_developers_guide/domain/usecases/get_posts_use_case.dart';
+import 'package:injectable/injectable.dart';
 
 // Events
 sealed class PostsEvent {}
@@ -54,6 +55,7 @@ class PostsError extends PostsState {
 }
 
 // BLoC
+@injectable
 class PostsBloc extends Bloc<PostsEvent, PostsState> {
   // In clean architecture, every useCase is injected individually, so in future if there is requirement for remove pose use case, it will be injected separately
   final GetPostsUseCase getPostsUseCase;

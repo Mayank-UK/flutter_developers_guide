@@ -9,8 +9,10 @@ import 'package:flutter_developers_guide/core/result.dart';
 import 'package:flutter_developers_guide/data/remote/api_service.dart';
 import 'package:flutter_developers_guide/domain/models/image_item.dart';
 import 'package:flutter_developers_guide/domain/repository/image_repository.dart';
+import 'package:injectable/injectable.dart';
 import 'package:logging/logging.dart';
 
+@LazySingleton(as: ImageRepository)
 class ImageRepositoryImpl implements ImageRepository {
   final ApiService remoteDataSource;
   final Logger logger;

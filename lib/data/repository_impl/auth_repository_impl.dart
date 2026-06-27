@@ -4,8 +4,10 @@ import 'package:flutter_developers_guide/core/result.dart';
 import 'package:flutter_developers_guide/data/remote/api_service.dart';
 import 'package:flutter_developers_guide/domain/models/auth_user.dart';
 import 'package:flutter_developers_guide/domain/repository/auth_repository.dart';
+import 'package:injectable/injectable.dart';
 import 'package:logging/logging.dart';
 
+@LazySingleton(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
   final ApiService remoteDataSource;
   final Logger logger;

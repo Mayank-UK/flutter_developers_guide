@@ -8,8 +8,10 @@ import 'package:flutter_developers_guide/core/result.dart';
 import 'package:flutter_developers_guide/data/remote/api_service.dart';
 import 'package:flutter_developers_guide/domain/models/todo.dart';
 import 'package:flutter_developers_guide/domain/repository/todo_repository.dart';
+import 'package:injectable/injectable.dart';
 import 'package:logging/logging.dart';
 
+@LazySingleton(as: TodoRepository)
 class TodoRepositoryImpl implements TodoRepository {
   final ApiService remoteDataSource;
   final Logger logger;

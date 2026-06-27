@@ -6,8 +6,10 @@ import 'package:flutter_developers_guide/data/local/app_database.dart';
 import 'package:flutter_developers_guide/data/remote/api_service.dart';
 import 'package:flutter_developers_guide/domain/models/post.dart';
 import 'package:flutter_developers_guide/domain/repository/post_repository.dart';
+import 'package:injectable/injectable.dart';
 import 'package:logging/logging.dart';
 
+@LazySingleton(as: PostRepository)
 class PostRepositoryImpl implements PostRepository {
   final ApiService remoteDataSource;
   final AppDatabase localDataSource;

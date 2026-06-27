@@ -9,6 +9,7 @@ import 'package:flutter_developers_guide/domain/usecases/todos/add_todo_use_case
 import 'package:flutter_developers_guide/domain/usecases/todos/delete_todo_use_case.dart';
 import 'package:flutter_developers_guide/domain/usecases/todos/toggle_todo_use_case.dart';
 import 'package:flutter_developers_guide/domain/usecases/todos/watch_todos_use_case.dart';
+import 'package:injectable/injectable.dart';
 
 // Events
 sealed class TodosEvent {}
@@ -60,6 +61,7 @@ class TodosError extends TodosState {
 }
 
 // BLoC
+@injectable
 class TodosBloc extends Bloc<TodosEvent, TodosState> {
   final WatchTodosUseCase watchTodosUseCase;
   final AddTodoUseCase addTodoUseCase;
