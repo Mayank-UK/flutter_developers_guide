@@ -5,7 +5,7 @@ import 'package:logging/logging.dart';
 void configureLogging(AppConfig config) {
   /* 
     It simply allows loggers like:
-      Logger('ApiService')
+      Logger('RemoteDataSource')
       Logger('Repository')
       Logger('PostsBloc')
     to participate in the logging hierarchy

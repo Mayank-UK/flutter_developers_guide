@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_developers_guide/ui/blocs/auth/auth_bloc.dart';
@@ -6,7 +5,8 @@ import 'package:flutter_developers_guide/ui/components/code_preview_tabs.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 class FirebaseAuthView extends StatelessWidget {
-  final String _codeTabMarkdownLocation = 'assets/markdowns/third_party_services/firebase.md';
+  final String _codeTabMarkdownLocation =
+      'assets/markdowns/third_party_services/firebase.md';
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +24,12 @@ class FirebaseAuthView extends StatelessWidget {
 
 class _FirebaseAuthImplementation extends StatefulWidget {
   @override
-  State<_FirebaseAuthImplementation> createState() => _FirebaseAuthImplementationState();
+  State<_FirebaseAuthImplementation> createState() =>
+      _FirebaseAuthImplementationState();
 }
 
-class _FirebaseAuthImplementationState extends State<_FirebaseAuthImplementation> {
+class _FirebaseAuthImplementationState
+    extends State<_FirebaseAuthImplementation> {
   final _formKey = GlobalKey<FormState>();
 
   final _emailController = TextEditingController();
@@ -70,10 +72,6 @@ class _FirebaseAuthImplementationState extends State<_FirebaseAuthImplementation
             ),
           );
     }
-  }
-
-  Future<void> _logout() async {
-    await FirebaseAuth.instance.signOut();
   }
 
   @override
@@ -194,7 +192,9 @@ class _FirebaseAuthImplementationState extends State<_FirebaseAuthImplementation
                         });
                       },
                       icon: Icon(
-                        _obscurePassword ? Icons.visibility : Icons.visibility_off,
+                        _obscurePassword
+                            ? Icons.visibility
+                            : Icons.visibility_off,
                       ),
                     ),
                   ),

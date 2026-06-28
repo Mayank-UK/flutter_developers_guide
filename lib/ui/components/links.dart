@@ -57,8 +57,13 @@ class Links extends StatelessWidget {
                               margin: EdgeInsets.only(top: 8),
                               child: Text(
                                 itemList[index].description!,
-                                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                      color: Theme.of(context).colorScheme.onPrimary,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge
+                                    ?.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onPrimary,
                                     ),
                               ),
                             )

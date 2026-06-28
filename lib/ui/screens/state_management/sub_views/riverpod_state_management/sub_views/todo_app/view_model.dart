@@ -24,7 +24,10 @@ class RiverpodTodoViewModel extends AutoDisposeNotifier<List<Todo>> {
   }
 
   void toggleTodo(Todo todo) {
-    state = state.map((t) => t.id == todo.id ? t.copyWith(isCompleted: !t.isCompleted) : t).toList();
+    state = state
+        .map((t) =>
+            t.id == todo.id ? t.copyWith(isCompleted: !t.isCompleted) : t)
+        .toList();
   }
 
   void deleteTodo(Todo todo) {
@@ -41,7 +44,8 @@ class RiverpodTodoViewModel extends AutoDisposeNotifier<List<Todo>> {
 
   That's it. Same concept, different location.
 */
-final todosProvider = NotifierProvider.autoDispose<RiverpodTodoViewModel, List<Todo>>(
+final todosProvider =
+    NotifierProvider.autoDispose<RiverpodTodoViewModel, List<Todo>>(
   RiverpodTodoViewModel.new,
 );
 

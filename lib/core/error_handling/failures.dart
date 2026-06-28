@@ -26,25 +26,34 @@ sealed class Failure {
 }
 
 final class NetworkFailure extends Failure {
-  const NetworkFailure([String message = 'No internet connection', Failure? cause]) : super(message, FailureSeverity.critical, cause: cause);
+  const NetworkFailure(
+      [String message = 'No internet connection', Failure? cause])
+      : super(message, FailureSeverity.critical, cause: cause);
 }
 
 final class ServerFailure extends Failure {
-  const ServerFailure([String message = 'Server error', Failure? cause]) : super(message, FailureSeverity.critical, cause: cause);
+  const ServerFailure([String message = 'Server error', Failure? cause])
+      : super(message, FailureSeverity.critical, cause: cause);
 }
 
 final class CacheFailure extends Failure {
-  const CacheFailure([String message = 'No cached data available', Failure? cause]) : super(message, FailureSeverity.warning, cause: cause);
+  const CacheFailure(
+      [String message = 'No cached data available', Failure? cause])
+      : super(message, FailureSeverity.warning, cause: cause);
 }
 
 final class UnknownFailure extends Failure {
-  const UnknownFailure([String message = 'Something went wrong', Failure? cause]) : super(message, FailureSeverity.critical, cause: cause);
+  const UnknownFailure(
+      [String message = 'Something went wrong', Failure? cause])
+      : super(message, FailureSeverity.critical, cause: cause);
 }
 
 final class AuthFailure extends Failure {
-  const AuthFailure([String message = 'Authentication failed', Failure? cause]) : super(message, FailureSeverity.warning, cause: cause);
+  const AuthFailure([String message = 'Authentication failed', Failure? cause])
+      : super(message, FailureSeverity.warning, cause: cause);
 }
 
 final class FirestoreFailure extends Failure {
-  const FirestoreFailure([String message = 'Firestore error', Failure? cause]) : super(message, FailureSeverity.critical, cause: cause);
+  const FirestoreFailure([String message = 'Firestore error', Failure? cause])
+      : super(message, FailureSeverity.critical, cause: cause);
 }

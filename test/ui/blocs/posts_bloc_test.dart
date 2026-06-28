@@ -115,7 +115,10 @@ void main() {
       expect: () => [
         isA<PostsLoading>(),
         predicate<PostsState>(
-          (s) => s is PostsError && s.failure is CacheFailure && s.failure.cause is NetworkFailure,
+          (s) =>
+              s is PostsError &&
+              s.failure is CacheFailure &&
+              s.failure.cause is NetworkFailure,
           'PostsError with chained CacheFailure → NetworkFailure',
         ),
       ],

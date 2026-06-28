@@ -26,5 +26,6 @@ class TodoDTO {
 
   Todo toTodo() => Todo(id: id, title: title, isCompleted: isCompleted);
 
-  static TodoDTO fromTodo(Todo todo) => TodoDTO(id: todo.id, title: todo.title, isCompleted: todo.isCompleted);
+  static TodoDTO fromTodo(Todo todo) =>
+      TodoDTO(id: todo.id, title: todo.title, isCompleted: todo.isCompleted);
 }

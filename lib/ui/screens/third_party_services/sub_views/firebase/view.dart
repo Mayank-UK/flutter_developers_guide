@@ -7,7 +7,8 @@ import '../../../../components/code_preview_tabs.dart';
 import '../../../../components/section_wrapper.dart';
 
 class FirebaseView extends StatelessWidget {
-  final String _codeTabMarkdownLocation = 'assets/markdowns/third_party_services/firebase.md';
+  final String _codeTabMarkdownLocation =
+      'assets/markdowns/third_party_services/firebase.md';
 
   @override
   Widget build(BuildContext context) {

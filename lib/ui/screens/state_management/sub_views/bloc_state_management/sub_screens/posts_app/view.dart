@@ -35,7 +35,8 @@ class PostsAppView extends StatelessWidget {
               // 2. Handle Data Availability (Even if accompanied by a transient warning)
               if (state is PostsLoaded) {
                 return RefreshIndicator(
-                  onRefresh: () async => context.read<PostsBloc>().add(FetchPosts()),
+                  onRefresh: () async =>
+                      context.read<PostsBloc>().add(FetchPosts()),
                   child: ListView.builder(
                     itemCount: state.posts.length,
                     itemBuilder: (context, index) {

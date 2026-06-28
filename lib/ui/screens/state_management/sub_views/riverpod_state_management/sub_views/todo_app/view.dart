@@ -8,10 +8,12 @@ class RiverpodTodosScreen extends ConsumerStatefulWidget {
   const RiverpodTodosScreen({super.key});
 
   @override
-  ConsumerState<RiverpodTodosScreen> createState() => _RiverpodTodosScreenState();
+  ConsumerState<RiverpodTodosScreen> createState() =>
+      _RiverpodTodosScreenState();
 }
 
-class _RiverpodTodosScreenState extends ConsumerState<RiverpodTodosScreen> with SingleTickerProviderStateMixin {
+class _RiverpodTodosScreenState extends ConsumerState<RiverpodTodosScreen>
+    with SingleTickerProviderStateMixin {
   late final TabController _tabController;
 
   @override

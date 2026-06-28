@@ -6,7 +6,8 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 import 'package:get_it/get_it.dart';
 
 class FirebaseFirestoreView extends StatelessWidget {
-  final String _codeTabMarkdownLocation = 'assets/markdowns/third_party_services/firebase.md';
+  final String _codeTabMarkdownLocation =
+      'assets/markdowns/third_party_services/firebase.md';
 
   @override
   Widget build(BuildContext context) {
@@ -97,13 +98,17 @@ class _TodoList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TodosBloc, TodosState>(
       builder: (context, state) => switch (state) {
-        TodosInitial() || TodosLoading() => const Center(child: CircularProgressIndicator()),
-        TodosLoaded(todos: final todos) when todos.isEmpty => const Center(child: Text('No todos yet. Add one above!')),
+        TodosInitial() ||
+        TodosLoading() =>
+          const Center(child: CircularProgressIndicator()),
+        TodosLoaded(todos: final todos) when todos.isEmpty =>
+          const Center(child: Text('No todos yet. Add one above!')),
         TodosLoaded(todos: final todos) => ListView.builder(
             itemCount: todos.length,
             itemBuilder: (context, index) => _TodoTile(todo: todos[index]),
           ),
-        TodosError(failure: final failure) => Center(child: Text('Error: ${failure.message}')),
+        TodosError(failure: final failure) =>
+          Center(child: Text('Error: ${failure.message}')),
       },
     );
   }
@@ -124,7 +129,9 @@ class _TodoTile extends StatelessWidget {
       ),
       title: Text(
         todo.title,
-        style: todo.isCompleted ? const TextStyle(decoration: TextDecoration.lineThrough) : null,
+        style: todo.isCompleted
+            ? const TextStyle(decoration: TextDecoration.lineThrough)
+            : null,
       ),
       trailing: IconButton(
         icon: const Icon(Icons.delete_outline),

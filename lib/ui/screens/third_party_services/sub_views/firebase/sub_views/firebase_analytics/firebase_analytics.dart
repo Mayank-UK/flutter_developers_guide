@@ -3,7 +3,8 @@ import 'package:flutter_developers_guide/ui/components/code_preview_tabs.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 class FirebaseAnalyticsView extends StatelessWidget {
-  final String _codeTabMarkdownLocation = 'assets/markdowns/third_party_services/firebase.md';
+  final String _codeTabMarkdownLocation =
+      'assets/markdowns/third_party_services/firebase.md';
 
   @override
   Widget build(BuildContext context) {

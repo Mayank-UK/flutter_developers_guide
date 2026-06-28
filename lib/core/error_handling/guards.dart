@@ -25,20 +25,25 @@ Future<T> guardedApiCall<T>(
       DioExceptionType.sendTimeout ||
       DioExceptionType.receiveTimeout =>
         NetworkException('Request timed out', e),
-      DioExceptionType.connectionError => NetworkException('No internet connection', e),
+      DioExceptionType.connectionError =>
+        NetworkException('No internet connection', e),
       DioExceptionType.badResponse => (() {
           final data = e.response?.data;
           if (data is Map<String, dynamic>) {
             return ServerException(
-              data['message']?.toString() ?? 'Server returned ${e.response?.statusCode}',
+              data['message']?.toString() ??
+                  'Server returned ${e.response?.statusCode}',
               e,
             );
           }
-          return ServerException('Server returned ${e.response?.statusCode}', e);
+          return ServerException(
+              'Server returned ${e.response?.statusCode}', e);
         })(),
       DioExceptionType.cancel => NetworkException('Request was cancelled', e),
-      DioExceptionType.badCertificate => NetworkException('Bad SSL certificate', e),
-      DioExceptionType.unknown => NetworkException(e.message ?? 'Network error', e),
+      DioExceptionType.badCertificate =>
+        NetworkException('Bad SSL certificate', e),
+      DioExceptionType.unknown =>
+        NetworkException(e.message ?? 'Network error', e),
     };
   } on FormatException catch (e) {
     throw ServerException('Invalid response format', e);
@@ -74,7 +79,9 @@ Future<Result<ResultType>> safeRepositoryCall<ResultType>({
 }
 
 Failure mapExceptionToFailure(AppException e) {
-  final Failure? innerCause = e.cause is AppException ? mapExceptionToFailure(e.cause as AppException) : null;
+  final Failure? innerCause = e.cause is AppException
+      ? mapExceptionToFailure(e.cause as AppException)
+      : null;
 
   return switch (e) {
     NetworkException() => NetworkFailure(e.message, innerCause),

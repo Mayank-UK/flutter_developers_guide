@@ -22,11 +22,13 @@ class DatabaseProvider {
 
   static Future<Database> _initDatabase() async {
     final path = join(await getDatabasesPath(), _databaseName);
-    return await openDatabase(path, onCreate: _onCreate, version: _databaseVersion);
+    return await openDatabase(path,
+        onCreate: _onCreate, version: _databaseVersion);
   }
 
   static Future<void> _onCreate(Database db, int version) async {
-    await db.execute('CREATE TABLE posts(id INTEGER PRIMARY KEY, title TEXT, body TEXT)');
+    await db.execute(
+        'CREATE TABLE posts(id INTEGER PRIMARY KEY, title TEXT, body TEXT)');
   }
 }
 

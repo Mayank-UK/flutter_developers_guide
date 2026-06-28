@@ -7,5 +7,6 @@ class ToggleTodoUseCase {
   final TodoRepository repository;
   ToggleTodoUseCase(this.repository);
 
-  Future<Result<void>> call(String id, bool isCompleted) => repository.toggleTodo(id, isCompleted);
+  Future<Result<void>> call(String id, bool isCompleted) =>
+      repository.toggleTodo(id, isCompleted);
 }

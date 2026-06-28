@@ -10,5 +10,6 @@ class UploadImageUseCase {
   final ImageRepository repository;
   UploadImageUseCase(this.repository);
 
-  Future<Result<ImageItem>> call(File file, String userId) => repository.uploadImage(file, userId);
+  Future<Result<ImageItem>> call(File file, String userId) =>
+      repository.uploadImage(file, userId);
 }

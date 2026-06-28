@@ -73,7 +73,7 @@ class _ApiHandlingImplementation extends StatelessWidget {
               'Data Sources provide data from a specific source.',
             ),
             TextBlock(
-              'RemoteDataSource communicates with APIs through services such as ApiService.',
+              'RemoteDataSource communicates with APIs through feature-specific clients.',
             ),
             TextBlock(
               'LocalDataSource communicates with local storage through DAOs.',

@@ -2,11 +2,14 @@
 import 'dart:io';
 
 import 'package:flutter_developers_guide/core/error_handling/exceptions.dart';
-import 'package:flutter_developers_guide/data/remote/api_service.dart';
+import 'package:flutter_developers_guide/data/remote/auth_remote_data_source.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/auth_user_dto.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/image_item_dto.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/post_dto.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/todo_dto.dart';
+import 'package:flutter_developers_guide/data/remote/image_remote_data_source.dart';
+import 'package:flutter_developers_guide/data/remote/post_remote_data_source.dart';
+import 'package:flutter_developers_guide/data/remote/todo_remote_data_source.dart';
 
 enum ApiScenario { success, networkError, timeout, serverError, invalidJson }
 
@@ -15,7 +18,12 @@ enum ApiScenario { success, networkError, timeout, serverError, invalidJson }
     - To continue development without backend
     - To simulate different types of failures and their handling
 */
-class FakeApiService implements ApiService {
+class FakeApiService
+    implements
+        AuthRemoteDataSource,
+        PostRemoteDataSource,
+        TodoRemoteDataSource,
+        ImageRemoteDataSource {
   ApiScenario scenario;
 
   FakeApiService({
@@ -163,7 +171,8 @@ class FakeApiService implements ApiService {
   Stream<List<ImageItemDTO>> watchImages() => Stream.value([]);
 
   @override
-  Future<ImageItemDTO> uploadImage(File file, String userId) async => ImageItemDTO(
+  Future<ImageItemDTO> uploadImage(File file, String userId) async =>
+      ImageItemDTO(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
         url: 'https://picsum.photos/200',
         fileName: file.path.split('/').last,

@@ -3,7 +3,7 @@ import 'package:flutter_developers_guide/core/error_handling/failures.dart';
 import 'package:flutter_developers_guide/core/error_handling/guards.dart';
 import 'package:flutter_developers_guide/core/result.dart';
 import 'package:flutter_developers_guide/data/local/app_database.dart';
-import 'package:flutter_developers_guide/data/remote/api_service.dart';
+import 'package:flutter_developers_guide/data/remote/post_remote_data_source.dart';
 import 'package:flutter_developers_guide/domain/models/post.dart';
 import 'package:flutter_developers_guide/domain/repository/post_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -11,7 +11,7 @@ import 'package:logging/logging.dart';
 
 @LazySingleton(as: PostRepository)
 class PostRepositoryImpl implements PostRepository {
-  final ApiService remoteDataSource;
+  final PostRemoteDataSource remoteDataSource;
   final AppDatabase localDataSource;
   final Logger logger;
 

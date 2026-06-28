@@ -1,7 +1,7 @@
 import 'package:flutter_developers_guide/core/analytics/analytics_service.dart';
 import 'package:flutter_developers_guide/core/error_handling/guards.dart';
 import 'package:flutter_developers_guide/core/result.dart';
-import 'package:flutter_developers_guide/data/remote/api_service.dart';
+import 'package:flutter_developers_guide/data/remote/auth_remote_data_source.dart';
 import 'package:flutter_developers_guide/domain/models/auth_user.dart';
 import 'package:flutter_developers_guide/domain/repository/auth_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -9,7 +9,7 @@ import 'package:logging/logging.dart';
 
 @LazySingleton(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
-  final ApiService remoteDataSource;
+  final AuthRemoteDataSource remoteDataSource;
   final Logger logger;
   final AnalyticsService analytics;
 

@@ -2,15 +2,15 @@ import 'package:flutter_developers_guide/core/error_handling/exceptions.dart';
 import 'package:flutter_developers_guide/core/error_handling/failures.dart';
 import 'package:flutter_developers_guide/core/result.dart';
 import 'package:flutter_developers_guide/data/local/app_database.dart';
-import 'package:flutter_developers_guide/data/remote/api_service.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/post_dto.dart';
+import 'package:flutter_developers_guide/data/remote/post_remote_data_source.dart';
 import 'package:flutter_developers_guide/data/repository_impl/post_repository_impl.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:logging/logging.dart';
 import 'package:mocktail/mocktail.dart';
 
 // --- Mocks ---
-class MockApiService extends Mock implements ApiService {}
+class MockPostRemoteDataSource extends Mock implements PostRemoteDataSource {}
 
 class MockAppDatabase extends Mock implements AppDatabase {}
 
@@ -20,19 +20,20 @@ class MockAppDatabase extends Mock implements AppDatabase {}
 final tPostDTO = PostDTO(id: 1, title: 'Remote Post', body: 'Body');
 
 // A PostDTO returned from the local cache
-final tCachedPostDTO = PostDTO(id: 2, title: 'Cached Post', body: 'Cached Body');
+final tCachedPostDTO =
+    PostDTO(id: 2, title: 'Cached Post', body: 'Cached Body');
 
 void main() {
-  late MockApiService mockApiService;
+  late MockPostRemoteDataSource mockRemoteDataSource;
   late MockAppDatabase mockDatabase;
   late PostRepositoryImpl repository;
 
   setUp(() {
-    mockApiService = MockApiService();
+    mockRemoteDataSource = MockPostRemoteDataSource();
     mockDatabase = MockAppDatabase();
 
     repository = PostRepositoryImpl(
-      remoteDataSource: mockApiService,
+      remoteDataSource: mockRemoteDataSource,
       localDataSource: mockDatabase,
       logger: Logger('test'),
     );
@@ -41,8 +42,10 @@ void main() {
   group('PostRepositoryImpl.getPosts', () {
     // --- Happy path ---
 
-    test('returns Success with mapped posts when remote call succeeds', () async {
-      when(() => mockApiService.getPosts()).thenAnswer((_) async => [tPostDTO]);
+    test('returns Success with mapped posts when remote call succeeds',
+        () async {
+      when(() => mockRemoteDataSource.getPosts())
+          .thenAnswer((_) async => [tPostDTO]);
       when(() => mockDatabase.insertPosts(any())).thenAnswer((_) async {});
 
       final result = await repository.getPosts();
@@ -57,8 +60,10 @@ void main() {
     });
 
     test('still returns Success even when local cache write fails', () async {
-      when(() => mockApiService.getPosts()).thenAnswer((_) async => [tPostDTO]);
-      when(() => mockDatabase.insertPosts(any())).thenThrow(Exception('disk full'));
+      when(() => mockRemoteDataSource.getPosts())
+          .thenAnswer((_) async => [tPostDTO]);
+      when(() => mockDatabase.insertPosts(any()))
+          .thenThrow(Exception('disk full'));
 
       final result = await repository.getPosts();
 
@@ -68,9 +73,12 @@ void main() {
 
     // --- Network fallback ---
 
-    test('falls back to cache and returns Success on NetworkException', () async {
-      when(() => mockApiService.getPosts()).thenThrow(const NetworkException());
-      when(() => mockDatabase.getPosts()).thenAnswer((_) async => [tCachedPostDTO]);
+    test('falls back to cache and returns Success on NetworkException',
+        () async {
+      when(() => mockRemoteDataSource.getPosts())
+          .thenThrow(const NetworkException());
+      when(() => mockDatabase.getPosts())
+          .thenAnswer((_) async => [tCachedPostDTO]);
 
       final result = await repository.getPosts();
 
@@ -79,9 +87,12 @@ void main() {
       expect(posts.first.title, 'Cached Post');
     });
 
-    test('falls back to cache and returns Success on ServerException', () async {
-      when(() => mockApiService.getPosts()).thenThrow(const ServerException());
-      when(() => mockDatabase.getPosts()).thenAnswer((_) async => [tCachedPostDTO]);
+    test('falls back to cache and returns Success on ServerException',
+        () async {
+      when(() => mockRemoteDataSource.getPosts())
+          .thenThrow(const ServerException());
+      when(() => mockDatabase.getPosts())
+          .thenAnswer((_) async => [tCachedPostDTO]);
 
       final result = await repository.getPosts();
 
@@ -93,7 +104,8 @@ void main() {
     test(
       'returns Failed(CacheFailure) with chained cause when both remote and cache fail',
       () async {
-        when(() => mockApiService.getPosts()).thenThrow(const NetworkException());
+        when(() => mockRemoteDataSource.getPosts())
+            .thenThrow(const NetworkException());
         when(() => mockDatabase.getPosts()).thenThrow(
           const AppDatabaseException('No rows'),
         );
@@ -114,7 +126,7 @@ void main() {
     test(
       'chained failure message includes both failure descriptions',
       () async {
-        when(() => mockApiService.getPosts()).thenThrow(
+        when(() => mockRemoteDataSource.getPosts()).thenThrow(
           const NetworkException('No internet connection'),
         );
         when(() => mockDatabase.getPosts()).thenThrow(

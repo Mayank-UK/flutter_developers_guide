@@ -1,11 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter_developers_guide/core/analytics/analytics_service.dart';
 import 'package:flutter_developers_guide/core/error_handling/exceptions.dart';
 import 'package:flutter_developers_guide/core/error_handling/failures.dart';
 import 'package:flutter_developers_guide/core/error_handling/guards.dart';
 import 'package:flutter_developers_guide/core/result.dart';
-import 'package:flutter_developers_guide/data/remote/api_service.dart';
+import 'package:flutter_developers_guide/data/remote/todo_remote_data_source.dart';
 import 'package:flutter_developers_guide/domain/models/todo.dart';
 import 'package:flutter_developers_guide/domain/repository/todo_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -13,7 +11,7 @@ import 'package:logging/logging.dart';
 
 @LazySingleton(as: TodoRepository)
 class TodoRepositoryImpl implements TodoRepository {
-  final ApiService remoteDataSource;
+  final TodoRemoteDataSource remoteDataSource;
   final Logger logger;
   final AnalyticsService analytics;
 
@@ -24,25 +22,18 @@ class TodoRepositoryImpl implements TodoRepository {
   });
 
   @override
-  Stream<Result<List<Todo>>> watchTodos() {
-    final controller = StreamController<Result<List<Todo>>>();
-
-    remoteDataSource
-        .watchTodos()
-        .map<Result<List<Todo>>>(
-          (dtos) => Success(dtos.map((d) => d.toTodo()).toList()),
-        )
-        .listen(
-      controller.add,
-      onError: (Object e, StackTrace st) {
-        logger.severe('Todo stream error', e, st);
-        final failure = e is AppException ? mapExceptionToFailure(e) : UnknownFailure(e.toString());
-        controller.add(Failed(failure));
-      },
-      onDone: controller.close,
-    );
-
-    return controller.stream;
+  Stream<Result<List<Todo>>> watchTodos() async* {
+    try {
+      await for (final dtos in remoteDataSource.watchTodos()) {
+        yield Success(dtos.map((d) => d.toTodo()).toList());
+      }
+    } catch (e, st) {
+      logger.severe('Todo stream error', e, st);
+      final failure = e is AppException
+          ? mapExceptionToFailure(e)
+          : UnknownFailure(e.toString());
+      yield Failed(failure);
+    }
   }
 
   @override
@@ -56,7 +47,8 @@ class TodoRepositoryImpl implements TodoRepository {
       );
 
   @override
-  Future<Result<void>> toggleTodo(String id, bool isCompleted) => safeRepositoryCall(
+  Future<Result<void>> toggleTodo(String id, bool isCompleted) =>
+      safeRepositoryCall(
         logger: logger,
         call: () async {
           await remoteDataSource.toggleTodo(id, isCompleted);

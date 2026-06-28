@@ -5,7 +5,8 @@ import 'package:flutter_developers_guide/ui/components/section_wrapper.dart';
 import 'package:flutter_developers_guide/ui/components/text_block.dart';
 
 class ExceptionHandlingView extends StatelessWidget {
-  final String _codeTabMarkdownLocation = 'assets/markdowns/exception_handling/exception_handling_markdown.md';
+  final String _codeTabMarkdownLocation =
+      'assets/markdowns/exception_handling/exception_handling_markdown.md';
 
   @override
   Widget build(BuildContext context) {

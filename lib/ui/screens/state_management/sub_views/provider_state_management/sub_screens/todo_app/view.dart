@@ -20,7 +20,8 @@ class _HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<_HomeScreen> with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<_HomeScreen>
+    with SingleTickerProviderStateMixin {
   late TabController controller;
 
   @override
@@ -169,7 +170,8 @@ class _CompletedTasksTab extends StatelessWidget {
 }
 
 class _TodosCode extends StatelessWidget {
-  String _markdownLocation = 'assets/markdowns/state_management/todos_markdown.md';
+  String _markdownLocation =
+      'assets/markdowns/state_management/todos_markdown.md';
 
   @override
   Widget build(BuildContext context) {

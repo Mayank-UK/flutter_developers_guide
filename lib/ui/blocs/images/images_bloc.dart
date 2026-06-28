@@ -74,7 +74,8 @@ class ImagesBloc extends Bloc<ImagesEvent, ImagesState> {
     on<DeleteImage>(_onDeleteImage);
   }
 
-  Future<void> _onWatchImages(WatchImages event, Emitter<ImagesState> emit) async {
+  Future<void> _onWatchImages(
+      WatchImages event, Emitter<ImagesState> emit) async {
     emit(ImagesLoading());
 
     await emit.forEach<Result<List<ImageItem>>>(
@@ -87,7 +88,8 @@ class ImagesBloc extends Bloc<ImagesEvent, ImagesState> {
     );
   }
 
-  Future<void> _onUploadImage(UploadImage event, Emitter<ImagesState> emit) async {
+  Future<void> _onUploadImage(
+      UploadImage event, Emitter<ImagesState> emit) async {
     // Show uploading indicator while keeping the current grid visible
     if (state is ImagesLoaded) {
       emit(ImagesLoaded(
@@ -104,8 +106,10 @@ class ImagesBloc extends Bloc<ImagesEvent, ImagesState> {
     // On success: stream emits updated list automatically
   }
 
-  Future<void> _onDeleteImage(DeleteImage event, Emitter<ImagesState> emit) async {
-    final result = await deleteImageUseCase(event.id, event.fileName, event.userId);
+  Future<void> _onDeleteImage(
+      DeleteImage event, Emitter<ImagesState> emit) async {
+    final result =
+        await deleteImageUseCase(event.id, event.fileName, event.userId);
 
     if (result case Failed(failure: final failure)) {
       emit(ImagesError(failure));

@@ -31,11 +31,13 @@ class _UnitTestingImplementation extends StatelessWidget {
           content: [
             SizedBox(
               width: double.infinity,
-              child: const Text('A unit test tests the smallest piece of your code in isolation.'),
+              child: const Text(
+                  'A unit test tests the smallest piece of your code in isolation.'),
             ),
             SizedBox(
               width: double.infinity,
-              child: const Text('Think of your Flutter app as layers:\n Widget, Bloc/Cubit, UseCase, Repository, API/Database'),
+              child: const Text(
+                  'Think of your Flutter app as layers:\n Widget, Bloc/Cubit, UseCase, Repository, API/Database'),
             ),
           ],
         ),
@@ -44,7 +46,8 @@ class _UnitTestingImplementation extends StatelessWidget {
           content: [
             SizedBox(
               width: double.infinity,
-              child: const Text('Mocking means creating a fake version of a dependency so you can control its behavior during testing.'),
+              child: const Text(
+                  'Mocking means creating a fake version of a dependency so you can control its behavior during testing.'),
             ),
             SizedBox(
               width: double.infinity,
@@ -58,11 +61,13 @@ class _UnitTestingImplementation extends StatelessWidget {
           content: [
             SizedBox(
               width: double.infinity,
-              child: const Text('Test logic in different files like ApiService, RepositoryImplementation, UseCases, Blocs, etc'),
+              child: const Text(
+                  'Test logic in different files like RemoteDataSource, RepositoryImplementation, UseCases, Blocs, etc'),
             ),
             SizedBox(
               width: double.infinity,
-              child: const Text('Although widgets can be tested, but the testing becomes too fragile, it\'s better to test the surrounding logic.'),
+              child: const Text(
+                  'Although widgets can be tested, but the testing becomes too fragile, it\'s better to test the surrounding logic.'),
             ),
           ],
         ),

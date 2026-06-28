@@ -1,35 +1,18 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter_developers_guide/core/config/app_config.dart';
 import 'package:flutter_developers_guide/core/error_handling/exceptions.dart';
-import 'package:flutter_developers_guide/data/remote/api_service_impl.dart';
+import 'package:flutter_developers_guide/data/remote/post_remote_data_source.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:logging/logging.dart';
 import 'package:mocktail/mocktail.dart';
 
 // --- Mocks ---
 class MockDio extends Mock implements Dio {}
 
-class MockAppConfig extends Mock implements AppConfig {}
-
-class MockFirebaseAuth extends Mock implements FirebaseAuth {}
-
-class MockFirebaseFirestore extends Mock implements FirebaseFirestore {}
-
-class MockFirebaseStorage extends Mock implements FirebaseStorage {}
-
 void main() {
   late MockDio mockDio;
-  late MockAppConfig mockConfig;
-  late ApiServiceImpl apiService;
-  late MockFirebaseAuth mockFirebaseAuth;
-  late MockFirebaseFirestore mockFirebaseFirestore;
-  late MockFirebaseStorage mockFirebaseStorage;
+  late JsonPlaceholderPostRemoteDataSource remoteDataSource;
 
   // A valid JSON list that maps to PostDTO
   final tPostsJson = jsonEncode([
@@ -38,20 +21,8 @@ void main() {
 
   setUp(() {
     mockDio = MockDio();
-    mockConfig = MockAppConfig();
-    mockFirebaseAuth = MockFirebaseAuth();
-    mockFirebaseFirestore = MockFirebaseFirestore();
-    mockFirebaseStorage = MockFirebaseStorage();
-
-    when(() => mockConfig.baseUrl).thenReturn('https://fake.api');
-
-    apiService = ApiServiceImpl(
+    remoteDataSource = JsonPlaceholderPostRemoteDataSource(
       dio: mockDio,
-      config: mockConfig,
-      logger: Logger('test'),
-      firebaseAuth: mockFirebaseAuth,
-      firebaseFirestore: mockFirebaseFirestore,
-      firebaseStorage: mockFirebaseStorage,
     );
 
     // Required by mocktail: register fallback for Uri
@@ -60,7 +31,7 @@ void main() {
     );
   });
 
-  group('ApiServiceImpl.getPosts', () {
+  group('JsonPlaceholderPostRemoteDataSource.getPosts', () {
     test('returns list of PostDTO on 200 response', () async {
       when(() => mockDio.get(any())).thenAnswer(
         (_) async => Response(
@@ -70,7 +41,7 @@ void main() {
         ),
       );
 
-      final result = await apiService.getPosts();
+      final result = await remoteDataSource.getPosts();
 
       expect(result.length, 1);
       expect(result.first.id, 1);
@@ -86,7 +57,7 @@ void main() {
         ),
       );
 
-      expect(() => apiService.getPosts(), throwsA(isA<ServerException>()));
+      expect(() => remoteDataSource.getPosts(), throwsA(isA<ServerException>()));
     });
 
     test('throws NetworkException on SocketException', () async {
@@ -98,7 +69,7 @@ void main() {
         ),
       );
 
-      expect(() => apiService.getPosts(), throwsA(isA<NetworkException>()));
+      expect(() => remoteDataSource.getPosts(), throwsA(isA<NetworkException>()));
     });
 
     test('throws NetworkException on TimeoutException', () async {
@@ -109,7 +80,7 @@ void main() {
         ),
       );
 
-      expect(() => apiService.getPosts(), throwsA(isA<NetworkException>()));
+      expect(() => remoteDataSource.getPosts(), throwsA(isA<NetworkException>()));
     });
 
     test('throws ServerException on FormatException (invalid JSON)', () async {
@@ -121,7 +92,7 @@ void main() {
         ),
       );
 
-      expect(() => apiService.getPosts(), throwsA(isA<ServerException>()));
+      expect(() => remoteDataSource.getPosts(), throwsA(isA<ServerException>()));
     });
   });
 }

@@ -8,9 +8,11 @@ import 'package:flutter_developers_guide/core/config/app_config.dart';
 import 'package:flutter_developers_guide/data/local/app_database.dart';
 import 'package:flutter_developers_guide/data/local/daos/post_dao.dart';
 import 'package:flutter_developers_guide/data/local/fake_app_database.dart';
-import 'package:flutter_developers_guide/data/remote/api_service.dart';
-import 'package:flutter_developers_guide/data/remote/api_service_impl.dart';
+import 'package:flutter_developers_guide/data/remote/auth_remote_data_source.dart';
 import 'package:flutter_developers_guide/data/remote/fake_api_service.dart';
+import 'package:flutter_developers_guide/data/remote/image_remote_data_source.dart';
+import 'package:flutter_developers_guide/data/remote/post_remote_data_source.dart';
+import 'package:flutter_developers_guide/data/remote/todo_remote_data_source.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logging/logging.dart';
 import 'package:sqflite/sqlite_api.dart';
@@ -92,11 +94,52 @@ abstract class InjectableModule {
   }
 
   @lazySingleton
-  ApiService apiService(
+  AuthRemoteDataSource authRemoteDataSource(
     AppConfig config,
-    Dio dio,
     Logger logger,
     FirebaseAuth auth,
+  ) {
+    if (config.useFakeData) {
+      return FakeApiService();
+    }
+
+    return FirebaseAuthRemoteDataSource(
+      firebaseAuth: auth,
+      logger: logger,
+    );
+  }
+
+  @lazySingleton
+  PostRemoteDataSource postRemoteDataSource(
+    AppConfig config,
+    Dio dio,
+  ) {
+    if (config.useFakeData) {
+      return FakeApiService();
+    }
+
+    return JsonPlaceholderPostRemoteDataSource(
+      dio: dio,
+    );
+  }
+
+  @lazySingleton
+  TodoRemoteDataSource todoRemoteDataSource(
+    AppConfig config,
+    FirebaseFirestore firestore,
+  ) {
+    if (config.useFakeData) {
+      return FakeApiService();
+    }
+
+    return FirestoreTodoRemoteDataSource(
+      firebaseFirestore: firestore,
+    );
+  }
+
+  @lazySingleton
+  ImageRemoteDataSource imageRemoteDataSource(
+    AppConfig config,
     FirebaseFirestore firestore,
     FirebaseStorage storage,
   ) {
@@ -104,11 +147,7 @@ abstract class InjectableModule {
       return FakeApiService();
     }
 
-    return ApiServiceImpl(
-      dio: dio,
-      config: config,
-      logger: logger,
-      firebaseAuth: auth,
+    return FirebaseStorageImageRemoteDataSource(
       firebaseFirestore: firestore,
       firebaseStorage: storage,
     );

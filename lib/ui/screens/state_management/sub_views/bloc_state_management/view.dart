@@ -8,7 +8,8 @@ import '../../../../components/code_preview_tabs.dart';
 import '../../../../components/section_wrapper.dart';
 
 class BlocStateManagementView extends StatelessWidget {
-  final String _codeTabMarkdownLocation = 'assets/markdowns/state_management/bloc_markdown.md';
+  final String _codeTabMarkdownLocation =
+      'assets/markdowns/state_management/bloc_markdown.md';
 
   @override
   Widget build(BuildContext context) {

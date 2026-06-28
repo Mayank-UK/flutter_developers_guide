@@ -8,7 +8,8 @@ import '../../../../components/code_preview_tabs.dart';
 import '../../../../components/section_wrapper.dart';
 
 class RiverpodStateManagementView extends StatelessWidget {
-  final String _codeTabMarkdownLocation = 'assets/markdowns/state_management/riverpod_markdown.md';
+  final String _codeTabMarkdownLocation =
+      'assets/markdowns/state_management/riverpod_markdown.md';
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,8 @@ class _RiverpodStateManagementImplementation extends StatelessWidget {
           content: [
             ElevatedButton(
               onPressed: () {
-                context.push(RoutePaths.riverpod_state_management_todos_example);
+                context
+                    .push(RoutePaths.riverpod_state_management_todos_example);
               },
               child: const Text('Todo app'),
             ),

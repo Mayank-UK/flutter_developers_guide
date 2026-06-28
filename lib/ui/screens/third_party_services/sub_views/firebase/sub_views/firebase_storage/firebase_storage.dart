@@ -10,7 +10,8 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
 class FirebaseStorageView extends StatelessWidget {
-  final String _codeTabMarkdownLocation = 'assets/markdowns/third_party_services/firebase.md';
+  final String _codeTabMarkdownLocation =
+      'assets/markdowns/third_party_services/firebase.md';
 
   @override
   Widget build(BuildContext context) {
@@ -102,8 +103,11 @@ class _ImageGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ImagesBloc, ImagesState>(
       builder: (context, state) => switch (state) {
-        ImagesInitial() || ImagesLoading() => const Center(child: CircularProgressIndicator()),
-        ImagesLoaded(images: final images) when images.isEmpty => const Center(child: Text('No images yet. Upload one above!')),
+        ImagesInitial() ||
+        ImagesLoading() =>
+          const Center(child: CircularProgressIndicator()),
+        ImagesLoaded(images: final images) when images.isEmpty =>
+          const Center(child: Text('No images yet. Upload one above!')),
         ImagesLoaded(images: final images) => GridView.builder(
             padding: const EdgeInsets.all(8),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -114,7 +118,8 @@ class _ImageGrid extends StatelessWidget {
             itemCount: images.length,
             itemBuilder: (context, index) => _ImageTile(image: images[index]),
           ),
-        ImagesError(failure: final failure) => Center(child: Text('Error: ${failure.message}')),
+        ImagesError(failure: final failure) =>
+          Center(child: Text('Error: ${failure.message}')),
       },
     );
   }
