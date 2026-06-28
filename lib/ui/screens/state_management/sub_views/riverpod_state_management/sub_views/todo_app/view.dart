@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_developers_guide/domain/models/todo.dart';
-import 'package:flutter_developers_guide/ui/state_management/riverpod_providers/riverpod_todo_provider.dart';
+import 'package:flutter_developers_guide/ui/screens/state_management/sub_views/riverpod_state_management/sub_views/todo_app/view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 

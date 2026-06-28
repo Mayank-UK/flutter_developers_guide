@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_developers_guide/core/error_handling/failures.dart';
-import 'package:flutter_developers_guide/ui/state_management/blocs/posts/post_bloc.dart';
+import 'package:flutter_developers_guide/ui/blocs/posts/post_bloc.dart';
 import 'package:flutter_developers_guide/ui/components/failure_snackbar.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 import 'package:flutter_developers_guide/ui/components/show_error.dart';

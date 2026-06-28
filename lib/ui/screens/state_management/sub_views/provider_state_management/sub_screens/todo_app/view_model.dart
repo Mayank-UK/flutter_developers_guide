@@ -2,9 +2,9 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 
-import '../../../domain/models/task.dart';
+import '../../../../../../../domain/models/task.dart';
 
-class TodosProvider extends ChangeNotifier {
+class TodosViewModel extends ChangeNotifier {
   final List<Task> _tasks = [
     Task(title: 'Finish the app'),
     Task(title: 'Write a blog post'),

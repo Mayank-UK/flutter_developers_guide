@@ -41,10 +41,10 @@ import '../../domain/usecases/todos/add_todo_use_case.dart' as _i261;
 import '../../domain/usecases/todos/delete_todo_use_case.dart' as _i912;
 import '../../domain/usecases/todos/toggle_todo_use_case.dart' as _i1040;
 import '../../domain/usecases/todos/watch_todos_use_case.dart' as _i886;
-import '../../ui/state_management/blocs/auth/auth_bloc.dart' as _i526;
-import '../../ui/state_management/blocs/images/images_bloc.dart' as _i737;
-import '../../ui/state_management/blocs/posts/post_bloc.dart' as _i386;
-import '../../ui/state_management/blocs/todos/todos_bloc.dart' as _i634;
+import '../../ui/blocs/auth/auth_bloc.dart' as _i526;
+import '../../ui/blocs/images/images_bloc.dart' as _i737;
+import '../../ui/blocs/posts/post_bloc.dart' as _i386;
+import '../../ui/blocs/todos/todos_bloc.dart' as _i634;
 import '../analytics/analytics_service.dart' as _i726;
 import '../config/app_config.dart' as _i650;
 import 'injection_module.dart' as _i212;
@@ -65,14 +65,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i974.FirebaseFirestore>(() => injectableModule.firestore);
     gh.lazySingleton<_i457.FirebaseStorage>(() => injectableModule.storage);
     gh.lazySingleton<_i398.FirebaseAnalytics>(() => injectableModule.analytics);
-    gh.lazySingleton<_i726.AnalyticsService>(
-        () => injectableModule.analyticsService(gh<_i398.FirebaseAnalytics>()));
-    gh.lazySingleton<_i398.FirebaseAnalyticsObserver>(() =>
-        injectableModule.analyticsObserver(gh<_i398.FirebaseAnalytics>()));
-    gh.lazySingleton<_i831.Logger>(
-        () => injectableModule.logger(gh<_i650.AppConfig>()));
-    gh.lazySingleton<_i361.Dio>(
-        () => injectableModule.dio(gh<_i650.AppConfig>()));
+    gh.lazySingleton<_i726.AnalyticsService>(() => injectableModule.analyticsService(gh<_i398.FirebaseAnalytics>()));
+    gh.lazySingleton<_i398.FirebaseAnalyticsObserver>(() => injectableModule.analyticsObserver(gh<_i398.FirebaseAnalytics>()));
+    gh.lazySingleton<_i831.Logger>(() => injectableModule.logger(gh<_i650.AppConfig>()));
+    gh.lazySingleton<_i361.Dio>(() => injectableModule.dio(gh<_i650.AppConfig>()));
     gh.lazySingleton<_i293.AppDatabase>(() => injectableModule.appDatabase(
           gh<_i650.AppConfig>(),
           gh<_i232.Database>(),
@@ -90,14 +86,10 @@ extension GetItInjectableX on _i174.GetIt {
           logger: gh<_i831.Logger>(),
           analytics: gh<_i726.AnalyticsService>(),
         ));
-    gh.factory<_i261.AddTodoUseCase>(
-        () => _i261.AddTodoUseCase(gh<_i530.TodoRepository>()));
-    gh.factory<_i912.DeleteTodoUseCase>(
-        () => _i912.DeleteTodoUseCase(gh<_i530.TodoRepository>()));
-    gh.factory<_i1040.ToggleTodoUseCase>(
-        () => _i1040.ToggleTodoUseCase(gh<_i530.TodoRepository>()));
-    gh.factory<_i886.WatchTodosUseCase>(
-        () => _i886.WatchTodosUseCase(gh<_i530.TodoRepository>()));
+    gh.factory<_i261.AddTodoUseCase>(() => _i261.AddTodoUseCase(gh<_i530.TodoRepository>()));
+    gh.factory<_i912.DeleteTodoUseCase>(() => _i912.DeleteTodoUseCase(gh<_i530.TodoRepository>()));
+    gh.factory<_i1040.ToggleTodoUseCase>(() => _i1040.ToggleTodoUseCase(gh<_i530.TodoRepository>()));
+    gh.factory<_i886.WatchTodosUseCase>(() => _i886.WatchTodosUseCase(gh<_i530.TodoRepository>()));
     gh.lazySingleton<_i614.AuthRepository>(() => _i318.AuthRepositoryImpl(
           remoteDataSource: gh<_i663.ApiService>(),
           logger: gh<_i831.Logger>(),
@@ -113,30 +105,21 @@ extension GetItInjectableX on _i174.GetIt {
           logger: gh<_i831.Logger>(),
           analytics: gh<_i726.AnalyticsService>(),
         ));
-    gh.factory<_i160.GetPostsUseCase>(
-        () => _i160.GetPostsUseCase(gh<_i368.PostRepository>()));
+    gh.factory<_i160.GetPostsUseCase>(() => _i160.GetPostsUseCase(gh<_i368.PostRepository>()));
     gh.factory<_i634.TodosBloc>(() => _i634.TodosBloc(
           watchTodosUseCase: gh<_i886.WatchTodosUseCase>(),
           addTodoUseCase: gh<_i261.AddTodoUseCase>(),
           toggleTodoUseCase: gh<_i1040.ToggleTodoUseCase>(),
           deleteTodoUseCase: gh<_i912.DeleteTodoUseCase>(),
         ));
-    gh.factory<_i386.PostsBloc>(
-        () => _i386.PostsBloc(getPostsUseCase: gh<_i160.GetPostsUseCase>()));
-    gh.factory<_i556.AuthStateChangesUseCase>(
-        () => _i556.AuthStateChangesUseCase(gh<_i614.AuthRepository>()));
-    gh.factory<_i201.RegisterUseCase>(
-        () => _i201.RegisterUseCase(gh<_i614.AuthRepository>()));
-    gh.factory<_i561.SignInUseCase>(
-        () => _i561.SignInUseCase(gh<_i614.AuthRepository>()));
-    gh.factory<_i901.SignOutUseCase>(
-        () => _i901.SignOutUseCase(gh<_i614.AuthRepository>()));
-    gh.factory<_i1020.DeleteImageUseCase>(
-        () => _i1020.DeleteImageUseCase(gh<_i169.ImageRepository>()));
-    gh.factory<_i996.UploadImageUseCase>(
-        () => _i996.UploadImageUseCase(gh<_i169.ImageRepository>()));
-    gh.factory<_i196.WatchImagesUseCase>(
-        () => _i196.WatchImagesUseCase(gh<_i169.ImageRepository>()));
+    gh.factory<_i386.PostsBloc>(() => _i386.PostsBloc(getPostsUseCase: gh<_i160.GetPostsUseCase>()));
+    gh.factory<_i556.AuthStateChangesUseCase>(() => _i556.AuthStateChangesUseCase(gh<_i614.AuthRepository>()));
+    gh.factory<_i201.RegisterUseCase>(() => _i201.RegisterUseCase(gh<_i614.AuthRepository>()));
+    gh.factory<_i561.SignInUseCase>(() => _i561.SignInUseCase(gh<_i614.AuthRepository>()));
+    gh.factory<_i901.SignOutUseCase>(() => _i901.SignOutUseCase(gh<_i614.AuthRepository>()));
+    gh.factory<_i1020.DeleteImageUseCase>(() => _i1020.DeleteImageUseCase(gh<_i169.ImageRepository>()));
+    gh.factory<_i996.UploadImageUseCase>(() => _i996.UploadImageUseCase(gh<_i169.ImageRepository>()));
+    gh.factory<_i196.WatchImagesUseCase>(() => _i196.WatchImagesUseCase(gh<_i169.ImageRepository>()));
     gh.factory<_i737.ImagesBloc>(() => _i737.ImagesBloc(
           watchImagesUseCase: gh<_i196.WatchImagesUseCase>(),
           uploadImageUseCase: gh<_i996.UploadImageUseCase>(),

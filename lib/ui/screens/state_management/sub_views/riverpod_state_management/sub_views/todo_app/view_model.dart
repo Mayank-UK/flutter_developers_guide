@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 
 // Disposed automatically when the screen is no longer in the tree, don't use autoDispose in sharedViewModel
-class RiverpodTodoProvider extends AutoDisposeNotifier<List<Todo>> {
+class RiverpodTodoViewModel extends AutoDisposeNotifier<List<Todo>> {
   static const _uuid = Uuid();
 
   @override
@@ -41,8 +41,8 @@ class RiverpodTodoProvider extends AutoDisposeNotifier<List<Todo>> {
 
   That's it. Same concept, different location.
 */
-final todosProvider = NotifierProvider.autoDispose<RiverpodTodoProvider, List<Todo>>(
-  RiverpodTodoProvider.new,
+final todosProvider = NotifierProvider.autoDispose<RiverpodTodoViewModel, List<Todo>>(
+  RiverpodTodoViewModel.new,
 );
 
 /* 

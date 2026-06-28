@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_developers_guide/ui/state_management/blocs/auth/auth_bloc.dart';
+import 'package:flutter_developers_guide/ui/blocs/auth/auth_bloc.dart';
 import 'package:flutter_developers_guide/ui/components/code_preview_tabs.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
