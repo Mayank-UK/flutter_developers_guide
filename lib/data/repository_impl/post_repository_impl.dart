@@ -28,14 +28,25 @@ class PostRepositoryImpl implements PostRepository {
         'Remote fetch failed (${cause.runtimeType}), falling back to cache',
       );
 
+      final networkFailure = mapExceptionToFailure(cause);
+
       try {
         final localPosts = await localDataSource.getPosts();
-        return Success(localPosts.map((dto) => dto.toPost()).toList());
-      } on AppDatabaseException catch (e) {
-        final originalFailure = mapExceptionToFailure(cause);
 
-        // Link them up here by passing originalFailure into the cause parameter
-        final chained = CacheFailure(e.message, originalFailure);
+        if (localPosts.isNotEmpty) {
+          return Success(
+            localPosts.map((dto) => dto.toPost()).toList(),
+            networkFailure,
+          );
+        }
+
+        // No cache available. Surface the original network failure.
+        return Failed(networkFailure);
+      } on AppDatabaseException catch (e) {
+        final chained = CacheFailure(
+          e.message,
+          networkFailure,
+        );
 
         logger.severe('Cache fallback also failed:\n${chained.chain}');
         return Failed(chained);

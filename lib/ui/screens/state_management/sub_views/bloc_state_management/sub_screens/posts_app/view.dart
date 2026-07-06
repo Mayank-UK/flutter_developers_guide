@@ -17,13 +17,19 @@ class PostsAppView extends StatelessWidget {
         SizedBox(
           height: MediaQuery.of(context).size.height,
           child: BlocConsumer<PostsBloc, PostsState>(
-            listenWhen: (_, current) => current is PostsError,
+            listenWhen: (_, current) => current is PostsError || (current is PostsLoaded && current.warning != null),
             listener: (context, state) {
               if (state is PostsError) {
-                // Scenario A: Non-blocking severity gets an overlay snackbar
                 if (state.failure.severity != FailureSeverity.critical) {
                   FailureSnackbar.show(context, state.failure);
                 }
+              }
+
+              if (state is PostsLoaded && state.warning != null) {
+                FailureSnackbar.show(
+                  context,
+                  state.warning!,
+                );
               }
             },
             builder: (context, state) {
@@ -35,8 +41,7 @@ class PostsAppView extends StatelessWidget {
               // 2. Handle Data Availability (Even if accompanied by a transient warning)
               if (state is PostsLoaded) {
                 return RefreshIndicator(
-                  onRefresh: () async =>
-                      context.read<PostsBloc>().add(FetchPosts()),
+                  onRefresh: () async => context.read<PostsBloc>().add(FetchPosts()),
                   child: ListView.builder(
                     itemCount: state.posts.length,
                     itemBuilder: (context, index) {

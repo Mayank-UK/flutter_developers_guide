@@ -39,11 +39,18 @@ class PostsLoading extends PostsState {}
 
 class PostsLoaded extends PostsState {
   final List<Post> posts;
+  final Failure? warning;
 
-  const PostsLoaded(this.posts);
+  const PostsLoaded(
+    this.posts, {
+    this.warning,
+  });
 
   @override
-  List<Object?> get props => [posts];
+  List<Object?> get props => [
+        posts,
+        warning,
+      ];
 }
 
 class PostsError extends PostsState {
@@ -70,9 +77,25 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
       // Why error handling is required in block when it is already done in apiService and repository?
       // This is because every stage is handling errors related to it, bloc will receive exceptions that have occured
       // at various stages and help convert those exceptions and failures to store in states and show via UI
+      // switch (result) {
+      //   case Success(value: final posts):
+      //     emit(PostsLoaded(posts));
+      //   case Failed(failure: final failure):
+      //     emit(PostsError(failure));
+      // }
+
       switch (result) {
-        case Success(value: final posts):
-          emit(PostsLoaded(posts));
+        case Success(
+            value: final posts,
+            warning: final warning,
+          ):
+          emit(
+            PostsLoaded(
+              posts,
+              warning: warning,
+            ),
+          );
+
         case Failed(failure: final failure):
           emit(PostsError(failure));
       }

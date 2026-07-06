@@ -6,7 +6,12 @@ sealed class Result<T> {
 
 final class Success<T> extends Result<T> {
   final T value;
-  const Success(this.value);
+  final Failure? warning;
+
+  const Success(
+    this.value, [
+    this.warning,
+  ]);
 }
 
 final class Failed<T> extends Result<T> {

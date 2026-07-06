@@ -10,12 +10,12 @@ import 'package:flutter_developers_guide/data/local/app_database.dart';
 import 'package:flutter_developers_guide/data/local/daos/post_dao.dart';
 import 'package:flutter_developers_guide/data/local/fake_app_database.dart';
 import 'package:flutter_developers_guide/data/remote/auth_remote_data_source.dart';
-import 'package:flutter_developers_guide/data/remote/auth_token_interceptor.dart';
-import 'package:flutter_developers_guide/data/remote/failure_injection_interceptor.dart';
+import 'package:flutter_developers_guide/data/remote/interceptors/auth_token_interceptor.dart';
+import 'package:flutter_developers_guide/data/remote/interceptors/failure_injection_interceptor.dart';
 import 'package:flutter_developers_guide/data/remote/fake_api_service.dart';
 import 'package:flutter_developers_guide/data/remote/image_remote_data_source.dart';
 import 'package:flutter_developers_guide/data/remote/post_remote_data_source.dart';
-import 'package:flutter_developers_guide/data/remote/retry_interceptor.dart';
+import 'package:flutter_developers_guide/data/remote/interceptors/retry_interceptor.dart';
 import 'package:flutter_developers_guide/data/remote/todo_remote_data_source.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logging/logging.dart';
@@ -61,8 +61,7 @@ abstract class InjectableModule {
   }
 
   @lazySingleton
-  FailureInjectionInterceptor failureInjectionInterceptor() =>
-      FailureInjectionInterceptor();
+  FailureInjectionInterceptor failureInjectionInterceptor() => FailureInjectionInterceptor();
 
   @lazySingleton
   Dio dio(
@@ -85,6 +84,7 @@ abstract class InjectableModule {
 
     dio.interceptors.add(authTokenInterceptor);
     dio.interceptors.add(retryInterceptor);
+    dio.interceptors.add(failureInjectionInterceptor);
 
     if (config.isDev) {
       // Dev: simulate failures against the real client + log traffic.
