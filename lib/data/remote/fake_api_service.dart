@@ -23,7 +23,7 @@ class FakeApiService
   ApiScenario scenario;
 
   FakeApiService({
-    this.scenario = ApiScenario.success,
+    required this.scenario,
   });
 
   final _authUser = AuthUserDto(

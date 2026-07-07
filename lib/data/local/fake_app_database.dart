@@ -1,8 +1,7 @@
 import 'package:flutter_developers_guide/core/error_handling/exceptions.dart';
+import 'package:flutter_developers_guide/core/scenario/db_scenario.dart';
 import 'package:flutter_developers_guide/data/local/app_database.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/post_dto.dart';
-
-enum DbScenario { success, empty, readError, writeError }
 
 // Just make it for a single feature to test the DB functionality at least once, do not maintain it for all the features
 
@@ -11,7 +10,7 @@ class FakeAppDatabase implements AppDatabase {
   List<PostDTO> _cache = [];
 
   FakeAppDatabase({
-    this.scenario = DbScenario.success,
+    required this.scenario,
   });
 
   Future<T> _simulateRead<T>(T Function() operation) async {

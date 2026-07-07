@@ -61,7 +61,10 @@ abstract class InjectableModule {
   }
 
   @lazySingleton
-  FailureInjectionInterceptor failureInjectionInterceptor() => FailureInjectionInterceptor();
+  FailureInjectionInterceptor failureInjectionInterceptor(
+    AppConfig config,
+  ) =>
+      FailureInjectionInterceptor(scenario: config.apiScenario);
 
   @lazySingleton
   Dio dio(
@@ -114,7 +117,7 @@ abstract class InjectableModule {
     Database database,
   ) {
     if (config.useFakeDatabase) {
-      return FakeAppDatabase();
+      return FakeAppDatabase(scenario: config.dbScenario);
     }
 
     return AppDatabaseImpl(
@@ -129,7 +132,7 @@ abstract class InjectableModule {
     FirebaseAuth auth,
   ) {
     if (config.useFakeApi) {
-      return FakeApiService();
+      return FakeApiService(scenario: config.apiScenario);
     }
 
     return FirebaseAuthRemoteDataSource(
@@ -144,7 +147,7 @@ abstract class InjectableModule {
     Dio dio,
   ) {
     if (config.useFakeApi) {
-      return FakeApiService();
+      return FakeApiService(scenario: config.apiScenario);
     }
 
     // Real Dio client + interceptor chain. In dev, the
@@ -160,7 +163,7 @@ abstract class InjectableModule {
     FirebaseFirestore firestore,
   ) {
     if (config.useFakeApi) {
-      return FakeApiService();
+      return FakeApiService(scenario: config.apiScenario);
     }
 
     return FirestoreTodoRemoteDataSource(
@@ -175,7 +178,7 @@ abstract class InjectableModule {
     FirebaseStorage storage,
   ) {
     if (config.useFakeApi) {
-      return FakeApiService();
+      return FakeApiService(scenario: config.apiScenario);
     }
 
     return FirebaseStorageImageRemoteDataSource(
