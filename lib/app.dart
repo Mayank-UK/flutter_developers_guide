@@ -50,7 +50,7 @@ Future<void> bootstrapApp({
   );
 
   logger.info(
-    'Using fake API: ${config.useFakeData}',
+    'Using fake API: ${config.useFakeApi} | fake DB: ${config.useFakeDatabase}',
   );
 
   logger.info(

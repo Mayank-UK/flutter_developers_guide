@@ -6,22 +6,18 @@ import 'package:flutter_developers_guide/core/scenario/api_scenario.dart';
 import 'package:flutter_developers_guide/data/remote/auth_remote_data_source.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/auth_user_dto.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/image_item_dto.dart';
+import 'package:flutter_developers_guide/data/remote/dtos/post_dto.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/todo_dto.dart';
 import 'package:flutter_developers_guide/data/remote/image_remote_data_source.dart';
+import 'package:flutter_developers_guide/data/remote/post_remote_data_source.dart';
 import 'package:flutter_developers_guide/data/remote/todo_remote_data_source.dart';
 
-/*
-  FakeApiService covers only the Firebase-backed remote sources (auth / todos /
-  images). The REST posts source is exercised against the real Dio client + the
-  dev-only [FailureInjectionInterceptor], so it no longer needs a fake here.
+// Use fake api service until backend is not ready
 
-  Objectives that remain:
-    - To continue development without a Firebase backend
-    - To simulate different types of failures and their handling
-*/
 class FakeApiService
     implements
         AuthRemoteDataSource,
+        PostRemoteDataSource,
         TodoRemoteDataSource,
         ImageRemoteDataSource {
   ApiScenario scenario;
@@ -41,6 +37,14 @@ class FakeApiService
       id: '1',
       title: 'Learn Flutter',
       isCompleted: false,
+    ),
+  ];
+
+  final List<PostDTO> _posts = [
+    PostDTO(
+      id: 1,
+      title: 'Fake post',
+      body: 'From fake API',
     ),
   ];
 
@@ -102,6 +106,13 @@ class FakeApiService
   Future<void> signOut() async {}
 
   @override
+  Future<List<PostDTO>> getPosts() {
+    return _simulate(
+      () => _posts,
+    );
+  }
+
+  @override
   Stream<List<TodoDTO>> watchTodos() async* {
     yield List.unmodifiable(_todos);
   }
@@ -156,8 +167,7 @@ class FakeApiService
   Stream<List<ImageItemDTO>> watchImages() => Stream.value([]);
 
   @override
-  Future<ImageItemDTO> uploadImage(File file, String userId) async =>
-      ImageItemDTO(
+  Future<ImageItemDTO> uploadImage(File file, String userId) async => ImageItemDTO(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
         url: 'https://picsum.photos/200',
         fileName: file.path.split('/').last,

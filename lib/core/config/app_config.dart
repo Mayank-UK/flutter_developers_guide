@@ -3,13 +3,15 @@ enum Environment { dev, staging, prod }
 class AppConfig {
   final Environment environment;
   final String baseUrl;
-  final bool useFakeData;
+  final bool useFakeApi;
+  final bool useFakeDatabase;
   final bool enableLogs;
 
   const AppConfig({
     required this.environment,
     required this.baseUrl,
-    required this.useFakeData,
+    required this.useFakeApi,
+    required this.useFakeDatabase,
     required this.enableLogs,
   });
 

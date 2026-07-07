@@ -16,7 +16,7 @@ class FailureInjectionInterceptor extends Interceptor {
   ApiScenario scenario;
 
   FailureInjectionInterceptor({
-    this.scenario = ApiScenario.success,
+    this.scenario = ApiScenario.networkError,
   });
 
   @override

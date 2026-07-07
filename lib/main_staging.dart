@@ -6,7 +6,8 @@ void main() {
     config: const AppConfig(
       environment: Environment.staging,
       baseUrl: 'https://jsonplaceholder.typicode.com',
-      useFakeData: false,
+      useFakeApi: false,
+      useFakeDatabase: false,
       enableLogs: true,
     ),
   );

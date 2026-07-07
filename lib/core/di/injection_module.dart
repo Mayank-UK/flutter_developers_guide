@@ -113,7 +113,7 @@ abstract class InjectableModule {
     AppConfig config,
     Database database,
   ) {
-    if (config.useFakeData) {
+    if (config.useFakeDatabase) {
       return FakeAppDatabase();
     }
 
@@ -128,7 +128,7 @@ abstract class InjectableModule {
     Logger logger,
     FirebaseAuth auth,
   ) {
-    if (config.useFakeData) {
+    if (config.useFakeApi) {
       return FakeApiService();
     }
 
@@ -140,11 +140,15 @@ abstract class InjectableModule {
 
   @lazySingleton
   PostRemoteDataSource postRemoteDataSource(
+    AppConfig config,
     Dio dio,
   ) {
-    // REST posts are always exercised against the real Dio client. In dev, the
-    // FailureInjectionInterceptor simulates failures against the live API, so
-    // FakeApiService is not used for this source.
+    if (config.useFakeApi) {
+      return FakeApiService();
+    }
+
+    // Real Dio client + interceptor chain. In dev, the
+    // FailureInjectionInterceptor simulates failures against the live API.
     return JsonPlaceholderPostRemoteDataSource(
       dio: dio,
     );
@@ -155,7 +159,7 @@ abstract class InjectableModule {
     AppConfig config,
     FirebaseFirestore firestore,
   ) {
-    if (config.useFakeData) {
+    if (config.useFakeApi) {
       return FakeApiService();
     }
 
@@ -170,7 +174,7 @@ abstract class InjectableModule {
     FirebaseFirestore firestore,
     FirebaseStorage storage,
   ) {
-    if (config.useFakeData) {
+    if (config.useFakeApi) {
       return FakeApiService();
     }
 
