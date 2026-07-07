@@ -84,7 +84,6 @@ abstract class InjectableModule {
 
     dio.interceptors.add(authTokenInterceptor);
     dio.interceptors.add(retryInterceptor);
-    dio.interceptors.add(failureInjectionInterceptor);
 
     if (config.isDev) {
       // Dev: simulate failures against the real client + log traffic.
