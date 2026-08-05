@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
+import 'package:flutter_developers_guide/ui/components/teaching_screen.dart';
 
-import '../../../../../components/code_preview_tabs.dart';
 import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class SliverAppBarWidgetView extends StatelessWidget {
-  final String _codeTabMarkdownLocation =
-      'assets/markdowns/widget_catalog/layout/sliver_app_bar_markdown.md';
-
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
+    return TeachingScreen(
       title: 'SliverAppBar',
-      mobileUi: [
-        CodePreviewTabs(
-          previewTab: _SliverAppBarWidgetImplementation(),
-          codeTabMarkdownLocation: this._codeTabMarkdownLocation,
-        ),
-      ],
+      markdownPath: 'assets/markdowns/widget_catalog/layout/sliver_app_bar_markdown.md',
+      preview: _SliverAppBarWidgetImplementation(),
     );
   }
 }
@@ -64,7 +56,7 @@ class _SliverAppBarWidgetImplementation extends StatelessWidget {
                             color: index.isOdd ? Colors.white : Colors.black12,
                             height: 100.0,
                             child: Center(
-                              child: Text('$index', textScaleFactor: 5),
+                              child: Text('$index', textScaler: TextScaler.linear(5)),
                             ),
                           );
                         },

@@ -1,23 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/ui/components/code_preview_tabs.dart';
-import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 import 'package:flutter_developers_guide/ui/components/section_wrapper.dart';
 import 'package:flutter_developers_guide/ui/components/text_block.dart';
+import 'package:flutter_developers_guide/ui/components/teaching_screen.dart';
 
 class BackgroundTaskView extends StatelessWidget {
-  final String _codeTabMarkdownLocation =
-      'assets/markdowns/other_basics/background_task_markdown.md';
-
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
+    return TeachingScreen(
       title: 'Background tasks',
-      mobileUi: [
-        CodePreviewTabs(
-          previewTab: _BackgroundTaskImplementation(),
-          codeTabMarkdownLocation: this._codeTabMarkdownLocation,
-        ),
-      ],
+      markdownPath: 'assets/markdowns/other_basics/background_task_markdown.md',
+      preview: _BackgroundTaskImplementation(),
     );
   }
 }

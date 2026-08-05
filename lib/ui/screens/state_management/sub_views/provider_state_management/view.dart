@@ -1,26 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 import 'package:flutter_developers_guide/ui/components/text_block.dart';
+import 'package:flutter_developers_guide/ui/components/teaching_screen.dart';
 import 'package:flutter_developers_guide/ui/navigation/routes.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../components/code_preview_tabs.dart';
 import '../../../../components/section_wrapper.dart';
 
 class ProviderStateManagementView extends StatelessWidget {
-  final String _codeTabMarkdownLocation =
-      'assets/markdowns/state_management/provider_markdown.md';
-
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
+    return TeachingScreen(
       title: 'Provider state management',
-      mobileUi: [
-        CodePreviewTabs(
-          previewTab: _ProviderStateManagementImplementation(),
-          codeTabMarkdownLocation: this._codeTabMarkdownLocation,
-        ),
-      ],
+      markdownPath: 'assets/markdowns/state_management/provider_markdown.md',
+      preview: _ProviderStateManagementImplementation(),
     );
   }
 }

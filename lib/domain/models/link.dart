@@ -3,7 +3,7 @@ class Link {
   final String? description;
   final String route;
 
-  Link({
+  const Link({
     required this.title,
     this.description,
     required this.route,

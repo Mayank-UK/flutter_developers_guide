@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../components/section_wrapper.dart';
-import '../../../../components/content_group_wrapper.dart';
 import '../../../../components/text_block.dart';
 
 class AsynchronousView extends StatelessWidget {
@@ -17,7 +16,7 @@ class AsynchronousView extends StatelessWidget {
             TextBlock(
               'Dart libraries are full of functions that return Future or Stream objects. These functions are asynchronous: they return after setting up a possibly time-consuming operation (such as I/O), without waiting for that operation to complete. The async and await keywords support asynchronous programming, letting you write asynchronous code that looks similar to synchronous code.',
             ),
-            ContentGroupWrapper(
+            SectionWrapper(tinted: false, runSpacing: 4, titleStyle: Theme.of(context).textTheme.bodyLarge,
               title: 'Handling Futures',
               content: [
                 TextBlock(

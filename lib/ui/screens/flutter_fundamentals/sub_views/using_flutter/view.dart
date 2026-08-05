@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../components/section_wrapper.dart';
-import '../../../../components/content_group_wrapper.dart';
 import '../../../../components/text_block.dart';
 
 class UsingFlutterView extends StatelessWidget {
@@ -22,7 +21,7 @@ class UsingFlutterView extends StatelessWidget {
         SectionWrapper(
           title: 'Start development environment',
           content: [
-            ContentGroupWrapper(
+            SectionWrapper(tinted: false, runSpacing: 4, titleStyle: Theme.of(context).textTheme.bodyLarge,
               title: 'Through IDE (preferred)',
               content: <Widget>[
                 TextBlock(
@@ -33,7 +32,7 @@ class UsingFlutterView extends StatelessWidget {
                 ),
               ],
             ),
-            ContentGroupWrapper(
+            SectionWrapper(tinted: false, runSpacing: 4, titleStyle: Theme.of(context).textTheme.bodyLarge,
               title: 'Through command line',
               content: <Widget>[
                 TextBlock(

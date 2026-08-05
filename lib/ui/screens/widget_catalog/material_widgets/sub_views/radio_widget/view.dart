@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
+import 'package:flutter_developers_guide/ui/components/teaching_screen.dart';
 
-import '../../../../../components/code_preview_tabs.dart';
 import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class RadioWidgetView extends StatelessWidget {
-  final String _codeTabMarkdownLocation =
-      'assets/markdowns/widget_catalog/material/radio_markdown.md';
-
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
+    return TeachingScreen(
       title: 'Radio',
-      mobileUi: [
-        CodePreviewTabs(
-          previewTab: _RadioWidgetImplementation(),
-          codeTabMarkdownLocation: this._codeTabMarkdownLocation,
-        ),
-      ],
+      markdownPath: 'assets/markdowns/widget_catalog/material/radio_markdown.md',
+      preview: _RadioWidgetImplementation(),
     );
   }
 }
@@ -52,33 +44,29 @@ class __RadioWidgetImplementationState
               'Tip: like Checkbox, the raw Radio renders only the circle. Wrap it in a RadioListTile to get the title, tap target, and accessibility wiring for free; in newer code prefer the Material 3 RadioListTile with adaptive styling.',
             ),
             Container(
-              child: Column(
-                children: <Widget>[
-                  ListTile(
-                    title: const Text('Lafayette'),
-                    leading: Radio<SingingCharacter>(
-                      value: SingingCharacter.lafayette,
-                      groupValue: _character,
-                      onChanged: (SingingCharacter? value) {
-                        setState(() {
-                          _character = value!;
-                        });
-                      },
+              child: RadioGroup<SingingCharacter>(
+                groupValue: _character,
+                onChanged: (SingingCharacter? value) {
+                  setState(() {
+                    _character = value!;
+                  });
+                },
+                child: Column(
+                  children: <Widget>[
+                    ListTile(
+                      title: const Text('Lafayette'),
+                      leading: Radio<SingingCharacter>(
+                        value: SingingCharacter.lafayette,
+                      ),
                     ),
-                  ),
-                  ListTile(
-                    title: const Text('Thomas Jefferson'),
-                    leading: Radio<SingingCharacter>(
-                      value: SingingCharacter.jefferson,
-                      groupValue: _character,
-                      onChanged: (SingingCharacter? value) {
-                        setState(() {
-                          _character = value!;
-                        });
-                      },
+                    ListTile(
+                      title: const Text('Thomas Jefferson'),
+                      leading: Radio<SingingCharacter>(
+                        value: SingingCharacter.jefferson,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],

@@ -1,6 +1,7 @@
 class RoutePaths {
   // home paths
   static const String home = '/';
+  static const String about = '/about';
   static const String pageNotFound = '/page-not-found';
   static const String dartFundamentals = '/dart-fundamentals';
   static const String flutterFundamentals = '/flutter-fundamentals';

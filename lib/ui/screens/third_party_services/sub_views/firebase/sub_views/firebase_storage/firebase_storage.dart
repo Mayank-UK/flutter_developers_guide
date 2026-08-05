@@ -7,27 +7,19 @@ import 'package:flutter_developers_guide/core/result.dart';
 import 'package:flutter_developers_guide/domain/models/image_item.dart';
 import 'package:flutter_developers_guide/domain/repository/auth_repository.dart';
 import 'package:flutter_developers_guide/ui/blocs/images/images_bloc.dart';
-import 'package:flutter_developers_guide/ui/components/code_preview_tabs.dart';
-import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
+import 'package:flutter_developers_guide/ui/components/teaching_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
 class FirebaseStorageView extends StatelessWidget {
-  final String _codeTabMarkdownLocation =
-      'assets/markdowns/third_party_services/firebase.md';
-
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
+    // ImagesBloc is provided by the router (see router.dart), mirroring
+    // how PostsBloc and FirebaseAuthView are scoped — no nested provider.
+    return TeachingScreen(
       title: 'Firebase Storage',
-      mobileUi: [
-        CodePreviewTabs(
-          // ImagesBloc is provided by the router (see router.dart), mirroring
-          // how PostsBloc and FirebaseAuthView are scoped — no nested provider.
-          previewTab: const _FirebaseStorageImplementation(),
-          codeTabMarkdownLocation: _codeTabMarkdownLocation,
-        ),
-      ],
+      markdownPath: 'assets/markdowns/third_party_services/firebase.md',
+      preview: const _FirebaseStorageImplementation(),
     );
   }
 }

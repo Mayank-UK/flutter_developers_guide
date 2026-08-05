@@ -4,9 +4,9 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 class MarkdownPreview extends StatelessWidget {
-  String markdownLocation;
+  final String markdownLocation;
 
-  MarkdownPreview({required this.markdownLocation});
+  const MarkdownPreview({super.key, required this.markdownLocation});
 
   Future<String> getFileData(String path) async {
     return await rootBundle.loadString(path);

@@ -1,29 +1,21 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/ui/components/code_preview_tabs.dart';
-import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 import 'package:flutter_developers_guide/ui/components/section_wrapper.dart';
 import 'package:flutter_developers_guide/ui/components/text_block.dart';
+import 'package:flutter_developers_guide/ui/components/teaching_screen.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
 class NotificationView extends StatelessWidget {
-  final String _codeTabMarkdownLocation =
-      'assets/markdowns/notification/notification_markdown.md';
-
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
+    return TeachingScreen(
       title: 'Notifications',
-      mobileUi: [
-        CodePreviewTabs(
-          previewTab: _NotificationView(),
-          codeTabMarkdownLocation: this._codeTabMarkdownLocation,
-        ),
-      ],
+      markdownPath: 'assets/markdowns/notification/notification_markdown.md',
+      preview: _NotificationView(),
     );
   }
 }
@@ -166,7 +158,7 @@ class __NotificationViewState extends State<_NotificationView> {
         'This is a scheduled notification',
         tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
         platformChannelSpecifics,
-        androidAllowWhileIdle: true,
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
       );

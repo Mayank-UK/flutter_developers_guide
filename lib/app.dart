@@ -10,6 +10,7 @@ import 'package:flutter_developers_guide/domain/repository/auth_repository.dart'
 import 'package:flutter_developers_guide/firebase_options.dart';
 import 'package:flutter_developers_guide/ui/design_system/theme.dart';
 import 'package:flutter_developers_guide/ui/navigation/router.dart';
+import 'package:flutter_developers_guide/ui/services/theme_mode_controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
@@ -21,12 +22,17 @@ class MyAPP extends StatelessWidget {
     // MultiProvider for all the providers
     return MultiProvider(
       providers: providers,
-      child: MaterialApp.router(
-        title: 'Flutter Developer\'s Guide',
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        themeMode: ThemeMode.system,
-        routerConfig: appRouter,
+      child: ValueListenableBuilder<ThemeMode>(
+        valueListenable: ThemeModeController.instance,
+        builder: (context, mode, _) {
+          return MaterialApp.router(
+            title: 'Flutter Developer\'s Guide',
+            theme: lightTheme,
+            darkTheme: darkTheme,
+            themeMode: mode,
+            routerConfig: appRouter,
+          );
+        },
       ),
     );
   }

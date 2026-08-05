@@ -1,23 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
-import '../../../../../components/code_preview_tabs.dart';
+import 'package:flutter_developers_guide/ui/components/teaching_screen.dart';
 import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class GestureDetectorWidgetView extends StatelessWidget {
-  final String _codeTabMarkdownLocation =
-      'assets/markdowns/widget_catalog/interactive/gesture_detector_markdown.md';
-
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
+    return TeachingScreen(
       title: 'GestureDetector',
-      mobileUi: [
-        CodePreviewTabs(
-          previewTab: _GestureDetectorWidgetImplementation(),
-          codeTabMarkdownLocation: this._codeTabMarkdownLocation,
-        ),
-      ],
+      markdownPath: 'assets/markdowns/widget_catalog/interactive/gesture_detector_markdown.md',
+      preview: _GestureDetectorWidgetImplementation(),
     );
   }
 }

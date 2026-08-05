@@ -3,7 +3,6 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 import 'package:flutter_developers_guide/ui/components/text_block.dart';
 
 import '../../components/section_wrapper.dart';
-import '../../components/content_group_wrapper.dart';
 
 class BestPracticesView extends StatelessWidget {
   @override
@@ -14,7 +13,7 @@ class BestPracticesView extends StatelessWidget {
         SectionWrapper(
           title: 'Technical',
           content: [
-            ContentGroupWrapper(
+            SectionWrapper(tinted: false, runSpacing: 4, titleStyle: Theme.of(context).textTheme.bodyLarge,
               title: 'Controlling build() cost',
               content: [
                 TextBlock(
@@ -28,7 +27,7 @@ class BestPracticesView extends StatelessWidget {
                 ),
               ],
             ),
-            ContentGroupWrapper(
+            SectionWrapper(tinted: false, runSpacing: 4, titleStyle: Theme.of(context).textTheme.bodyLarge,
               title: 'Apply effects only when needed (avoid saveLayer())',
               content: [
                 TextBlock(
@@ -114,7 +113,7 @@ class BestPracticesView extends StatelessWidget {
         SectionWrapper(
           title: 'Tools',
           content: [
-            ContentGroupWrapper(
+            SectionWrapper(tinted: false, runSpacing: 4, titleStyle: Theme.of(context).textTheme.bodyLarge,
               title: 'IDE (flutter and dart plugins)',
               content: [
                 TextBlock(

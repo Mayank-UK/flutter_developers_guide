@@ -3,7 +3,6 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 import 'package:flutter_developers_guide/ui/components/text_block.dart';
 
 import '../../components/section_wrapper.dart';
-import '../../components/content_group_wrapper.dart';
 import '../../components/markdown_preview.dart';
 
 class ArchitectureView extends StatelessWidget {
@@ -23,7 +22,7 @@ class ArchitectureView extends StatelessWidget {
             TextBlock(
               'Development using Model View ViewModel (MVVM) architecture pattern helps in easy and efficient development of codebase. It makes applications maintainable in long term and provides easy scalability in future.',
             ),
-            ContentGroupWrapper(
+            SectionWrapper(tinted: false, runSpacing: 4, titleStyle: Theme.of(context).textTheme.bodyLarge,
               title: 'MVVM layers',
               content: [
                 TextBlock(

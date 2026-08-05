@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../components/section_wrapper.dart';
-import '../../../../components/content_group_wrapper.dart';
 import '../../../../components/text_block.dart';
 
 class AboutWidgetsView extends StatelessWidget {
@@ -29,7 +28,7 @@ class AboutWidgetsView extends StatelessWidget {
             TextBlock(
               'Every widget is an instance of a dart class.',
             ),
-            ContentGroupWrapper(
+            SectionWrapper(tinted: false, runSpacing: 4, titleStyle: Theme.of(context).textTheme.bodyLarge,
               title: 'Flutter maintains three types of tree structures:',
               content: <Widget>[
                 Text(

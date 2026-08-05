@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
+import 'package:flutter_developers_guide/ui/components/teaching_screen.dart';
 
-import '../../../../../components/code_preview_tabs.dart';
 import '../../../../../components/section_wrapper.dart';
 import '../../../../../components/text_block.dart';
 
 class SizeTransitionWidgetView extends StatelessWidget {
-  final String _codeTabMarkdownLocation =
-      'assets/markdowns/widget_catalog/animation_motion/size_transition_markdown.md';
-
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
+    return TeachingScreen(
       title: 'SizeTransition',
-      mobileUi: [
-        CodePreviewTabs(
-          previewTab: _SizeTransitionImplementation(),
-          codeTabMarkdownLocation: this._codeTabMarkdownLocation,
-        ),
-      ],
+      markdownPath: 'assets/markdowns/widget_catalog/animation_motion/size_transition_markdown.md',
+      preview: _SizeTransitionImplementation(),
     );
   }
 }
@@ -68,7 +60,7 @@ class __SizeTransitionImplementationState
                   curve: Curves.fastOutSlowIn,
                 ),
                 axis: Axis.horizontal,
-                axisAlignment: -1,
+                alignment: Alignment(-1.0, 0.0),
                 child: FlutterLogo(size: 64),
               ),
             ),

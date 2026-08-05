@@ -2,25 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_developers_guide/domain/models/todo.dart';
 import 'package:flutter_developers_guide/ui/blocs/todos/todos_bloc.dart';
-import 'package:flutter_developers_guide/ui/components/code_preview_tabs.dart';
-import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
+import 'package:flutter_developers_guide/ui/components/teaching_screen.dart';
 
 class FirebaseFirestoreView extends StatelessWidget {
-  final String _codeTabMarkdownLocation =
-      'assets/markdowns/third_party_services/firebase.md';
-
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
+    // TodosBloc is provided by the router (see router.dart), mirroring
+    // how PostsBloc and FirebaseAuthView are scoped — no nested provider.
+    return TeachingScreen(
       title: 'Firebase Database',
-      mobileUi: [
-        CodePreviewTabs(
-          // TodosBloc is provided by the router (see router.dart), mirroring
-          // how PostsBloc and FirebaseAuthView are scoped — no nested provider.
-          previewTab: const _FirebaseFirestoreImplementation(),
-          codeTabMarkdownLocation: _codeTabMarkdownLocation,
-        ),
-      ],
+      markdownPath: 'assets/markdowns/third_party_services/firebase.md',
+      preview: const _FirebaseFirestoreImplementation(),
     );
   }
 }

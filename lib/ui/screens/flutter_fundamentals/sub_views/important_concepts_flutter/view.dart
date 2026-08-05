@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../components/section_wrapper.dart';
-import '../../../../components/content_group_wrapper.dart';
 import '../../../../components/text_block.dart';
 import '../../../../components/markdown_preview.dart';
 
@@ -24,7 +23,7 @@ class ImportantConceptsFlutterView extends StatelessWidget {
             TextBlock(
               'Flutter framework uses Dart programming language which is also developed by Google. Dart is specially designed to develop frontend UI\'s.',
             ),
-            ContentGroupWrapper(
+            SectionWrapper(tinted: false, runSpacing: 4, titleStyle: Theme.of(context).textTheme.bodyLarge,
               title: 'Flutter is composed of two major components:',
               content: <Widget>[
                 TextBlock(

@@ -1,23 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/ui/components/code_preview_tabs.dart';
-import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 import 'package:flutter_developers_guide/ui/components/section_wrapper.dart';
 import 'package:flutter_developers_guide/ui/components/text_block.dart';
+import 'package:flutter_developers_guide/ui/components/teaching_screen.dart';
 
 class DatabaseHandlingView extends StatelessWidget {
-  final String _codeTabMarkdownLocation =
-      'assets/markdowns/database_handling/database_handling_markdown.md';
-
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
+    return TeachingScreen(
       title: 'Database handling',
-      mobileUi: [
-        CodePreviewTabs(
-          previewTab: _DatabaseHandlingImplementation(),
-          codeTabMarkdownLocation: this._codeTabMarkdownLocation,
-        ),
-      ],
+      markdownPath: 'assets/markdowns/database_handling/database_handling_markdown.md',
+      preview: _DatabaseHandlingImplementation(),
     );
   }
 }

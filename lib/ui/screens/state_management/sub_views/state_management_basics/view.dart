@@ -1,25 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
+import 'package:flutter_developers_guide/ui/components/teaching_screen.dart';
 
-import '../../../../components/code_preview_tabs.dart';
 import '../../../../components/section_wrapper.dart';
-import '../../../../components/content_group_wrapper.dart';
 import '../../../../components/text_block.dart';
 
 class StateManagementBasicsView extends StatelessWidget {
-  final String _codeTabMarkdownLocation =
-      'assets/markdowns/state_management/state_management_basics_markdown.md';
-
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
+    return TeachingScreen(
       title: 'State management basics',
-      mobileUi: [
-        CodePreviewTabs(
-          previewTab: _ColorsImplementation(),
-          codeTabMarkdownLocation: this._codeTabMarkdownLocation,
-        ),
-      ],
+      markdownPath: 'assets/markdowns/state_management/state_management_basics_markdown.md',
+      preview: _ColorsImplementation(),
     );
   }
 }
@@ -35,7 +26,7 @@ class _ColorsImplementation extends StatelessWidget {
             TextBlock(
               'Though widgets are unchangeable but widget’s state are changeable, these types of widget are called Stateful widget, and whenever the state of widget changes, the widget gets rendered again with the new state. So changing the widget’s state is indirectly same as changing the widget dynamically.',
             ),
-            ContentGroupWrapper(
+            SectionWrapper(tinted: false, runSpacing: 4, titleStyle: Theme.of(context).textTheme.bodyLarge,
               title: 'setState()',
               content: [
                 TextBlock(

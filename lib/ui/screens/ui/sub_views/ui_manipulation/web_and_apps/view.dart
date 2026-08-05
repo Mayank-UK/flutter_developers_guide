@@ -1,26 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 import 'package:flutter_developers_guide/ui/components/text_block.dart';
+import 'package:flutter_developers_guide/ui/components/teaching_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../../../../../components/code_preview_tabs.dart';
 import '../../../../../components/section_wrapper.dart';
 
 class WebAndAppsView extends StatelessWidget {
-  final String _codeTabMarkdownLocation =
-      'assets/markdowns/ui/ui_manipulation/web_and_apps_markdown.md';
-
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
+    return TeachingScreen(
       title: 'Web & apps',
-      mobileUi: [
-        CodePreviewTabs(
-          previewTab: _WebAndAppsImplementation(),
-          codeTabMarkdownLocation: this._codeTabMarkdownLocation,
-        ),
-      ],
+      markdownPath: 'assets/markdowns/ui/ui_manipulation/web_and_apps_markdown.md',
+      preview: _WebAndAppsImplementation(),
     );
   }
 }

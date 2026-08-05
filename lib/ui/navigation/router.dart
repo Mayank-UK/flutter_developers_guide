@@ -27,6 +27,9 @@ import 'package:flutter_developers_guide/ui/screens/ui/sub_views/design_system/v
 import 'package:flutter_developers_guide/ui/screens/widget/view.dart';
 import 'package:go_router/go_router.dart';
 
+import '../components/app_shell.dart';
+import '../screens/about/view.dart';
+
 import 'routes.dart';
 
 import '../screens/page_not_found/view.dart';
@@ -343,8 +346,17 @@ final GoRouter appRouter = GoRouter(
   ],
   errorBuilder: (context, state) => PageNotFoundView(),
   routes: [
+    // ─── Shared shell (drawer + theme toggle) wrapping every route ───────────
+    // Every route below renders inside [AppShell]'s Scaffold, which hosts the
+    // navigation [Drawer]; per-screen [PageScaffold]s keep their own AppBar and
+    // open the drawer via [AppShell.appShellScaffoldKey]. Route paths are
+    // unchanged — the shell only adds shared chrome.
+    ShellRoute(
+      builder: (context, state, child) => AppShell(child: child),
+      routes: [
     // ─── Home ───────────────────────────────────────────────────────────────
     GoRoute(path: RoutePaths.home, builder: (context, state) => HomeView()),
+    GoRoute(path: RoutePaths.about, builder: (context, state) => AboutView()),
 
     // ─── Top-level sections ──────────────────────────────────────────────────
     GoRoute(
@@ -1246,5 +1258,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
         path: RoutePaths.adaptiveUi,
         builder: (context, state) => AdaptiveLayoutView()),
+      ],
+    ),
   ],
 );

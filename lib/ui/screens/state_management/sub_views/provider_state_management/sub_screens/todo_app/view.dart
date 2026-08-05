@@ -170,7 +170,7 @@ class _CompletedTasksTab extends StatelessWidget {
 }
 
 class _TodosCode extends StatelessWidget {
-  String _markdownLocation =
+  final String _markdownLocation =
       'assets/markdowns/state_management/todos_markdown.md';
 
   @override

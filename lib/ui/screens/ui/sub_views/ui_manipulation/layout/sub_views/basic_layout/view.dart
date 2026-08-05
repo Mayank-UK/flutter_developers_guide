@@ -1,25 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
+import 'package:flutter_developers_guide/ui/components/teaching_screen.dart';
 import 'package:flutter_developers_guide/ui/design_system/sizes.dart';
 
-import '../../../../../../../components/code_preview_tabs.dart';
 import '../../../../../../../components/section_wrapper.dart';
 import '../../../../../../../components/text_block.dart';
 
 class BasicLayoutView extends StatelessWidget {
-  final String _codeTabMarkdownLocation =
-      'assets/markdowns/ui/ui_manipulation/layout/basic_layout_widgets_markdown.md';
-
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
+    return TeachingScreen(
       title: 'Basic layout',
-      mobileUi: [
-        CodePreviewTabs(
-          previewTab: _BasicLayoutImplementation(),
-          codeTabMarkdownLocation: this._codeTabMarkdownLocation,
-        ),
-      ],
+      markdownPath: 'assets/markdowns/ui/ui_manipulation/layout/basic_layout_widgets_markdown.md',
+      preview: _BasicLayoutImplementation(),
     );
   }
 }
