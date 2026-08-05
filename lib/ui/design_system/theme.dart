@@ -1,164 +1,70 @@
 import 'package:flutter/material.dart';
-import 'colors.dart'; // Import your colors file
+import 'colors.dart';
+import 'typography.dart';
+
+/// Shared Material 3 text theme built once from [AppTypography] and reused by
+/// both [lightTheme] and [darkTheme] so the role/weight/letter-spacing scale
+/// stays in lock-step with the React design system.
+TextTheme _buildTextTheme() {
+  return TextTheme(
+    displayLarge: AppTypography.headline1,
+    displayMedium: AppTypography.headline2,
+    displaySmall: AppTypography.headline3,
+    headlineMedium: AppTypography.headline4,
+    headlineSmall: AppTypography.headline5,
+    titleLarge: AppTypography.headline6,
+    titleMedium: AppTypography.subtitle1,
+    titleSmall: AppTypography.subtitle2,
+    bodyLarge: AppTypography.body1,
+    bodyMedium: AppTypography.body2,
+    labelLarge: AppTypography.button,
+    bodySmall: AppTypography.caption,
+    labelSmall: AppTypography.overline,
+  );
+}
 
 final ThemeData lightTheme = ThemeData(
+  useMaterial3: true,
   colorScheme: ColorScheme.light(
     primary: AppColors.primaryLight,
-    primaryContainer: AppColors.primaryVariantLight,
+    primaryContainer: AppColors.primaryContainerLight,
     secondary: AppColors.secondaryLight,
-    secondaryContainer: AppColors.secondaryVariantLight,
+    secondaryContainer: AppColors.secondaryContainerLight,
     surface: AppColors.surfaceLight,
     surfaceTint: AppColors.surfaceTintLight,
+    surfaceContainerHighest: AppColors.surfaceVariantLight,
     error: AppColors.errorLight,
+    outline: AppColors.outlineLight,
     onPrimary: AppColors.onPrimaryLight,
     onSecondary: AppColors.onSecondaryLight,
     onSurface: AppColors.onSurfaceLight,
+    onSurfaceVariant: AppColors.onSurfaceVariantLight,
     onError: AppColors.onErrorLight,
   ),
-  textTheme: TextTheme(
-    displayLarge: TextStyle(
-      fontSize: 96,
-      fontWeight: FontWeight.w300,
-      letterSpacing: -1.5,
-    ),
-    displayMedium: TextStyle(
-      fontSize: 60,
-      fontWeight: FontWeight.w300,
-      letterSpacing: -0.5,
-    ),
-    displaySmall: TextStyle(
-      fontSize: 48,
-      fontWeight: FontWeight.w400,
-    ),
-    headlineMedium: TextStyle(
-      fontSize: 34,
-      fontWeight: FontWeight.w400,
-      letterSpacing: 0.25,
-    ),
-    headlineSmall: TextStyle(
-      fontSize: 24,
-      fontWeight: FontWeight.w400,
-    ),
-    titleLarge: TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.w500,
-      letterSpacing: 0.15,
-    ),
-    titleMedium: TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w400,
-      letterSpacing: 0.15,
-    ),
-    titleSmall: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w500,
-      letterSpacing: 0.1,
-    ),
-    bodyLarge: TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w400,
-      letterSpacing: 0.5,
-    ),
-    bodyMedium: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w400,
-      letterSpacing: 0.25,
-    ),
-    labelLarge: TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-      letterSpacing: 1.25,
-    ),
-    bodySmall: TextStyle(
-      fontSize: 12,
-      fontWeight: FontWeight.w400,
-      letterSpacing: 0.4,
-    ),
-    labelSmall: TextStyle(
-      fontSize: 10,
-      fontWeight: FontWeight.w400,
-      letterSpacing: 1.5,
-    ),
-  ),
+  scaffoldBackgroundColor: AppColors.surfaceLight,
+  dividerColor: AppColors.outlineLight,
+  textTheme: _buildTextTheme(),
 );
 
 final ThemeData darkTheme = ThemeData(
+  useMaterial3: true,
   colorScheme: ColorScheme.dark(
     primary: AppColors.primaryDark,
-    primaryContainer: AppColors.primaryVariantDark,
+    primaryContainer: AppColors.primaryContainerDark,
     secondary: AppColors.secondaryDark,
-    secondaryContainer: AppColors.secondaryVariantDark,
+    secondaryContainer: AppColors.secondaryContainerDark,
     surface: AppColors.surfaceDark,
     surfaceTint: AppColors.surfaceTintDark,
+    surfaceContainerHighest: AppColors.surfaceVariantDark,
     error: AppColors.errorDark,
+    outline: AppColors.outlineDark,
     onPrimary: AppColors.onPrimaryDark,
     onSecondary: AppColors.onSecondaryDark,
     onSurface: AppColors.onSurfaceDark,
+    onSurfaceVariant: AppColors.onSurfaceVariantDark,
     onError: AppColors.onErrorDark,
   ),
-  textTheme: TextTheme(
-    displayLarge: TextStyle(
-      fontSize: 96,
-      fontWeight: FontWeight.w300,
-      letterSpacing: -1.5,
-    ),
-    displayMedium: TextStyle(
-      fontSize: 60,
-      fontWeight: FontWeight.w300,
-      letterSpacing: -0.5,
-    ),
-    displaySmall: TextStyle(
-      fontSize: 48,
-      fontWeight: FontWeight.w400,
-    ),
-    headlineMedium: TextStyle(
-      fontSize: 34,
-      fontWeight: FontWeight.w400,
-      letterSpacing: 0.25,
-    ),
-    headlineSmall: TextStyle(
-      fontSize: 24,
-      fontWeight: FontWeight.w400,
-    ),
-    titleLarge: TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.w500,
-      letterSpacing: 0.15,
-    ),
-    titleMedium: TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w400,
-      letterSpacing: 0.15,
-    ),
-    titleSmall: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w500,
-      letterSpacing: 0.1,
-    ),
-    bodyLarge: TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w400,
-      letterSpacing: 0.5,
-    ),
-    bodyMedium: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w400,
-      letterSpacing: 0.25,
-    ),
-    labelLarge: TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-      letterSpacing: 1.25,
-    ),
-    bodySmall: TextStyle(
-      fontSize: 12,
-      fontWeight: FontWeight.w400,
-      letterSpacing: 0.4,
-    ),
-    labelSmall: TextStyle(
-      fontSize: 10,
-      fontWeight: FontWeight.w400,
-      letterSpacing: 1.5,
-    ),
-  ),
+  scaffoldBackgroundColor: AppColors.surfaceDark,
+  dividerColor: AppColors.outlineDark,
+  textTheme: _buildTextTheme(),
 );

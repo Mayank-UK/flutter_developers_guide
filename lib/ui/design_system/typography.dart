@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 class AppTypography {
   static const String _montserrat = 'Montserrat';
-  static const String _roboto = 'Roboto';
+  static const String _inter = 'Inter';
+
+  /// Monospace family used by code-rendering components (e.g. `CodeBlock`).
+  static const String mono = 'JetBrains Mono';
 
   static const TextStyle headline1 = TextStyle(
     fontFamily: _montserrat,
@@ -59,14 +62,14 @@ class AppTypography {
   );
 
   static const TextStyle body1 = TextStyle(
-    fontFamily: _roboto,
+    fontFamily: _inter,
     fontSize: 16,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.5,
   );
 
   static const TextStyle body2 = TextStyle(
-    fontFamily: _roboto,
+    fontFamily: _inter,
     fontSize: 14,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.25,
@@ -80,14 +83,14 @@ class AppTypography {
   );
 
   static const TextStyle caption = TextStyle(
-    fontFamily: _roboto,
+    fontFamily: _inter,
     fontSize: 12,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.4,
   );
 
   static const TextStyle overline = TextStyle(
-    fontFamily: _roboto,
+    fontFamily: _inter,
     fontSize: 10,
     fontWeight: FontWeight.w400,
     letterSpacing: 1.5,

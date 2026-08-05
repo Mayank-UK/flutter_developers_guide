@@ -3,60 +3,60 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_markdown/flutter_markdown.dart';
 
+import 'code_block.dart';
+
+/// Renders a live [previewTab] followed by a collapsible code section that
+/// loads its source from [codeTabMarkdownLocation].
+///
+/// Despite its historical name (formerly a two-tab TabBar/TabBarView), this
+/// widget no longer uses tabs: the preview is always visible and the code is
+/// revealed on demand via [CodeBlock]. The constructor signature is
+/// preserved so existing call sites remain unchanged.
 class CodePreviewTabs extends StatelessWidget {
   final Widget previewTab;
   final String codeTabMarkdownLocation;
 
-  CodePreviewTabs({
+  const CodePreviewTabs({
+    super.key,
     required this.previewTab,
     required this.codeTabMarkdownLocation,
   });
 
-  Future<String> getFileData(String path) async {
-    return await rootBundle.loadString(path);
+  Future<String> _loadMarkdown(String path) {
+    return rootBundle.loadString(path);
   }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      initialIndex: 0,
-      length: 2,
+    return SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          TabBar(
-            tabs: <Widget>[
-              Tab(
-                child: const Text('Preview'),
-              ),
-              Tab(
-                child: const Text('Code'),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.84,
-            child: TabBarView(
-              physics: AlwaysScrollableScrollPhysics(),
-              children: [
-                SingleChildScrollView(
-                  child: this.previewTab,
+          previewTab,
+          const SizedBox(height: 16),
+          FutureBuilder<String>(
+            future: _loadMarkdown(codeTabMarkdownLocation),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState != ConnectionState.done) {
+                return Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Text(
+                    'Loading code...',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                );
+              }
+              final source = snapshot.data ?? '';
+              return CodeBlock(
+                code: source,
+                language: 'dart',
+                body: Markdown(
+                  data: source,
+                  padding: const EdgeInsets.all(16),
+                  selectable: true,
                 ),
-                FutureBuilder(
-                  future: getFileData(this.codeTabMarkdownLocation),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) {
-                      return Text(
-                        'Loading Markdown Info...',
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              color: Theme.of(context).colorScheme.onPrimary,
-                            ),
-                      );
-                    }
-                    return Markdown(data: snapshot.data.toString());
-                  },
-                ),
-              ],
-            ),
+              );
+            },
           ),
         ],
       ),

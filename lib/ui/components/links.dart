@@ -37,9 +37,7 @@ class Links extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.primary,
                   borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    DSShadows.buttonCard,
-                  ],
+                  boxShadow: DSShadows.buttonCard,
                 ),
                 child: Container(
                   padding: EdgeInsets.all(16),

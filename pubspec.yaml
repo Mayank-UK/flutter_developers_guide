@@ -143,10 +143,26 @@ flutter:
               - asset: assets/fonts/montserrat/Montserrat-Medium.ttf
               - asset: assets/fonts/montserrat/Montserrat-SemiBold.ttf
               - asset: assets/fonts/montserrat/Montserrat-Bold.ttf
-        - family: Roboto Slab
+        - family: Inter
           fonts:
-              - asset: assets/fonts/roboto_slab/RobotoSlab-Light.ttf
-              - asset: assets/fonts/roboto_slab/RobotoSlab-Regular.ttf
+              - asset: assets/fonts/inter/Inter-Variable.ttf
+                weight: 300
+              - asset: assets/fonts/inter/Inter-Variable.ttf
+                weight: 400
+              - asset: assets/fonts/inter/Inter-Variable.ttf
+                weight: 500
+              - asset: assets/fonts/inter/Inter-Variable.ttf
+                weight: 600
+              - asset: assets/fonts/inter/Inter-Variable.ttf
+                weight: 700
+        - family: JetBrains Mono
+          fonts:
+              - asset: assets/fonts/jetbrainsmono/JetBrainsMono-Variable.ttf
+                weight: 400
+              - asset: assets/fonts/jetbrainsmono/JetBrainsMono-Variable.ttf
+                weight: 500
+              - asset: assets/fonts/jetbrainsmono/JetBrainsMono-Variable.ttf
+                weight: 700
     #
     # For details regarding fonts from package dependencies,
     # see https://flutter.dev/custom-fonts/#from-packages
