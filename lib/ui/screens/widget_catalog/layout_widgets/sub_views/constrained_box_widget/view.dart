@@ -32,7 +32,10 @@ class _ConstrainedBoxWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"BoxConstraints" widget has a named parameter constraints which define the constraints of it\'s child.',
+              'ConstrainedBox takes a BoxConstraints (minWidth, maxWidth, minHeight, maxHeight) and forces its child to live within those bounds. The child receives the intersection of the parent\'s constraints and the ones you supply, so ConstrainedBox can only tighten — never loosen — what the parent already allows.',
+            ),
+            TextBlock(
+              'Use it to clamp a child\'s size without committing to an exact dimension (for that, use SizedBox). A common pattern is wrapping a child in ConstrainedBox(minWidth: x, maxWidth: y) to build a button or text field that grows but never collapses below a usable size.',
             ),
             Container(
               child: ConstrainedBox(

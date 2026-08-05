@@ -62,10 +62,13 @@ class _SimpleDialogWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"SimpleDialog" widget is shown using the "showDialog" function callback, which is in turn called inside a function/method',
+              'SimpleDialog is a Material dialog that offers the user a list of simple, self-explanatory options (no per-option text body). It is the right choice when the question is a clean "pick one of these" — choose an account, choose a sort order — where AlertDialog\'s title+content+button layout would feel heavyweight.',
             ),
             TextBlock(
-              '"SimpleDialog" widget has children "SimpleDialogOption" which have named parameters onPressed and child to specify the behavior and content of the widget.',
+              'It is pushed via showDialog and built from a title plus a list of SimpleDialogOption children. Each SimpleDialogOption has its own onPressed, which typically does the work and then closes the dialog by popping the Navigator.',
+            ),
+            TextBlock(
+              'Tip: if the options need long descriptions or icons, build a custom Dialog with a Column of ListTile rows instead — SimpleDialogOption is intentionally minimal and does not lay out leading/trailing widgets for you.',
             ),
             Container(
               child: ElevatedButton(

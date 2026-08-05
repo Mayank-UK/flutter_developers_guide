@@ -32,7 +32,10 @@ class _SemanticsWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-                '"Semantics" widget has named parameters like image, label, etc, which provide it with semantics.'),
+                'Semantics annotates a widget subtree with a description of what it means, which the platform\'s accessibility tooling (TalkBack, VoiceOver) and search engines read instead of the raw pixels. Provide a label, a hint, and role flags like button or image for widgets that don\'t have an inherent meaning — an icon-only button, a decorative image, a custom-drawn control.'),
+            TextBlock(
+              'Set the properties that match what the user perceives: image: true plus a label for pictures, button: true plus an onTap for tappable areas. When you only need to suppress or merge, ExcludeSemantics and MergeSemantics are simpler, purpose-built wrappers.',
+            ),
             Container(
               child: Semantics(
                 image: true,

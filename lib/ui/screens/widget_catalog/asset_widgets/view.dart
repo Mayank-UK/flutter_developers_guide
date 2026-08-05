@@ -16,17 +16,20 @@ class AssetWidgetsView extends StatelessWidget {
     ),
     Link(
       title: 'Icon',
-      description: 'A Material Design icon.',
+      description:
+          'A Material Design icon glyph drawn from an icon font. Scales crisply at any size and tints to any color, which it inherits from IconTheme when omitted.',
       route: RoutePaths.icon,
     ),
     Link(
       title: 'Image',
-      description: 'A widget that displays an image.',
+      description:
+          'A widget that decodes and displays a raster image from an asset, network URL, file, or in-memory bytes. Pick the matching named constructor and use `fit` to control how the picture scales inside its box.',
       route: RoutePaths.image,
     ),
     Link(
       title: 'RawImage',
-      description: 'A widget that displays a dart:ui.Image directly.',
+      description:
+          'A widget that displays a dart:ui.Image directly, bypassing the ImageProvider decoding pipeline. Useful only when you already hold a decoded ui.Image; most apps use the regular Image widget instead.',
       route: RoutePaths.rawImage,
     ),
   ];

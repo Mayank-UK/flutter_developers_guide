@@ -32,7 +32,10 @@ class _ClipPathWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"ClipPath" widget is implemented by extending the CustomClipper class.',
+              'ClipPath crops its child to any arbitrary outline you supply via a CustomClipper<Path> — triangles, stars, waves, diagonal cut-outs, anything beyond the built-in rectangles and ovals. Return a Path from getClip describing the visible region.',
+            ),
+            TextBlock(
+              'Implement shouldReclip to return true only when the clip can actually change (for instance while an animation is driving it), so Flutter doesn\'t recompute the path on every rebuild. For static shapes, returning false keeps the clip cached.',
             ),
             Container(
               child: ClipPath(

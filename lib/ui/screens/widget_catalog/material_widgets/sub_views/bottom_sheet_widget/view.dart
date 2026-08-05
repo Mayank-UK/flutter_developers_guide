@@ -53,7 +53,13 @@ class _BottomSheetWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              'Modal bottom sheet is shown using a function/method which returns a future that resolves when the modal window is closed.',
+              'A bottom sheet is a Material surface that slides up from the bottom of the screen to reveal supplemental content or contextual actions without leaving the current page. Modal sheets (showModalBottomSheet) dim the rest of the UI and block interaction until dismissed.',
+            ),
+            TextBlock(
+              'showModalBottomSheet returns a Future that resolves when the sheet closes, so you can use it like a dialog to capture a user choice and then continue. Persistent (non-modal) sheets are shown via Scaffold.of(context).showBottomSheet and stay open while the user interacts with the page.',
+            ),
+            TextBlock(
+              'Tip: pass isScrollControlled: true and wrap content in a Padding with viewInsets.bottom so an inner TextField\'s keyboard does not cover the sheet.',
             ),
             Container(
               child: ElevatedButton(

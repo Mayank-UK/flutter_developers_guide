@@ -33,7 +33,10 @@ class _HeroWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Hero" widget animates an item from one screen to another screen, if both screen\'s have a "Hero" widget.',
+              'Hero marks a widget as a shared element: when navigating between two routes that each contain a Hero with the same `tag`, Flutter flies the child from its position on the source route to its position on the destination route, morphing size and shape along the way. It\'s the canonical "tap a thumbnail, expand to full-screen image" transition.',
+            ),
+            TextBlock(
+              'The tag must be unique per route pair — duplicate tags throw. For the flight to look right, the child on both sides should be the same kind of widget (an Image, a Container) so the rect-and-content morph reads as one element moving. Use flightShuttleBuilder when you need a custom in-flight widget instead of the source/destination children.',
             ),
             Container(
               child: _MainScreen(),

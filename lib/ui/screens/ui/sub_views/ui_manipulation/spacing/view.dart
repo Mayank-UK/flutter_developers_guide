@@ -9,11 +9,11 @@ class SpacingView extends StatelessWidget {
   final List<Link> _itemList = [
     Link(
         title: 'Padding',
-        description: 'Spacing between parent and it\'s children.',
+        description: 'Empty space between a parent and its child widget.',
         route: RoutePaths.paddingSpacing),
     Link(
       title: 'Margin',
-      description: 'Spacing from the surrounding elements.',
+      description: 'Empty space pushed outward from a widget to its neighbors.',
       route: RoutePaths.marginSpacing,
     ),
   ];

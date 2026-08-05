@@ -32,7 +32,10 @@ class _SliverFixedExtentListWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"SliverFixedExtentList" widget has named parameter itemExtent, delegate, etc, which specify the widget\'s behavior and layout.',
+              'SliverFixedExtentList is a sliver that lays out its children along the main axis with a single fixed itemExtent in pixels. Because every tile is exactly the same height, the sliver can compute scroll offsets, jump-to-index, and viewport maths in O(1) — much more efficiently than a variable-height SliverList.',
+            ),
+            TextBlock(
+              'Use it whenever your items have a uniform height (or width, for a horizontal scroll). You will lose the per-item flexibility, but gain precise index-to-offset math — the foundation for features like scrollToIndex, calendar rows, and fixed-height timelines.',
             ),
             Container(
               color: Colors.white,

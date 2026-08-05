@@ -40,7 +40,12 @@ class __LongPressDraggableWidgetImplementationState
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
+            TextBlock(
+              'LongPressDraggable is a Draggable that begins the drag after a long-press instead of immediately, matching the platform convention for "press, hold, then drag" gestures. Use it when a plain drag would conflict with taps or scrolling — list reordering, icon long-press to pick up, drag-from-toolbar.',
+            ),
+            TextBlock(
+              'It takes the same data, child, feedback, and childWhenDragging parameters as Draggable; only the gesture recognizer differs. Tune the long-press threshold via delay if you need a faster or more deliberate hold before the drag starts.',
+            ),
             Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

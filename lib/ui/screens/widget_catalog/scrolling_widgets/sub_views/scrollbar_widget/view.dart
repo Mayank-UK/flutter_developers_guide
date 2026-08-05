@@ -32,10 +32,10 @@ class _ScrollbarWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Scrollbar" widget has named parameters isAlwaysShown, showTrackOnHover, etc, which specify the scrollbar behavior.',
+              'Scrollbar wraps a scrollable to show a Material-style thumb indicating where you are within its content. Use thumbVisibility (formerly isAlwaysShown) to keep it on screen instead of fading, and hover features on desktop for a track that grows when the pointer approaches.',
             ),
             TextBlock(
-              'The scrollbar due to unknown reason is not visible when using "ListView.builder".',
+              'The thumb needs to know the scrollable\'s extent, so wire the same ScrollController into both the Scrollbar and the ListView/GridView it wraps. With ListView.builder the thumb still works — just make sure a controller is shared and the scrollable has enough content to overflow, otherwise there\'s nothing for the thumb to indicate.',
             ),
             Container(
               height: 500,

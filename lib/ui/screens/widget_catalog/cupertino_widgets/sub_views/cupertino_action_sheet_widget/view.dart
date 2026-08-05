@@ -31,8 +31,12 @@ class _CupertinoActionSheetWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoActionSheet is the iOS-style modal bottom sheet that slides up to present a list of choices. Each option is a CupertinoActionSheetAction, and you can attach a separate Cancel section; destructive actions render in red.',
+            ),
+            TextBlock(
+              'Show it via showCupertinoModalPopup with the action sheet as the child. Use it for contextual choices ("Delete / Share / Cancel") rather than for primary navigation, and reserve the destructive style for genuinely irreversible actions.',
+            ),
           ],
         ),
       ],

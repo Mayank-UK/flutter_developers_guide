@@ -32,7 +32,10 @@ class _InteractiveViewerWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"InteractiveViewer" widget has named parameters like boundaryMargin, minScale, maxScale, etc, which specify the widget behavior.',
+              'InteractiveViewer adds pan, zoom, and rotate gestures to its child with pinch-to-zoom and drag-to-pan built in. Wrap an image, a map, a diagram, or any widget the user should be able to inspect closely — it constrains scale between minScale and maxScale and clips to a boundary margin.',
+            ),
+            TextBlock(
+              'Set boundaryMargin: EdgeInsets.infinity to let the child roam freely beyond the viewport, and use the transformationController to programmatically reset or animate the view. It respects the alignment constraint, so a small child stays centered while a large child fills and overflows for panning.',
             ),
             Container(
               alignment: Alignment.center,

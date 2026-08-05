@@ -32,7 +32,10 @@ class _ContainerWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Container" widget has named parameters like height, width, color, constraints, etc, which make it the most useful widget in flutter.',
+              'Container is a combinator widget that, depending on which parameters you set, internally wraps your child in a Padding (padding), DecoratedBox (color, decoration), ConstrainedBox (constraints), Transform (transform), Align (alignment), or SizedBox (width / height). With no parameters at all it is just an empty widget that fills its parent.',
+            ),
+            TextBlock(
+              'It is the everyday workhorse for styling and sizing boxes, but it is also easy to over-use: if all you need is padding, prefer Padding; if all you need is a fixed size, prefer SizedBox. Those single-purpose widgets make the layout intent clearer and avoid the slightly heavier widget tree Container builds.',
             ),
             Container(
               child: Container(

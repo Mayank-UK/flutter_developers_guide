@@ -41,7 +41,13 @@ class __DropdownButtonWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"DropdownButton" widget has named parameters like value, icon, iconSize, items, onChanges, etc, which specify the widget\'s behavior.',
+              'DropdownButton lets the user pick one value from a short, known set of options. It shows the currently selected item and reveals the full list as an overlay menu when tapped; the chosen value flows back through onChanged.',
+            ),
+            TextBlock(
+              'It is best for 4–12 options that all fit on screen at once. For longer lists (countries, cities), a search-driven dialog or a full page is friendlier than scrolling a tall overlay, and for two-to-four mutually exclusive choices a segmented control communicates the options more clearly.',
+            ),
+            TextBlock(
+              'Note: DropdownButton is the legacy API; in newer code prefer DropdownButtonFormField (which adds validation and integrates with Form) or the Material 3 DropdownMenu which uses a proper menu widget under the hood.',
             ),
             Container(
               child: DropdownButton<String>(

@@ -32,7 +32,10 @@ class _CenterWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Center" widget align it\'s child at the center position.',
+              'Center is a specialization of Align with alignment fixed to Alignment.center. It sizes itself to its parent and places the child dead-centre both horizontally and vertically.',
+            ),
+            TextBlock(
+              'Tip: like Align, Center expands to fill its parent by default. If you want it to shrink-wrap the child instead, pass widthFactor and heightFactor (1.0 makes Center hug the child tightly).',
             ),
             Container(
               child: Center(

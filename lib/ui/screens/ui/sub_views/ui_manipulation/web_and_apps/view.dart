@@ -44,13 +44,10 @@ class _WebAndAppsImplementation extends StatelessWidget {
           title: 'Hyperlinks',
           content: [
             TextBlock(
-              'Just import the package and use \'launchUrl(Uri.parse(\'String\'))\' function.',
+              'To open a URL outside your widget tree — web pages, mailto:, tel:, or deep links into other apps — use the "url_launcher" package. The single entry point is "launchUrl(Uri.parse(...))", guarded by an "await canLaunchUrl(...)" check.',
             ),
             TextBlock(
-              'If the app exists in phone to open the url, it will launch the app or else it will launch default browser to open the url.',
-            ),
-            TextBlock(
-              ' On web it will open the url on browser tab.',
+              'On a phone the OS picks the right handler: a WhatsApp URL opens WhatsApp if installed, otherwise the browser; on the web build the URL opens in a new browser tab. Use the "LaunchMode" enum to force in-app browser vs. external app vs. new tab.',
             ),
             Container(
               child: ElevatedButton(
@@ -64,7 +61,10 @@ class _WebAndAppsImplementation extends StatelessWidget {
           title: 'WebView',
           content: [
             TextBlock(
-              'WebView example is implemented below.',
+              'The "webview_flutter" package embeds a real browser engine inside the app, letting you render arbitrary HTML/JS content. Create a "WebViewController", configure navigation and JavaScript mode, then mount it through a "WebViewWidget".',
+            ),
+            TextBlock(
+              'Use it for third-party content you don\'t control (OAuth flows, payment pages, terms of service) rather than as a shortcut to avoid building native UI. Configure a "NavigationDelegate" to block or intercept requests and to show a loading indicator.',
             ),
             SizedBox(
               height: 512,
@@ -76,7 +76,10 @@ class _WebAndAppsImplementation extends StatelessWidget {
           title: 'External apps',
           content: [
             TextBlock(
-              'Will be implemented.',
+              'To deep-link into another app, build the right URI scheme (e.g. "whatsapp://", "tel:", "mailto:") and pass it to "launchUrl"; if the target app is installed the OS hands off to it, otherwise "canLaunchUrl" returns false and you can fall back to a store or browser URL.',
+            ),
+            TextBlock(
+              'Tip: iOS requires each scheme you want to query to be listed under "LSApplicationQueriesSchemes" in "Info.plist", and Android requires matching "<queries>" entries in "AndroidManifest.xml". Without these declarations "canLaunchUrl" silently returns false.',
             ),
           ],
         ),

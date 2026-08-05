@@ -21,7 +21,8 @@ class TextWidgetsView extends StatelessWidget {
     ),
     Link(
       title: 'Text',
-      description: 'A run of text with a single style.',
+      description:
+          'A run of text with a single uniform style. The most common way to display read-only text; inherits its look from the nearest DefaultTextStyle when you don\'t pass an explicit style.',
       route: RoutePaths.text,
     ),
   ];

@@ -3,6 +3,7 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../../components/code_preview_tabs.dart';
 import '../../../../../components/section_wrapper.dart';
+import '../../../../../components/text_block.dart';
 
 class TextView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -30,13 +31,11 @@ class _TextImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Font size',
           content: [
-            Container(
-              child: Text(
-                  'Text size can be changed using "Text" widget\'s named parameter "style" which takes an object of "TextStyle" class.'),
+            TextBlock(
+              'Font size is controlled through "Text.style", which accepts a "TextStyle". The "fontSize" parameter is a logical pixel value that scales with the device text scale factor unless "textScaleFactor" is forced.',
             ),
-            Container(
-              child: Text(
-                  '"TextStyle" object takes a named parameter "fontSize", which takes an integer value.'),
+            TextBlock(
+              'For consistent typography prefer reading a named style from "Theme.of(context).textTheme" (e.g. "titleLarge", "bodyMedium") rather than scattering raw numbers, so every label tracks the app-wide type scale.',
             ),
             Container(
               color: Colors.amber,
@@ -53,13 +52,11 @@ class _TextImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Font color',
           content: [
-            Container(
-              child: Text(
-                  'Text size can be changed using "Text" widget\'s named parameter "style" which takes an object of "TextStyle" class.'),
+            TextBlock(
+              'Text color is set with "TextStyle.color". Pass a "Color" directly or use "Theme.of(context).colorScheme" tokens so the same string reads correctly in both light and dark mode.',
             ),
-            Container(
-              child: Text(
-                  '"TextStyle" object takes a named parameter "color", which takes an object of "Color" class or you can also use predefined colors from material UI using "Colors" enum.'),
+            TextBlock(
+              'Always check contrast: with a colored background (like the amber box below) the foreground must stay above the WCAG threshold. "Color.withOpacity" can drop contrast faster than you\'d expect, so verify the result.',
             ),
             Container(
               color: Colors.amber,
@@ -77,13 +74,11 @@ class _TextImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Font style',
           content: [
-            Container(
-              child: Text(
-                  'Text size can be changed using "Text" widget\'s named parameter "style" which takes an object of "TextStyle" class.'),
+            TextBlock(
+              'The "fontStyle" parameter switches between "FontStyle.normal" and "FontStyle.italic". Italic text is synthesized from the regular face if no italic glyph set is bundled.',
             ),
-            Container(
-              child: Text(
-                  '"TextStyle" object takes a named parameter "fontStyle", which takes a value predefined in "FontStyle" enum.'),
+            TextBlock(
+              'For real italic and oblique variants, ship the corresponding .ttf in pubspec and reference it via "fontFamily" together with a "fontStyle"; otherwise the engine slants the regular font, which looks noticeably worse.',
             ),
             Container(
               color: Colors.amber,
@@ -101,13 +96,11 @@ class _TextImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Font weight',
           content: [
-            Container(
-              child: Text(
-                  'Text size can be changed using "Text" widget\'s named parameter "style" which takes an object of "TextStyle" class.'),
+            TextBlock(
+              'Use "TextStyle.fontWeight" with a "FontWeight" value (w100 through w900, plus named shortcuts like "bold"). The rendered weight depends on which faces the bundled font actually provides.',
             ),
-            Container(
-              child: Text(
-                  '"TextStyle" object takes a named parameter "fontWeight", which takes a value predefined in "FontWeight" enum.'),
+            TextBlock(
+              'Tip: "FontWeight.normal" (w400) and "FontWeight.bold" (w700) are universally available; intermediate weights only render distinctly when the font family ships them, otherwise Flutter picks the nearest supported face.',
             ),
             Container(
               color: Colors.amber,
@@ -125,13 +118,11 @@ class _TextImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Font family',
           content: [
-            Container(
-              child: Text(
-                  'Text size can be changed using "Text" widget\'s named parameter "style" which takes an object of "TextStyle" class.'),
+            TextBlock(
+              '"TextStyle.fontFamily" selects the typeface by name. The font must be declared under the "fonts:" section of "pubspec.yaml" (or come from a package) before it can be referenced here.',
             ),
-            Container(
-              child: Text(
-                  '"TextStyle" object takes a named parameter "fontFamily", which takes a final String value for font family, the fonts should be first defined in "pubspec.yaml" file before using them here.'),
+            TextBlock(
+              'For multi-weight families, pair "fontFamily" with a matching "fontFamilyFallback" list so a missing glyph (e.g. emoji or CJK) falls through to a font that has it instead of showing tofu boxes.',
             ),
             Container(
               color: Colors.amber,

@@ -31,8 +31,12 @@ class _CupertinoScrollbarWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoScrollbar is the iOS-style scrollbar: a thin thumb that fades in while the user scrolls and fades out shortly after. Wrap a scrollable to show it; it indicates which slice of the content is currently visible.',
+            ),
+            TextBlock(
+              'Unlike the Material Scrollbar it has no hover-track and no interactive drag by default. Pass the same ScrollController to both the scrollbar and the scrollable so the thumb reflects the correct extent and position.',
+            ),
           ],
         ),
       ],

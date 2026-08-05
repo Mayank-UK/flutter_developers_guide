@@ -58,7 +58,11 @@ class _LayoutBuilderWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-                '"LayoutBuilder" widget has a named parameter builder, which specify the function for building the layout tree.'),
+              'LayoutBuilder hands its builder callback the parent widget\'s BoxConstraints, so you can pick a different widget tree based on the available width and height. It is the standard way to build responsive layouts (phone vs tablet, portrait vs landscape) without MediaQuery.',
+            ),
+            TextBlock(
+              'Tip: keep the builder cheap. LayoutBuilder can rebuild frequently (on resize, on-screen rotation, when the parent reflows), so avoid heavy work inside it. For pure viewport-based decisions MediaQuery.sizeOf is cheaper, but LayoutBuilder is correct when the decision depends on the parent\'s available space rather than the whole screen.',
+            ),
             Container(
               child: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {

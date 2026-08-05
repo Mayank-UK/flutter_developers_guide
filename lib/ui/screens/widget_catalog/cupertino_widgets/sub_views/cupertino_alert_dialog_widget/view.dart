@@ -31,8 +31,12 @@ class _CupertinoAlertDialogWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoAlertDialog is the iOS-style centered alert: a rounded card with an optional title, content, and a horizontal row of CupertinoDialogAction buttons. Use it for urgent, decision-requiring messages that must be dismissed before continuing.',
+            ),
+            TextBlock(
+              'Show it with showCupertinoDialog. Two buttons sit side by side; with three or more they stack vertically. Mark the primary choice as isDefaultAction and any destructive one as isDestructiveAction so they pick up the expected styling.',
+            ),
           ],
         ),
       ],

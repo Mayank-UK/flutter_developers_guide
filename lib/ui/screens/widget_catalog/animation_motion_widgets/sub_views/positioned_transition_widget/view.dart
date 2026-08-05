@@ -51,7 +51,10 @@ class __PositionedTransitionImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"PositionedTransition" widget has named parameters like rect, etc, which specify the animation.',
+              'PositionedTransition is the explicit-animation version of Positioned: drive its `rect` with a RelativeRectTween and it animates the child\'s position and size inside a Stack along your AnimationController. Unlike AnimatedPositioned, you own the timeline, so it fits a choreographed sequence.',
+            ),
+            TextBlock(
+              'Build the tween with RelativeRectTween (not a plain Rect) so the rect is expressed relative to the Stack — the same widget animates correctly across different parent sizes. It must sit inside a Stack, like Positioned itself.',
             ),
             Container(
               height: 400,

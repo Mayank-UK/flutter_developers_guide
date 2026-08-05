@@ -52,11 +52,12 @@ class InteractiveWidgetsView extends StatelessWidget {
     Link(
         title: 'InteractiveViewer',
         description:
-            'A widget that enables pan and zoom interactions with its child.',
+            'A widget that enables pan, zoom, and rotate interactions with its child. Wrap an image, map, or diagram to get pinch-to-zoom and drag-to-pan between minScale and maxScale.',
         route: RoutePaths.interactiveViewer),
     Link(
       title: 'LongPressDraggable',
-      description: 'Makes its child draggable starting from long press.',
+      description:
+          'Makes its child draggable starting from a long-press rather than immediately, so taps and drags don\'t conflict — useful for list reordering and drag-from-toolbar patterns.',
       route: RoutePaths.longPressDraggable,
     ),
     Link(
@@ -68,7 +69,7 @@ class InteractiveWidgetsView extends StatelessWidget {
     Link(
       title: 'Hero',
       description:
-          'A widget that marks its child as being a candidate for hero animations.',
+          'A widget that marks its child as a candidate for hero animations — the shared element flies from one route to the next when navigating. Tag matching widgets across routes with the same tag to animate the transition.',
       route: RoutePaths.hero,
     ),
   ];

@@ -3,6 +3,7 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../../../../components/code_preview_tabs.dart';
 import '../../../../../../../components/section_wrapper.dart';
+import '../../../../../../../components/text_block.dart';
 
 class OpacityView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -30,13 +31,11 @@ class _OpacityImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "Container" widget',
           content: [
-            Container(
-              child: Text(
-                  '"Container" widget has a named parameter "color", which takes in an object of "Color" or "Colors" class. Either opacity can be specified in the hex code or applied manually using "withOpacity" method of "Color" and "Colors" object.'),
+            TextBlock(
+              'For a single solid color, the cheapest way to make it translucent is to bake the alpha into the "Color" itself — either via the 8-digit hex code (ARGB) or with "Color.withOpacity". This avoids an extra widget layer in the tree.',
             ),
-            Container(
-              child: Text(
-                  'Use this method if only a single image or color needs to be composited.'),
+            TextBlock(
+              'Use this approach when only one image or color needs compositing; the alpha is rendered as part of the paint and skips the offscreen layer that the "Opacity" widget has to allocate.',
             ),
             Wrap(
               direction: Axis.horizontal,
@@ -71,13 +70,11 @@ class _OpacityImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "Opacity" widget',
           content: [
-            Container(
-              child: Text(
-                  '"Opacity" widget has a named parameter, which takes a floating point value.'),
+            TextBlock(
+              'The "Opacity" widget applies a single alpha to its entire child subtree, including images, text, and nested widgets. It takes a floating-point "opacity" between 0.0 (fully transparent) and 1.0 (fully opaque).',
             ),
-            Container(
-              child: Text(
-                  'Use this method if a group of widgets opacity needs to be composited.'),
+            TextBlock(
+              'Reach for it when a group of widgets must fade together. For animations prefer "AnimatedOpacity" or "FadeTransition", which are GPU-cheap; a static "Opacity" still allocates a save layer, so do not stack it needlessly.',
             ),
             Wrap(
               spacing: 8,

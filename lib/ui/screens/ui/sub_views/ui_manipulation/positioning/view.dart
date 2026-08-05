@@ -3,6 +3,7 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../../components/code_preview_tabs.dart';
 import '../../../../../components/section_wrapper.dart';
+import '../../../../../components/text_block.dart';
 
 class PositioningView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -30,13 +31,11 @@ class _PositioningImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "Stack" widget with "Positioned" widget',
           content: [
-            Container(
-              child: Text(
-                  '"Stack" widget serves as the parent and "Positioned" widgets serves as the children.'),
+            TextBlock(
+              'A "Stack" layers children on top of each other, painted in order, while "Positioned" pins each child to specific edges of the stack. Set "top", "right", "bottom", and/or "left" to place a widget at an exact offset.',
             ),
-            Container(
-              child: Text(
-                  'Each "Positioned" widget child can be positioned individually using named parameters "top", "right", "bottom" and "left".'),
+            TextBlock(
+              'Children that are not wrapped in "Positioned" are sized to the stack\'s non-positioned dimensions; the stack itself sizes to fit the loosest positioned child or its parent. Use "IndexedStack" when only one child should be visible at a time.',
             ),
             Container(
               color: Colors.amber,

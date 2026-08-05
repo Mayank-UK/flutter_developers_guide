@@ -32,7 +32,10 @@ class _ClipRectWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"ClipRRect" widget has named parameter borderRadius, which specifies the clipping of corners.',
+              'ClipRRect crops its child to a rectangle with rounded corners, specified by a BorderRadius. (Its sibling ClipRect crops to a plain sharp-cornered rectangle.) It\'s the standard way to round the corners of an image, video, or any widget that doesn\'t expose a `borderRadius` of its own.',
+            ),
+            TextBlock(
+              'When you\'re rounding a Container\'s own background rather than a child, prefer BoxDecoration.borderRadius over clipping — the decoration is rasterized in one pass, while clipping introduces a separate clip layer. Reach for ClipRRect specifically when the content being rounded is an external image or raster.',
             ),
             Container(
               color: Colors.amber,

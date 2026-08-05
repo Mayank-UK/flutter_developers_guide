@@ -31,8 +31,12 @@ class _CupertinoTabViewWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoTabView is the root of a single tab\'s content, holding its own Navigator so each tab maintains an independent navigation stack. Use it as the builder result inside CupertinoTabScaffold\'s tabBuilder.',
+            ),
+            TextBlock(
+              'Its parallel navigators are exactly what lets each tab preserve its own back-stack as the user switches between them — a defining iOS behavior. Set routes or onGenerateRoute to seed the tab with its initial page and named routes.',
+            ),
           ],
         ),
       ],

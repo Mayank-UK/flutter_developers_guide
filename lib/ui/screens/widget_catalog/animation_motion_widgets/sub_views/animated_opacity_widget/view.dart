@@ -45,7 +45,10 @@ class __AnimatedOpacityImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"AnimatedOpacity" widget has named parameters like "opacity", "duration", etc to specify the animation.',
+              'AnimatedOpacity tweens its child\'s transparency whenever the `opacity` value changes between rebuilds — the simplest way to fade a widget in or out without an AnimationController. Set the new value in setState and it animates over `duration`.',
+            ),
+            TextBlock(
+              'For the common "fade in on mount" case this is usually all you need. If you are driving opacity from an ongoing Animation (say, tied to a scroll offset), use FadeTransition instead so a single controller can feed multiple transitions efficiently.',
             ),
             Container(
               child: Column(

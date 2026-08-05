@@ -31,8 +31,12 @@ class _IntrinsicWidthWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock('Used rarely.'),
-            Container(),
+            TextBlock(
+              'IntrinsicWidth sizes its child to the child\'s intrinsic width and then forces its descendants to share that width. It is the width-axis counterpart to IntrinsicHeight.',
+            ),
+            TextBlock(
+              'Like IntrinsicHeight it triggers an extra speculative layout pass, so use it deliberately. A common use is forcing a Column of differently-sized children to all take the width of the widest one without explicitly measuring it yourself.',
+            ),
           ],
         ),
       ],

@@ -32,7 +32,11 @@ class _AspectRatioWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-                '"AspectRatio" has a named parameter "aspectRatio" which specify the aspect ration of the child.'),
+              'AspectRatio sizes its child to a target width-to-height ratio (for example 16/9 or 1.0 for a square). It computes the missing dimension from the bounded one: if the parent gives unlimited width but a fixed height, the widget derives the width from the height and vice-versa.',
+            ),
+            TextBlock(
+              'Use it for responsive media boxes (video frames, thumbnails, avatars) where you cannot hardcode pixel sizes but must keep a consistent shape. If the child has its own intrinsic size preferences, wrap it in AspectRatio rather than fighting with manually computed SizedBox values.',
+            ),
             Container(
               child: AspectRatio(
                 aspectRatio: 4 / 2,

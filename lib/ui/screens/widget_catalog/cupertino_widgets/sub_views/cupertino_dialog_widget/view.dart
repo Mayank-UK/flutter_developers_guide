@@ -31,8 +31,12 @@ class _CupertinoDialogWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoDialog is the lower-level iOS-style dialog container: a rounded popup surface that hosts arbitrary content. It is the building block beneath CupertinoAlertDialog.',
+            ),
+            TextBlock(
+              'Most apps reach for CupertinoAlertDialog, which composes this surface together with title, content, and action buttons. Use CupertinoDialog directly only when you need a custom dialog layout the higher-level widget can\'t express.',
+            ),
           ],
         ),
       ],

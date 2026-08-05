@@ -31,8 +31,12 @@ class _CustomMultiChildLayoutWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock('Rarely used widget.'),
-            Container(),
+            TextBlock(
+              'CustomMultiChildLayout delegates the sizing and positioning of all of its children to a MultiChildLayoutDelegate you write. The delegate implements performLayout(Size, MultiChildLayoutDelegate.measureChild / positionChild), giving you full control over where each identified child ends up.',
+            ),
+            TextBlock(
+              'Use it when you need a one-off layout that no built-in widget provides (overlapping diagrams, custom charts, complex toolbars). For new code prefer the combination of Stack + Positioned, CustomPaint, or LayoutBuilder — they cover most needs with far less boilerplate. CustomMultiChildLayout is rarely the right answer.',
+            ),
           ],
         ),
       ],

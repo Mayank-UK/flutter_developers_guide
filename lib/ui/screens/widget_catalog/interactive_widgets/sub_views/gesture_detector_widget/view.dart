@@ -31,7 +31,10 @@ class _GestureDetectorWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"GestureDetector" widget has named parameters like onTap, onDoubleTap, etc, which specify the widget\'s interactive behavior.',
+              'GestureDetector recognizes taps, double-taps, long-presses, pans, scales, and drags, firing the callback for each recognized gesture. It is the most common way to make an otherwise non-interactive widget (a Container, Image, or custom box) respond to touch.',
+            ),
+            TextBlock(
+              'It participates in the gesture arena, so competing gestures (your tap vs. a parent\'s pan) are reconciled automatically. With a child it sizes to that child; without one it fills its parent, which is handy for full-area tap targets. For richer hit details (position, velocity) use the listener callbacks or reach for InkWell when you want Material ripple feedback on taps.',
             ),
             Container(
               child: GestureDetector(

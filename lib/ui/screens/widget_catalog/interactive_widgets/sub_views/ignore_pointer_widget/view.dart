@@ -47,7 +47,10 @@ class __IgnorePointerWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"IgnorePointer" widget has a named parameter ignore, which specifies weather to ignore the pointer or not.',
+              'IgnorePointer makes itself and its subtree invisible to hit-testing when ignoring is true — pointer events simply pass through to whatever sits underneath. The child still paints and lays out normally; only interaction is suppressed.',
+            ),
+            TextBlock(
+              'It differs from AbsorbPointer: AbsorbPointer swallows the event (the parent underneath never sees it), while IgnorePointer lets the event continue to the widget behind. Use it for decorative overlays — a hint badge, an annotation layer — that should look present but never intercept taps on the content below.',
             ),
             Container(
               child: Column(

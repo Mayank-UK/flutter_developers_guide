@@ -32,7 +32,13 @@ class _DataTableWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"DataTable" widget has named parameters columns and rows, which take children widgets "DataColumn" and "DataRow".',
+              'DataTable renders rows of structured data in a grid of named columns (DataColumn headers, DataRow cells). It is the right choice for desktop-style tabular content — sortable columns, numeric right-alignment, and row selection — where a ListView of Tiles would lose the column relationship.',
+            ),
+            TextBlock(
+              'Each DataRow can be selected via its selected flag with an onSelectedChanged callback, and columns can declare a numeric: true hint so values are right-aligned and sorted numerically rather than lexically.',
+            ),
+            TextBlock(
+              'Gotcha: DataTable sizes itself to its contents and does not scroll on its own. For many rows, wrap it in a SingleChildScrollView with a horizontal ScrollBar, or reach for PaginatedDataTable which adds paging and column sorting for free.',
             ),
             Container(
               child: DataTable(

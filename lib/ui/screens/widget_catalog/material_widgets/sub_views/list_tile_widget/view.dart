@@ -32,10 +32,13 @@ class _ListTileWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"ListTile" widget has named parameters like trailing, title, etc, which specify the widget\'s behavior and UI.',
+              'ListTile is a single fixed-height Material row that lays out the classic leading / title / subtitle / trailing pattern — a leading icon or avatar on the left, a two-line text block in the middle, and an optional trailing widget (a chevron, a switch, a count) on the right.',
             ),
             TextBlock(
-              '"ListTile" widget is mainly used inside "ListView" widget, but can also be used separately.',
+              'It is the building block for almost every list in a Material app — menus, settings pages, inbox rows. Used inside a ListView it gives you taps, ink splash, and consistent heights for free; you only supply the content of each slot.',
+            ),
+            TextBlock(
+              'Gotcha: a ListTile is a single hardcoded height and will overflow if you put tall children (a 100×100 avatar, multi-line text) in it. For richer content use a custom Row inside a Card, or switch to the more flexible ListTile variants only where they actually fit.',
             ),
             Container(
               color: Colors.amber,

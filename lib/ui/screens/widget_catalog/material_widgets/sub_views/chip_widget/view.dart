@@ -32,7 +32,13 @@ class _ChipWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Chip" widgets has named parameters like avatar, label, etc, which specify the chip\'s layout.',
+              'Chip is a compact Material element that represents a complex entity — a contact, a filter tag, a category, a selection — as a small rounded block with an optional leading avatar and a label.',
+            ),
+            TextBlock(
+              'Use it to surface metadata or to give the user something tappable to delete/edit a selected item. Because chips are short, they are commonly laid out in a Wrap so they flow onto multiple lines as the set grows.',
+            ),
+            TextBlock(
+              'Tip: for tappable, selectable, or deletable variants prefer ActionChip, ChoiceChip, FilterChip, or InputChip — they encode the right semantics (onPressed, onSelected, onDeleted) and accessibility behavior for free, instead of you wiring gestures onto a plain Chip.',
             ),
             Container(
               child: Chip(

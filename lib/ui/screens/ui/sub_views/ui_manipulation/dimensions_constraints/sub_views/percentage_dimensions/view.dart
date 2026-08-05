@@ -3,6 +3,7 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../../../../components/code_preview_tabs.dart';
 import '../../../../../../../components/section_wrapper.dart';
+import '../../../../../../../components/text_block.dart';
 
 class PercentageDimensionsView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -30,13 +31,11 @@ class _PercentageDimensionsImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "FractionallySizedBox" widget',
           content: [
-            Container(
-              child: Text(
-                  '"FractionallySizedBox" widget has named parameters "heightFactor" and "widthFactor", which take floating point values.'),
+            TextBlock(
+              '"FractionallySizedBox" sizes its child as a fraction of the parent\'s size, using "widthFactor" and "heightFactor" between 0.0 and 1.0 (values above 1.0 are allowed and overflow the parent).',
             ),
-            Container(
-              child: Text(
-                  'For this widget to work parent should have a definitive height and width, so it do not work inside rows, columns and wraps directly.'),
+            TextBlock(
+              'Gotcha: the parent must already have a finite size, so it does not work directly inside a "Row", "Column", or "Wrap" whose main axis is unbounded — wrap it in a sized parent first or use "Expanded" instead.',
             ),
             Container(
               alignment: Alignment.topLeft,
@@ -58,13 +57,11 @@ class _PercentageDimensionsImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "Expanded" widget inside "Row" and "Column" widget',
           content: [
-            Container(
-              child: Text(
-                  '"Expanded" let\'s you fill the available space, horizontally in a row and vertically in a column.'),
+            TextBlock(
+              '"Expanded" divides the leftover space along a "Row" or "Column" main axis among its siblings. The "flex" parameter sets the share; siblings with the same flex split evenly.',
             ),
-            Container(
-              child: Text(
-                  '"Expanded" widget has a named parameter "flex", which takes a numerical value.'),
+            TextBlock(
+              'Use "Expanded" instead of fixed widths when content should reflow on different screens — pair with "Flexible" for "fit: loose" children that only expand when there is room.',
             ),
             Container(
               height: 200,

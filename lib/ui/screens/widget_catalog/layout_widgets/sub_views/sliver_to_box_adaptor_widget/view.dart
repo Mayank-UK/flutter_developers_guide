@@ -32,7 +32,10 @@ class _SliverToBoxAdaptorWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"SliverToBoxAdaptor" widget makes it\'s child usable inside sliver widgets.',
+              'SliverToBoxAdapter wraps an ordinary box widget so it can be used as a sliver inside a CustomScrollView. It is the bridge between the sliver world and the everyday box widget world.',
+            ),
+            TextBlock(
+              'Use it to drop a non-sliver widget (a Card, a non-scrolling ListView with shrinkWrap, a header, an ad banner) into the middle of a custom scroll layout. Tip: each SliverToBoxAdapter is laid out eagerly, so for long or repeating content use a SliverList or SliverGrid instead of wrapping many items in one box adapter each.',
             ),
             Container(
               color: Colors.white,

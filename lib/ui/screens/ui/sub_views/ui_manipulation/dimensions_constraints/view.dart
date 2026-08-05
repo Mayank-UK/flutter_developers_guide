@@ -9,21 +9,21 @@ class DimenionsContraintsView extends StatelessWidget {
   final List<Link> _itemList = [
     Link(
       title: 'Fixed dimensions',
-      description: 'Dimensions in fixed values.',
+      description: 'Pin a widget to an exact width and height in pixels.',
       route: RoutePaths.fixedDimensions,
     ),
     Link(
         title: 'Percentage dimensions',
-        description: 'Dimensions in percentage to the parent.',
+        description: 'Size a widget as a fraction of its parent.',
         route: RoutePaths.percentageDimensions),
     Link(
       title: 'Fractional full screen dimensions',
-      description: 'Dimensions in fraction to the whole screen.',
+      description: 'Size a widget as a fraction of the whole screen.',
       route: RoutePaths.fractionalDimensions,
     ),
     Link(
         title: 'Constraints',
-        description: 'Dimensions in max/min.',
+        description: 'Bound a widget between min and max width/height.',
         route: RoutePaths.constraints),
   ];
 

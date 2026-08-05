@@ -56,7 +56,10 @@ class __SizeTransitionImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"SizeTransition" widget has named parameters like sizeFactor, axis, axisAlignment, etc, which specify the animation.',
+              'SlideTransition moves its child relative to its normal position by an Offset given as an Animation<Offset>. Offsets are expressed in fractions of the child\'s own size, so Offset(1.0, 0.0) slides it one full width to the right — perfect for route enter/exit or drawer-like motion.',
+            ),
+            TextBlock(
+              'Drive it with an Offset-driven Tween and a CurvedAnimation to shape the easing. Because the offset is relative to the child (not pixels), the same transition reads correctly at any screen size, which is why it powers the standard page-route slide.',
             ),
             Container(
               child: SlideTransition(

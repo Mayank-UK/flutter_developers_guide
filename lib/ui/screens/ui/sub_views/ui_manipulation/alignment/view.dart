@@ -3,6 +3,7 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../../components/code_preview_tabs.dart';
 import '../../../../../components/section_wrapper.dart';
+import '../../../../../components/text_block.dart';
 
 class AlignmentView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -30,9 +31,11 @@ class _AlignmentImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using parent "Container" widget',
           content: [
-            Container(
-              child: Text(
-                  '"Container" widget has a named parameter "alignment" which takes a value made available using "Alignment" enum.'),
+            TextBlock(
+              'Alignment positions a child inside its parent. The "Container.alignment" parameter takes an "Alignment" value like "topLeft" or "center", and the container also sizes itself to its parent so the child can be placed anywhere inside that space.',
+            ),
+            TextBlock(
+              'Tip: "alignment" works on "Container" only when the child is smaller than the parent box; the parent expands to fill its own constraints and the child is positioned within it.',
             ),
             Container(
               alignment: Alignment.topLeft,
@@ -75,9 +78,11 @@ class _AlignmentImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Individual child alignment using \'Align\' widget',
           content: [
-            Container(
-              child: Text(
-                  '"Align" widget uses a named parameter "alignment", which takes a value made available using "Alignment" enum.'),
+            TextBlock(
+              '"Align" is a dedicated widget that positions a single child at an "Alignment" inside a box that itself defaults to filling the parent. It is lighter and clearer than "Container" when alignment is the only job.',
+            ),
+            TextBlock(
+              'For fine-grained control use "Alignment(x, y)" with values between -1.0 and 1.0, or "FractionalOffset" for layout-phase positioning. Pair with "widthFactor"/"heightFactor" when you want "Align" to hug the child instead of expanding.',
             ),
             Container(
               color: Colors.amber,

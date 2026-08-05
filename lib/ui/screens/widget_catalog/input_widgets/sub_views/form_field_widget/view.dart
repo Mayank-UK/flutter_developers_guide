@@ -41,7 +41,10 @@ class __FormFieldWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Form" widget serves as the container widget for various "FormField" widgets.',
+              'Form groups multiple FormField widgets (such as TextFormField) under a shared key so you can validate, save, and reset them as a unit. Give it a GlobalKey<FormState>, then call _formKey.currentState!.validate() on submit to run every child\'s validator and surface errors automatically.',
+            ),
+            TextBlock(
+              'A TextFormField still works standalone outside a Form, but you lose grouped validation and reset. To plug a custom control into the same pipeline, subclass FormField<T> — that\'s the contract Form walks when it traverses its descendants.',
             ),
             Container(
               child: Form(

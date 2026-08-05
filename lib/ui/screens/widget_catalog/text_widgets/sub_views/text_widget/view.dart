@@ -32,7 +32,10 @@ class _TextWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Text" widget has named parameters like style, textAlign, textDecoration, etc, which specify the behavior and layout of this widget.',
+              'Text is the fundamental widget for displaying a run of read-only text. Pass a String and an optional TextStyle; when you omit the style, Text inherits the look from the nearest DefaultTextStyle (which ultimately comes from your theme).',
+            ),
+            TextBlock(
+              'Use it for labels, paragraphs, button captions — anywhere you need a single, uniform style across a string. For richer needs: set maxLines with overflow: TextOverflow.ellipsis to truncate with trailing dots, and reach for RichText or Text.rich when one span needs to mix bold, color, or links.',
             ),
             Container(
               child: Text(

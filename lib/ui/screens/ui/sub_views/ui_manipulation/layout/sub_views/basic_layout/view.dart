@@ -4,6 +4,7 @@ import 'package:flutter_developers_guide/ui/design_system/sizes.dart';
 
 import '../../../../../../../components/code_preview_tabs.dart';
 import '../../../../../../../components/section_wrapper.dart';
+import '../../../../../../../components/text_block.dart';
 
 class BasicLayoutView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -31,9 +32,11 @@ class _BasicLayoutImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "Container" widget',
           content: [
-            Container(
-              child: Text(
-                  '"Container" widget provides the most basic and widely used wrapper around a child widget. It can be used to add alignment, borders, backgrounds, padding, margin, etc.'),
+            TextBlock(
+              '"Container" is the workhorse wrapper: it can paint a background, apply padding and margin, align a child, and accept sizing constraints, all on a single node. With none of those set it simply passes its child through.',
+            ),
+            TextBlock(
+              'Because "Container" combines many features it can hide intent — when you only need padding, prefer "Padding"; when you only need a fixed size, prefer "SizedBox". Reserve "Container" for cases that genuinely need several of its capabilities together.',
             ),
             Container(
               color: Colors.amber,
@@ -45,13 +48,11 @@ class _BasicLayoutImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "Row" widget',
           content: [
-            Container(
-              child: Text(
-                  '"Row" widget takes a number of children and display them in horizontal direction one after the another until the space runs out.'),
+            TextBlock(
+              'A "Row" lays its children out horizontally in reading order; it is the horizontal counterpart of "Column". When total child width exceeds the available width it overflows (the infamous yellow-black stripe) instead of wrapping.',
             ),
-            Container(
-              child: Text(
-                  'It is preferred to use a "Wrap" widget for additional benefits like spacing between children and wrapping, etc.'),
+            TextBlock(
+              'Prefer "Wrap" when content length is unknown or might overflow; "Row" is right when items are fixed or you wrap each in "Expanded"/"Flexible" so they share the available main-axis space.',
             ),
             Row(
               mainAxisSize: MainAxisSize.max,
@@ -105,13 +106,11 @@ class _BasicLayoutImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "Column" widget',
           content: [
-            Container(
-              child: Text(
-                  '"Column" widget takes a number of children and display them in vertical direction on after the another until the space runs out.'),
+            TextBlock(
+              '"Column" stacks its children vertically and is the vertical counterpart of "Row". Children are laid out top-to-bottom; the column sizes itself to its parent on the cross axis and to its children on the main axis by default.',
             ),
-            Container(
-              child: Text(
-                  'It is preferred to use a "Wrap" widget for additional benefits like spacing between children and wrapping, etc.'),
+            TextBlock(
+              'When a column is placed inside a scrollable parent (or its content might overflow the screen), wrap it in a "SingleChildScrollView" or replace it with a "ListView"; otherwise large content produces a layout overflow.',
             ),
             Container(
               height: 200,
@@ -150,9 +149,11 @@ class _BasicLayoutImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "Wrap" widget',
           content: [
-            Container(
-              child: Text(
-                  '"Wrap" widget can be used to layout items horizontally like a row or vertically like a column , it takes a named parameter "direction", which takes a value from "Axis" enum. It places it\'s children to new position if it runs out of space.'),
+            TextBlock(
+              '"Wrap" lays children out like a "Row" or "Column" but flows them onto a new line (or column) when the available space runs out, controlled by the "direction" parameter. "spacing" and "runSpacing" set gaps within and between runs.',
+            ),
+            TextBlock(
+              'It is the right choice for chip clouds, tag lists, and any dynamically-sized set of items. Unlike "Row" it cannot "Expanded" its children — pair it with fixed- or intrinsic-sized children for predictable wrapping.',
             ),
             Container(
               child: const Text('Wrap in horizontal with spacing of 8'),
@@ -240,9 +241,11 @@ class _BasicLayoutImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Other widgets',
           content: [
-            Container(
-              child: Text(
-                  'There are other widgets like "SizedBox", "LimitedBox", "DecoratedBox", "Padding" etc, but most of them can be easily substituted by the "Container" widget which derives most of their functionality.'),
+            TextBlock(
+              'Flutter also ships focused single-purpose widgets such as "SizedBox", "LimitedBox", "DecoratedBox", and "Padding". Each does one slice of what "Container" offers, so most can be replaced by "Container" — but using the specific widget often communicates intent more clearly and keeps the tree lighter.',
+            ),
+            TextBlock(
+              'Rule of thumb: reach for the most specific widget that does the job. "SizedBox" for a gap, "Padding" for insets, "DecoratedBox" for a border or gradient, "ConstrainedBox" for bounds — only combine them via "Container" when several are needed at once.',
             ),
           ],
         ),

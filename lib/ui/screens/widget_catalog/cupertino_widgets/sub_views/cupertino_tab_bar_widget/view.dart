@@ -31,8 +31,12 @@ class _CupertinoTabBarWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoTabBar is the iOS-style bottom tab bar: a row of icon-and-label items, the active one tinted with the accent color. It is typically placed as the tabBar of a CupertinoTabScaffold.',
+            ),
+            TextBlock(
+              'Each BottomNavigationBarItem pairs an icon with a title; current Nawtab index is driven by the scaffold. Keep to five or fewer tabs — iOS patterns don\'t include a "more" overflow the way Material bottom bars sometimes do.',
+            ),
           ],
         ),
       ],

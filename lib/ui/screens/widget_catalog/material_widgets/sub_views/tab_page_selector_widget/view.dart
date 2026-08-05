@@ -31,7 +31,15 @@ class _TabPageSelectorWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
+            TextBlock(
+              'TabPageSelector renders a horizontal row of small dots — one per tab — with the currently selected tab\'s dot enlarged. It is a lightweight "you are on page X of Y" indicator, common in onboarding carousels and swipeable walkthroughs where there is no visible TabBar.',
+            ),
+            TextBlock(
+              'Like TabBar, it reads its state from a TabController (a DefaultTabController works fine). Tap is purely informational — the dots do not navigate; pair it with a TabBarView and let swipes drive the selection.',
+            ),
+            TextBlock(
+              'Tip: when you also show buttons like "Next" or "Skip" alongside the dots, call controller.animateTo on the button tap to keep the selector in sync with the page underneath.',
+            ),
             Container(
               child: DefaultTabController(
                 length: 3,

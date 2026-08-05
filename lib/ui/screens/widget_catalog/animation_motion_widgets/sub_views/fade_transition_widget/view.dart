@@ -58,7 +58,10 @@ class __FadeTransitionImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"FadeTransition" widget has named parameters like opacity, etc, which specify the animation.',
+              'FadeTransition drives its child\'s opacity from an Animation<double>, rebuilding only the opacity each frame as the controller ticks. It is the explicit-animation counterpart to AnimatedOpacity — reach for it when the fade is part of a larger controller-driven sequence rather than a one-off state change.',
+            ),
+            TextBlock(
+              'Wrap the opacity in a CurvedAnimation to shape the easing, and reuse the same controller across multiple transitions (fade + slide, for instance) so they stay in lockstep. Because it uses the transition layer rather than a save-layer per Opacity widget, it composes well inside page-route builders.',
             ),
             Container(
               child: FadeTransition(

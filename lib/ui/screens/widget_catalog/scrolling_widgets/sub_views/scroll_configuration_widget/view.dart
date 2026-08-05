@@ -32,9 +32,11 @@ class _ScrollConfigurationWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              'Content will be updated soon.',
+              'ScrollConfiguration controls how Scrollable widgets behave across a subtree — which ScrollPhysics they use, how overscroll looks, and the default scrolling gestures. It\'s the seam through which platform conventions (iOS bounce vs. Android glow/clamping) are applied.',
             ),
-            Container(),
+            TextBlock(
+              'Wrap a subtree to override the inherited behavior for everything below: pass behavior: ScrollConfiguration.of(context).copyWith(physics: ...) to swap physics while keeping the rest, or set a fresh MaterialPlatform/Cupertino style. It\'s how you make a single iOS-style bouncing list inside an otherwise Android app.',
+            ),
           ],
         ),
       ],

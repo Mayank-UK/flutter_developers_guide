@@ -31,8 +31,12 @@ class _CupertinoScaffoldWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoPageScaffold is the iOS-style page layout: it positions a CupertinoNavigationBar above a content area, all painted on a background color. It is the Cupertino counterpart of the Material Scaffold.',
+            ),
+            TextBlock(
+              'Set navigationBar (a CupertinoNavigationBar) and child (your page content). It handles the safe-area insets and the navigation bar\'s height for you; for tabbed apps compose it inside a CupertinoTabScaffold instead of nesting your own bottom bar.',
+            ),
           ],
         ),
       ],

@@ -62,7 +62,13 @@ class __ExpansionPanelWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"ExpansionPanel" widget has named parameters expansionCallback, children, etc, which specifies the widget\'s behavior and content.',
+              'ExpansionPanel is a collapsible Material container used inside an ExpansionPanelList. Each panel has a always-visible header row and a body that reveals itself when the header is tapped — ideal for grouping optional details (advanced settings, FAQ entries) without overwhelming the page.',
+            ),
+            TextBlock(
+              'State — which panels are open — is owned by you, not the widget. You drive it via the list\'s expansionCallback, which hands you the tapped index and the new expanded state; you flip a flag in setState and the list rebuilds accordingly.',
+            ),
+            TextBlock(
+              'Tip: if you only need a single expand/collapse section (not a list), ExpansionTile is far simpler — it manages its own expand state and integrates natively with ListView.',
             ),
             Container(
               child: ExpansionPanelList(

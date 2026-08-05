@@ -32,10 +32,13 @@ class _ListViewWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"ListView" widget has many builder like ListView.builder, ListView.separator, etc, for different layouts.',
+              'ListView is the most-used scrollable in Flutter. It lays children out linearly along the scroll axis. Constructors cover the common cases: ListView (explicit children list), ListView.builder (lazy build by index), ListView.separated (with a separator widget between items), and ListView.custom (full SliverChildDelegate control).',
             ),
             TextBlock(
-              '"ListView" widget has named parameter like shrinkWrap, itemCount, itemBuilder, which specify the building of list.',
+              'Key parameters: itemCount and itemBuilder drive a builder-style list; shrinkWrap lets the list take only the height of its content (use it when embedding inside another scroll view, at a performance cost); primary lets it participate in the nearest PrimaryScrollController; and physics controls overscroll/bouncing behaviour.',
+            ),
+            TextBlock(
+              'Tip: for large or infinite lists always use ListView.builder with an itemCount — it builds only the visible items. Setting shrinkWrap: true defeats the lazy viewport optimisation, so prefer giving the ListView bounded height over shrink-wrapping wherever possible.',
             ),
             Container(
               height: 500,

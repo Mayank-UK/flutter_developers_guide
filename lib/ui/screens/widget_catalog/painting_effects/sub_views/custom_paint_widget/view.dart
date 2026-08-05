@@ -31,8 +31,12 @@ class _CustomPaintWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock('Will be updated later.'),
-            Container(),
+            TextBlock(
+              'CustomPaint hands you a Canvas during the paint phase so you can draw arbitrary graphics — shapes, paths, gradients, charts, sprites — by supplying a CustomPainter. It is the escape hatch when no composed widget will do: bespoke illustrations, data visualizations, animated backgrounds, game art.',
+            ),
+            TextBlock(
+              'Keep the painter cheap and pure: state should live outside it, and redraws should be driven through the `repaint` argument (typically a ChangeNotifier or Animation) so Flutter can cache the resulting layer. Heavy allocation or work inside paint will jank the frame.',
+            ),
           ],
         ),
       ],

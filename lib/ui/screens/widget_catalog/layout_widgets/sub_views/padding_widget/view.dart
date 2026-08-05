@@ -32,7 +32,10 @@ class _PaddingWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Padding" widget has a named parameter padding, which specify the padding around it\'s children.',
+              'Padding insets its child by an EdgeInsets (all, only, symmetric, fromLTRB). It is the single-purpose, fast widget for adding empty space inside a widget — the same effect Container(padding:...) produces internally, but cheaper and clearer in intent.',
+            ),
+            TextBlock(
+              'Tip: prefer Padding over a Container whose only styling parameter is padding. The const EdgeInsets constructors (const EdgeInsets.all(16)) let Padding be a compile-time constant, which keeps widget trees cheap.',
             ),
             Container(
               child: Container(

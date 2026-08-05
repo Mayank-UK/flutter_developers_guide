@@ -32,7 +32,10 @@ class _TransformWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Transform" widget has a named parameter transform, which specify the the transformation for it\'s child.',
+              'Transform applies a Matrix4 transformation — translate, scale, rotate, skew — to its child before painting, without changing the child\'s layout or hit-testing rectangle. Convenience constructors (Transform.translate, Transform.rotate, Transform.scale) build the matrix for you.',
+            ),
+            TextBlock(
+              'Use it for visual effects: tilting a card, rotating an icon, animating a hover. Because Transform only affects paint, layout uses the original bounds — that is usually what you want for animations, but if you need hit-testing to follow the visual transform set transformHitTests to true.',
             ),
             Container(
               child: Transform(

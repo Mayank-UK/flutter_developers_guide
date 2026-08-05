@@ -10,7 +10,7 @@ class ScrollingWidgetsView extends StatelessWidget {
     Link(
       title: 'CustomScrollView',
       description:
-          'A ScrollView that creates custom scroll effects using slivers.',
+          'A ScrollView that composes slivers — SliverAppBar, SliverList, SliverGrid, SliverPersistentHeader — to build custom scroll effects such as collapsing app bars and mixed list/grid sections in one scroll.',
       route: RoutePaths.customScrollView,
     ),
     Link(
@@ -39,17 +39,19 @@ class ScrollingWidgetsView extends StatelessWidget {
     Link(
       title: 'NotificationListener',
       description:
-          'A widget that listens for Notifications bubbling up the tree.',
+          'A widget that listens for Notifications bubbling up the tree and can intercept them. Most often used to observe ScrollNotification from any scrollable without holding its controller.',
       route: RoutePaths.notificationListener,
     ),
     Link(
       title: 'PageView',
-      description: 'A scrollable list that works page by page.',
+      description:
+          'A scrollable that snaps its children into discrete full-screen pages. Powers onboarding flows, image carousels, and paged tab content; drive it with a PageController.',
       route: RoutePaths.pageView,
     ),
     Link(
       title: 'RefreshIndicator',
-      description: 'A Material Design pull-to-refresh wrapper for scrollables',
+      description:
+          'A Material Design pull-to-refresh wrapper. Shows the spinner on overscroll and awaits onRefresh (a Future) to complete before retreating.',
       route: RoutePaths.refreshIndicator,
     ),
     Link(
@@ -60,7 +62,8 @@ class ScrollingWidgetsView extends StatelessWidget {
     ),
     Link(
       title: 'ScrollConfiguration',
-      description: 'Controls how Scrollable widgets behave in a subtree.',
+      description:
+          'Controls how Scrollable widgets behave in a subtree — ScrollPhysics, overscroll appearance, and gesture conventions. The seam through which iOS bounce vs. Android clamping is applied.',
       route: RoutePaths.scrollConfiguration,
     ),
     Link(

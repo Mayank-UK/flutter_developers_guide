@@ -32,7 +32,13 @@ class _StackWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Stack" widget helps in positioning layout elements on top of each other.',
+              'Stack paints its children on top of one another in a single box, in the order they appear in the children list (later children are drawn above earlier ones). It is the widget for overlapping layouts — an image with a gradient overlay, a card with a badge, a button floating over a hero image.',
+            ),
+            TextBlock(
+              'Two positioning modes: non-positioned children are aligned together according to alignment (topStart by default, often you want center), while Positioned children are pinned to specific edges or coordinates of the stack. Use Positioned inside a Stack with a known bounded size; for percentage-based pinning use Positioned.fill or fractional Align.',
+            ),
+            TextBlock(
+              'Gotcha: Stack sizes itself to its largest non-positioned child (or to the constraints from the parent if there are no non-positioned children). If you wrap every child in Positioned the Stack has no natural size and will fill the parent — which is usually what you want for a full-bleed overlay.',
             ),
             Container(
               child: Stack(

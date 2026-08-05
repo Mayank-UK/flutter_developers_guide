@@ -41,7 +41,10 @@ class __DismissibleWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Dismissible" widget has named parameters like background, onDismissed, etc, which specify the layout of it\'s child.',
+              'Dismissible lets a list item be swiped or dragged away — once dragged past a threshold in the given DismissDirection, it slides out of view and onDismissed fires so you can remove it from your data source. It\'s the standard pattern for swipe-to-delete on list items.',
+            ),
+            TextBlock(
+              'Every Dismissible must have a stable Key so Flutter can track it through the dismiss animation, and you must actually remove the item from your list inside onDismissed — otherwise the next rebuild will build a Dismissible that no longer matches and throw. Use the background (and secondaryBackground) to paint the colored delete/confirm panel revealed behind the sliding child.',
             ),
             Container(
               color: Colors.amber,

@@ -34,7 +34,10 @@ class _NestedScrollViewWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"NestedScrollView" widget has named parameters like headerSliverBuilder, body, etc which specify the different sections of the widget.',
+              'NestedScrollView links a collapsing header (built from slivers) and an inner scrollable body so they share one scroll offset — the header shrinks/pins first, and only once it\'s fully collapsed does the body begin to scroll. It\'s the standard pattern for the "collapsing AppBar + TabBarView" layout.',
+            ),
+            TextBlock(
+              'Coordinate the two halves with SliverOverlapAbsorber in the header and SliverOverlapInjector in the body so the pinned AppBar\'s height is subtracted correctly from each tab\'s scroll region. The body must be a scrollable that reports its scroll offsets upward (ListView, CustomScrollView, etc.).',
             ),
             Container(
               color: Colors.white,

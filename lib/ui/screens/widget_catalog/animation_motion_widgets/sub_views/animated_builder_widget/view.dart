@@ -58,7 +58,11 @@ class __AnimatedBuilderWidgetImplementationState
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock('AnimatedBuilder widget'),
+            TextBlock(
+              'AnimatedBuilder is the general-purpose bridge between a Listenable (typically an AnimationController) and your widget tree: every time the listenable ticks, AnimatedBuilder rebuilds, calling your builder with the latest value. It is the building block for custom explicit animations the Implicit "AnimatedX" widgets can\'t express.'),
+            TextBlock(
+              'Pass a static `child` for any subtree that doesn\'t depend on the animation — AnimatedBuilder hands it back to your builder so it isn\'t rebuilt each frame. Remember to dispose of the controller in a State\'s dispose(); AnimatedBuilder itself owns no resources.',
+            ),
             Container(
               child: AnimatedBuilder(
                 animation: _controller,

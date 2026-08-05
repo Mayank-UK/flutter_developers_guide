@@ -40,10 +40,13 @@ class _SnackBarWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"SnackBar" widget is shown using a function/method, which then calls "ScaffoldMessenger" to render the snackBar.',
+              'SnackBar is a brief, non-blocking Material message that slides in at the bottom of the screen to confirm an action ("Item deleted"), report a recoverable error, or offer an inline action ("Undo"). It disappears after a few seconds without requiring the user to dismiss it.',
             ),
             TextBlock(
-              '"SnackBar" has named parameter content, which show takes the content of snackbar, which is mostly text.',
+              'It is shown via ScaffoldMessenger.of(context).showSnackBar(...), not placed on the widget tree directly. The Messenger manages a queue so a new SnackBar replaces an old one safely across route changes — which is why you should never cache the BuildContext used to show one.',
+            ),
+            TextBlock(
+              'Tip: if the message is critical or requires a decision, use an AlertDialog or a Banner instead. SnackBars are easy to miss; only put "you can probably ignore this" content in them.',
             ),
             Container(
               child: ElevatedButton(

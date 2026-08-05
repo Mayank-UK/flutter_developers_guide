@@ -31,8 +31,12 @@ class _CupertinoDialogActionWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoDialogAction is the button used inside a CupertinoAlertDialog (and the older CupertinoDialog). It carries a text label and an onPressed that dismisses the dialog when tapped.',
+            ),
+            TextBlock(
+              'Mark the recommended choice with isDefaultAction (bolds the text) and any destructive choice with isDestructiveAction (red text). Flutter lays them out automatically — two side by side, three or more stacked.',
+            ),
           ],
         ),
       ],

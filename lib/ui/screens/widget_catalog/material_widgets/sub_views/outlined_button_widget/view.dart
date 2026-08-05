@@ -32,7 +32,13 @@ class _OutlinedButtonWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"OutlinedButton" widget has named parameters onPressed and child, which specify the button\'s behavior and content.',
+              'OutlinedButton is a Material button with a visible border outline and no fill — the middle step in the elevation hierarchy. It signals an important but secondary action ("Cancel", "Back", "Discard"), less prominent than ElevatedButton but more affordant than a TextButton.',
+            ),
+            TextBlock(
+              'Because its border is a visible affordance, OutlinedButton works well next to an ElevatedButton in a row — e.g. "Discard" (outlined) beside "Save" (elevated) — communicating both options while making the primary one the obvious default.',
+            ),
+            TextBlock(
+              'Tip: this is the renamed, border-styled successor to the deprecated OutlineButton. As with the other Material buttons, set onPressed to null to disable rather than wrapping in an IgnorePointer.',
             ),
             Container(
               child: OutlinedButton(

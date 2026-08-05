@@ -3,6 +3,7 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../../components/code_preview_tabs.dart';
 import '../../../../../components/section_wrapper.dart';
+import '../../../../../components/text_block.dart';
 
 class ThemeView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -30,13 +31,11 @@ class _ThemeImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "Theme" widget',
           content: [
-            Container(
-              child: Text(
-                  '"Theme" widget provides a mechanism to supply the different styles like typography, colors, etc at one place and use them at many places without defining them again and again.'),
+            TextBlock(
+              'The "Theme" widget injects a local "ThemeData" that overrides the ambient theme for its subtree only. Use it to give one section (or a single widget like the FAB below) a different palette without affecting the rest of the app.',
             ),
-            Container(
-              child: Text(
-                  '"Theme" widget has a named parameter "data", which takes an object of "ThemeData" class.'),
+            TextBlock(
+              'Descendants read the override through "Theme.of(context)", so no prop drilling is needed. For small color swaps prefer "ColorScheme.fromSeed" or "copyWith" so the rest of the inherited theme stays intact.',
             ),
             Wrap(
               runSpacing: 8,
@@ -82,13 +81,11 @@ class _ThemeImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "MaterialApp" or "CupertinoApp" widget',
           content: [
-            Container(
-              child: Text(
-                  '"MaterialApp" widget has a named parameter "theme", which takes an object of "ThemeData" class. This can be used to define and supply styles for typography, colors, etc, throughout the application.'),
+            TextBlock(
+              'App-wide theming lives on the root widget: "MaterialApp.theme" takes a "ThemeData" that every descendant inherits through "Theme.of(context)". Define "colorScheme", "textTheme", and component themes once and they propagate everywhere.',
             ),
-            Container(
-              child: Text(
-                  'Since there can be only one "MaterialApp" widget in an application, so an implemented example is not available.'),
+            TextBlock(
+              'Tip: also pass "darkTheme" and let "themeMode" follow the system; you then have one source of truth that flips with OS dark mode, with no "MediaQuery.platformBrightness" checks scattered through widget code. A live demo isn\'t embeddable here because only one "MaterialApp" exists per app.',
             ),
           ],
         ),

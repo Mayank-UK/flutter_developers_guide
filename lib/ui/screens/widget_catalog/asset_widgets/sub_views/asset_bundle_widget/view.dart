@@ -31,7 +31,12 @@ class _AssetBundleWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock('Not used directly most of the time.'),
+            TextBlock(
+              'AssetBundle is the container that ships your app\'s bundled resources — images, fonts, JSON, raw strings. You rarely instantiate one; the framework provides the root bundle (rootBundle) and a widget-tree bundle (DefaultAssetBundle.of(context)) that Image, Icon, and other widgets resolve through automatically.',
+            ),
+            TextBlock(
+              'Reach for it explicitly when you need to load non-image data yourself: rootBundle.loadString(...) to read a JSON or text asset at runtime. DefaultAssetBundle.of(context) is also the seam that lets you swap a custom bundle in tests, which is invaluable for hermetic widget tests that shouldn\'t touch the real asset set.',
+            ),
           ],
         ),
       ],

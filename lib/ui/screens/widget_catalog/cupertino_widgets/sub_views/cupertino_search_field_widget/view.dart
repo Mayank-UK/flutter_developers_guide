@@ -31,8 +31,12 @@ class _CupertinoSearchFieldWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoSearchTextField is the iOS-style search box: a rounded grey field with a leading magnifier icon, placeholder text, and an optional clear/cancel button. Use onChanged or onSubmitted to drive a filter over a list shown below.',
+            ),
+            TextBlock(
+              'It manages its own TextEditingController internally; pass your own controller only if you need to read or preset the value. For a Material-style search input, use a plain TextField with the appropriate decoration instead.',
+            ),
           ],
         ),
       ],

@@ -31,8 +31,12 @@ class _AnimatedWidgetBaseStateImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock('Most of the time not used directly.'),
-            Container(),
+            TextBlock(
+              'ImplicitlyAnimatedWidgetState is the State base class behind every "AnimatedX" implicit-animation widget — AnimatedContainer, AnimatedAlign, AnimatedOpacity and friends. It runs a single forward AnimationController each time a property changes and drives a tween from the old value to the new one.',
+            ),
+            TextBlock(
+              'You rarely touch it directly: app code uses the AnimatedX widgets, and they internally lean on this state to start and stop the implicit animation. Subclass it only if you are authoring your own ImplicitlyAnimatedWidget with a custom interpolable property.',
+            ),
           ],
         ),
       ],

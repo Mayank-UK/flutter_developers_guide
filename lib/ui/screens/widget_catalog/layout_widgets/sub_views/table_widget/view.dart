@@ -32,7 +32,13 @@ class _TableWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Table" widget has named parameters like border, columnWidths, etc, which specify the table layout.',
+              'Table lays its children out in a strict grid of rows and columns where every row must have the same number of cells (each child of a TableRow is a column cell). Unlike GridView, Table performs a multi-pass layout so columns can be sized from intrinsic content, fixed widths, or flex weights, and rows grow to fit their tallest cell.',
+            ),
+            TextBlock(
+              'columnWidths maps column indices to a TableColumnWidth strategy — IntrinsicColumnWidth (sized to the widest cell), FlexColumnWidth (shares leftover space), FixedColumnWidth (exact pixels), or FractionColumnWidth (fraction of table width). border and defaultVerticalAlignment give you the borders and per-cell vertical alignment for free.',
+            ),
+            TextBlock(
+              'Tip: Table does not scroll on its own. For large data sets wrap it in a SingleChildScrollView, or reach for DataTable / PaginatedDataTable which add sorting, selection, and lazy scrolling on top of a similar column model.',
             ),
             Container(
               child: Table(

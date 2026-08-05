@@ -31,8 +31,12 @@ class _CupertinoTimePickerWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoTimerPicker is the iOS-style countdown picker — a wheel-based timer that lets the user dial in a Duration (hours:minutes:seconds). Use onTimerDurationChanged to receive the current value as the wheels turn.',
+            ),
+            TextBlock(
+              'It is distinct from CupertinoDatePicker: this one is specifically for selecting an elapsed time / countdown, not a clock time or calendar date. Give it a bounded height; the wheel needs a fixed extent to lay out its rotating columns.',
+            ),
           ],
         ),
       ],

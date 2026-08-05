@@ -9,12 +9,12 @@ class MediaView extends StatelessWidget {
   final List<Link> _itemList = [
     Link(
       title: 'Video',
-      description: 'Playback of video.',
+      description: 'Embed and control video playback from assets or network.',
       route: RoutePaths.video,
     ),
     Link(
       title: 'Audio',
-      description: 'Playback of audio.',
+      description: 'Play sounds and music from files or network URLs.',
       route: RoutePaths.audio,
     ),
   ];

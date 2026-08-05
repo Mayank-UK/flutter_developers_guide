@@ -32,7 +32,10 @@ class _SliverPaddingWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"SliverPadding" widget has a named parameter padding, which specifies the padding of the widget.',
+              'SliverPadding insets a sliver (rather than a box) by an EdgeInsets. Its child must itself be a sliver — SliverList, SliverGrid, SliverToBoxAdapter, or another SliverPadding — and the padding is applied to the sliver\'s scrollable area.',
+            ),
+            TextBlock(
+              'Use it whenever you need to add gutters around sliver content inside a CustomScrollView: padding applied at the ScrollView level (EdgeInsets on the ListView or CustomScrollView) insets the whole scroll surface, but SliverPadding lets you pad only a specific sliver while leaving others (a pinned SliverAppBar, for instance) flush to the edges.',
             ),
             Container(
               color: Colors.white,

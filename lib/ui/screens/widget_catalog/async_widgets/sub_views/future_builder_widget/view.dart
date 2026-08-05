@@ -44,7 +44,10 @@ class __FutureBuilderWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-                '"FutureBuilder" widget has named parameter like future, builder, etc, which specify the widget configuration.'),
+                'FutureBuilder rebuilds whenever the Future it watches emits a value, throws, or completes — handing your builder an AsyncSnapshot that describes the current state. Use it to drive loading, ready, and error UI from a single one-shot asynchronous result.'),
+            TextBlock(
+              'Inside the builder, branch on snapshot.connectionState (or hasData/hasError) to paint each phase. Gotcha: pass a stable Future stored in a State field or created in initState; constructing a new Future inline in build re-subscribes on every rebuild and re-runs the work each time.',
+            ),
             Container(
               child: FutureBuilder<String>(
                 future: _calculation,

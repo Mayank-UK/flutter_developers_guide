@@ -47,7 +47,10 @@ class __AnimatedPositionedImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"AnimatedPositioned" widget has named parameters "height", "width", "top", etc to specify the animation.',
+              'AnimatedPositioned is the implicit-animation version of Positioned: change its top/left/right/width/height in setState and it tweens the child to the new rectangle inside its Stack over `duration`. It only works as a direct child of a Stack, just like Positioned.',
+            ),
+            TextBlock(
+              'Because every rebuild with a new rectangle kicks off an animation, it suits discrete state changes (snapping between two layouts). For continuous motion driven by a gesture or controller, use PositionedTransition or a Sliver/sized child driven by an AnimationController so you control every frame.',
             ),
             Container(
               child: Column(

@@ -32,7 +32,10 @@ class _FractionallySizedBoxWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"FractionallySizedBox" widget has named parameters like heightFactor, widthFactor, which specify the height and width it\'s children according to the available space.',
+              'FractionallySizedBox sizes its child to a fraction (0.0–1.0) of its own available size, via widthFactor and heightFactor. Setting widthFactor to 0.5 makes the child take half the parent\'s width regardless of screen density — useful for "this button should be two-thirds of the screen wide" rules.',
+            ),
+            TextBlock(
+              'The alignment parameter controls where the (potentially smaller) child sits inside FractionallySizedBox when the factors are less than 1. If you only need a width-percentage in a flex, prefer Expanded with a flex factor instead; reach for FractionallySizedBox when the proportion-of-parent sizing is the actual layout goal.',
             ),
             Container(
               height: 100,

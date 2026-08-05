@@ -9,12 +9,12 @@ class ColorsBackgroundsView extends StatelessWidget {
   final List<Link> _itemList = [
     Link(
       title: 'Text Color',
-      description: 'Text color',
+      description: 'Color text per element, per section, or app-wide via theme.',
       route: RoutePaths.colors,
     ),
     Link(
       title: 'Background',
-      description: 'Background color',
+      description: 'Background color for a widget, a page, or the whole app.',
       route: RoutePaths.backgrounds,
     ),
   ];

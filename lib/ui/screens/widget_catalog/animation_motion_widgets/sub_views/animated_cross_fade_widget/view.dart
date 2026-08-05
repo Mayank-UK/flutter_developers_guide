@@ -47,7 +47,10 @@ class __AnimatedCrossFadeImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"AnimatedCrossFade" widget has named parameters "firstChild", "secondChild", "crossFade", etc which help in animating the fade animation.',
+              'AnimatedCrossFade blends between two children: drive crossFadeState between showFirst and showSecond and the first child dissolves into the second while the box animates between their sizes. Use it for state-driven swaps — toggling between an expanded and collapsed layout, or an icon that morphs between two glyphs.',
+            ),
+            TextBlock(
+              'Both children stay mounted during the fade so their state is preserved; if you want a hard cut or a directional transition use the Transition widgets (FadeTransition, SizeTransition) with an AnimationController instead. Set layoutBuilder to control how the two sizes are aligned during the cross-fade.',
             ),
             Container(
               child: Column(

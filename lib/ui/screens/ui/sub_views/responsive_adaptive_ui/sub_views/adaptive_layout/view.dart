@@ -32,9 +32,11 @@ class _AdaptiveLayoutImplementation extends StatelessWidget {
           title: 'Adaptive layout',
           content: [
             TextBlock(
-                "This basically means developing UI based on platform. Like building UI for ios or android, they both have different styles of UI."),
+                "Adaptive UI tailors the look to the host platform: iOS-style controls on Apple devices, Material controls on Android, and native-feeling chrome on desktop and web. The shape, transitions, and even the back button differ."),
             TextBlock(
-                "Flutter have built-in widgets that help implement the ui styles like android or ios. Material widger is for android and Cupertino widget is for ios.")
+                "Flutter ships two parallel design-system widget sets — \"material/\" for Android and \"cupertino/\" for iOS — plus \"Theme.of(context).platform\" to detect the running OS at runtime. Switch widgets or styles on that value, or use the \"flutter_platform_widgets\" package for a unified API."),
+            TextBlock(
+                "Gotcha: don\'t over-fit to one platform. Pick a baseline (usually Material) and only fork the few widgets where users expect platform-native behavior — navigation bars, switches, page transitions. Keeping the rest shared keeps the codebase maintainable."),
           ],
         ),
       ],

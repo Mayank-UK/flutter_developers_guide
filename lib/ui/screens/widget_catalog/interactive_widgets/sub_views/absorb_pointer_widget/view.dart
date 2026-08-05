@@ -32,7 +32,10 @@ class _AbsorbPointerWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"AbsorbPointer" widget has a named parameter absorbing, which specify the behavior of it\'s child.',
+              'AbsorbPointer terminates hit-testing at itself: when absorbing is true, no pointer events reach its subtree, so any buttons, switches, or gestures below go dead. It still paints and lays out its child normally — only interactivity is blocked.',
+            ),
+            TextBlock(
+              'Use it to lock an entire overlay behind a modal without removing it from the tree — for instance, a translucent scrim that swallows taps so they never hit the page underneath. For the opposite case (pass clicks through a decorative overlay to the widget below), use IgnorePointer instead, which is itself invisible to hit-testing.',
             ),
             Container(
               child: Stack(

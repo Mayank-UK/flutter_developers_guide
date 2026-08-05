@@ -56,7 +56,10 @@ class __SizeTransitionImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"SizeTransition" widget has named parameters like sizeFactor, axis, axisAlignment, etc, which specify the animation.',
+              'SizeTransition grows or shrinks its child along one axis (vertical by default) based on sizeFactor, an Animation<double> where 1.0 is full size and 0.0 is collapsed. It clips and aligns the child during the transition, so the surrounding layout animates smoothly.',
+            ),
+            TextBlock(
+              'Use it for expand/collapse sections, drawer sub-panels, and "show more" disclosures. Set axis to the direction you want to collapse and axisAlignment to decide which edge stays fixed during the resize. It is the explicit-animation sibling of AnimatedSize.',
             ),
             Container(
               child: SizeTransition(

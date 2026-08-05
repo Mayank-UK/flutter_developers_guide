@@ -32,10 +32,13 @@ class _AppBarWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"AppBar" widget has named parameters like title, backgroundColor, drawer, actions, etc, which specify the app bar.',
+              'AppBar is the top navigation bar in a Material Scaffold. It hosts the screen title, the back button, leading icon actions (drawer menu, back navigation), and trailing actions on the right via the actions: list.',
             ),
             TextBlock(
-              '"AppBar" by default creates a back button when when a route is pushed in navigator stack.',
+              'It automatically wires up platform conventions — back button appearance, hamburger menu icon when a drawer is set on the Scaffold, and theme-driven colors/elevation — so you rarely need to build a custom top bar.',
+            ),
+            TextBlock(
+              'Gotcha: for a top bar that must collapse, stretch, or pin while the body scrolls, reach for SliverAppBar inside a CustomScrollView instead — a plain AppBar cannot animate with the scroll.',
             ),
             Container(
               child: AppBar(

@@ -32,13 +32,13 @@ class _TabBarWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"TabBar" widget has named parameters like indicator, indicatorColor, padding, tabs, etc, which specify the TabBar behavior.',
+              'TabBar is a horizontal Material row of tabs that lets the user switch between sibling views. Each tab is a Tab widget (icon, text, or both); the active tab is marked with an animated indicator that slides between selections.',
             ),
             TextBlock(
-              '"TabBar" widget define it\'s tabs using "Tab" widget.',
+              'For a TabBar to know which tab is selected it needs a TabController. The convenient path is to wrap the TabBar and its TabBarView in a DefaultTabController, which manages the controller for you; reach for an explicit TabController only when you need to drive the selection programmatically or listen to tab-change events.',
             ),
             TextBlock(
-              'For custom tabBar behavior use "TabController" class.',
+              'Tip: scrollable: true lets long sets of tabs page horizontally instead of being squashed, and TabBar is most often placed in the AppBar\'s bottom slot so it slides under the app bar in the standard Material layout.',
             ),
             Container(
               child: DefaultTabController(

@@ -31,8 +31,12 @@ class _CupertinoContextMenuWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoContextMenu wraps a child and opens an iOS 13-style preview sheet when the user long-presses: the child expands into a full-screen card with a list of CupertinoContextMenuAction choices. Use it to attach contextual actions to images, cards, or list items.',
+            ),
+            TextBlock(
+              'Wrap the same widget you want to preview — Flutter measures it for the expansion animation. Each action carries an icon, title, and isDestructiveAction flag, and an onPressed that pops the menu and performs the action.',
+            ),
           ],
         ),
       ],

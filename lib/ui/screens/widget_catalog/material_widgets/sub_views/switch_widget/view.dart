@@ -41,7 +41,13 @@ class __SwitchWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Switch" widget has named parameters value and onChanged, which specifies the widget behavior and content.',
+              'Switch is a Material toggle that flips a single setting between on and off. It is the right control for binary preferences ("Airplane mode", "Notifications") that take effect immediately, with no need to press a Save button.',
+            ),
+            TextBlock(
+              'Like Checkbox and Radio, the widget is fully controlled: you store the bool value and update it from onChanged. Pass null for onChanged to disable the switch, and wrap with SwitchListTile when you want a label, tap target, and accessible row layout.',
+            ),
+            TextBlock(
+              'Tip: prefer Switch over Checkbox for a single binary setting. Checkbox implies "yes/no within a group of options", while Switch implies "this one thing is on or off" — matching that convention makes your UI feel native.',
             ),
             Container(
               child: Switch(

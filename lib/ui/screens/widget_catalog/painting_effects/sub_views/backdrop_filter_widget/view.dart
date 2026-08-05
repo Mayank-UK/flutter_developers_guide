@@ -33,7 +33,10 @@ class _BackdropFilterWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"BackdropFilter" widget has named parameter filter, which specifies the widget behavior.',
+              'BackdropFilter applies an ImageFilter to everything already painted behind it, then paints its child on top. The classic use is the frosted-glass blur: stack it over an image or text and the background shows through, smeared by your filter.',
+            ),
+            TextBlock(
+              'It is expensive — every frame re-runs the filter over the area underneath, and non-local filters like blur cost the most. Keep the filtered region small (wrap it in a ClipRect/ClipRRect to constrain it) and avoid stacking many BackdropFilters inside a scrolling list.',
             ),
             Container(
               height: 200,

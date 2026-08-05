@@ -57,7 +57,10 @@ class __RotationTransitionImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"RotationTransition" widget has named parameters like turns, etc, to specify the animation.',
+              'RotationTransition rotates its child by the number of turns given by an Animation<double> — 1.0 equals one full revolution. Feed it a CurvedAnimation to shape the easing, and reuse one controller across multiple transitions to keep them synchronized.',
+            ),
+            TextBlock(
+              'It is the explicit-animation counterpart to a Transform.rotate driven by an animation, packaged so you don\'t have to wire AnimatedBuilder yourself. Pair it with FadeTransition or ScaleTransition on the same controller for combined enter/exit motion.',
             ),
             Container(
               child: RotationTransition(

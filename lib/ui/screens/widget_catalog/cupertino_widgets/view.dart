@@ -16,17 +16,19 @@ class CupertinoWidgetsView extends StatelessWidget {
     Link(
       title: 'CupertinoActivityIndicator',
       description:
-          'An iOS-style activity indicator. Displays a circular \'spinner\'.',
+          'An iOS-style activity indicator — a rotating circle of radiating ticks. Use it instead of CircularProgressIndicator when matching iOS; set animating: false to freeze it without unmounting.',
       route: RoutePaths.cupertinoActivityIndicator,
     ),
     Link(
       title: 'CupertinoAlertDialog',
-      description: 'An iOS-style alert dialog.',
+      description:
+          'An iOS-style centered alert with title, content, and a row of CupertinoDialogAction buttons. Shown via showCupertinoDialog; mark the primary choice isDefaultAction and destructive ones isDestructiveAction.',
       route: RoutePaths.cupertinoAlertDialog,
     ),
     Link(
       title: 'CupertinoButton',
-      description: 'An iOS-style button.',
+      description:
+          'An iOS-style button. By default borderless with opacity-dim press feedback (no Material ripple); pass color: and borderRadius: for the common filled pill shape.',
       route: RoutePaths.cupertinoButton,
     ),
     Link(
@@ -47,7 +49,8 @@ class CupertinoWidgetsView extends StatelessWidget {
     ),
     Link(
       title: 'CupertinoDialogAction',
-      description: 'A button typically used in a CupertinoAlertDialog.',
+      description:
+          'A button used inside a CupertinoAlertDialog. Carry a text label and an onPressed; isDefaultAction bolds the recommended choice and isDestructiveAction renders it red.',
       route: RoutePaths.cupertinoDialogAction,
     ),
     Link(
@@ -70,7 +73,8 @@ class CupertinoWidgetsView extends StatelessWidget {
     ),
     Link(
       title: 'CupertinoPageTransition',
-      description: 'Provides an iOS-style page transition animation.',
+      description:
+          'The standard iOS horizontal slide-and-fade page transition. CupertinoPageRoute applies it automatically; reach for it directly only when building a custom route that needs to mimic the system transition.',
       route: RoutePaths.cupertinoPageTransition,
     ),
     Link(
@@ -92,7 +96,8 @@ class CupertinoWidgetsView extends StatelessWidget {
         route: RoutePaths.cupertinoScrollbar),
     Link(
       title: 'CupertinoSearchField',
-      description: 'An iOS-style search field.',
+      description:
+          'An iOS-style search field — rounded grey background, leading magnifier icon, optional clear button. Drive filtering through onChanged/onSubmitted; pass your own controller to preset the value.',
       route: RoutePaths.cupertinoSearchField,
     ),
     Link(
@@ -103,7 +108,8 @@ class CupertinoWidgetsView extends StatelessWidget {
     ),
     Link(
       title: 'CupertinoSlider',
-      description: 'Used to select from a range of values.',
+      description:
+          'The iOS-style slider for selecting from a continuous range. Use onChanged while dragging and onChangeEnd to commit; the thumb springs with the native iOS feel.',
       route: RoutePaths.cupertinoSlider,
     ),
     Link(
@@ -143,12 +149,14 @@ class CupertinoWidgetsView extends StatelessWidget {
     ),
     Link(
       title: 'CupertinoTextField',
-      description: 'An iOS-style text field.',
+      description:
+          'An iOS-style single-line text input with a rounded border, system cursor, and optional prefix/suffix widgets. Read via onChanged/onSubmitted or an attached TextEditingController.',
       route: RoutePaths.cupertinoTextField,
     ),
     Link(
       title: 'CupertinoTimePicker',
-      description: 'An iOS-style countdown timer picker.',
+      description:
+          'An iOS-style countdown timer picker — a wheel-based dial for choosing a Duration. Use onTimerDurationChanged to receive the value; distinct from CupertinoDatePicker, which is for clock/calendar times.',
       route: RoutePaths.cupertinoTimePicker,
     ),
   ];

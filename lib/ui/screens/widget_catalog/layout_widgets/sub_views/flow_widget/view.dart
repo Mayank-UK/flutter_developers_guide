@@ -92,7 +92,11 @@ class __FlowWidgetImplementationState extends State<_FlowWidgetImplementation>
           title: 'Simple use',
           content: [
             TextBlock(
-                '"Flow" widget has named parameter delegate, which takes the delegate and define the flow menu.'),
+              'Flow is a low-level layout widget that gives its children to a FlowDelegate you write. The delegate\'s paintChildren receives a FlowPaintingContext and is free to position, transform, and paint each child however it likes — including using a matrix per child and reacting to an Animation for repositioning.',
+            ),
+            TextBlock(
+              'It is dramatically more efficient than stacking many Positioned/Transform widgets when you have a lot of children, because Flow lays out each child once (against loose constraints) and only repaints via the cheap transform path. The trade-off is more code: Wrap, Stack, or a Column will be simpler for everyday "wrap children in rows" or "overlap a few items" needs.',
+            ),
             Container(
               height: 100,
               child: Flow(

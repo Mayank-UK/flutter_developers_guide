@@ -32,7 +32,10 @@ class _DraggableScrollableSheetWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-                '"DraggableScrollableSheet" widget has a named parameter builder, which takes a function and builds the layout of it\'s child.'),
+                'DraggableScrollableSheet is a bottom-sheet that grows and shrinks in response to drag gestures: dragging up resizes it until its max size, then the inner content starts scrolling; dragging back down collapses it again. It\'s the "bottom sheet that becomes a full page" pattern used for music players, maps, and filters.'),
+            TextBlock(
+              'The builder hands you a ScrollController — wire it into the ListView/GridView inside the sheet so the gesture correctly transitions between resizing and scrolling. Control the size stops with snapSizes and initialChildSize/min/maxChildSize, and typically show it via showModalBottomSheet with isScrollControled: true.',
+            ),
             Container(
               height: 400,
               child: SizedBox.expand(

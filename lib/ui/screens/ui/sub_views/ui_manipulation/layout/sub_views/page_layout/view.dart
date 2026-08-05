@@ -3,6 +3,7 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../../../../components/code_preview_tabs.dart';
 import '../../../../../../../components/section_wrapper.dart';
+import '../../../../../../../components/text_block.dart';
 
 class PageLayoutView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -30,52 +31,34 @@ class _PageLayoutImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'General information',
           content: [
-            Container(
-              child: Text(
-                  'There are 2 main widgets which are used at the root(main.dart) of most flutter applications, "MaterialApp" for android and "Cupertino" for ios. Although it is perfectly normal to not use these widgets and have your own custom styling.'),
+            TextBlock(
+              'A Flutter app is rooted in one of two design-system widgets: "MaterialApp" (Google\'s Material, the default for Android and a sensible cross-platform choice) or "CupertinoApp" (Apple\'s iOS look). You can also ship a fully custom "WidgetsApp" if neither fits.',
             ),
-            Container(
-              child: Text(
-                  'Every page has it\'s own "Scaffold" widget which gives structure to a page like appBar, drawer, etc.'),
-            ),
-            Container(
-              child: Text(
-                  'To use any widget in your flutter file including the above mentioned widgets, you have to import either "widgets" package, or "material" package, or "cupertino" package.'),
+            TextBlock(
+              'Beneath the root, every screen is built around a "Scaffold" (Material) or "CupertinoPageScaffold", which provide the page chrome — app bar, body, drawer, bottom navigation, and FAB slots. To use any of these widgets, import "package:flutter/material.dart", "package:flutter/cupertino.dart", or the lower-level "package:flutter/widgets.dart".',
             ),
           ],
         ),
         SectionWrapper(
           title: 'Using "MaterialApp" at root(main.dart)',
           content: [
-            Container(
-              child: Text(
-                  'Material is a design system developed by google for it\'s android operating system.'),
+            TextBlock(
+              '"MaterialApp" configures the whole app: "home" (or "routes"/"onGenerateRoute") picks the entry screen, "theme" supplies global styling, and "debugShowCheckedModeBanner" toggles the corner banner. It also wires in "Navigator", "MediaQuery", and "Hero" support.',
             ),
-            Container(
-              child: Text(
-                  '"MaterialApp" widget has named parameters "home", which takes "Scaffold" widget as a value. It also has other named parameters for routes, themes, etc.'),
+            TextBlock(
+              'Each route then returns a "Scaffold" with its own "appBar", "body", "drawer", "bottomNavigationBar", and "floatingActionButton". Keep the "MaterialApp" thin — push business logic into widgets further down the tree so the root stays a configuration node.',
             ),
-            Container(
-              child: Text(
-                  '"Scaffold" widget has named parameters "appBar", "drawer", and "body" which takes "appBar", "drawer" and other widgets for "body" as a value.'),
-            ),
-            Container(
-              child: Text(
-                  'Import the material package from the flutter library to use it.'),
-            )
           ],
         ),
         SectionWrapper(
           title: 'Using "CupertinoApp" at root(main.dart)',
           content: [
-            Container(
-              child: Text(
-                  'Cupertino is a design system developed by apple for it\'s ios operating system.'),
+            TextBlock(
+              '"CupertinoApp" is the iOS-flavored counterpart: it configures "CupertinoTheme", "CupertinoLocalizations", and an iOS-style "Navigator". Use it when the whole app should look native on Apple platforms, or mix it with Material widgets per screen.',
             ),
-            Container(
-              width: double.infinity,
-              child: const Text('_'),
-            )
+            TextBlock(
+              'You can interleave both: keep "MaterialApp" at the root and drop in "CupertinoPageScaffold", "CupertinoNavigationBar", and "CupertinoButton" where an iOS feel is wanted — Flutter widgets cooperate, so the two design systems compose within a single app.',
+            ),
           ],
         ),
       ],

@@ -41,10 +41,10 @@ class __DragTargetWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"DragTarget" widget is used mostly with "Draggable" widget.',
+              'DragTarget is the receiving end of a drag-and-drop: while a Draggable is dragged over it, the builder reports candidate/rejected data so you can highlight the drop zone, and onAccept fires with the data when the user releases on top of it.',
             ),
             TextBlock(
-              'It has named parameters like builder, onAccept, which specify it\'s behavior and layout.',
+              'Pair it with a Draggable<T> carrying matching data type T. Use onWillAccept to gate whether a given payload is allowed (returning false rejects it and dims the zone), and onAcceptWithDetails when you need the drop position as well as the data.',
             ),
             Container(
               child: Row(

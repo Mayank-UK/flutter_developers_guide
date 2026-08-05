@@ -3,6 +3,7 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../../../../components/code_preview_tabs.dart';
 import '../../../../../../../components/section_wrapper.dart';
+import '../../../../../../../components/text_block.dart';
 
 class FractionalDimensionsView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -30,6 +31,12 @@ class _FractionalDimensionsImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "MediaQuery"',
           content: [
+            TextBlock(
+              '"MediaQuery.of(context).size" returns the full screen dimensions, so multiplying it by a fraction yields a size relative to the whole window rather than the immediate parent.',
+            ),
+            TextBlock(
+              'This is the right tool for full-screen overlays, banners, or page-level boxes, but it does not reflect safe areas or keyboard insets — combine with "MediaQuery.of(context).padding" or use "SafeArea" to avoid the notch and the IME.',
+            ),
             Container(
               alignment: Alignment.center,
               color: Colors.amber,

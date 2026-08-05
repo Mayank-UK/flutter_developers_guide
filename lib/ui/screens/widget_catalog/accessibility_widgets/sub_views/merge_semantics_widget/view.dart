@@ -32,7 +32,10 @@ class _MergeSemanticsWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-                '"MergeSemantics" widget, which provide semantics to a group of values like an input field and it\'s label.'),
+                'MergeSemantics combines the semantics of all its descendants into a single node, so assistive technology reads them as one phrase. Use it to pair a control with its label — a Checkbox next to the word "Settings" — so a screen reader announces "Settings, checked" as one tappable item rather than two unrelated ones.'),
+            TextBlock(
+              'Don\'t merge nodes that need to be individually focusable. Collapsing a row of independent buttons into one node means the user can\'t reach each button separately, which is usually a regression in accessibility rather than an improvement.',
+            ),
             Container(
               child: MergeSemantics(
                 child: Row(

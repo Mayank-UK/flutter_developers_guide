@@ -34,7 +34,10 @@ class _PageViewWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"PageView" widget has named parameters like scrollDirection, controller, etc, which specify the widget\'s behavior.',
+              'PageView is a scrollable that snaps its children into discrete full-screen pages, swiped one at a time horizontally or vertically. It\'s the basis for onboarding flows, image carousels, and tabbed content where each page is a complete widget.',
+            ),
+            TextBlock(
+              'Drive it programmatically with a PageController, which also exposes the current page and animateToPage for jumps. For simple paged content inside a TabBar, TabBarView is the higher-level wrapper that stays in sync with a TabController.',
             ),
             Container(
               height: 500,

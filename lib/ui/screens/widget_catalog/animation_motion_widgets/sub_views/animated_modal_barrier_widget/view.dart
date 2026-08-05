@@ -65,7 +65,10 @@ class __AnimatedModalBarrierImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"AnimatedModalBarrier" has a named parameter "color" which is of type "Animation<Color>".',
+              'AnimatedModalBarrier is a ModalBarrier whose color is driven by an Animation<Color>, so the scrim can fade or shift hue over time. Like ModalBarrier, it blocks interaction with widgets behind it — handy for building custom modal overlays where the darkening backdrop should animate in and out.',
+            ),
+            TextBlock(
+              'Feed `color` a ColorTween.animate(controller) to drive the transition, and set dismissible to control whether tapping the barrier pops it. For most apps the standard showDialog routes provide this behavior out of the box — reach for AnimatedModalBarrier when you are hand-rolling a custom dialog or bottom-sheet stack.',
             ),
             Container(
               child: Column(

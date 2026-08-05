@@ -9,7 +9,8 @@ class StylingWidgetsView extends StatelessWidget {
   final List<Link> _itemList = [
     Link(
       title: 'Padding',
-      description: 'A widget that insets its child by the given padding.',
+      description:
+          'A widget that insets its child by the given EdgeInsets. Use it to add space around a single child; for combined padding plus a background color or border, Container exposes a `padding` parameter and avoids the need to nest.',
       route: RoutePaths.padding,
     ),
   ];

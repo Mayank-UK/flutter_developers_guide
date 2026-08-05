@@ -45,7 +45,10 @@ class __StreamBuilderWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"StreamBuilder" widget has named parameters like stream, builder, etc which specify the widget behavior.',
+              'StreamBuilder rebuilds on every event a Stream emits, giving your builder an AsyncSnapshot of the latest value along with the connection state. Use it for ongoing asynchronous data — a BLoC\'s state stream, WebSocket messages, periodic ticks — where the UI must react to a sequence of values rather than a single result.',
+            ),
+            TextBlock(
+              'It distinguishes waiting, active, and done so you can render each phase separately. As with FutureBuilder, pass a stable stream stored in State (and cancel it in dispose) — creating a stream inline in build tears down and recreates the subscription on every rebuild.',
             ),
             Container(
               child: StreamBuilder<int>(

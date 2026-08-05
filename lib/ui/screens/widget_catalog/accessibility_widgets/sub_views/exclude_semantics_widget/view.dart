@@ -32,7 +32,10 @@ class _ExcludeSemanticsWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-                '"ExcludeSemantics" widget, which removes the semantics from it\'s child tree.'),
+                'ExcludeSemantics drops the entire accessibility subtree under it, so screen readers never announce its descendants. Wrap purely decorative or redundant content — an avatar that duplicates a visible label, a background image, a divider — so assistive tech skips it instead of reading clutter.'),
+            TextBlock(
+              'Toggle the excluding flag at runtime to turn the suppression on and off conditionally. When you need finer control (hide one property but keep another), reach for Semantics with explicit flags instead of nuking the whole subtree.',
+            ),
             Container(
               child: ExcludeSemantics(
                 excluding: true,

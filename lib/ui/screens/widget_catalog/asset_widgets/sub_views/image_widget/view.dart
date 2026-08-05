@@ -32,7 +32,11 @@ class _ImageWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-                '"Image" widget has named parameters like height, width, image, etc, which specify the image.'),
+              'Image decodes and displays a raster picture from an asset, network URL, file, or in-memory bytes. Pick the named constructor that matches your source — Image.asset, Image.network, Image.file, or Image.memory — and use `fit` (a BoxFit) to control how the picture is scaled and aligned inside its box.',
+            ),
+            TextBlock(
+              'Always give network and file images an explicit width/height (or wrap them in a constrained parent) so the surrounding layout doesn\'t jump while bytes arrive. For cases where you already hold a decoded dart:ui.Image — typically from a codec or custom painter — drop down to RawImage to skip the ImageProvider pipeline entirely.',
+            ),
             Container(
               child: Image(
                 height: 64,

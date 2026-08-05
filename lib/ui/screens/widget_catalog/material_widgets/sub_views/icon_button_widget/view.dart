@@ -32,7 +32,13 @@ class _IconButtonWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"IconButton" widget has named parameters like onPressed, icon, etc, which specify the widget\'s behavior and layout.',
+              'IconButton is a Material button that renders only an icon inside an ink splash. It is the standard way to put actions into an AppBar (trailing actions), a Toolbar, or any compact UI where a labelled button would be visually heavy.',
+            ),
+            TextBlock(
+              'Because the button has no text label, its meaning must be obvious from the icon. For less-universal icons, wrap the IconButton in a Tooltip (or pass tooltip:) so users who long-press or hover see a textual hint.',
+            ),
+            TextBlock(
+              'Tip: choose the right variant for the surface — FloatingActionButton for the primary action, IconButton for secondary actions, and the icon-only versions ofFilledButton/OutlinedButton/TextButton when you want a unified visual style with the rest of your button family.',
             ),
             Container(
               child: IconButton(

@@ -31,8 +31,12 @@ class _CustomSingleChildLayoutWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock('Very rarely used widget.'),
-            Container(),
+            TextBlock(
+              'CustomSingleChildLayout hands the layout of its single child to a SingleChildLayoutDelegate, whose getSize and getPositionForChild override the default child placement. It is the lowest-level escape hatch for one-off custom single-child layouts.',
+            ),
+            TextBlock(
+              'In modern Flutter you almost never need it: LayoutBuilder + Stack/Positioned, Transform, Align, or a small CustomPaint cover the same ground declaratively. Reach for CustomSingleChildLayout only when you need pixel-exact constraint math that no combination of stock widgets can express.',
+            ),
           ],
         ),
       ],

@@ -56,7 +56,8 @@ class AnimationWidgetsView extends StatelessWidget {
     ),
     Link(
       title: 'AnimatedPhysicalModel',
-      description: 'Animated version of PhysicalModel.',
+      description:
+          'Animated version of PhysicalModel. Tweens elevation, color, shadowColor, and borderRadius over a duration whenever those values change — gives a "lift off the page" effect for selected or hovered cards.',
       route: RoutePaths.animatedPhysicalModel,
     ),
     Link(
@@ -73,11 +74,12 @@ class AnimationWidgetsView extends StatelessWidget {
     Link(
         title: 'AnimatedWidget',
         description:
-            'A widget that rebuilds when the given Listenable changes value.',
+            'A widget that rebuilds when the given Listenable (Animation, ChangeNotifier, ValueNotifier) ticks. Base class for the framework\'s own Transition widgets and for AnimatedBuilder.',
         route: RoutePaths.animatedWidget),
     Link(
       title: 'AnimatedWidgetBaseState',
-      description: 'A base class for widgets with implicit animations.',
+      description:
+          'The State base class behind every "AnimatedX" implicit-animation widget — runs an internal forward controller each time a property changes. Rarely used directly; subclass only when authoring your own ImplicitlyAnimatedWidget.',
       route: RoutePaths.animatedWidgetBaseState,
     ),
     Link(
@@ -88,7 +90,8 @@ class AnimationWidgetsView extends StatelessWidget {
     ),
     Link(
       title: 'FadeTransition',
-      description: 'Animates the opacity of a widget.',
+      description:
+          'Drives its child\'s opacity from an Animation<double>. The explicit-animation counterpart to AnimatedOpacity — use it when the fade is part of a larger controller-driven sequence.',
       route: RoutePaths.fadeTransition,
     ),
     Link(
@@ -104,17 +107,20 @@ class AnimationWidgetsView extends StatelessWidget {
         route: RoutePaths.positionedTransition),
     Link(
       title: 'RotationTransition',
-      description: 'Animates the rotation of a widget.',
+      description:
+          'Rotates its child by the number of turns given by an Animation<double> (1.0 = one full revolution). Feed it a CurvedAnimation for easing.',
       route: RoutePaths.rotationTransition,
     ),
     Link(
       title: 'ScaleTransition',
-      description: 'Animates the scale of transformed widget.',
+      description:
+          'Scales its child by the factor given by an Animation<double> — 1.0 is natural size, 0.0 collapses to nothing. Set alignment to control the scale origin.',
       route: RoutePaths.scaleTransition,
     ),
     Link(
       title: 'SizeTransition',
-      description: 'Animates its own size and clips and aligns the child.',
+      description:
+          'Grows or shrinks its child along one axis based on sizeFactor (an Animation<double>). Clips and aligns during the resize; the standard widget for expand/collapse sections.',
       route: RoutePaths.sizeTransition,
     ),
     Link(

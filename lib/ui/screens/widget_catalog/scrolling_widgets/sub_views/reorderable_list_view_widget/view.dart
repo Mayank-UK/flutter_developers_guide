@@ -51,7 +51,10 @@ class __ReorderableListViewWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"ReorderableListView" widget has named parameter onReorder, which manages the behavior of the widget.',
+              'ReorderableListView is a ListView whose items the user can drag to reorder. Supply onReorder(oldIndex, newIndex) to mutate your list when a drag finishes; Flutter handles the drag handle, drop indicator, and animation for you.',
+            ),
+            TextBlock(
+              'Each child must have a stable Key so the framework can track items across positions as they\'re reordered. Remember Flutter\'s quirk: when dragging down, newIndex is already one past the dragged item, so decrement newIndex when oldIndex < newIndex before splicing.',
             ),
             Container(
               height: 500,

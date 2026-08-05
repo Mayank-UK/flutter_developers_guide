@@ -31,8 +31,12 @@ class _CupertinoPickerWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoPicker is the iOS-style spinning wheel for selecting one item from a short list. Provide an itemExtent, a builder that returns a widget per index, and an onSelectedItemChanged callback that reports the centered index.',
+            ),
+            TextBlock(
+              'For dates and times use CupertinoDatePicker (or CupertinoTimerPicker) instead — those are specialized wheels built on top of this one. Give the picker a bounded height; the wheel needs a fixed extent to lay out its rotating children.',
+            ),
           ],
         ),
       ],

@@ -32,7 +32,10 @@ class _CustomScrollViewWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"CustomScrollView" widget has named parameter slivers, which takes in sliver based children like "SliverAppBar", "SliverGrid", "SliverFixedExtentList", etc.',
+              'CustomScrollView is a ScrollView whose children are slivers rather than ordinary box widgets. Because every child participates in the same scroll coordinate space, you can compose heterogeneous scrolling effects — a SliverAppBar that collapses over a SliverGrid that transitions into a SliverFixedExtentList — inside one scrollable surface.',
+            ),
+            TextBlock(
+              'The slivers list is the heart of the API: plug in SliverToBoxAdapter (to drop a normal box widget in), SliverList, SliverGrid, SliverPersistentHeader, and friends. Use controller / physics / center for advanced scroll behaviour such as bidirectional or parallax effects.',
             ),
             Container(
               color: Colors.white,

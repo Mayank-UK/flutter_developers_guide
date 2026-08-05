@@ -32,10 +32,13 @@ class _SliverChildBuilderDelegateWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"SliverChildBuilderDelegate" widget takes unnamed parameter as builder function and a named parameter childCount, which specifies the widget\'s behavior.',
+              'SliverChildBuilderDelegate is a SliverChildDelegate that lazily builds sliver children from a builder callback (BuildContext, int index) => Widget. You pair it with childCount so the sliver knows how many items exist. It is the sliver equivalent of ListView.builder\'s itemBuilder.',
             ),
             TextBlock(
-              '"SliverChildBuilderDelegate" delegates a list to the widgets like "SliverGrid", "SliverList", etc.',
+              'Use it with SliverList, SliverGrid, or SliverFixedExtentList when the dataset is large or built on demand — children beyond the visible viewport are never constructed until they scroll into view. For a small fixed set of children, SliverChildListDelegate is simpler.',
+            ),
+            TextBlock(
+              'Tip: pass findChildIndexCallback for reverse lookups (e.g. keys → indices) to make ReorderableListView-style remeasurements efficient, and consider a SemanticIndexCallback if your items need stable semantic ordering.',
             ),
             Container(
               color: Colors.white,

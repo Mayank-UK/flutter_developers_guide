@@ -49,7 +49,10 @@ class __AnimatedAlignWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-                '"AnimatedAlign" widget has named parameters like "alignment", "curve", "duration", etc which specify the animation.'),
+                'AnimatedAlign is the implicit-animation twin of Align: pass it a new alignment and it tweens the child from the old position to the new one over `duration`, using `curve` for the easing. No AnimationController required — just rebuild with a different value.'),
+            TextBlock(
+              'Like the other AnimatedX widgets, it only animates when the alignment actually changes between rebuilds. It is ideal for one-off transitions driven by state (a toggle, a selection); for continuous or choreographed motion use an explicit Align + Transition driven by an AnimationController instead.',
+            ),
             Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

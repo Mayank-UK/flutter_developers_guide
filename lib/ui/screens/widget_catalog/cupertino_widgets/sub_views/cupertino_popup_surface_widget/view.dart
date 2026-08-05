@@ -31,8 +31,12 @@ class _CupertinoPopupSurfaceWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoPopupSurface is the rounded-rectangle background that gives iOS popups (dialogs, action sheets) their signature look — a soft-cornered white card with a subtle shadow. It paints the chrome and hosts your content as its child.',
+            ),
+            TextBlock(
+              'Most apps never use it directly: CupertinoAlertDialog and CupertinoActionSheet compose it for you. Reach for CupertinoPopupSurface only when you are building a fully custom popup that should still feel native iOS.',
+            ),
           ],
         ),
       ],

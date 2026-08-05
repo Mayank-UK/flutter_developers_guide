@@ -15,22 +15,25 @@ class PaintingEffectsWidgetsView extends StatelessWidget {
     ),
     Link(
       title: 'ClipOval',
-      description: 'A widget that clips its child using an oval.',
+      description:
+          'A widget that clips its child into an oval (a circle when the child is square). Paint-time only — layout and hit-testing stay in the original rectangle.',
       route: RoutePaths.clipOval,
     ),
     Link(
       title: 'ClipPath',
-      description: 'A widget that clips its child using a path.',
+      description:
+          'A widget that clips its child to an arbitrary outline you supply via a CustomClipper<Path> — triangles, stars, waves, any silhouette beyond rectangles and ovals.',
       route: RoutePaths.clipPath,
     ),
     Link(
         title: 'ClipRRect',
-        description: 'A widget that clips its child using a rectangle.',
+        description:
+            'A widget that clips its child to a rectangle with rounded corners (BorderRadius). The standard way to round an image or widget that has no borderRadius of its own.',
         route: RoutePaths.clipRRect),
     Link(
       title: 'CustomPaint',
       description:
-          'A widget that provides a canvas on which to draw during the paint phase.',
+          'A widget that provides a Canvas during the paint phase so a CustomPainter can draw arbitrary graphics — shapes, paths, gradients, charts, sprites.',
       route: RoutePaths.customPaint,
     ),
     Link(
@@ -47,18 +50,19 @@ class PaintingEffectsWidgetsView extends StatelessWidget {
     ),
     Link(
       title: 'Opacity',
-      description: 'A widget that makes its child partially transparent.',
+      description:
+          'A widget that makes its child semi-transparent at a given 0.0–1.0 value. Relies on a save-layer, so prefer FadeTransition/AnimatedOpacity for animations.',
       route: RoutePaths.opacity,
     ),
     Link(
         title: 'RotatedBox',
         description:
-            'A widget that rotates its child by a integral number of quarter turns.',
+            'A widget that rotates its child by an integral number of quarter turns during layout, so the rotated footprint participates in sizing and hit-testing.',
         route: RoutePaths.rotatedBox),
     Link(
       title: 'Transform',
       description:
-          'A widget that applies a transformation before painting its child.',
+          'A widget that applies a matrix transformation (translate, scale, rotate, skew) before painting its child. Layout stays in the original space — use RotatedBox when layout should follow.',
       route: RoutePaths.transform,
     ),
   ];

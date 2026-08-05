@@ -33,9 +33,11 @@ class _ResponsiveLayoutImplementation extends StatelessWidget {
           title: 'Basics',
           content: [
             TextBlock(
-                "The UI should be responsive to all the screen sizes. Although in flutter responsiveness is not as simple as web, but it's doable."),
+                "Responsiveness means the layout adapts to the available screen size. Unlike CSS, Flutter has no media queries by default, so the typical pattern is to read the constraints once and pick a layout variant."),
             TextBlock(
-                "The simple idea to implement is having a responsive layout component that will take 3 parameters which includes mobileUi, tabletUi, desktopUi and render the most appropriate one based on screen.")
+                "The simplest implementation is a single \"ResponsiveLayout\" widget that takes three builders — mobileUi, tabletUi, desktopUi — and returns whichever one matches the current width. The breakpoints are decided inside the widget so call sites stay declarative."),
+            TextBlock(
+                "Tip: prefer \"LayoutBuilder\" over \"MediaQuery\" when the decision depends on the parent box rather than the whole window, so the same widget behaves correctly inside split views and large dialogs as well as full-screen."),
           ],
         ),
         SectionWrapper(

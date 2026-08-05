@@ -32,7 +32,10 @@ class _ClipOvalWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"ClipOval" widget clips the borders of it\'s child widget to an oval shape.',
+              'ClipOval crops its child into an oval — a circle when the child is square, an ellipse otherwise — hiding anything outside the shape. Use it for circular avatars, pill-shaped chips, or any "rounded all the way" silhouette the child doesn\'t already have.',
+            ),
+            TextBlock(
+              'Clipping is a paint-time effect, not layout: the child still measures and hit-tests in its original rectangle. When all you need is a circular color or gradient, a BoxDecoration with shape: BoxShape.circle achieves the same look more cheaply than clipping a rectangular child.',
             ),
             Container(
               color: Colors.amber,

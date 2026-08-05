@@ -32,10 +32,13 @@ class _DrawerWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Drawer" widget by default works inside "Scaffold" widget, "AppBar" widget automatically creates a hamburger menu when a drawer is specifies in "Scaffold" widget.',
+              'Drawer is a Material panel that slides in horizontally from the screen edge, exposing navigation links and menus. It is set on Scaffold.drawer (left edge) or Scaffold.endDrawer (right edge), and the Scaffold/AppBar pair automatically wires up the hamburger icon that opens it.',
             ),
             TextBlock(
-              '"DrawerHeader" widget is used inside "Drawer" widget to specify a drawer header.',
+              'Inside it you typically place a ListView so the contents scroll, a DrawerHeader (or UserAccountsDrawerHeader) at the top for branding/account context, and a list of ListTile destinations that navigate and then close the drawer via Navigator.pop.',
+            ),
+            TextBlock(
+              'Tip: on tablets and desktops, Material guidelines recommend a permanent navigation rail instead of a drawer — drawers hide destination options behind a tap, which hurts discoverability on larger screens.',
             ),
             Container(
               height: 500,

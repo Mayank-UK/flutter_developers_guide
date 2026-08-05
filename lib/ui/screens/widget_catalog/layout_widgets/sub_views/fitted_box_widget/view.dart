@@ -32,7 +32,10 @@ class _FittedBoxWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"FittedBox" widget has a named parameter fit, which specify how a child should fit inside the box.',
+              'FittedBox scales and positions its child to fit inside itself, using a BoxFit (contain, cover, fill, fitWidth, fitHeight, scaleDown). Unlike a raw SizedBox it does not clip the child to a fixed size — it linearly transforms it so the child fits the available box.',
+            ),
+            TextBlock(
+              'The classic use case is preventing text or an image from overflowing its parent: a long label inside a small button will shrink cleanly with BoxFit.scaleDown. Tip: combine FittedBox with a bounded parent (e.g. a SizedBox or a flex with Expanded) so the widget knows what it is fitting into.',
             ),
             Container(
               child: FittedBox(

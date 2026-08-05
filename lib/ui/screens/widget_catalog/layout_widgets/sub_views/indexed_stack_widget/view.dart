@@ -52,7 +52,10 @@ class __IndexedStackWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"IndexedStack" widget has a named parameter index, which specify the current index to display.',
+              'IndexedStack displays exactly one of its children at a time, identified by the index parameter — like a tab bar without the tab strip. Unlike Offstage or Visibility, IndexedStack keeps all non-selected children in the tree: they are sized and laid out but not painted or hit-tested.',
+            ),
+            TextBlock(
+              'This matters for state preservation: switching index keeps each child\'s state (scroll offsets, text fields, controllers) alive because the widgets are never disposed. The trade-off is that every child is built up-front, so for very large or expensive children prefer a PageView or a lazy tab solution.',
             ),
             Container(
               child: Column(

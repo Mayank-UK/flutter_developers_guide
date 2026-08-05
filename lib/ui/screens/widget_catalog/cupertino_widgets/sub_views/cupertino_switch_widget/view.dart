@@ -31,8 +31,12 @@ class _CupertinoSwitchWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoSwitch is the iOS-style toggle for a single on/off setting. Pass value (bool) and onChanged; the thumb slides along the track with the native iOS spring, and the track picks up the system tint color.',
+            ),
+            TextBlock(
+              'Use it for boolean preferences, not for choosing among several options (a segmented control is the right tool for that). When onChanged is null the switch shows disabled styling and stays read-only.',
+            ),
           ],
         ),
       ],

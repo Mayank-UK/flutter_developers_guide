@@ -32,7 +32,10 @@ class _DecoratedBoxWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"DecoratedBox" widget has named parameter decoration, which specifies the widget\'s UI.',
+              'DecoratedBox paints a BoxDecoration — color, border, borderRadius, shadow, gradient, shape — either behind or in front of its child, controlled by the `position` parameter. It is the painting engine that Container composes internally.',
+            ),
+            TextBlock(
+              'Use it directly when you want the decoration without Container\'s extra padding/alignment/margin machinery, or when you need to stack decorations via DecorationPosition.background and foreground. For the common single-decoration case, Container reads more clearly and nests less.',
             ),
             Container(
               child: DecoratedBox(

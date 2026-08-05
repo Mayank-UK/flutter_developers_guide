@@ -32,10 +32,13 @@ class _GridViewWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"GridView" widget has many methods like "GridView.count", "GridView.builder", etc',
+              'GridView is a scrollable 2D grid of widgets. It comes in several constructors: GridView.count (fixed number of columns), GridView.extent (max column width, columns auto-fit), GridView.builder (lazy building from an index), and GridView.custom (full SliverGridDelegate + SliverChildDelegate control).',
             ),
             TextBlock(
-              '"GridView" widget has named parameters like crossAxisCount, crossAxisSpacing, mainAxisSpacing, etc, which specify the grid.',
+              'The grid is described by a SliverGridDelegate — crossAxisCount (or maxCrossAxisExtent), crossAxisSpacing, mainAxisSpacing, and childAspectRatio. Together they decide how many tiles fit per row and how tall each tile is.',
+            ),
+            TextBlock(
+              'Tip: prefer GridView.builder over GridView.count when the list is large so tiles are built lazily as they scroll into view. Use shrinkWrap: true with NeverScrollableScrollPhysics when nesting a grid inside another scrollable, otherwise you will get viewport assertion errors.',
             ),
             Container(
               child: GridView.count(

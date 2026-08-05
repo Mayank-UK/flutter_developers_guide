@@ -9,12 +9,12 @@ class EffectsView extends StatelessWidget {
   final List<Link> _itemList = [
     Link(
       title: 'Shadows',
-      description: 'Shadows of widgets.',
+      description: 'Drop shadows and elevation to give widgets depth.',
       route: RoutePaths.shadows,
     ),
     Link(
         title: 'Opacity',
-        description: 'Opacity of widgets.',
+        description: 'Make widgets fully or partially transparent.',
         route: RoutePaths.opacityEffect),
   ];
 

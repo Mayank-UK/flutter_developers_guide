@@ -41,7 +41,13 @@ class __SliderWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Slider" widget has named parameters like value, min, man, division, label, etc, which specify the widget\'s behavior and it\'s content.',
+              'Slider is a Material control that lets the user pick a numeric value from a continuous (or discrete) range by dragging a thumb along a horizontal track. Set min, max, and value; receive the new value through onChanged as the user drags.',
+            ),
+            TextBlock(
+              'Add divisions to snap to discrete steps and a label to surface the current value in a tooltip bubble above the thumb. Sliders are ideal for adjustable-but-imprecise settings — volume, brightness, a percentage — where the user cares more about "more / less" than an exact number.',
+            ),
+            TextBlock(
+              'Tip: for a single on/off or two-state choice, a Switch is clearer than a Slider pinned to 0 and 1. Sliders shine when the value has a meaningful gradient between the endpoints.',
             ),
             Container(
               child: Slider(

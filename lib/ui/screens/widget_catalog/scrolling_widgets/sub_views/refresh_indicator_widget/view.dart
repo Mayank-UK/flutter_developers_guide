@@ -43,7 +43,10 @@ class _RefreshIndicatorWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"RefreshIndicator" widget has named parameter onRefresh, which specify the widget\'s behavior.',
+              'RefreshIndicator is the Material pull-to-refresh wrapper: when the user drags down at the top of a scrollable, it shows the spinning indicator and awaits the onRefresh callback. The callback returns a Future; once it completes, the indicator disappears.',
+            ),
+            TextBlock(
+              'Keep onRefresh cheap and async so the spinner stays responsive, and update your data source before resolving the Future so the list shows fresh content when the spinner retires. It works with any scrollable child — ListView, GridView, CustomScrollView — provided the child has scroll physics that allow overscroll at the top.',
             ),
             Container(
               height: 500,

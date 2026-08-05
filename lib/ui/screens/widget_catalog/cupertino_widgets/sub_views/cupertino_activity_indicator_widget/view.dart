@@ -31,8 +31,12 @@ class _CupertinoActivityIndicatorWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoActivityIndicator is the iOS-style spinner: a circle of radiating ticks that rotates continuously. It\'s the platform-idiomatic busy indicator, used wherever a Material CircularProgressIndicator would feel out of place.',
+            ),
+            TextBlock(
+              'Set animating: false to keep it on screen but frozen (a "paused" state) without removing it from the tree. For apps that adapt per platform, the Adaptive indicator helper switches between this and the Material spinner automatically.',
+            ),
           ],
         ),
       ],

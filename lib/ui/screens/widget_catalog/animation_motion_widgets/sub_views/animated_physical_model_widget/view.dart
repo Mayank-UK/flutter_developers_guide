@@ -47,7 +47,10 @@ class __AnimatedPhysicalModelImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"AnimatedOpacity" widget has named parameters like "opacity", "duration", etc to specify the animation.',
+              'AnimatedPhysicalModel tweens a PhysicalModel\'s elevation, color, shadowColor, and border-radius over `duration` whenever those values change between rebuilds. PhysicalModel renders its child with a real rounded shadow whose depth and spread follow the elevation, so animating elevation gives a convincing "lift off the page" effect.',
+            ),
+            TextBlock(
+              'Use it for cards and tiles that should visually rise when selected or hovered, without manually orchestrating a shadow animation. Keep the elevation delta modest to avoid the shadow visibly jumping in discrete steps on some platforms.',
             ),
             Container(
               child: Column(

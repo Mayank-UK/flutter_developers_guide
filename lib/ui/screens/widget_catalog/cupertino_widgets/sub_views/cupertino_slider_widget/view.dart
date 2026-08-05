@@ -31,8 +31,12 @@ class _CupertinoSliderWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoSlider is the iOS-style slider for selecting from a continuous range. Provide value (clamped between min and max), onChanged while the user drags, and onChangeEnd to commit the final value once they release.',
+            ),
+            TextBlock(
+              'The thumb animates with the signature iOS spring as the value changes. Use it for adjustable settings like volume or playback position; for snapping between a few discrete steps, a segmented control is usually a better fit.',
+            ),
           ],
         ),
       ],

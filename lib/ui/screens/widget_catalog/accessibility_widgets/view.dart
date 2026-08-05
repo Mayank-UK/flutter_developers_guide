@@ -15,7 +15,8 @@ class AccessibilityWidgetsView extends StatelessWidget {
     ),
     Link(
       title: 'MergeSemantics',
-      description: 'A widget that merges the semantics of its descendants.',
+      description:
+          'A widget that merges the semantics of its descendants into a single node. Pair a control with its label so a screen reader announces them as one tappable item instead of two separate ones.',
       route: RoutePaths.mergeSemanticsWidget,
     ),
     Link(

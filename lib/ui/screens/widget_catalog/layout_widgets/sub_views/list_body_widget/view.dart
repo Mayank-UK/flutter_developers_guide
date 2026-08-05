@@ -32,9 +32,11 @@ class _ListBodyWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              'This widget is rarely used directly, consider using  ListView.',
+              'ListBody arranges its children sequentially along the main axis (vertical by default) and forces them to fill the cross axis. It does not scroll — it just stacks children, growing as large as they need.',
             ),
-            Container(),
+            TextBlock(
+              'You usually want ListView instead: ListView is scrollable, lazy, and handles the common cases of large or dynamic lists. ListBody is mostly useful inside a CustomScrollView or when you deliberately want a non-scrolling sequential column whose cross-axis behaviour differs from Column.',
+            ),
           ],
         ),
       ],

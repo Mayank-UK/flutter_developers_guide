@@ -31,7 +31,9 @@ class _LimitedBoxWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
+            TextBlock(
+              'LimitedBox imposes a maximum width and height on its child, but only when the child receives unbounded constraints (i.e. the parent does not already cap the size). When the parent is bounded, LimitedBox is a no-op.',
+            ),
             Container(
               child: LimitedBox(
                 maxHeight: 50,

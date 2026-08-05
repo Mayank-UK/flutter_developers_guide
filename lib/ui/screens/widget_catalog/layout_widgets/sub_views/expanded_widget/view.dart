@@ -32,7 +32,10 @@ class _ExpandedWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Expanded" widget takes up all the available space for it\'s child.',
+              'Expanded can only be used as a direct child of a Flex (Row, Column, or Flex). It tells the flex layout to give this child a share of the leftover free space along the main axis, after the non-flexible children have been measured.',
+            ),
+            TextBlock(
+              'The flex factor decides how the free space is divided: an Expanded with flex: 2 next to one with flex: 1 gets twice as much of the remaining room. Expanded also takes an optional fit (FlexFit.tight by default, which forces the child to fill the allotted space; FlexFit.loose lets the child be smaller). Use Flexible when you want "grow but don\'t force" behaviour.',
             ),
             Container(
               child: Expanded(

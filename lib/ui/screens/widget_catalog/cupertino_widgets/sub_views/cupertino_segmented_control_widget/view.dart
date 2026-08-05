@@ -31,8 +31,12 @@ class _CupertinoSegmentedControlWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoSegmentedControl<T> is the classic iOS segmented control with hard-edged dividers. Pass a Map<T, Widget> of segments, groupValue for the current selection, and onValueChanged to receive the newly selected key — segments are mutually exclusive.',
+            ),
+            TextBlock(
+              'The selected segment subtly expands while the others shrink. For the smoother iOS 13 pill-slide look, reach for CupertinoSlidingSegmentedControl instead; the classic control is the right choice when you want that crisp vintage iOS feel.',
+            ),
           ],
         ),
       ],

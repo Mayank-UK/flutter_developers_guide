@@ -31,8 +31,12 @@ class _RawKeyboardListenerWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock('Very rarely used widget'),
-            Container(),
+            TextBlock(
+              'RawKeyboardListener fires a callback for every key-down and key-up event from a physical keyboard, regardless of which child currently holds focus. It hands you a RawKeyEvent carrying both the physical key (HardwareKeyboard) and the logical key, so you can implement custom shortcuts or hardware-key navigation on desktop and web.',
+            ),
+            TextBlock(
+              'This widget is now deprecated. For most shortcuts prefer the Shortcuts + Actions widgets, which are composable, respect focus, and bind to intents rather than raw scan codes — reach for raw key events only when you genuinely need low-level hardware input.',
+            ),
           ],
         ),
       ],

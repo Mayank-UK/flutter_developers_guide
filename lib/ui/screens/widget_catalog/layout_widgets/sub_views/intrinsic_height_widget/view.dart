@@ -31,8 +31,12 @@ class _IntrinsicHeightWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock('Used rarely.'),
-            Container(),
+            TextBlock(
+              'IntrinsicHeight sizes its child to the child\'s intrinsic height — the height the child would "want" to be, ignoring the parent\'s unbounded height constraint. After measuring, it forces all of its descendants to share that same height.',
+            ),
+            TextBlock(
+              'It is the answer to "make the children of a Row all the same height when they would otherwise be sized independently." The cost is real: IntrinsicHeight performs a speculative layout pass on its subtree, which can be expensive in deep trees. Use it sparingly and never inside a scrolling list at scale.',
+            ),
           ],
         ),
       ],

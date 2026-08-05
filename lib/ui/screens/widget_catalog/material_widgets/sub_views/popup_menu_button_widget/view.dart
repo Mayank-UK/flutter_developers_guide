@@ -32,10 +32,13 @@ class _PopupMenuButtonWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"PopupMenuButton" widget has named parameters onSelected and itemBuilder, which specify the button\'s behavior and content.',
+              'PopupMenuButton displays an icon (three dots by default) that opens a small overlay menu of options when tapped. It is the standard place to stash secondary, contextual, or "overflow" actions on a screen or list item — things like Sort, Filter, Share, Settings — that would clutter the UI if always visible.',
             ),
             TextBlock(
-              '"PopupMenuButton" widget uses "PopMenuItem" as it\'s child, which in turn has named parameters child and value, the value is passed to a function that will be used for "onSelected".',
+              'You supply options via itemBuilder, which returns a list of PopupMenuItem widgets; each item carries a value that is handed back to onSelected when the user picks it. The generic type of the values lets the compiler check that onSelected matches the items you build.',
+            ),
+            TextBlock(
+              'Tip: pair PopupMenuButton with the AppBar actions: list so overflow actions sit naturally at the top-right. For a single item\'s contextual menu, use the per-row IconButton variant instead of a global popup.',
             ),
             Container(
               color: Colors.blue,

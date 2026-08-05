@@ -46,7 +46,10 @@ class __AnimatedContainerImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"AnimatedContainer" widget has named parameters like "width", "height", "color", etc that will animate the container.',
+              'AnimatedContainer tweens its decoration, padding, margin, alignment, width, height — any property Container accepts — whenever those values change between rebuilds. It is the quickest way to lerp a widget\'s look: just call setState with the new values and AnimatedContainer handles the rest.',
+            ),
+            TextBlock(
+              'It is an implicit animation, so each animatable property interpolates linearly (or via `curve`) over `duration`; you never touch an AnimationController. That convenience comes at the cost of fine-grained control — for sequenced or staggered motion, compose an explicit AnimationController + AnimatedBuilder/Tween instead.',
             ),
             Container(
               child: Column(

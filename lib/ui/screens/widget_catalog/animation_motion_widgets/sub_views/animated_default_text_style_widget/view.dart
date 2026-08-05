@@ -47,7 +47,10 @@ class __AnimatedDefaultTextStyleWidgetImplementatioState
           title: 'Simple use',
           content: [
             TextBlock(
-              '',
+              'AnimatedDefaultTextStyle is the implicit-animation version of DefaultTextStyle: when you change the TextStyle it passes to descendants, it tweens fontSize, color, weight, and other interpolable properties over `duration` instead of snapping. Every descendant Text that inherits the style animates with it.',
+            ),
+            TextBlock(
+              'Use it for state-driven typography transitions — a headline that grows when selected, copy that recolors on toggle. Properties that can\'t be interpolated (like switching fontFamily) will cross-fade as best they can; for fully custom text transitions drive a Text widget with an explicit AnimationController instead.',
             ),
             Container(
               child: Column(

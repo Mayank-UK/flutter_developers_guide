@@ -3,6 +3,7 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../../../../components/code_preview_tabs.dart';
 import '../../../../../../../components/section_wrapper.dart';
+import '../../../../../../../components/text_block.dart';
 
 class BackgroundsView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -30,9 +31,11 @@ class _BackgroundImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Particular element\'s background using "Container" widget',
           content: [
-            Container(
-              child: Text(
-                  '"Container" widget has a named parameter "color", which takes a value for color.\nUse the "Color" enum for using pre specified material theme colors.'),
+            TextBlock(
+              'The most local way to paint a background behind a single widget is "Container.color", which fills the container\'s box with a solid "Color". For gradients, images, or rounded backgrounds, switch to "Container.decoration" with a "BoxDecoration" instead.',
+            ),
+            TextBlock(
+              'Tip: you may set either "color" or "decoration" on a "Container", never both — the framework asserts. Prefer "Theme.of(context).colorScheme" tokens over raw "Colors" so the look tracks light/dark mode.',
             ),
             Container(
               alignment: Alignment.center,
@@ -46,13 +49,11 @@ class _BackgroundImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Whole page background using  "Scaffold" widget',
           content: [
-            Container(
-              child: Text(
-                  '"Scaffold" widget has a named parameter "backgroundColor", which takes a value for color\nUse the "Color" enum for using pre specified material theme colors.'),
+            TextBlock(
+              'The "Scaffold.backgroundColor" parameter paints the background of one entire page. It overrides the app-wide setting for just this route, so individual screens can carry their own canvas color.',
             ),
-            Container(
-              child: Text(
-                  'Example implementation can not be shown here as there can be only one "Scaffold" widget on a page.'),
+            TextBlock(
+              'A live demo cannot be embedded here because only one "Scaffold" is rendered per page; in practice you would set it on the screen\'s own "Scaffold" rather than nesting one inside the demo.',
             ),
           ],
         ),
@@ -60,13 +61,11 @@ class _BackgroundImplementation extends StatelessWidget {
           title:
               'Whole application background using using "MaterialApp" widget',
           content: [
-            Container(
-              child: Text(
-                  '"MaterialApp" widget has a named parameter "theme", which takes an object of "ThemeData" class, which in turn has a named parameter "scaffoldBackgroundColor" that takes a value for color. \nUse the "Color" enum for using pre specified material theme colors.'),
+            TextBlock(
+              'For a default background across the app, set "ThemeData.scaffoldBackgroundColor" on the "MaterialApp.theme". Every "Scaffold" without an explicit background then resolves to this color.',
             ),
-            Container(
-              child: Text(
-                  'Example implementation can not be shown here as there can be only one "MaterialApp" widget in an application.'),
+            TextBlock(
+              'Tip: provide a matching "darkTheme" so the canvas swaps with the OS theme. A live demo is not possible here since there is only one "MaterialApp" in an application.',
             ),
           ],
         ),

@@ -32,10 +32,10 @@ class _RichTextWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"RichText" has named parameters like text, textAlign, etc, which specify it\'s children behavior.',
+              'RichText renders a tree of TextSpans, letting different fragments of a single block of text carry different styles — bold keywords, colored links, or differently sized runs on the same line. Each TextSpan can hold its own TextStyle and nest further spans as children.',
             ),
             TextBlock(
-              '"TextSpan" is used mostly as the child of "RichText" widget, using it we can have different text style in a same line or paragraph.',
+              'For most cases prefer Text.rich, which also picks up the surrounding DefaultTextStyle; reach for RichText directly when you need fine control over the text tree and the inherited default style. Note that properties like textAlign and maxLines live on the RichText itself, not on individual spans.',
             ),
             Container(
               child: RichText(

@@ -3,6 +3,7 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../../components/code_preview_tabs.dart';
 import '../../../../../components/section_wrapper.dart';
+import '../../../../../components/text_block.dart';
 
 class IconsImagesView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -30,10 +31,11 @@ class _IconsImagesImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "Icon" widget',
           content: [
-            Container(
-              width: double.infinity,
-              child: Text(
-                  '"Icon" widget takes first positional parameter as a value for icon. Use "Icons" enum using some predefined icons.'),
+            TextBlock(
+              'The "Icon" widget renders a vector glyph from a font such as Material or Cupertino. Its first positional parameter selects the glyph (e.g. "Icons.favorite"), and "size", "color", and "semanticLabel" style it.',
+            ),
+            TextBlock(
+              'Icon color follows "IconTheme", which in turn resolves from the ambient "ThemeData.iconTheme", so a single theme tweak restyles every icon. For custom fonts, ship the .ttf and reference it via "FontLoader" or pubspec "fonts:".',
             ),
             Icon(
               Icons.favorite,
@@ -44,10 +46,11 @@ class _IconsImagesImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "Image" widget',
           content: [
-            Container(
-              width: double.infinity,
-              child: Text(
-                  '"Image" widget has a named parameter "image", which takes value either using an object of "NetworkImage" class or "AssetImage" class.'),
+            TextBlock(
+              'The "Image" widget renders a raster picture. Its "image" parameter accepts an "ImageProvider"; the two most common are "NetworkImage" (a remote URL) and "AssetImage" (a file bundled through pubspec.yaml).',
+            ),
+            TextBlock(
+              'Use the named constructors "Image.network" and "Image.asset" for the same result with less boilerplate. Add a "loadingBuilder" for spinners and an "errorBuilder" for broken sources so the UI never shows a blank box.',
             ),
             Container(
               width: double.infinity,

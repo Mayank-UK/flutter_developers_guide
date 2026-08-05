@@ -3,6 +3,7 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../../components/code_preview_tabs.dart';
 import '../../../../../components/section_wrapper.dart';
+import '../../../../../components/text_block.dart';
 
 class BordersView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -30,9 +31,11 @@ class _BordersImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using \'Container\' widget (preferred way)',
           content: [
-            Container(
-              child: Text(
-                  '"Container" widget has a named parameter "decoration", which takes an object of "BoxDecoration" class with specified values.'),
+            TextBlock(
+              'Borders are drawn by the "BoxDecoration" passed to "Container.decoration". Use "Border.all" for a uniform outline, "Border()" to specify each edge individually, and "borderRadius" for rounded corners.',
+            ),
+            TextBlock(
+              'Tip: "Container.color" and "Container.decoration" are mutually exclusive — when you need a border, move any fill color into the "BoxDecoration.color".',
             ),
             Wrap(
               spacing: 8,
@@ -83,9 +86,11 @@ class _BordersImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using \'DecoratedBox\' widget',
           content: [
-            Container(
-              child: Text(
-                  '"DecoratedBox" widget has a named parameter "decoration", which takes an object of "BoxDecoration" class.'),
+            TextBlock(
+              '"DecoratedBox" is the lower-level widget that "Container.decoration" uses internally: it takes a "BoxDecoration" (or any "Decoration") and paints it around a child, with no other container features.',
+            ),
+            TextBlock(
+              'Prefer it over "Container" when you only need a decoration and want to keep the tree lean; reach for "Container" when you also need padding, margin, or alignment on the same node.',
             ),
             DecoratedBox(
               decoration: BoxDecoration(

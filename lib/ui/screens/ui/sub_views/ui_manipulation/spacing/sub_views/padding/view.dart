@@ -3,6 +3,7 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../../../../components/code_preview_tabs.dart';
 import '../../../../../../../components/section_wrapper.dart';
+import '../../../../../../../components/text_block.dart';
 
 class PaddingSpacingView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -30,9 +31,11 @@ class _PaddingSpacingImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "Container" widget (preferred way)',
           content: [
-            Container(
-              child: Text(
-                  '"Container" widget has a named parameter "padding", which takes an object of "EdgeInsets" class.'),
+            TextBlock(
+              'Padding is empty space inserted between a parent and its child. The "Container" widget exposes a "padding" parameter that accepts an "EdgeInsets" value, inflating the child inward from each edge.',
+            ),
+            TextBlock(
+              'Use "EdgeInsets.all" for uniform insets, ".symmetric" for horizontal/vertical pairs, or ".only" / ".fromLTRB" when individual edges need different values. Padding always shrinks the child, never expands the parent.',
             ),
             Container(
               color: Colors.amber,
@@ -44,9 +47,11 @@ class _PaddingSpacingImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Using "Padding" widget',
           content: [
-            Container(
-              child: Text(
-                  '"Padding" widget has a named parameter "padding", which takes an object of "EdgeInsets" class.'),
+            TextBlock(
+              'When you only need padding and have no other decoration to apply, the dedicated "Padding" widget is lighter and more explicit than "Container". It takes the same "EdgeInsets" through its "padding" parameter.',
+            ),
+            TextBlock(
+              'Prefer "Padding" inside a "Row"/"Column" where you are not setting color or borders, since the widget tree stays smaller and the intent is clearer to readers.',
             ),
             Container(
               color: Colors.amber,

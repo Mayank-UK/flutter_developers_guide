@@ -32,7 +32,10 @@ class _OpacityWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Opacity" widget has named parameter opacity, which specifies the opacity of the widget.',
+              'Opacity makes its child semi-transparent, blending it with whatever sits behind at the given 0.0–1.0 value. Use it to fade content in and out, or to layer translucent overlays on top of background content.',
+            ),
+            TextBlock(
+              'Opacity relies on a save-layer, which is relatively costly, so prefer FadeTransition or AnimatedOpacity for fade animations. For the special case of hiding fully (opacity 0.0), Visibility or conditionally omitting the widget is cheaper — plain Opacity still builds and lays out an invisible child.',
             ),
             Container(
               color: Colors.amber,

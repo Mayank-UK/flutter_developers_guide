@@ -32,9 +32,11 @@ class _AnimatedWidgetWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              'Content will be updated soon.',
+              'AnimatedWidget is the base class for widgets that rebuild automatically when a Listenable (an Animation, ChangeNotifier, or ValueNotifier) ticks. Subclass it, store the listenable in a field, and override build to read the current value — Flutter handles the addListener/removeListener plumbing for you.',
             ),
-            Container(),
+            TextBlock(
+              'The framework\'s own Transition widgets (FadeTransition, RotationTransition, etc.) are built on AnimatedWidget, and so is AnimatedBuilder. Reach for it directly when you want a small, reusable widget that turns an animation into UI without the boilerplate of a StatefulWidget + controller wiring.',
+            ),
           ],
         ),
       ],

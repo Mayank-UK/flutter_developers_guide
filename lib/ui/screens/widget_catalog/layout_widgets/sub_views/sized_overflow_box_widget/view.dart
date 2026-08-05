@@ -31,7 +31,12 @@ class _SizedOverflowBoxWidgetImplementation extends StatelessWidget {
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
+            TextBlock(
+              'SizedOverflowBox is a hybrid: it reports a fixed size (the size parameter) to its parent, but passes the parent\'s original constraints through to its child — so the child is laid out as if SizedOverflowBox did not exist and can overflow the reported box.',
+            ),
+            TextBlock(
+              'Use it when a child needs to keep its natural size for hit-testing and painting while the surrounding layout treats the slot as a specific dimension. Unlike OverflowBox (which overrides the child\'s constraints), SizedOverflowBox keeps the child\'s layout intact and only changes what the parent sees.',
+            ),
             Container(
               child: Container(
                 color: Colors.amber,

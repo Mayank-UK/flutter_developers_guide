@@ -32,7 +32,10 @@ class _SizedBoxWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"SizedBox" widget has named parameters like height, width, etc, which specify the dimensions of it\'s child.',
+              'SizedBox forces its child (or itself, when no child is given) to a specific width and/or height. It is the simplest, cheapest sizing widget and the standard way to introduce fixed spacing or a fixed dimension into a layout.',
+            ),
+            TextBlock(
+              'Pass a child to make SizedBox constrain that child; omit the child to use it as a transparent gap (the same role Spacer or an empty Container plays, but with a single fixed dimension). SizedBox is also commonly used to give an unbounded child a bounded dimension before placing it in a flex.',
             ),
             Container(
               child: SizedBox(

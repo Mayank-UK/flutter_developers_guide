@@ -32,10 +32,13 @@ class _TextFieldWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"TextField" widget has named parameters like style, decoration, etc, which specify the widget\'s behavior and content.',
+              'TextField is the Material input for free-form text. It surfaces a cursor and the on-screen keyboard when tapped, and exposes the typed value through onChanged (or a controller for finer control: programmatic edits, selection, cursor position).',
             ),
             TextBlock(
-              'One major difference b/w "TextField" and "TextFormField" is validation, "TextFormField" has a named parameter to specify the validation logic.',
+              'Appearance is driven by decoration (an InputDecoration that controls the label, hint, icon, error text, and border shape). The keyboard type, autocorrect, obscureText, maxLength, and input formatters all live on TextField itself, so most input rules are a constructor argument away.',
+            ),
+            TextBlock(
+              'Tip: prefer TextFormField over TextField inside a Form. TextFormField accepts a validator and integrates with Form.of(context) for submit-time validation, while a raw TextField leaves you wiring validation by hand.',
             ),
             Container(
               child: TextField(

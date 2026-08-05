@@ -32,7 +32,13 @@ class _CardWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Card" widget has named parameters like elevation, shape, etc, which specify the widget\'s behavior and layout.',
+              'Card is a Material container with rounded corners, a subtle elevation shadow, and a default surface color. It groups related content — such as a list item with leading art, a title, a subtitle, and trailing action buttons — into one visually distinct block.',
+            ),
+            TextBlock(
+              'Its shape, margin, and elevation are themable, so a Card inherits the app\'s look automatically. It is a thin wrapper: it does not impose any internal padding or layout, so you compose the contents (usually a Column or a ListTile) yourself.',
+            ),
+            TextBlock(
+              'Gotcha: Card clips its content to its rounded shape only when you set clipBehavior; otherwise an elevated child (like an ink splash) can paint past the corners.',
             ),
             Container(
               child: Card(

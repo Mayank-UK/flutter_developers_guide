@@ -54,7 +54,13 @@ class __ShowDatePickerWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              'Date picker is shown using a function/method which returns a Future that will be successful after a user close the date picker dialog.',
+              'showDatePicker is an imperative function (not a widget) that opens a modal calendar dialog and returns a Future<DateTime?>. The user picks a single date within a constrained range; the Future resolves with that date or null if the user cancels.',
+            ),
+            TextBlock(
+              'firstDate and lastDate define the legal range — useful for blocking past dates (a booking after today) or future ones (a date of birth). The initialDate should sit inside that range, otherwise the picker clamps it on open.',
+            ),
+            TextBlock(
+              'Tip: showTimePicker is the sibling function for time selection, and locale-aware localization is built in if you supply a locales-supported MaterialApp. Both return null on dismissal, so always null-check the result before using it.',
             ),
             Container(
               child: Column(

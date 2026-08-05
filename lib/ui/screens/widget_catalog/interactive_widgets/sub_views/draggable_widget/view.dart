@@ -41,7 +41,10 @@ class __DraggableWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Draggable" widget has named parameter data, which specify the data value for it.',
+              'Draggable<T> makes its child dragable, carrying a typed payload T (an int, a custom model) that a DragTarget<T> can accept. While the user drags, the `feedback` widget follows the finger and `childWhenDragging` replaces the original in place — useful for showing a "ghost" of the dragged item.',
+            ),
+            TextBlock(
+              'The drag begins immediately by default; for a long-press trigger use LongPressDraggable instead. Keep feedback lightweight (it rebuilds as it moves) and remember the payload type must line up end-to-end — Draggable<int> only drops onto a DragTarget<int>.',
             ),
             Container(
               child: Row(

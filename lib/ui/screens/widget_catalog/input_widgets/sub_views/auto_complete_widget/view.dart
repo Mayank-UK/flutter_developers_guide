@@ -38,7 +38,10 @@ class _AutoCompleteWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"AutoComplete" widget has named parameters optionBuilder and onSelected, which specify the widget\'s behavior and layout.',
+              'Autocomplete shows a filtered list of suggestions as the user types and reports the chosen option through onSelected. Use it for searchable inputs backed by a known option set — country pickers, tag entry, command palettes — supplying optionsBuilder to filter the list from the current text.',
+            ),
+            TextBlock(
+              'It manages its own TextEditingController and floating overlay, so it works out of the box with no wiring. To seed an initial value or read the typed text, supply your own controller via the fieldViewBuilder/controller APIs rather than reaching into its internals.',
             ),
             Container(
               child: Autocomplete<String>(

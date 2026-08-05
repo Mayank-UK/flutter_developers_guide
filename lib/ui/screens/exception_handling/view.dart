@@ -121,26 +121,6 @@ class _ExceptionHandlingImplementation extends StatelessWidget {
                 ),
               ],
             ),
-            TextBlock(
-              '',
-            ),
-            TextBlock(
-              '_',
-            ),
-            TextBlock(
-              '_',
-            ),
-            TextBlock(
-              '_',
-            ),
-          ],
-        ),
-        SectionWrapper(
-          title: '_',
-          content: [
-            TextBlock(
-              '_',
-            ),
           ],
         ),
       ],

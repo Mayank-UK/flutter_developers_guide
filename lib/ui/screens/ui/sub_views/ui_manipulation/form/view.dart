@@ -3,6 +3,7 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../../components/code_preview_tabs.dart';
 import '../../../../../components/section_wrapper.dart';
+import '../../../../../components/text_block.dart';
 
 class FormView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -70,26 +71,22 @@ class __FormImplementationState extends State<_FormImplementation> {
         SectionWrapper(
           title: '"Form" widget',
           content: [
-            Container(
-              child: Text(
-                  '"Form" widget serves as a container for all the inputs and other form related elements.'),
+            TextBlock(
+              '"Form" aggregates multiple inputs into a single group so you can validate and save them together. Each input must be a "FormField" (typically "TextFormField"), and the form tracks their combined state.',
             ),
-            Container(
-              child: Text(
-                  'It is recommended to create a global key for form widget to access it easily using this global key.'),
+            TextBlock(
+              'Pass a "GlobalKey<FormState>" to the form; "formKey.currentState.validate()" then runs every child validator and "formKey.currentState.save()" pushes values into your model. Without the key you cannot trigger validation programmatically.',
             ),
           ],
         ),
         SectionWrapper(
           title: '"TextFormField" widget for input and validation',
           content: [
-            Container(
-              child: Text(
-                  '"TextFoldField" widget is used for taking input from the user.'),
+            TextBlock(
+              '"TextFormField" is the form-aware version of "TextField": it owns a controller and exposes a "validator" callback that returns an error string (or null when the value is acceptable). The returned string is rendered beneath the field automatically.',
             ),
-            Container(
-              child: Text(
-                  '"TextFoldField" widget has a named parameter "validator", which takes a function as a value and return true for success and false for failure.'),
+            TextBlock(
+              'Tip: validators run on submit and on every change once the field has been touched. Keep them pure and synchronous; for async checks (e.g. username availability) debounce in the controller and surface the result through a separate banner.',
             ),
             Form(
               key: _formKey,

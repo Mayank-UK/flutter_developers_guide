@@ -32,7 +32,10 @@ class _SliverGridWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"SliverGid" widget has named parameters like gridDelegate, delegate, etc, which specify the widget\'s behavior and layout.',
+              'SliverGrid is a sliver that arranges its children in a two-dimensional grid. It takes a SliverGridDelegate (which describes the columns and tile aspect ratio) and a SliverChildDelegate (which supplies the children). It is the sliver equivalent of GridView and is meant to live inside a CustomScrollView alongside other slivers.',
+            ),
+            TextBlock(
+              'Two ready-made delegates cover most cases: SliverGridDelegateWithFixedCrossAxisCount (a fixed number of columns) and SliverGridDelegateWithMaxCrossAxisExtent (columns auto-fit to a maximum tile width). Pair with SliverChildBuilderDelegate for large, lazy datasets.',
             ),
             Container(
               color: Colors.white,

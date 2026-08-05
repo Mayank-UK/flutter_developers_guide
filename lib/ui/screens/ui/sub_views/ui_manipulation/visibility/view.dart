@@ -3,6 +3,7 @@ import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
 
 import '../../../../../components/code_preview_tabs.dart';
 import '../../../../../components/section_wrapper.dart';
+import '../../../../../components/text_block.dart';
 
 class VisibilityView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -70,13 +71,11 @@ class _VisibilityImplementationState extends State<_VisibilityImplementation> {
         SectionWrapper(
           title: 'Using "Visibility" widget for not occupy space',
           content: [
-            Container(
-              child: Text(
-                  '"Visibility" widget has a named parameter "visible", which takes a boolean as a value.'),
+            TextBlock(
+              'The "Visibility" widget fully removes its child from the layout when "visible" is false. The surrounding siblings reflow as if it were never there, which is what you want for "show more" toggles and conditional sections.',
             ),
-            Container(
-              child: Text(
-                  'Below are two boxes, right one is visible, while left one is not visible and is not taking any space.'),
+            TextBlock(
+              'The widget also accepts "replacement" (a placeholder, defaulting to an empty "SizedBox"), "maintainState", and "maintainAnimation" if you need to keep controllers and animations alive while hidden.',
             ),
             Wrap(
               spacing: 8,
@@ -113,9 +112,11 @@ class _VisibilityImplementationState extends State<_VisibilityImplementation> {
         SectionWrapper(
           title: 'Using "Opacity" widget for occupying space',
           content: [
-            Container(
-              child: Text(
-                  '"Opacity" widget has a named parameter "opacity", which takes in a floating point value.'),
+            TextBlock(
+              'When a hidden widget must still take up space (so neighbors don\'t shift), keep it in the tree and fade it with "Opacity" or "Visibility" with "maintainSize: true". The slot stays reserved and only the paint is suppressed.',
+            ),
+            TextBlock(
+              'For animated fade-ins and fade-outs use "AnimatedOpacity" or "FadeTransition"; both avoid the save layer cost of a static "Opacity" and animate smoothly across frames.',
             ),
             Wrap(
               spacing: 8,

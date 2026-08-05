@@ -32,7 +32,10 @@ class _SliverChildListDelegateWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"SliverChildListDelegate" delegates a list to the "SliverList" widget.',
+              'SliverChildListDelegate is a SliverChildDelegate backed by an explicit List<Widget>. You hand it a pre-built list of children and pass it to a SliverList / SliverGrid. It is the sliver counterpart of ListView(children:...) — every child is built up-front regardless of which are visible.',
+            ),
+            TextBlock(
+              'Prefer it when the dataset is small and known at build time, since it is simpler than a builder and avoids index arithmetic. For long or dynamic lists switch to SliverChildBuilderDelegate so that off-screen items are not constructed.',
             ),
             Container(
               color: Colors.white,

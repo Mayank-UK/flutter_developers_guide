@@ -32,7 +32,10 @@ class _DefaultTextStyleWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"DefaultTextStyle" widget has named parameters like style, textAlign, etc, which specify the default text style of it\'s children.',
+              'DefaultTextStyle establishes an implicit TextStyle that every descendant Text widget inherits unless it sets its own. Wrap a subtree once and every child Text picks up that look without repeating `style` on each one.',
+            ),
+            TextBlock(
+              'Child styles merge rather than replace: a Text that supplies only fontSize keeps the inherited color and weight, and only overrides size. This is the same mechanism Text uses to inherit from MaterialApp\'s theme — reach for it when you want a localized style region, such as a card where all text should be small and muted.',
             ),
             Container(
               child: DefaultTextStyle(

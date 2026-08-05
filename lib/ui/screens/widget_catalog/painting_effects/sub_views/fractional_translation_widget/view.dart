@@ -32,7 +32,10 @@ class _FractionalTranslationWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"FractionalTranslation" widget has named parameter translation, which specifies the translation of it\'s child widget.',
+              'FractionalTranslation offsets its child by a fraction of the child\'s own box size — Offset(0.5, 0) slides it half its width to the right. Use it when an offset should scale with the child\'s dimensions, like sliding a widget by "one full width" without first measuring it.',
+            ),
+            TextBlock(
+              'It affects painting only, not layout, so siblings still see the original box. For a fixed-pixel offset prefer Transform.translate or Padding; reach for FractionalTranslation specifically when the ratio of the child\'s size is what you want to express.',
             ),
             Container(
               color: Colors.amber,

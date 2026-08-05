@@ -57,7 +57,10 @@ class __ScaleTransitionImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"ScaleTransition" widget has named parameters like scale, etc, which specify the animation.',
+              'ScaleTransition scales its child by the factor given by an Animation<double> — 1.0 is the natural size, 0.0 shrinks it to nothing. Drive it from a controller (often wrapped in a CurvedAnimation) and the child grows or shrinks along that timeline.',
+            ),
+            TextBlock(
+              'Set alignment to control the scale\'s origin (center by default). It is the explicit-animation way to do a pop-in / press feedback; for a one-off implicit scale on a state change, reach for an AnimatedScale instead.',
             ),
             Container(
               child: ScaleTransition(

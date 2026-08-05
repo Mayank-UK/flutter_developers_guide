@@ -32,7 +32,10 @@ class _WrapWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Wrap" widget has named parameters like direction, spacing, etc, which specify the layout of it\'s children',
+              'Wrap lays its children out sequentially and, when it runs out of room on the current line, flows them onto the next line. Think of it as a Row/Column that knows how to break across lines — the standard choice for tag clouds, chip lists, and any "fit as many as possible, wrap the rest" layout.',
+            ),
+            TextBlock(
+              'direction chooses horizontal vs vertical runs; spacing is the gap between children on the same run; runSpacing is the gap between the runs themselves; alignment positions children within a run; runAlignment positions the runs inside the Wrap. There is no mainAxisSize — Wrap always takes only the room its runs need.',
             ),
             Container(
               color: Colors.amber,

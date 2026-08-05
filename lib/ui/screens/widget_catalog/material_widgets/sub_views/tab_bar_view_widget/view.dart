@@ -32,7 +32,13 @@ class _TabBarViewWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"TabBarView" widget takes children and displays them in sequence with "TabBar" widget children.',
+              'TabBarView is the swipeable page container that pairs with TabBar: it shows the children in the same order as the tabs, and the user can either tap a tab or swipe horizontally to move between them. The selected tab and the current page stay in lockstep automatically.',
+            ),
+            TextBlock(
+              'For the two widgets to stay coordinated they must share a TabController. The simplest path is to wrap both in a DefaultTabController with a length — it builds an internal controller and provides it to descendants, so you avoid managing animation state yourself.',
+            ),
+            TextBlock(
+              'Gotcha: TabBarView uses a PageView under the hood and lazily builds children as they scroll into view. Each tab page keeps its own scroll state, so deep, stateful content per tab works without losing position on swipe.',
             ),
             Container(
               child: DefaultTabController(

@@ -48,7 +48,10 @@ class __AnimatedSizeImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"AnimatedSize" widget has named parameters like vsync, curve, duration, etc, which define the animation.',
+              'AnimatedSize watches its child\'s intrinsic size and smoothly grows or shrinks to fit whenever that size changes between rebuilds, over `duration` and `curve`. It\'s the implicit way to animate layout changes — a child swaps from small to large and the parent eases to the new footprint instead of snapping.',
+            ),
+            TextBlock(
+              'It needs a vsync (typically the surrounding State via SingleTickerProviderStateMixin) since it manages an internal controller. Wrap a single child; if you have multiple widgets whose sizes should animate together, give each its own AnimatedSize or reach for an explicit SizeTransition.',
             ),
             Container(
               child: Column(

@@ -40,7 +40,10 @@ class __AnimatedListStateImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              'Will be updated soon',
+              'AnimatedList is a ListView whose individual items animate in and out when you insert or remove them, rather than popping abruptly. You drive it through its AnimatedListState (obtained via a GlobalKey), calling insertItem and removeItem with the index and a builder that constructs the item for each animation phase.',
+            ),
+            TextBlock(
+              'The remove flow needs a builder that can render the departing item even after it is gone from your model, so the exit animation can run. It is the right choice when list mutations are user-visible events (chat messages arriving, tasks being completed); for lists that change silently, a plain ListView is simpler.',
             ),
           ],
         ),

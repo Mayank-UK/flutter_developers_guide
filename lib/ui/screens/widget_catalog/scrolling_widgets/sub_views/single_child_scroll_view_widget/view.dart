@@ -32,10 +32,10 @@ class _SingleChildScrollViewWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"SingleChildScrollable" widget makes it\'s child scrollable. Child can be any non-scrollable widget like "Column", "Row", "Wrap", etc.',
+              'SingleChildScrollView makes a single child scrollable when it overflows the available space. Wrap any non-scrollable box — a Column, Row, Wrap, or just a tall Container — and the user can pan it when content doesn\'t fit.',
             ),
             TextBlock(
-              '"SingleChildScrollable" widget is mostly used as the base widget for a page to make it scrollable.',
+              'It\'s the simplest way to make a form or settings page scrollable, but because it builds the whole child up front it doesn\'t lazy-build. For long lists use ListView/GridView instead, which only materialize the visible items; reach for SingleChildScrollView when you have one bounded subtree that just needs to scroll on small screens.',
             ),
             Container(
               color: Colors.white,

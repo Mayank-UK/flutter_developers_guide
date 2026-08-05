@@ -32,7 +32,10 @@ class _SliverPersistentHeaderWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"SliverPersistentHeader" widget has named parameters pinned and floating, which specifies the widget\'s behavior and layout. ',
+              'SliverPersistentHeader renders an arbitrary header widget as a sliver that reacts to scrolling. Unlike SliverAppBar you supply your own SliverPersistentHeaderDelegate — a small class that returns minExtent, maxExtent, and a build method — so the header content is fully custom.',
+            ),
+            TextBlock(
+              'pinned keeps the header visible (clamped to its min extent) once it would otherwise scroll away; floating makes it pop back in on a reverse scroll without scrolling to the top. The delegate\'s build receives shrinkOffset so you can fade or morph the content between minExtent and maxExtent.',
             ),
             Container(
               color: Colors.white,

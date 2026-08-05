@@ -43,7 +43,13 @@ class __RadioWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Radio" widget has named parameters onChanged, groupValue, and value which specify the widget\'s behavior.',
+              'Radio is a Material toggle that lets the user choose exactly one option from a mutually exclusive set. Every Radio in the group shares the same groupValue, and tapping one updates that shared value — the others automatically deselect.',
+            ),
+            TextBlock(
+              'Use Radio (or RadioListTile) when the user must see all the options at once and pick exactly one. If the options are many or rarely changed, a dropdown is more compact; if there are only two or three, a segmented control or switch can read more cleanly.',
+            ),
+            TextBlock(
+              'Tip: like Checkbox, the raw Radio renders only the circle. Wrap it in a RadioListTile to get the title, tap target, and accessibility wiring for free; in newer code prefer the Material 3 RadioListTile with adaptive styling.',
             ),
             Container(
               child: Column(

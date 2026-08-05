@@ -47,7 +47,10 @@ class __OffStageWidgetImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Offstage" widget has a named parameter offstage, which specify the visibility of it\'s child.',
+              'Offstage hides a child from view while keeping it in the tree. When offstage is true the child is still measured and laid out (so its state is preserved and animations continue) but it is neither painted nor hit-testable and takes no room in the parent.',
+            ),
+            TextBlock(
+              'Use it to keep a child\'s state alive while temporarily hiding it (for example, a video player you pause-but-keep, or a form being stepped through). If you also want to skip laying the child out entirely, Visibility(with maintainState: true) or conditional inclusion in the build is usually clearer.',
             ),
             Container(
               child: Column(

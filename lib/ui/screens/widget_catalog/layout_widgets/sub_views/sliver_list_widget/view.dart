@@ -32,7 +32,10 @@ class _SliverListWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              'SliverList" widget has named parameters delegate and childCount, which specify the widget\'s behavior and layout.',
+              'SliverList is a sliver that lays its children out in a linear array along the main axis. It is the sliver counterpart of ListView and is composed inside a CustomScrollView to build mixed scrolling surfaces (lists next to grids, app bars, pinned headers, etc.).',
+            ),
+            TextBlock(
+              'You supply a SliverChildDelegate — SliverChildBuilderDelegate for lazy, index-driven children, or SliverChildListDelegate for an explicit list. SliverList supports variable item heights, so for lists where every item has the same extent SliverFixedExtentList scrolls more efficiently.',
             ),
             Container(
               color: Colors.white,

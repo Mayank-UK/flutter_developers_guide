@@ -32,7 +32,13 @@ class _DividerWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Divider" widget has named parameters like height, thickness, indent, etc, which specify the widget\'s behavior and UI.',
+              'Divider is a thin horizontal line (one logical pixel by default) used to separate groups of content within a Column or a ListView. height controls the total vertical gap the widget occupies, while thickness controls the line itself.',
+            ),
+            TextBlock(
+              'Use indent and endIndent to inset the line from the leading and trailing edges — handy when items above and below the divider have leading icons and you want the rule to start where the text starts rather than at the screen edge.',
+            ),
+            TextBlock(
+              'Tip: for a divider between ListView items that handles the awkward "no divider before the first or after the last item" rule for you, use ListView.separated instead of decorating each child manually.',
             ),
             Container(
               child: Divider(

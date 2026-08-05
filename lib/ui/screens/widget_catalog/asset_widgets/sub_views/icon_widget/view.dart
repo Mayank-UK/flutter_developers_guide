@@ -32,7 +32,11 @@ class _IconWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-                '"Icon" widget has named parameters like size, color, etc, which specify the icon.'),
+              'Icon displays a single glyph from an icon font (such as the bundled Material Icons) at a given size and color. Use it for compact, scalable vector imagery — toolbar actions, list leading icons, status indicators — that should tint with your theme.',
+            ),
+            TextBlock(
+              'When you omit color, the icon inherits from IconTheme, which ultimately follows ThemeData.iconTheme, so it adapts to light/dark automatically. Because glyphs come from a font, they stay crisp at any size and recolor freely, but they cannot represent multi-color artwork — for photographs or detailed images use Image instead.',
+            ),
             Container(
               child: Icon(
                 Icons.person,

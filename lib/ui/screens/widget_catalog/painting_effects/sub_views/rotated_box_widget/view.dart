@@ -32,7 +32,10 @@ class _RotatedBoxWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"RotatedBox" widget has named parameter quarterTurns, which rotate it\'s child.',
+              'RotatedBox rotates its child by an integral number of quarter turns — 1 means 90°, 2 means 180°, and so on. Unlike Transform.rotate, the rotation is applied during layout, so the child\'s hit-testing, text direction, and the footprint it leaves for siblings all reflect the rotated dimensions.',
+            ),
+            TextBlock(
+              'Use it for permanent quarter-turn orientations such as a vertical label or a portrait control turned sideways. For arbitrary angles or animated rotations reach for Transform.rotate instead; RotatedBox only accepts whole quarter turns but is cheaper and layout-correct for those.',
             ),
             Container(
               child: Column(

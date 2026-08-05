@@ -32,7 +32,10 @@ class _BaselineWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"Baseline" widget has named parameters like "baseline", "baselineType", etc, which specify the widget behavior.',
+              'Baseline positions its child so that the child\'s baseline aligns with a given distance from the top of the Baseline widget. You supply a numeric baseline offset and a TextBaseline (alphabetic or ideographic); the widget then shifts the child vertically to line the baselines up.',
+            ),
+            TextBlock(
+              'It is mostly used when mixing text with non-text widgets (icons, images, custom shapes) on a single line so the visual rhythm follows the text baseline rather than the bounding boxes. For ordinary layouts prefer CrossAxisAlignment.baseline on Row/Column — reach for Baseline directly only when you need to align outside a Flex.',
             ),
             Container(
               child: Container(

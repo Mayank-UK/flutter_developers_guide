@@ -28,10 +28,16 @@ class _AlignmentImplementation extends StatelessWidget {
     return Wrap(
       children: <Widget>[
         SectionWrapper(
-          title: 'Basics',
+          title: 'What a design system is for',
           content: [
             TextBlock(
-              'Design system is implemented using Theme object of material widget. The colors will update automatically based on light/dark mode selected by the user.',
+              'A design system captures colors, typography, spacing, shape, and motion in named tokens so every screen resolves to the same look. In this app the tokens live in "lib/ui/design_system/" (e.g. "DSSizes") and resolve through "Theme.of(context)", which itself is driven by "MaterialApp.theme".',
+            ),
+            TextBlock(
+              'Because the source of truth is the "ThemeData", flipping between light and dark mode — or re-skinning the whole app — is a one-line change. Widgets never hard-code colors or sizes; they read from "colorScheme", "textTheme", and the "DSSizes" constants instead.',
+            ),
+            TextBlock(
+              'Tip: when adding a new token, prefer extending "DSSizes" (or a parallel "DSColors" class) over inventing per-file constants. Central tokens are what let "SectionWrapper", "TextBlock", and the rest stay consistent without each one re-deciding what "md" means.',
             ),
           ],
         ),

@@ -54,7 +54,13 @@ class _AlertDialogWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"AlertDialog" widget is shown using a method which returns a Future that completes when the dialog is dismissed.',
+              'AlertDialog is a Material dialog that interrupts the user with a modal popup requiring an acknowledgement. It is composed of a title, a textual content body, and a row of action buttons (typically Cancel / Approve).',
+            ),
+            TextBlock(
+              'It is not placed directly on the widget tree — you push it with showDialog(), which returns a Future that resolves when the dialog is dismissed. That Future makes it ideal for confirmations ("Delete this item?") where you need to branch the flow on the user\'s choice.',
+            ),
+            TextBlock(
+              'Tip: pass barrierDismissible: false when the user must make an explicit decision (forcing a button tap rather than a tap-outside-to-cancel), and always provide at least one action — otherwise the dialog cannot be closed.',
             ),
             Container(
               child: ElevatedButton(

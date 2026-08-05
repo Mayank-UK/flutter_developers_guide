@@ -83,7 +83,10 @@ class _NotificationListenerWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"NotificationListener" has a named parameter onNotification, which defines the widget\'s behavior.',
+              'NotificationListener interceptes Notifications that bubble up from descendants and hands them to an onNotification callback before they reach the root. Returning true cancels the notification\'s journey up the tree; false lets it continue.',
+            ),
+            TextBlock(
+              'It is most commonly used to observe ScrollNotification (scroll position, overscroll, momentum) from any scrollable without holding its controller — handy for showing/hiding a header, triggering infinite scroll, or snapping to a position. The same mechanism also surfaces things like ScrollMetricsNotification and LayoutChangedNotification.',
             ),
             Container(
               height: 500,

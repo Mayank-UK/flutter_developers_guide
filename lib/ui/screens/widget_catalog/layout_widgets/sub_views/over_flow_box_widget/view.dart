@@ -32,7 +32,10 @@ class _OverFlowBoxWidgetImplementation extends StatelessWidget {
           title: 'Simple use',
           content: [
             TextBlock(
-              '"OverflowBox" widget has named parameters like maxWidth, maxHeight, etc, which specify the overflowing nature of it\'s child.',
+              'OverflowBox imposes constraints on its child that differ from the ones it receives from its parent. By giving it minWidth/maxWidth/minHeight/maxHeight you can let the child be larger (or smaller) than the parent would otherwise allow, so the child visibly overflows the parent\'s box without the parent being resized.',
+            ),
+            TextBlock(
+              'Use it for deliberate visual overflow effects (a badge that pokes out of a card, an icon that spills past a clipped frame). The overflow is not clipped for you — pair it with a ClipRect if you actually want the overflowing pixels to be cut off.',
             ),
             Container(
               color: Colors.amber,

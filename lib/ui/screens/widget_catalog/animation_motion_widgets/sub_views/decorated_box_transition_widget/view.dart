@@ -59,7 +59,10 @@ class __DecoratedBoxTransitionImplementationState
           title: 'Simple use',
           content: [
             TextBlock(
-              '"DecoratedBoxTransition" widget has named parameters like position, decoration, etc, which specify the animation.',
+              'DecoratedBoxTransition animates between two BoxDecoration values (begin and end) using a DecorationTween driven by an Animation. Unlike AnimatedDecoratedBox, which tweens implicitly on rebuild, this one is an explicit transition — you own the controller, so the shadow, border-radius, color, and shape all lerp together along your timeline.',
+            ),
+            TextBlock(
+              'Not every property of BoxDecoration can interpolate cleanly (shadows and gradients have rules about what pairs can lerp), so check that your begin/end decorations are compatible or the transition will throw. Use it for hero-style decoration morphs gated on a controller value.',
             ),
             Container(
               child: Column(

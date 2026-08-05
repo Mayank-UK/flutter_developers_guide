@@ -33,8 +33,12 @@ class _CupertinoFullScreenDialogTransitionWidgetImplementation
         SectionWrapper(
           title: 'Simple use',
           content: [
-            TextBlock(''),
-            Container(),
+            TextBlock(
+              'CupertinoFullscreenDialogTransition is the iOS-style vertical slide-up transition applied to full-screen modal pages (think "Compose new email"). It fades the incoming page in while sliding it up from the bottom.',
+            ),
+            TextBlock(
+              'You rarely instantiate it. CupertinoPageRoute applies it automatically when fullscreenDialog: true is set on the route; reach for the widget directly only when building a fully custom route that needs to mimic the system transition.',
+            ),
           ],
         ),
       ],
