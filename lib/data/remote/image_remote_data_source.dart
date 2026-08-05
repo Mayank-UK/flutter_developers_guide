@@ -6,9 +6,9 @@ import 'package:flutter_developers_guide/core/error_handling/guards.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/image_item_dto.dart';
 
 abstract class ImageRemoteDataSource {
-  Stream<List<ImageItemDTO>> watchImages();
+  Stream<List<ImageItemDto>> watchImages();
 
-  Future<ImageItemDTO> uploadImage(File file, String userId);
+  Future<ImageItemDto> uploadImage(File file, String userId);
 
   Future<void> deleteImage(String id, String fileName, String userId);
 }
@@ -26,17 +26,18 @@ class FirebaseStorageImageRemoteDataSource implements ImageRemoteDataSource {
       firebaseFirestore.collection('images');
 
   @override
-  Stream<List<ImageItemDTO>> watchImages() {
-    return _imagesCollection
-        .orderBy('uploadedAt', descending: true)
-        .snapshots()
-        .map((snapshot) => snapshot.docs
-            .map((doc) => ImageItemDTO.fromJson(doc.id, doc.data()))
-            .toList());
+  Stream<List<ImageItemDto>> watchImages() {
+    return guardedStream(
+      _imagesCollection
+          .orderBy('uploadedAt', descending: true)
+          .snapshots(),
+    ).map((snapshot) => snapshot.docs
+        .map((doc) => ImageItemDto.fromJson(doc.id, doc.data()))
+        .toList());
   }
 
   @override
-  Future<ImageItemDTO> uploadImage(File file, String userId) =>
+  Future<ImageItemDto> uploadImage(File file, String userId) =>
       guardedApiCall(() async {
         final fileName =
             '${DateTime.now().millisecondsSinceEpoch}_${file.path.split('/').last}';
@@ -47,7 +48,7 @@ class FirebaseStorageImageRemoteDataSource implements ImageRemoteDataSource {
 
         final url = await storageRef.getDownloadURL();
         final now = DateTime.now();
-        final dto = ImageItemDTO(
+        final dto = ImageItemDto(
           id: '',
           url: url,
           fileName: fileName,
@@ -55,7 +56,7 @@ class FirebaseStorageImageRemoteDataSource implements ImageRemoteDataSource {
         );
         final ref = await _imagesCollection.add(dto.toJson());
 
-        return ImageItemDTO(
+        return ImageItemDto(
           id: ref.id,
           url: url,
           fileName: fileName,

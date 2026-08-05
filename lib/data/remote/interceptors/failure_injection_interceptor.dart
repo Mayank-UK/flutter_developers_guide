@@ -60,7 +60,7 @@ class FailureInjectionInterceptor extends Interceptor {
 
       case ApiScenario.invalidJson:
         // Fabricate a 200 response with a malformed body. Downstream
-        // `PostDTO.fromJson` will throw, which `guardedApiCall` maps to a
+        // `PostDto.fromJson` will throw, which `guardedApiCall` maps to a
         // [ServerException] (invalid response format).
         handler.resolve(
           _fakeResponse(

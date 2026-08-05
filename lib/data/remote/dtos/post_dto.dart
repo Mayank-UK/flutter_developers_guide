@@ -1,14 +1,14 @@
 import 'package:flutter_developers_guide/domain/models/post.dart';
 
-class PostDTO {
+class PostDto {
   final int id;
   final String title;
   final String body;
 
-  PostDTO({required this.id, required this.title, required this.body});
+  PostDto({required this.id, required this.title, required this.body});
 
-  factory PostDTO.fromJson(Map<String, dynamic> json) {
-    return PostDTO(
+  factory PostDto.fromJson(Map<String, dynamic> json) {
+    return PostDto(
       id: json['id'],
       title: json['title'],
       body: json['body'],
@@ -27,7 +27,7 @@ class PostDTO {
     return Post(id: id, title: title, body: body);
   }
 
-  static PostDTO fromPost(Post post) {
-    return PostDTO(id: post.id, title: post.title, body: post.body);
+  static PostDto fromPost(Post post) {
+    return PostDto(id: post.id, title: post.title, body: post.body);
   }
 }

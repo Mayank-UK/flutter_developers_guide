@@ -3,9 +3,9 @@ import 'package:flutter_developers_guide/core/error_handling/guards.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/todo_dto.dart';
 
 abstract class TodoRemoteDataSource {
-  Stream<List<TodoDTO>> watchTodos();
+  Stream<List<TodoDto>> watchTodos();
 
-  Future<TodoDTO> addTodo(String title);
+  Future<TodoDto> addTodo(String title);
 
   Future<void> toggleTodo(String id, bool isCompleted);
 
@@ -23,23 +23,23 @@ class FirestoreTodoRemoteDataSource implements TodoRemoteDataSource {
       firebaseFirestore.collection('todos');
 
   @override
-  Stream<List<TodoDTO>> watchTodos() {
-    return _todosCollection.snapshots().map((snapshot) {
+  Stream<List<TodoDto>> watchTodos() {
+    return guardedStream(_todosCollection.snapshots()).map((snapshot) {
       return snapshot.docs
-          .map((doc) => TodoDTO.fromJson(doc.id, doc.data()))
+          .map((doc) => TodoDto.fromJson(doc.id, doc.data()))
           .toList();
     });
   }
 
   @override
-  Future<TodoDTO> addTodo(String title) => guardedApiCall(
+  Future<TodoDto> addTodo(String title) => guardedApiCall(
         () async {
           final ref = await _todosCollection.add({
             'title': title,
             'isCompleted': false,
           });
 
-          return TodoDTO(id: ref.id, title: title, isCompleted: false);
+          return TodoDto(id: ref.id, title: title, isCompleted: false);
         },
       );
 

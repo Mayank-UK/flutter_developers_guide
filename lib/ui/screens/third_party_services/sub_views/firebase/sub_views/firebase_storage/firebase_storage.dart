@@ -2,10 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_developers_guide/core/di/injection.dart';
+import 'package:flutter_developers_guide/core/result.dart';
+import 'package:flutter_developers_guide/domain/models/image_item.dart';
+import 'package:flutter_developers_guide/domain/repository/auth_repository.dart';
 import 'package:flutter_developers_guide/ui/blocs/images/images_bloc.dart';
 import 'package:flutter_developers_guide/ui/components/code_preview_tabs.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
-import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -19,15 +22,29 @@ class FirebaseStorageView extends StatelessWidget {
       title: 'Firebase Storage',
       mobileUi: [
         CodePreviewTabs(
-          previewTab: BlocProvider(
-            create: (_) => GetIt.I<ImagesBloc>()..add(WatchImages()),
-            child: const _FirebaseStorageImplementation(),
-          ),
+          // ImagesBloc is provided by the router (see router.dart), mirroring
+          // how PostsBloc and FirebaseAuthView are scoped — no nested provider.
+          previewTab: const _FirebaseStorageImplementation(),
           codeTabMarkdownLocation: _codeTabMarkdownLocation,
         ),
       ],
     );
   }
+}
+
+/// Resolves the current Firebase user id for image upload/delete paths.
+///
+/// Bootstrap (see `app.dart`) ensures an anonymous session exists so the
+/// demos satisfy Firebase's auth-required security rules; this reuses that
+/// session via [AuthRepository.ensureAnonymousSession], which is idempotent —
+/// it returns the already-signed-in user without downgrading a real session.
+/// Mirrors the `getIt<AuthRepository>()` access pattern used in `app.dart`.
+Future<String> _currentUserId() async {
+  final result = await getIt<AuthRepository>().ensureAnonymousSession();
+  return switch (result) {
+    Success(:final value) => value.uid,
+    Failed() => 'anonymous',
+  };
 }
 
 class _FirebaseStorageImplementation extends StatelessWidget {
@@ -55,8 +72,7 @@ class _UploadBar extends StatelessWidget {
     final picked = await picker.pickImage(source: ImageSource.gallery);
     if (picked == null) return;
 
-    // TODO: replace with actual userId from your AuthBloc/session
-    const userId = 'dev_user';
+    final userId = await _currentUserId();
 
     if (context.mounted) {
       context.read<ImagesBloc>().add(UploadImage(File(picked.path), userId));
@@ -126,17 +142,14 @@ class _ImageGrid extends StatelessWidget {
 }
 
 class _ImageTile extends StatelessWidget {
-  final image;
+  final ImageItem image;
 
   const _ImageTile({required this.image});
 
   @override
   Widget build(BuildContext context) {
-    // TODO: replace with actual userId from your AuthBloc/session
-    const userId = 'dev_user';
-
     return GestureDetector(
-      onLongPress: () => _confirmDelete(context, userId),
+      onLongPress: () => _confirmDelete(context),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: Image.network(
@@ -155,7 +168,10 @@ class _ImageTile extends StatelessWidget {
     );
   }
 
-  void _confirmDelete(BuildContext context, String userId) {
+  Future<void> _confirmDelete(BuildContext context) async {
+    final userId = await _currentUserId();
+    if (!context.mounted) return;
+
     showDialog(
       context: context,
       builder: (_) => AlertDialog(

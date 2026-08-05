@@ -38,10 +38,10 @@ import '../../domain/usecases/auth/auth_state_changes_use_case.dart' as _i556;
 import '../../domain/usecases/auth/register_use_case.dart' as _i201;
 import '../../domain/usecases/auth/sign_in_use_case.dart' as _i561;
 import '../../domain/usecases/auth/signout_use_case.dart' as _i901;
-import '../../domain/usecases/get_posts_use_case.dart' as _i160;
 import '../../domain/usecases/images/delete_image_use_case.dart' as _i1020;
 import '../../domain/usecases/images/upload_image_use_case.dart' as _i996;
 import '../../domain/usecases/images/watch_images_use_case.dart' as _i196;
+import '../../domain/usecases/posts/get_posts_use_case.dart' as _i350;
 import '../../domain/usecases/todos/add_todo_use_case.dart' as _i261;
 import '../../domain/usecases/todos/delete_todo_use_case.dart' as _i912;
 import '../../domain/usecases/todos/toggle_todo_use_case.dart' as _i1040;
@@ -103,14 +103,15 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i831.Logger>(),
               gh<_i59.FirebaseAuth>(),
             ));
-    gh.lazySingleton<_i293.AppDatabase>(() => injectableModule.appDatabase(
-          gh<_i650.AppConfig>(),
-          gh<_i232.Database>(),
-        ));
     gh.lazySingleton<_i169.ImageRepository>(() => _i241.ImageRepositoryImpl(
           remoteDataSource: gh<_i1062.ImageRemoteDataSource>(),
           logger: gh<_i831.Logger>(),
           analytics: gh<_i726.AnalyticsService>(),
+        ));
+    gh.lazySingleton<_i293.AppDatabase>(() => injectableModule.appDatabase(
+          gh<_i650.AppConfig>(),
+          gh<_i232.Database>(),
+          gh<_i831.Logger>(),
         ));
     gh.lazySingleton<_i361.Dio>(() => injectableModule.dio(
           gh<_i650.AppConfig>(),
@@ -165,8 +166,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i561.SignInUseCase(gh<_i614.AuthRepository>()));
     gh.factory<_i901.SignOutUseCase>(
         () => _i901.SignOutUseCase(gh<_i614.AuthRepository>()));
-    gh.factory<_i160.GetPostsUseCase>(
-        () => _i160.GetPostsUseCase(gh<_i368.PostRepository>()));
+    gh.factory<_i350.GetPostsUseCase>(
+        () => _i350.GetPostsUseCase(gh<_i368.PostRepository>()));
     gh.factory<_i866.AuthBloc>(() => _i866.AuthBloc(
           signInUseCase: gh<_i561.SignInUseCase>(),
           registerUseCase: gh<_i201.RegisterUseCase>(),
@@ -174,7 +175,7 @@ extension GetItInjectableX on _i174.GetIt {
           authStateChangesUseCase: gh<_i556.AuthStateChangesUseCase>(),
         ));
     gh.factory<_i987.PostsBloc>(
-        () => _i987.PostsBloc(getPostsUseCase: gh<_i160.GetPostsUseCase>()));
+        () => _i987.PostsBloc(getPostsUseCase: gh<_i350.GetPostsUseCase>()));
     return this;
   }
 }

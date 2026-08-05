@@ -26,14 +26,19 @@ class ImageRepositoryImpl implements ImageRepository {
   @override
   Stream<Result<List<ImageItem>>> watchImages() async* {
     try {
-      await for (final dtos in remoteDataSource.watchImages()) {
+      // Route the upstream snapshots through `guardedStream` on the repository
+      // side as well so permission-denied / unauthorized Firebase errors map
+      // to a friendly FirestoreFailure instead of UnknownFailure. The data
+      // source already guards, but this keeps the contract enforced regardless
+      // of which source is bound. See `guardedStream` in guards.dart.
+      await for (final dtos in guardedStream(remoteDataSource.watchImages())) {
         yield Success(dtos.map((d) => d.toImageItem()).toList());
       }
     } catch (e, st) {
       logger.severe('Image stream error', e, st);
       final failure = e is AppException
           ? mapExceptionToFailure(e)
-          : UnknownFailure(e.toString());
+          : UnknownFailure('Unexpected stream error: $e');
       yield Failed(failure);
     }
   }

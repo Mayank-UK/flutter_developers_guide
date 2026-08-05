@@ -75,13 +75,31 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<void> signOut() async {
-    await analytics.logLogout();
+  Future<Result<AuthUser>> ensureAnonymousSession() => safeRepositoryCall(
+        logger: logger,
+        call: () async {
+          final dto = await remoteDataSource.ensureAnonymousSession();
+          return dto.toAuthUser();
+        },
+      );
 
-    await analytics.setUserId(
-      null,
-    );
+  @override
+  Future<Result<void>> signOut() => safeRepositoryCall(
+        logger: logger,
+        call: () async {
+          await analytics.logLogout();
 
-    return remoteDataSource.signOut();
-  }
+          await analytics.setUserId(
+            null,
+          );
+
+          await remoteDataSource.signOut();
+
+          // Re-establish an anonymous session so the Firestore/Storage demos
+          // keep working after a real user logs out. The auth-state stream
+          // filters anonymous users back to null, so the Auth UI still shows
+          // logged-out.
+          await remoteDataSource.ensureAnonymousSession();
+        },
+      );
 }

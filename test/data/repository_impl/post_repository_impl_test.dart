@@ -16,12 +16,12 @@ class MockAppDatabase extends Mock implements AppDatabase {}
 
 // --- Helpers ---
 
-// A minimal PostDTO stub. Adjust fields to match your actual PostDTO.
-final tPostDTO = PostDTO(id: 1, title: 'Remote Post', body: 'Body');
+// A minimal PostDto stub. Adjust fields to match your actual PostDto.
+final tPostDto = PostDto(id: 1, title: 'Remote Post', body: 'Body');
 
-// A PostDTO returned from the local cache
-final tCachedPostDTO =
-    PostDTO(id: 2, title: 'Cached Post', body: 'Cached Body');
+// A PostDto returned from the local cache
+final tCachedPostDto =
+    PostDto(id: 2, title: 'Cached Post', body: 'Cached Body');
 
 void main() {
   late MockPostRemoteDataSource mockRemoteDataSource;
@@ -45,7 +45,7 @@ void main() {
     test('returns Success with mapped posts when remote call succeeds',
         () async {
       when(() => mockRemoteDataSource.getPosts())
-          .thenAnswer((_) async => [tPostDTO]);
+          .thenAnswer((_) async => [tPostDto]);
       when(() => mockDatabase.insertPosts(any())).thenAnswer((_) async {});
 
       final result = await repository.getPosts();
@@ -61,7 +61,7 @@ void main() {
 
     test('still returns Success even when local cache write fails', () async {
       when(() => mockRemoteDataSource.getPosts())
-          .thenAnswer((_) async => [tPostDTO]);
+          .thenAnswer((_) async => [tPostDto]);
       when(() => mockDatabase.insertPosts(any()))
           .thenThrow(Exception('disk full'));
 
@@ -78,7 +78,7 @@ void main() {
       when(() => mockRemoteDataSource.getPosts())
           .thenThrow(const NetworkException());
       when(() => mockDatabase.getPosts())
-          .thenAnswer((_) async => [tCachedPostDTO]);
+          .thenAnswer((_) async => [tCachedPostDto]);
 
       final result = await repository.getPosts();
 
@@ -92,7 +92,7 @@ void main() {
       when(() => mockRemoteDataSource.getPosts())
           .thenThrow(const ServerException());
       when(() => mockDatabase.getPosts())
-          .thenAnswer((_) async => [tCachedPostDTO]);
+          .thenAnswer((_) async => [tCachedPostDto]);
 
       final result = await repository.getPosts();
 

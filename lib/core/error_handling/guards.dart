@@ -15,10 +15,7 @@ Future<T> guardedApiCall<T>(
   } on AppException {
     rethrow;
   } on FirebaseException catch (e) {
-    throw FirebaseFirestoreException(
-      e.message ?? 'Firestore error (${e.code})',
-      e,
-    );
+    throw FirebaseFirestoreException(_firebaseMessage(e), e);
   } on DioException catch (e) {
     throw switch (e.type) {
       DioExceptionType.connectionTimeout ||
@@ -74,7 +71,12 @@ Future<Result<ResultType>> safeRepositoryCall<ResultType>({
     return Failed(mapExceptionToFailure(e));
   } catch (e, st) {
     logger.severe('Unexpected repository error', e, st);
-    return const Failed(UnknownFailure());
+    // Failure.cause is itself typed `Failure?` (not Object?), so the raw
+    // exception object cannot be stored directly in the cause chain without
+    // widening the Failure API. Preserve its detail in the message instead;
+    // the full exception + stack trace is already captured by the logger
+    // above.
+    return Failed(UnknownFailure('Unexpected error: $e'));
   }
 }
 
@@ -90,4 +92,34 @@ Failure mapExceptionToFailure(AppException e) {
     AppDatabaseException() => CacheFailure(e.message, innerCause),
     AuthException() => AuthFailure(e.message, innerCause),
   };
+}
+
+/// Translates a [FirebaseException] into a readable message, special-casing the
+/// permission-denied codes so users see an actionable hint instead of Firebase's
+/// raw "Missing or insufficient permissions" text. Covers both Firestore
+/// (`permission-denied`) and Storage (`unauthorized`) codes.
+String _firebaseMessage(FirebaseException e) {
+  if (e.code == 'permission-denied' || e.code == 'unauthorized') {
+    return 'Sign in required to access this data.';
+  }
+  return e.message ?? 'Firebase error (${e.code})';
+}
+
+/// Wraps a Firebase [Stream] so that any [FirebaseException] it errors with is
+/// mapped to an [AppException], mirroring [guardedApiCall] for write operations.
+/// Without this, stream errors (e.g. expired test-mode rules) surface as
+/// [UnknownFailure] in the repositories instead of [FirestoreFailure].
+Stream<T> guardedStream<T>(Stream<T> stream) {
+  return stream.handleError(
+    (Object error, StackTrace st) {
+      if (error is AppException) {
+        throw error;
+      }
+      if (error is FirebaseException) {
+        throw FirebaseFirestoreException(_firebaseMessage(error), error);
+      }
+      throw ServerException('Stream error', error);
+    },
+    test: (error) => error is! AppException,
+  );
 }

@@ -10,9 +10,12 @@ import 'package:flutter_developers_guide/data/local/app_database.dart';
 import 'package:flutter_developers_guide/data/local/daos/post_dao.dart';
 import 'package:flutter_developers_guide/data/local/fake_app_database.dart';
 import 'package:flutter_developers_guide/data/remote/auth_remote_data_source.dart';
+import 'package:flutter_developers_guide/data/remote/fake_auth_remote_data_source.dart';
+import 'package:flutter_developers_guide/data/remote/fake_image_remote_data_source.dart';
+import 'package:flutter_developers_guide/data/remote/fake_post_remote_data_source.dart';
+import 'package:flutter_developers_guide/data/remote/fake_todo_remote_data_source.dart';
 import 'package:flutter_developers_guide/data/remote/interceptors/auth_token_interceptor.dart';
 import 'package:flutter_developers_guide/data/remote/interceptors/failure_injection_interceptor.dart';
-import 'package:flutter_developers_guide/data/remote/fake_api_service.dart';
 import 'package:flutter_developers_guide/data/remote/image_remote_data_source.dart';
 import 'package:flutter_developers_guide/data/remote/post_remote_data_source.dart';
 import 'package:flutter_developers_guide/data/remote/interceptors/retry_interceptor.dart';
@@ -115,13 +118,14 @@ abstract class InjectableModule {
   AppDatabase appDatabase(
     AppConfig config,
     Database database,
+    Logger logger,
   ) {
     if (config.useFakeDatabase) {
       return FakeAppDatabase(scenario: config.dbScenario);
     }
 
     return AppDatabaseImpl(
-      postDAO: PostDAO(database: database),
+      postDAO: PostDAO(database: database, logger: logger),
     );
   }
 
@@ -132,7 +136,7 @@ abstract class InjectableModule {
     FirebaseAuth auth,
   ) {
     if (config.useFakeApi) {
-      return FakeApiService(scenario: config.apiScenario);
+      return FakeAuthRemoteDataSource(scenario: config.apiScenario);
     }
 
     return FirebaseAuthRemoteDataSource(
@@ -147,7 +151,7 @@ abstract class InjectableModule {
     Dio dio,
   ) {
     if (config.useFakeApi) {
-      return FakeApiService(scenario: config.apiScenario);
+      return FakePostRemoteDataSource(scenario: config.apiScenario);
     }
 
     // Real Dio client + interceptor chain. In dev, the
@@ -163,7 +167,7 @@ abstract class InjectableModule {
     FirebaseFirestore firestore,
   ) {
     if (config.useFakeApi) {
-      return FakeApiService(scenario: config.apiScenario);
+      return FakeTodoRemoteDataSource(scenario: config.apiScenario);
     }
 
     return FirestoreTodoRemoteDataSource(
@@ -178,7 +182,7 @@ abstract class InjectableModule {
     FirebaseStorage storage,
   ) {
     if (config.useFakeApi) {
-      return FakeApiService(scenario: config.apiScenario);
+      return FakeImageRemoteDataSource(scenario: config.apiScenario);
     }
 
     return FirebaseStorageImageRemoteDataSource(

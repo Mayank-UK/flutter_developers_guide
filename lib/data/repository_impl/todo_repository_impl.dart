@@ -24,14 +24,19 @@ class TodoRepositoryImpl implements TodoRepository {
   @override
   Stream<Result<List<Todo>>> watchTodos() async* {
     try {
-      await for (final dtos in remoteDataSource.watchTodos()) {
+      // Route the upstream snapshots through `guardedStream` on the repository
+      // side as well so permission-denied / unauthorized Firebase errors map
+      // to a friendly FirestoreFailure instead of UnknownFailure. The data
+      // source already guards, but this keeps the contract enforced regardless
+      // of which source is bound. See `guardedStream` in guards.dart.
+      await for (final dtos in guardedStream(remoteDataSource.watchTodos())) {
         yield Success(dtos.map((d) => d.toTodo()).toList());
       }
     } catch (e, st) {
       logger.severe('Todo stream error', e, st);
       final failure = e is AppException
           ? mapExceptionToFailure(e)
-          : UnknownFailure(e.toString());
+          : UnknownFailure('Unexpected stream error: $e');
       yield Failed(failure);
     }
   }

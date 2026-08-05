@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_developers_guide/core/error_handling/failures.dart';
 import 'package:flutter_developers_guide/core/result.dart';
 import 'package:flutter_developers_guide/domain/models/post.dart';
-import 'package:flutter_developers_guide/domain/usecases/get_posts_use_case.dart';
+import 'package:flutter_developers_guide/domain/usecases/posts/get_posts_use_case.dart';
 import 'package:injectable/injectable.dart';
 
 // Events

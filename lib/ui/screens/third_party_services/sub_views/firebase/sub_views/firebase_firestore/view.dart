@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_developers_guide/domain/models/todo.dart';
 import 'package:flutter_developers_guide/ui/blocs/todos/todos_bloc.dart';
 import 'package:flutter_developers_guide/ui/components/code_preview_tabs.dart';
 import 'package:flutter_developers_guide/ui/components/page_scaffold.dart';
-import 'package:get_it/get_it.dart';
 
 class FirebaseFirestoreView extends StatelessWidget {
   final String _codeTabMarkdownLocation =
@@ -15,10 +15,9 @@ class FirebaseFirestoreView extends StatelessWidget {
       title: 'Firebase Database',
       mobileUi: [
         CodePreviewTabs(
-          previewTab: BlocProvider(
-            create: (_) => GetIt.I<TodosBloc>()..add(WatchTodos()),
-            child: const _FirebaseFirestoreImplementation(),
-          ),
+          // TodosBloc is provided by the router (see router.dart), mirroring
+          // how PostsBloc and FirebaseAuthView are scoped — no nested provider.
+          previewTab: const _FirebaseFirestoreImplementation(),
           codeTabMarkdownLocation: _codeTabMarkdownLocation,
         ),
       ],
@@ -115,7 +114,7 @@ class _TodoList extends StatelessWidget {
 }
 
 class _TodoTile extends StatelessWidget {
-  final todo;
+  final Todo todo;
 
   const _TodoTile({required this.todo});
 

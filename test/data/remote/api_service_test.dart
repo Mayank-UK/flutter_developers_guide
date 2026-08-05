@@ -14,7 +14,7 @@ void main() {
   late MockDio mockDio;
   late JsonPlaceholderPostRemoteDataSource remoteDataSource;
 
-  // A valid JSON list that maps to PostDTO
+  // A valid JSON list that maps to PostDto
   final tPostsJson = jsonEncode([
     {'id': 1, 'title': 'Test Post', 'body': 'Test Body'},
   ]);
@@ -32,7 +32,7 @@ void main() {
   });
 
   group('JsonPlaceholderPostRemoteDataSource.getPosts', () {
-    test('returns list of PostDTO on 200 response', () async {
+    test('returns list of PostDto on 200 response', () async {
       when(() => mockDio.get(any())).thenAnswer(
         (_) async => Response(
           requestOptions: RequestOptions(path: '/posts'),

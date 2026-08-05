@@ -7,7 +7,7 @@ import 'package:flutter_developers_guide/data/remote/dtos/post_dto.dart';
 
 class FakeAppDatabase implements AppDatabase {
   DbScenario scenario;
-  List<PostDTO> _cache = [];
+  List<PostDto> _cache = [];
 
   FakeAppDatabase({
     required this.scenario,
@@ -20,7 +20,7 @@ class FakeAppDatabase implements AppDatabase {
         return operation();
 
       case DbScenario.empty:
-        if (T == List<PostDTO>) {
+        if (T == List<PostDto>) {
           return [] as T;
         }
         return operation();
@@ -43,12 +43,12 @@ class FakeAppDatabase implements AppDatabase {
   }
 
   @override
-  Future<List<PostDTO>> getPosts() {
+  Future<List<PostDto>> getPosts() {
     return _simulateRead(() => _cache);
   }
 
   @override
-  Future<void> insertPosts(List<PostDTO> posts) {
+  Future<void> insertPosts(List<PostDto> posts) {
     return _simulateWrite(() {
       _cache = List.of(posts);
     });

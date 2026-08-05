@@ -14,5 +14,10 @@ abstract class AuthRepository {
 
   Stream<AuthUser?> authStateChanges();
 
-  Future<void> signOut();
+  /// Ensures an authenticated session exists (signing in anonymously if
+  /// needed) so that Firebase-gated demos work under auth-required rules.
+  /// See [AuthRemoteDataSource.ensureAnonymousSession].
+  Future<Result<AuthUser>> ensureAnonymousSession();
+
+  Future<Result<void>> signOut();
 }

@@ -1,21 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_developers_guide/domain/models/image_item.dart';
 
-class ImageItemDTO {
+class ImageItemDto {
   final String id;
   final String url;
   final String fileName;
   final DateTime uploadedAt;
 
-  ImageItemDTO({
+  ImageItemDto({
     required this.id,
     required this.url,
     required this.fileName,
     required this.uploadedAt,
   });
 
-  factory ImageItemDTO.fromJson(String id, Map<String, dynamic> json) {
-    return ImageItemDTO(
+  factory ImageItemDto.fromJson(String id, Map<String, dynamic> json) {
+    return ImageItemDto(
       id: id,
       url: json['url'] as String,
       fileName: json['fileName'] as String,

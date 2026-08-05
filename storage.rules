@@ -1,0 +1,15 @@
+rules_version = '2';
+
+// Firebase Storage security rules.
+//
+// Mirror the Firestore rules: require authentication for all reads/writes.
+// The app signs in anonymously at bootstrap (see lib/app.dart), so the Storage
+// demo can upload/list/delete under these rules without a manual login.
+//
+// Deploy (requires user approval):
+//   firebase deploy --only storage
+service firebase.storage {
+  match /b/{bucket}/o {
+    allow read, write: if request.auth != null;
+  }
+}

@@ -15,6 +15,13 @@ abstract class AuthRemoteDataSource {
     required String password,
   });
 
+  /// Ensures an authenticated Firebase session exists, signing in anonymously
+  /// when no user is present. Anonymous auth lets the Firestore/Storage demos
+  /// satisfy auth-required security rules without forcing a manual login.
+  /// Returns the current (anonymous or real) user. If a real user is already
+  /// signed in, they are returned unchanged — this never downgrades a session.
+  Future<AuthUserDto> ensureAnonymousSession();
+
   Stream<AuthUserDto?> authStateChanges();
 
   Future<void> signOut();
@@ -75,9 +82,28 @@ class FirebaseAuthRemoteDataSource implements AuthRemoteDataSource {
       );
 
   @override
+  Future<AuthUserDto> ensureAnonymousSession() => guardedApiCall(
+        () async {
+          final current = firebaseAuth.currentUser;
+          if (current != null) {
+            return AuthUserDto.fromFirebaseUser(current);
+          }
+
+          logger.info('Signing in anonymously for data demos');
+          final result = await firebaseAuth.signInAnonymously();
+          return AuthUserDto.fromFirebaseUser(result.user!);
+        },
+      );
+
+  @override
   Stream<AuthUserDto?> authStateChanges() {
+    // Anonymous sessions are an infrastructure detail used to satisfy auth-
+    // required security rules for the Firestore/Storage demos. They are not
+    // "real" logins, so they are reported as null here to keep the FirebaseAuth
+    // demo UI in its logged-out state (showing the login/register form).
     return firebaseAuth.authStateChanges().map(
-          (user) => user == null ? null : AuthUserDto.fromFirebaseUser(user),
+          (user) =>
+              (user == null || user.isAnonymous) ? null : AuthUserDto.fromFirebaseUser(user),
         );
   }
 

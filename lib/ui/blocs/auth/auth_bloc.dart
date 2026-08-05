@@ -166,11 +166,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     SignOutRequested event,
     Emitter<AuthState> emit,
   ) async {
-    await signOutUseCase();
+    final result = await signOutUseCase();
 
-    // No emit here.
-    // Firebase auth stream will emit null,
-    // which triggers AuthUnauthenticated.
+    switch (result) {
+      case Success():
+        // No emit here.
+        // Firebase auth stream will emit null,
+        // which triggers AuthUnauthenticated.
+        break;
+
+      case Failed(failure: final failure):
+        emit(AuthError(failure));
+    }
   }
 
   @override

@@ -4,7 +4,7 @@ import 'package:flutter_developers_guide/core/error_handling/guards.dart';
 import 'package:flutter_developers_guide/data/remote/dtos/post_dto.dart';
 
 abstract class PostRemoteDataSource {
-  Future<List<PostDTO>> getPosts();
+  Future<List<PostDto>> getPosts();
 }
 
 class JsonPlaceholderPostRemoteDataSource implements PostRemoteDataSource {
@@ -15,7 +15,7 @@ class JsonPlaceholderPostRemoteDataSource implements PostRemoteDataSource {
   });
 
   @override
-  Future<List<PostDTO>> getPosts() => guardedApiCall(
+  Future<List<PostDto>> getPosts() => guardedApiCall(
         () async {
           final response = await dio.get('/posts');
 
@@ -29,7 +29,7 @@ class JsonPlaceholderPostRemoteDataSource implements PostRemoteDataSource {
 
           return jsonList
               .map(
-                (json) => PostDTO.fromJson(
+                (json) => PostDto.fromJson(
                   json as Map<String, dynamic>,
                 ),
               )
