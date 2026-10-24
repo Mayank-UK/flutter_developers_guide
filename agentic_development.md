@@ -57,7 +57,7 @@
 - Generic instructions:
     - You have to build UI using the design system implemented in the application
     - You have to follow the proper architecture that is followed in the application, for example, having use cases, repositories, repositoriesImpl, remote, DTOs, local, DAOs, exception handling, and so on
-    - You have to check if existing components can be reused instead of creating new ones. If a component is to be used in a single file, better to make it a function inside that view. If a component is to be used in multiple files, create it inside the global ui/components
+    - You have to check if existing components can be reused instead of creating new ones. If a component is to be used in a single file, then better to make it a function inside that view. If a component is to be used in multiple files, then create it inside the global ui/components
     - If feeling confused about how to do things, you are free to check how it's done in other parts of this app; the goal is to maintain consistency throughout the app
     - You have to follow few principles to write quality code, but these are not to be forced as some technologies have their standards, for example react uses hooks and other technologies use their own standards:
         - Core programming principles:
